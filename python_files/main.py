@@ -19,8 +19,9 @@ state_series = pd.read_csv(PATH + 'outputs/cleaning_op/state_series_dimension_cl
 def main(series_input, name_of_file):
 
     '''
-    This main function takes in a list of seriesID's and a string which will used to name the CSV file output. 
-    Any number of seriesID's can be inputted. 
+    This function takes in a list of seriesID's and a string which will 
+    used to name the CSV file output. Input can be any number of seriesID's 
+    greater than 1. 
     '''
     
     data_results = derated_call(series_input, '2002', '2021')

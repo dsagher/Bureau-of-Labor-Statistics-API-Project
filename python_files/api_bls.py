@@ -9,10 +9,14 @@ import time
 from IPython.display import clear_output
 
 URL_ENDPOINT = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
-PATH = '/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/'
 
 
 def get_series_id(series, start_year, end_year):
+
+    '''
+    This is the main API call. This gets run within the derated_call() function.
+    Will error if more less than 2 seriesID's are input, which would be caught in derated_call().
+    '''
 
     headers = {'Content-Type': 'application/json'}
     payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": api_key.API_KEY})
@@ -39,10 +43,13 @@ def get_series_id(series, start_year, end_year):
 
 
 def message_retriever(data_results):
+
     '''
     When there is no data for a specific year and seriesID, a message is returned. 
-    This function compiles a new DataFrame with those messages, with seperate columns for |message|serialID|year|
+    This function compiles a new DataFrame with those messages,
+    with seperate columns for |message|serialID|year|
     '''
+
     message_list = []
     for call in data_results:
 
@@ -60,6 +67,10 @@ def message_retriever(data_results):
 
 def derated_call(lst, start_year = '2002', end_year = '2021'):
 
+    ''' 
+    Feeds batches of 50 seriesID's into get_series_id(). It sleeps for 5 seconds in between batches. 
+    '''
+
     lst = list(lst['seriesID'])
     final = [] 
     batch_size = 50 
@@ -67,7 +78,7 @@ def derated_call(lst, start_year = '2002', end_year = '2021'):
     end_year = str(end_year)
 
     try:
-        if len(lst) < 2:
+        if len(lst) < 2: # Error handling for input error 
             raise Exception
         
         while lst: 
@@ -106,10 +117,14 @@ def derated_call(lst, start_year = '2002', end_year = '2021'):
 
 def dataframe_maker(data_results):
     
+    '''
+    Creates Pandas DataFrames from JSON response.
+    '''
+
     final_df = pd.DataFrame([])
     
     print('Creating DataFrame...')
-    for call in data_results:  # goes into each individual call
+    for call in data_results: 
         
         for series in call['Results']['series']:
             seriesID = series['seriesID']
