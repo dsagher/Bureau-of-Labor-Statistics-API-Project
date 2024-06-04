@@ -14,7 +14,6 @@ PATH = '/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/'
 
 national_series = pd.read_csv(PATH + 'outputs/cleaning_op/national_series_dimension_cleaned.csv')
 state_series = pd.read_csv(PATH + 'outputs/cleaning_op/state_series_dimension_cleaned.csv')
-survey_table = pd.read_csv(PATH + 'outputs/excel_op/survey_table.csv')
 
 
 def main(series_input, name_of_file):

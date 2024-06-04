@@ -11,8 +11,8 @@ cur = conn.cursor()
 cur.execute('''
             --sql
             CREATE TABLE IF NOT EXISTS state_series (
-            series VARCHAR,
             seriesID VARCHAR PRIMARY KEY,
+            series VARCHAR,
             state VARCHAR,
             survey VARCHAR,
             is_adjusted BOOLEAN
@@ -20,8 +20,8 @@ cur.execute('''
 
             --sql
             CREATE TABLE IF NOT EXISTS national_series (
-            series VARCHAR,
             seriesID VARCHAR PRIMARY KEY,
+            series VARCHAR,
             survey VARCHAR,
             is_adjusted BOOLEAN
             );
