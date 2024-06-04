@@ -1,0 +1,1350 @@
+"seriesid","series","state","survey","is_adjusted"
+"SMS01000000000000001","Total Nonfarm","Alabama","CES",True
+"SMS01000001000000001","Mining and Logging","Alabama","CES",True
+"SMS01000001500000001","Mining, Logging, and Construction","Alabama","CES",True
+"SMS01000002000000001","Construction","Alabama","CES",True
+"SMS01000003000000001","Manufacturing","Alabama","CES",True
+"SMS01000004000000001","Trade, Transportation, and Utilities","Alabama","CES",True
+"SMS01000005000000001","Information","Alabama","CES",True
+"SMS01000005500000001","Financial Activities","Alabama","CES",True
+"SMS01000006000000001","Professional and Business Services","Alabama","CES",True
+"SMS01000006500000001","Education and Health Services","Alabama","CES",True
+"SMS01000007000000001","Leisure and Hospitality","Alabama","CES",True
+"SMS01000008000000001","Other Services","Alabama","CES",True
+"SMS01000009000000001","Government","Alabama","CES",True
+"SMU01000000000000001","Total Nonfarm","Alabama","CES",False
+"SMU01000001000000001","Mining and Logging","Alabama","CES",False
+"SMU01000001500000001","Mining, Logging, and Construction","Alabama","CES",False
+"SMU01000002000000001","Construction","Alabama","CES",False
+"SMU01000003000000001","Manufacturing","Alabama","CES",False
+"SMU01000004000000001","Trade, Transportation, and Utilities","Alabama","CES",False
+"SMU01000005000000001","Information","Alabama","CES",False
+"SMU01000005500000001","Financial Activities","Alabama","CES",False
+"SMU01000006000000001","Professional and Business Services","Alabama","CES",False
+"SMU01000006500000001","Education and Health Services","Alabama","CES",False
+"SMU01000007000000001","Leisure and Hospitality","Alabama","CES",False
+"SMU01000008000000001","Other Services","Alabama","CES",False
+"SMU01000009000000001","Government","Alabama","CES",False
+"SMS02000000000000001","Total Nonfarm","Alaska","CES",True
+"SMS02000001000000001","Mining and Logging","Alaska","CES",True
+"SMS02000001500000001","Mining, Logging, and Construction","Alaska","CES",True
+"SMS02000002000000001","Construction","Alaska","CES",True
+"SMS02000003000000001","Manufacturing","Alaska","CES",True
+"SMS02000004000000001","Trade, Transportation, and Utilities","Alaska","CES",True
+"SMS02000005000000001","Information","Alaska","CES",True
+"SMS02000005500000001","Financial Activities","Alaska","CES",True
+"SMS02000006000000001","Professional and Business Services","Alaska","CES",True
+"SMS02000006500000001","Education and Health Services","Alaska","CES",True
+"SMS02000007000000001","Leisure and Hospitality","Alaska","CES",True
+"SMS02000008000000001","Other Services","Alaska","CES",True
+"SMS02000009000000001","Government","Alaska","CES",True
+"SMU02000000000000001","Total Nonfarm","Alaska","CES",False
+"SMU02000001000000001","Mining and Logging","Alaska","CES",False
+"SMU02000001500000001","Mining, Logging, and Construction","Alaska","CES",False
+"SMU02000002000000001","Construction","Alaska","CES",False
+"SMU02000003000000001","Manufacturing","Alaska","CES",False
+"SMU02000003100000001","Durable Goods","Alaska","CES",False
+"SMU02000003200000001","Non-Durable Goods","Alaska","CES",False
+"SMU02000004000000001","Trade, Transportation, and Utilities","Alaska","CES",False
+"SMU02000005000000001","Information","Alaska","CES",False
+"SMU02000005500000001","Financial Activities","Alaska","CES",False
+"SMU02000006000000001","Professional and Business Services","Alaska","CES",False
+"SMU02000006500000001","Education and Health Services","Alaska","CES",False
+"SMU02000007000000001","Leisure and Hospitality","Alaska","CES",False
+"SMU02000008000000001","Other Services","Alaska","CES",False
+"SMU02000009000000001","Government","Alaska","CES",False
+"SMU04000005500000001","Financial Activities","Arizona","CES",False
+"SMU04000006000000001","Professional and Business Services","Arizona","CES",False
+"SMU04000006500000001","Education and Health Services","Arizona","CES",False
+"SMU04000007000000001","Leisure and Hospitality","Arizona","CES",False
+"SMU04000008000000001","Other Services","Arizona","CES",False
+"SMU04000009000000001","Government","Arizona","CES",False
+"SMS04000000000000001","Total Nonfarm","Arizona","CES",True
+"SMS04000001000000001","Mining and Logging","Arizona","CES",True
+"SMS04000001500000001","Mining, Logging, and Construction","Arizona","CES",True
+"SMS04000002000000001","Construction","Arizona","CES",True
+"SMS04000003000000001","Manufacturing","Arizona","CES",True
+"SMS04000004000000001","Trade, Transportation, and Utilities","Arizona","CES",True
+"SMS04000005000000001","Information","Arizona","CES",True
+"SMS04000005500000001","Financial Activities","Arizona","CES",True
+"SMS04000006000000001","Professional and Business Services","Arizona","CES",True
+"SMS04000006500000001","Education and Health Services","Arizona","CES",True
+"SMS04000007000000001","Leisure and Hospitality","Arizona","CES",True
+"SMS04000008000000001","Other Services","Arizona","CES",True
+"SMS04000009000000001","Government","Arizona","CES",True
+"SMU04000000000000001","Total Nonfarm","Arizona","CES",False
+"SMU04000001000000001","Mining and Logging","Arizona","CES",False
+"SMU04000001500000001","Mining, Logging, and Construction","Arizona","CES",False
+"SMU04000002000000001","Construction","Arizona","CES",False
+"SMU04000003000000001","Manufacturing","Arizona","CES",False
+"SMU04000004000000001","Trade, Transportation, and Utilities","Arizona","CES",False
+"SMU04000005000000001","Information","Arizona","CES",False
+"SMU05000000000000001","Total Nonfarm","Arkansas","CES",False
+"SMU05000001000000001","Mining and Logging","Arkansas","CES",False
+"SMU05000001500000001","Mining, Logging, and Construction","Arkansas","CES",False
+"SMU05000002000000001","Construction","Arkansas","CES",False
+"SMU05000003000000001","Manufacturing","Arkansas","CES",False
+"SMU05000004000000001","Trade, Transportation, and Utilities","Arkansas","CES",False
+"SMU05000005000000001","Information","Arkansas","CES",False
+"SMU05000005500000001","Financial Activities","Arkansas","CES",False
+"SMU05000006000000001","Professional and Business Services","Arkansas","CES",False
+"SMU05000006500000001","Education and Health Services","Arkansas","CES",False
+"SMU05000007000000001","Leisure and Hospitality","Arkansas","CES",False
+"SMU05000008000000001","Other Services","Arkansas","CES",False
+"SMU05000009000000001","Government","Arkansas","CES",False
+"SMS05000000000000001","Total Nonfarm","Arkansas","CES",True
+"SMS05000001000000001","Mining and Logging","Arkansas","CES",True
+"SMS05000001500000001","Mining, Logging, and Construction","Arkansas","CES",True
+"SMS05000002000000001","Construction","Arkansas","CES",True
+"SMS05000003000000001","Manufacturing","Arkansas","CES",True
+"SMS05000004000000001","Trade, Transportation, and Utilities","Arkansas","CES",True
+"SMS05000005500000001","Financial Activities","Arkansas","CES",True
+"SMS05000006000000001","Professional and Business Services","Arkansas","CES",True
+"SMS05000006500000001","Education and Health Services","Arkansas","CES",True
+"SMS05000007000000001","Leisure and Hospitality","Arkansas","CES",True
+"SMS05000008000000001","Other Services","Arkansas","CES",True
+"SMS05000009000000001","Government","Arkansas","CES",True
+"SMU06000000000000001","Total Nonfarm","California","CES",False
+"SMU06000001000000001","Mining and Logging","California","CES",False
+"SMU06000001500000001","Mining, Logging, and Construction","California","CES",False
+"SMU06000002000000001","Construction","California","CES",False
+"SMU06000003000000001","Manufacturing","California","CES",False
+"SMU06000004000000001","Trade, Transportation, and Utilities","California","CES",False
+"SMU06000005000000001","Information","California","CES",False
+"SMU06000005500000001","Financial Activities","California","CES",False
+"SMU06000006000000001","Professional and Business Services","California","CES",False
+"SMU06000006500000001","Education and Health Services","California","CES",False
+"SMU06000007000000001","Leisure and Hospitality","California","CES",False
+"SMU06000008000000001","Other Services","California","CES",False
+"SMU06000009000000001","Government","California","CES",False
+"SMS06000000000000001","Total Nonfarm","California","CES",True
+"SMS06000001000000001","Mining and Logging","California","CES",True
+"SMS06000001500000001","Mining, Logging, and Construction","California","CES",True
+"SMS06000002000000001","Construction","California","CES",True
+"SMS06000003000000001","Manufacturing","California","CES",True
+"SMS06000004000000001","Trade, Transportation, and Utilities","California","CES",True
+"SMS06000005000000001","Information","California","CES",True
+"SMS06000005500000001","Financial Activities","California","CES",True
+"SMS06000006000000001","Professional and Business Services","California","CES",True
+"SMS06000006500000001","Education and Health Services","California","CES",True
+"SMS06000007000000001","Leisure and Hospitality","California","CES",True
+"SMS06000008000000001","Other Services","California","CES",True
+"SMS06000009000000001","Government","California","CES",True
+"SMU08000000000000001","Total Nonfarm","Colorado","CES",False
+"SMU08000001000000001","Mining and Logging","Colorado","CES",False
+"SMU08000001500000001","Mining, Logging, and Construction","Colorado","CES",False
+"SMU08000002000000001","Construction","Colorado","CES",False
+"SMU08000003000000001","Manufacturing","Colorado","CES",False
+"SMU08000004000000001","Trade, Transportation, and Utilities","Colorado","CES",False
+"SMU08000005000000001","Information","Colorado","CES",False
+"SMU08000005500000001","Financial Activities","Colorado","CES",False
+"SMU08000006000000001","Professional and Business Services","Colorado","CES",False
+"SMU08000006500000001","Education and Health Services","Colorado","CES",False
+"SMU08000007000000001","Leisure and Hospitality","Colorado","CES",False
+"SMU08000008000000001","Other Services","Colorado","CES",False
+"SMU08000009000000001","Government","Colorado","CES",False
+"SMS08000000000000001","Total Nonfarm","Colorado","CES",True
+"SMS08000001000000001","Mining and Logging","Colorado","CES",True
+"SMS08000001500000001","Mining, Logging, and Construction","Colorado","CES",True
+"SMS08000002000000001","Construction","Colorado","CES",True
+"SMS08000003000000001","Manufacturing","Colorado","CES",True
+"SMS08000004000000001","Trade, Transportation, and Utilities","Colorado","CES",True
+"SMS08000005500000001","Financial Activities","Colorado","CES",True
+"SMS08000006000000001","Professional and Business Services","Colorado","CES",True
+"SMS08000006500000001","Education and Health Services","Colorado","CES",True
+"SMS08000007000000001","Leisure and Hospitality","Colorado","CES",True
+"SMS08000008000000001","Other Services","Colorado","CES",True
+"SMS08000009000000001","Government","Colorado","CES",True
+"SMU09000000000000001","Total Nonfarm","Connecticut","CES",False
+"SMU09000001000000001","Mining and Logging","Connecticut","CES",False
+"SMU09000001500000001","Mining, Logging, and Construction","Connecticut","CES",False
+"SMU09000002000000001","Construction","Connecticut","CES",False
+"SMU09000003000000001","Manufacturing","Connecticut","CES",False
+"SMU09000004000000001","Trade, Transportation, and Utilities","Connecticut","CES",False
+"SMU09000005000000001","Information","Connecticut","CES",False
+"SMU09000005500000001","Financial Activities","Connecticut","CES",False
+"SMU09000006000000001","Professional and Business Services","Connecticut","CES",False
+"SMU09000006500000001","Education and Health Services","Connecticut","CES",False
+"SMU09000007000000001","Leisure and Hospitality","Connecticut","CES",False
+"SMU09000008000000001","Other Services","Connecticut","CES",False
+"SMU09000009000000001","Government","Connecticut","CES",False
+"SMS09000000000000001","Total Nonfarm","Connecticut","CES",True
+"SMS09000001000000001","Mining and Logging","Connecticut","CES",True
+"SMS09000001500000001","Mining, Logging, and Construction","Connecticut","CES",True
+"SMS09000002000000001","Construction","Connecticut","CES",True
+"SMS09000003000000001","Manufacturing","Connecticut","CES",True
+"SMS09000004000000001","Trade, Transportation, and Utilities","Connecticut","CES",True
+"SMS09000005000000001","Information","Connecticut","CES",True
+"SMS09000005500000001","Financial Activities","Connecticut","CES",True
+"SMS09000006000000001","Professional and Business Services","Connecticut","CES",True
+"SMS09000006500000001","Education and Health Services","Connecticut","CES",True
+"SMS09000007000000001","Leisure and Hospitality","Connecticut","CES",True
+"SMS09000008000000001","Other Services","Connecticut","CES",True
+"SMS09000009000000001","Government","Connecticut","CES",True
+"SMU10000000000000001","Total Nonfarm","Delaware","CES",False
+"SMU10000001500000001","Mining, Logging, and Construction","Delaware","CES",False
+"SMU10000003000000001","Manufacturing","Delaware","CES",False
+"SMU10000004000000001","Trade, Transportation, and Utilities","Delaware","CES",False
+"SMU10000005000000001","Information","Delaware","CES",False
+"SMU10000005500000001","Financial Activities","Delaware","CES",False
+"SMU10000006000000001","Professional and Business Services","Delaware","CES",False
+"SMU10000006500000001","Education and Health Services","Delaware","CES",False
+"SMU10000007000000001","Leisure and Hospitality","Delaware","CES",False
+"SMU10000008000000001","Other Services","Delaware","CES",False
+"SMU10000009000000001","Government","Delaware","CES",False
+"SMS10000000000000001","Total Nonfarm","Delaware","CES",True
+"SMS10000001500000001","Mining, Logging, and Construction","Delaware","CES",True
+"SMS10000003000000001","Manufacturing","Delaware","CES",True
+"SMS10000004000000001","Trade, Transportation, and Utilities","Delaware","CES",True
+"SMS10000005000000001","Information","Delaware","CES",True
+"SMS10000005500000001","Financial Activities","Delaware","CES",True
+"SMS10000006000000001","Professional and Business Services","Delaware","CES",True
+"SMS10000006500000001","Education and Health Services","Delaware","CES",True
+"SMS10000007000000001","Leisure and Hospitality","Delaware","CES",True
+"SMS10000008000000001","Other Services","Delaware","CES",True
+"SMS10000009000000001","Government","Delaware","CES",True
+"SMU11000000000000001","Total Nonfarm","District of Columbia","CES",False
+"SMU11000001500000001","Mining, Logging, and Construction","District of Columbia","CES",False
+"SMU11000003000000001","Manufacturing","District of Columbia","CES",False
+"SMU11000004000000001","Trade, Transportation, and Utilities","District of Columbia","CES",False
+"SMU11000005000000001","Information","District of Columbia","CES",False
+"SMU11000005500000001","Financial Activities","District of Columbia","CES",False
+"SMU11000006000000001","Professional and Business Services","District of Columbia","CES",False
+"SMU11000006500000001","Education and Health Services","District of Columbia","CES",False
+"SMU11000007000000001","Leisure and Hospitality","District of Columbia","CES",False
+"SMU11000008000000001","Other Services","District of Columbia","CES",False
+"SMU11000009000000001","Government","District of Columbia","CES",False
+"SMS11000000000000001","Total Nonfarm","District of Columbia","CES",True
+"SMS11000001500000001","Mining, Logging, and Construction","District of Columbia","CES",True
+"SMS11000003000000001","Manufacturing","District of Columbia","CES",True
+"SMS11000004000000001","Trade, Transportation, and Utilities","District of Columbia","CES",True
+"SMS11000005000000001","Information","District of Columbia","CES",True
+"SMS11000005500000001","Financial Activities","District of Columbia","CES",True
+"SMS11000006000000001","Professional and Business Services","District of Columbia","CES",True
+"SMS11000006500000001","Education and Health Services","District of Columbia","CES",True
+"SMS11000007000000001","Leisure and Hospitality","District of Columbia","CES",True
+"SMS11000008000000001","Other Services","District of Columbia","CES",True
+"SMS11000009000000001","Government","District of Columbia","CES",True
+"SMU12000000000000001","Total Nonfarm","Florida","CES",False
+"SMU12000001000000001","Mining and Logging","Florida","CES",False
+"SMS12000000000000001","Total Nonfarm","Florida","CES",True
+"SMS12000001500000001","Mining, Logging, and Construction","Florida","CES",True
+"SMS12000002000000001","Construction","Florida","CES",True
+"SMS12000003000000001","Manufacturing","Florida","CES",True
+"SMS12000004000000001","Trade, Transportation, and Utilities","Florida","CES",True
+"SMS12000005000000001","Information","Florida","CES",True
+"SMS12000005500000001","Financial Activities","Florida","CES",True
+"SMS12000006000000001","Professional and Business Services","Florida","CES",True
+"SMS12000006500000001","Education and Health Services","Florida","CES",True
+"SMS12000007000000001","Leisure and Hospitality","Florida","CES",True
+"SMS12000008000000001","Other Services","Florida","CES",True
+"SMS12000009000000001","Government","Florida","CES",True
+"SMU12000002000000001","Construction","Florida","CES",False
+"SMU12000003000000001","Manufacturing","Florida","CES",False
+"SMU12000004000000001","Trade, Transportation, and Utilities","Florida","CES",False
+"SMU12000005000000001","Information","Florida","CES",False
+"SMU12000005500000001","Financial Activities","Florida","CES",False
+"SMU12000006000000001","Professional and Business Services","Florida","CES",False
+"SMU12000006500000001","Education and Health Services","Florida","CES",False
+"SMU12000007000000001","Leisure and Hospitality","Florida","CES",False
+"SMU12000008000000001","Other Services","Florida","CES",False
+"SMU12000009000000001","Government","Florida","CES",False
+"SMU12000001500000001","Mining, Logging, and Construction","Florida","CES",False
+"SMS13000000000000001","Total Nonfarm","Georgia","CES",True
+"SMS13000001000000001","Mining and Logging","Georgia","CES",True
+"SMS13000001500000001","Mining, Logging, and Construction","Georgia","CES",True
+"SMS13000002000000001","Construction","Georgia","CES",True
+"SMS13000003000000001","Manufacturing","Georgia","CES",True
+"SMS13000004000000001","Trade, Transportation, and Utilities","Georgia","CES",True
+"SMS13000005000000001","Information","Georgia","CES",True
+"SMS13000005500000001","Financial Activities","Georgia","CES",True
+"SMS13000006000000001","Professional and Business Services","Georgia","CES",True
+"SMS13000006500000001","Education and Health Services","Georgia","CES",True
+"SMS13000007000000001","Leisure and Hospitality","Georgia","CES",True
+"SMS13000008000000001","Other Services","Georgia","CES",True
+"SMS13000009000000001","Government","Georgia","CES",True
+"SMU13000000000000001","Total Nonfarm","Georgia","CES",False
+"SMU13000001000000001","Mining and Logging","Georgia","CES",False
+"SMU13000001500000001","Mining, Logging, and Construction","Georgia","CES",False
+"SMU13000002000000001","Construction","Georgia","CES",False
+"SMU13000003000000001","Manufacturing","Georgia","CES",False
+"SMU13000004000000001","Trade, Transportation, and Utilities","Georgia","CES",False
+"SMU13000005000000001","Information","Georgia","CES",False
+"SMU13000005500000001","Financial Activities","Georgia","CES",False
+"SMU13000006000000001","Professional and Business Services","Georgia","CES",False
+"SMU13000006500000001","Education and Health Services","Georgia","CES",False
+"SMU13000007000000001","Leisure and Hospitality","Georgia","CES",False
+"SMU13000008000000001","Other Services","Georgia","CES",False
+"SMU13000009000000001","Government","Georgia","CES",False
+"SMS15000000000000001","Total Nonfarm","Hawaii","CES",True
+"SMS15000001500000001","Mining, Logging, and Construction","Hawaii","CES",True
+"SMS15000003000000001","Manufacturing","Hawaii","CES",True
+"SMS15000004000000001","Trade, Transportation, and Utilities","Hawaii","CES",True
+"SMS15000005000000001","Information","Hawaii","CES",True
+"SMS15000006500000001","Education and Health Services","Hawaii","CES",True
+"SMS15000007000000001","Leisure and Hospitality","Hawaii","CES",True
+"SMS15000008000000001","Other Services","Hawaii","CES",True
+"SMS15000009000000001","Government","Hawaii","CES",True
+"SMU15000000000000001","Total Nonfarm","Hawaii","CES",False
+"SMU15000001500000001","Mining, Logging, and Construction","Hawaii","CES",False
+"SMU15000003000000001","Manufacturing","Hawaii","CES",False
+"SMU15000004000000001","Trade, Transportation, and Utilities","Hawaii","CES",False
+"SMU15000005000000001","Information","Hawaii","CES",False
+"SMU15000005500000001","Financial Activities","Hawaii","CES",False
+"SMU15000006000000001","Professional and Business Services","Hawaii","CES",False
+"SMU15000006500000001","Education and Health Services","Hawaii","CES",False
+"SMU15000007000000001","Leisure and Hospitality","Hawaii","CES",False
+"SMU15000008000000001","Other Services","Hawaii","CES",False
+"SMU15000009000000001","Government","Hawaii","CES",False
+"SMS16000000000000001","Total Nonfarm","Idaho","CES",True
+"SMS16000001000000001","Mining and Logging","Idaho","CES",True
+"SMS16000001500000001","Mining, Logging, and Construction","Idaho","CES",True
+"SMS16000002000000001","Construction","Idaho","CES",True
+"SMS16000003000000001","Manufacturing","Idaho","CES",True
+"SMS16000004000000001","Trade, Transportation, and Utilities","Idaho","CES",True
+"SMS16000005500000001","Financial Activities","Idaho","CES",True
+"SMS16000006000000001","Professional and Business Services","Idaho","CES",True
+"SMS16000006500000001","Education and Health Services","Idaho","CES",True
+"SMS16000007000000001","Leisure and Hospitality","Idaho","CES",True
+"SMS16000008000000001","Other Services","Idaho","CES",True
+"SMS16000009000000001","Government","Idaho","CES",True
+"SMU16000000000000001","Total Nonfarm","Idaho","CES",False
+"SMU16000001000000001","Mining and Logging","Idaho","CES",False
+"SMU16000001500000001","Mining, Logging, and Construction","Idaho","CES",False
+"SMU16000002000000001","Construction","Idaho","CES",False
+"SMU16000003000000001","Manufacturing","Idaho","CES",False
+"SMU16000004000000001","Trade, Transportation, and Utilities","Idaho","CES",False
+"SMU16000005000000001","Information","Idaho","CES",False
+"SMU16000005500000001","Financial Activities","Idaho","CES",False
+"SMU16000006000000001","Professional and Business Services","Idaho","CES",False
+"SMU16000006500000001","Education and Health Services","Idaho","CES",False
+"SMU16000007000000001","Leisure and Hospitality","Idaho","CES",False
+"SMU16000008000000001","Other Services","Idaho","CES",False
+"SMU16000009000000001","Government","Idaho","CES",False
+"SMS17000000000000001","Total Nonfarm","Illinois","CES",True
+"SMS17000001000000001","Mining and Logging","Illinois","CES",True
+"SMS17000001500000001","Mining, Logging, and Construction","Illinois","CES",True
+"SMS17000002000000001","Construction","Illinois","CES",True
+"SMS17000003000000001","Manufacturing","Illinois","CES",True
+"SMS17000004000000001","Trade, Transportation, and Utilities","Illinois","CES",True
+"SMS17000005000000001","Information","Illinois","CES",True
+"SMS17000005500000001","Financial Activities","Illinois","CES",True
+"SMS17000006000000001","Professional and Business Services","Illinois","CES",True
+"SMS17000006500000001","Education and Health Services","Illinois","CES",True
+"SMS17000007000000001","Leisure and Hospitality","Illinois","CES",True
+"SMS17000008000000001","Other Services","Illinois","CES",True
+"SMS17000009000000001","Government","Illinois","CES",True
+"SMU17000000000000001","Total Nonfarm","Illinois","CES",False
+"SMU17000001000000001","Mining and Logging","Illinois","CES",False
+"SMU17000001500000001","Mining, Logging, and Construction","Illinois","CES",False
+"SMU17000002000000001","Construction","Illinois","CES",False
+"SMU17000003000000001","Manufacturing","Illinois","CES",False
+"SMU17000004000000001","Trade, Transportation, and Utilities","Illinois","CES",False
+"SMU17000005000000001","Information","Illinois","CES",False
+"SMU17000005500000001","Financial Activities","Illinois","CES",False
+"SMU17000006000000001","Professional and Business Services","Illinois","CES",False
+"SMU17000006500000001","Education and Health Services","Illinois","CES",False
+"SMU17000007000000001","Leisure and Hospitality","Illinois","CES",False
+"SMU17000008000000001","Other Services","Illinois","CES",False
+"SMU17000009000000001","Government","Illinois","CES",False
+"SMS18000000000000001","Total Nonfarm","Indiana","CES",True
+"SMS18000001000000001","Mining and Logging","Indiana","CES",True
+"SMS18000001500000001","Mining, Logging, and Construction","Indiana","CES",True
+"SMS18000002000000001","Construction","Indiana","CES",True
+"SMS18000003000000001","Manufacturing","Indiana","CES",True
+"SMS18000004000000001","Trade, Transportation, and Utilities","Indiana","CES",True
+"SMS18000005000000001","Information","Indiana","CES",True
+"SMS18000005500000001","Financial Activities","Indiana","CES",True
+"SMS18000006000000001","Professional and Business Services","Indiana","CES",True
+"SMS18000006500000001","Education and Health Services","Indiana","CES",True
+"SMS18000007000000001","Leisure and Hospitality","Indiana","CES",True
+"SMS18000008000000001","Other Services","Indiana","CES",True
+"SMS18000009000000001","Government","Indiana","CES",True
+"SMU18000000000000001","Total Nonfarm","Indiana","CES",False
+"SMU18000001000000001","Mining and Logging","Indiana","CES",False
+"SMU18000001500000001","Mining, Logging, and Construction","Indiana","CES",False
+"SMU18000002000000001","Construction","Indiana","CES",False
+"SMU18000003000000001","Manufacturing","Indiana","CES",False
+"SMU18000004000000001","Trade, Transportation, and Utilities","Indiana","CES",False
+"SMU18000005000000001","Information","Indiana","CES",False
+"SMU18000005500000001","Financial Activities","Indiana","CES",False
+"SMU18000006000000001","Professional and Business Services","Indiana","CES",False
+"SMU18000006500000001","Education and Health Services","Indiana","CES",False
+"SMU18000007000000001","Leisure and Hospitality","Indiana","CES",False
+"SMU18000008000000001","Other Services","Indiana","CES",False
+"SMU18000009000000001","Government","Indiana","CES",False
+"SMS19000000000000001","Total Nonfarm","Iowa","CES",True
+"SMS19000001000000001","Mining and Logging","Iowa","CES",True
+"SMS19000001500000001","Mining, Logging, and Construction","Iowa","CES",True
+"SMS19000002000000001","Construction","Iowa","CES",True
+"SMS19000003000000001","Manufacturing","Iowa","CES",True
+"SMS19000004000000001","Trade, Transportation, and Utilities","Iowa","CES",True
+"SMS19000005000000001","Information","Iowa","CES",True
+"SMS19000005500000001","Financial Activities","Iowa","CES",True
+"SMS19000006000000001","Professional and Business Services","Iowa","CES",True
+"SMS19000006500000001","Education and Health Services","Iowa","CES",True
+"SMS19000007000000001","Leisure and Hospitality","Iowa","CES",True
+"SMS19000008000000001","Other Services","Iowa","CES",True
+"SMS19000009000000001","Government","Iowa","CES",True
+"SMU19000000000000001","Total Nonfarm","Iowa","CES",False
+"SMU19000001000000001","Mining and Logging","Iowa","CES",False
+"SMU19000001500000001","Mining, Logging, and Construction","Iowa","CES",False
+"SMU19000002000000001","Construction","Iowa","CES",False
+"SMU19000003000000001","Manufacturing","Iowa","CES",False
+"SMU19000004000000001","Trade, Transportation, and Utilities","Iowa","CES",False
+"SMU19000005000000001","Information","Iowa","CES",False
+"SMU19000005500000001","Financial Activities","Iowa","CES",False
+"SMU19000006000000001","Professional and Business Services","Iowa","CES",False
+"SMU19000006500000001","Education and Health Services","Iowa","CES",False
+"SMU19000007000000001","Leisure and Hospitality","Iowa","CES",False
+"SMU19000008000000001","Other Services","Iowa","CES",False
+"SMU19000009000000001","Government","Iowa","CES",False
+"SMS20000000000000001","Total Nonfarm","Kansas","CES",True
+"SMS20000001000000001","Mining and Logging","Kansas","CES",True
+"SMS20000001500000001","Mining, Logging, and Construction","Kansas","CES",True
+"SMS20000002000000001","Construction","Kansas","CES",True
+"SMS20000003000000001","Manufacturing","Kansas","CES",True
+"SMS20000004000000001","Trade, Transportation, and Utilities","Kansas","CES",True
+"SMS20000005000000001","Information","Kansas","CES",True
+"SMS20000005500000001","Financial Activities","Kansas","CES",True
+"SMS20000006000000001","Professional and Business Services","Kansas","CES",True
+"SMS20000006500000001","Education and Health Services","Kansas","CES",True
+"SMS20000007000000001","Leisure and Hospitality","Kansas","CES",True
+"SMS20000008000000001","Other Services","Kansas","CES",True
+"SMS20000009000000001","Government","Kansas","CES",True
+"SMU20000000000000001","Total Nonfarm","Kansas","CES",False
+"SMU20000001000000001","Mining and Logging","Kansas","CES",False
+"SMU20000001500000001","Mining, Logging, and Construction","Kansas","CES",False
+"SMU20000002000000001","Construction","Kansas","CES",False
+"SMU20000003000000001","Manufacturing","Kansas","CES",False
+"SMU20000004000000001","Trade, Transportation, and Utilities","Kansas","CES",False
+"SMU20000005000000001","Information","Kansas","CES",False
+"SMU20000005500000001","Financial Activities","Kansas","CES",False
+"SMU20000006000000001","Professional and Business Services","Kansas","CES",False
+"SMU20000006500000001","Education and Health Services","Kansas","CES",False
+"SMU20000007000000001","Leisure and Hospitality","Kansas","CES",False
+"SMU20000008000000001","Other Services","Kansas","CES",False
+"SMU20000009000000001","Government","Kansas","CES",False
+"SMS21000000000000001","Total Nonfarm","Kentucky","CES",True
+"SMS21000001000000001","Mining and Logging","Kentucky","CES",True
+"SMS21000001500000001","Mining, Logging, and Construction","Kentucky","CES",True
+"SMS21000002000000001","Construction","Kentucky","CES",True
+"SMS21000003000000001","Manufacturing","Kentucky","CES",True
+"SMS21000003100000001","Durable Goods","Kentucky","CES",True
+"SMS21000004000000001","Trade, Transportation, and Utilities","Kentucky","CES",True
+"SMS21000005000000001","Information","Kentucky","CES",True
+"SMS21000005500000001","Financial Activities","Kentucky","CES",True
+"SMS21000006000000001","Professional and Business Services","Kentucky","CES",True
+"SMS21000006500000001","Education and Health Services","Kentucky","CES",True
+"SMS21000007000000001","Leisure and Hospitality","Kentucky","CES",True
+"SMS21000008000000001","Other Services","Kentucky","CES",True
+"SMS21000009000000001","Government","Kentucky","CES",True
+"SMU21000000000000001","Total Nonfarm","Kentucky","CES",False
+"SMU21000001000000001","Mining and Logging","Kentucky","CES",False
+"SMU21000001500000001","Mining, Logging, and Construction","Kentucky","CES",False
+"SMU21000002000000001","Construction","Kentucky","CES",False
+"SMU21000003000000001","Manufacturing","Kentucky","CES",False
+"SMU21000004000000001","Trade, Transportation, and Utilities","Kentucky","CES",False
+"SMU21000005000000001","Information","Kentucky","CES",False
+"SMU21000005500000001","Financial Activities","Kentucky","CES",False
+"SMU21000006000000001","Professional and Business Services","Kentucky","CES",False
+"SMU21000006500000001","Education and Health Services","Kentucky","CES",False
+"SMU21000007000000001","Leisure and Hospitality","Kentucky","CES",False
+"SMU21000008000000001","Other Services","Kentucky","CES",False
+"SMU21000009000000001","Government","Kentucky","CES",False
+"SMS22000000000000001","Total Nonfarm","Louisiana","CES",True
+"SMS22000001000000001","Mining and Logging","Louisiana","CES",True
+"SMS22000001500000001","Mining, Logging, and Construction","Louisiana","CES",True
+"SMS22000002000000001","Construction","Louisiana","CES",True
+"SMS22000003000000001","Manufacturing","Louisiana","CES",True
+"SMS22000004000000001","Trade, Transportation, and Utilities","Louisiana","CES",True
+"SMS22000005000000001","Information","Louisiana","CES",True
+"SMS22000005500000001","Financial Activities","Louisiana","CES",True
+"SMS22000006000000001","Professional and Business Services","Louisiana","CES",True
+"SMS22000006500000001","Education and Health Services","Louisiana","CES",True
+"SMS22000007000000001","Leisure and Hospitality","Louisiana","CES",True
+"SMS22000008000000001","Other Services","Louisiana","CES",True
+"SMS22000009000000001","Government","Louisiana","CES",True
+"SMU22000000000000001","Total Nonfarm","Louisiana","CES",False
+"SMU22000001000000001","Mining and Logging","Louisiana","CES",False
+"SMU22000001500000001","Mining, Logging, and Construction","Louisiana","CES",False
+"SMU22000002000000001","Construction","Louisiana","CES",False
+"SMU22000003000000001","Manufacturing","Louisiana","CES",False
+"SMU22000004000000001","Trade, Transportation, and Utilities","Louisiana","CES",False
+"SMU22000005000000001","Information","Louisiana","CES",False
+"SMU22000005500000001","Financial Activities","Louisiana","CES",False
+"SMU22000006000000001","Professional and Business Services","Louisiana","CES",False
+"SMU22000006500000001","Education and Health Services","Louisiana","CES",False
+"SMU22000007000000001","Leisure and Hospitality","Louisiana","CES",False
+"SMU22000008000000001","Other Services","Louisiana","CES",False
+"SMU22000009000000001","Government","Louisiana","CES",False
+"SMS23000000000000001","Total Nonfarm","Maine","CES",True
+"SMS23000001000000001","Mining and Logging","Maine","CES",True
+"SMS23000001500000001","Mining, Logging, and Construction","Maine","CES",True
+"SMS23000002000000001","Construction","Maine","CES",True
+"SMS23000003000000001","Manufacturing","Maine","CES",True
+"SMS23000004000000001","Trade, Transportation, and Utilities","Maine","CES",True
+"SMS23000005000000001","Information","Maine","CES",True
+"SMS23000005500000001","Financial Activities","Maine","CES",True
+"SMS23000006000000001","Professional and Business Services","Maine","CES",True
+"SMS23000006500000001","Education and Health Services","Maine","CES",True
+"SMS23000007000000001","Leisure and Hospitality","Maine","CES",True
+"SMS23000009000000001","Government","Maine","CES",True
+"SMU23000000000000001","Total Nonfarm","Maine","CES",False
+"SMU23000001000000001","Mining and Logging","Maine","CES",False
+"SMU23000001500000001","Mining, Logging, and Construction","Maine","CES",False
+"SMU23000002000000001","Construction","Maine","CES",False
+"SMU23000003000000001","Manufacturing","Maine","CES",False
+"SMU23000004000000001","Trade, Transportation, and Utilities","Maine","CES",False
+"SMU23000005000000001","Information","Maine","CES",False
+"SMU23000005500000001","Financial Activities","Maine","CES",False
+"SMU23000006000000001","Professional and Business Services","Maine","CES",False
+"SMU23000006500000001","Education and Health Services","Maine","CES",False
+"SMU23000007000000001","Leisure and Hospitality","Maine","CES",False
+"SMU23000008000000001","Other Services","Maine","CES",False
+"SMU23000009000000001","Government","Maine","CES",False
+"SMS24000000000000001","Total Nonfarm","Maryland","CES",True
+"SMS24000001000000001","Mining and Logging","Maryland","CES",True
+"SMS24000001500000001","Mining, Logging, and Construction","Maryland","CES",True
+"SMS24000002000000001","Construction","Maryland","CES",True
+"SMS24000003000000001","Manufacturing","Maryland","CES",True
+"SMS24000004000000001","Trade, Transportation, and Utilities","Maryland","CES",True
+"SMS24000005000000001","Information","Maryland","CES",True
+"SMS24000005500000001","Financial Activities","Maryland","CES",True
+"SMS24000006000000001","Professional and Business Services","Maryland","CES",True
+"SMS24000006500000001","Education and Health Services","Maryland","CES",True
+"SMS24000007000000001","Leisure and Hospitality","Maryland","CES",True
+"SMS24000008000000001","Other Services","Maryland","CES",True
+"SMS24000009000000001","Government","Maryland","CES",True
+"SMU24000000000000001","Total Nonfarm","Maryland","CES",False
+"SMU24000001000000001","Mining and Logging","Maryland","CES",False
+"SMU24000001500000001","Mining, Logging, and Construction","Maryland","CES",False
+"SMU24000002000000001","Construction","Maryland","CES",False
+"SMU24000003000000001","Manufacturing","Maryland","CES",False
+"SMU24000004000000001","Trade, Transportation, and Utilities","Maryland","CES",False
+"SMU24000005000000001","Information","Maryland","CES",False
+"SMU24000005500000001","Financial Activities","Maryland","CES",False
+"SMU24000006000000001","Professional and Business Services","Maryland","CES",False
+"SMU24000006500000001","Education and Health Services","Maryland","CES",False
+"SMU24000007000000001","Leisure and Hospitality","Maryland","CES",False
+"SMU24000008000000001","Other Services","Maryland","CES",False
+"SMU24000009000000001","Government","Maryland","CES",False
+"SMS25000000000000001","Total Nonfarm","Massachusetts","CES",True
+"SMS25000001000000001","Mining and Logging","Massachusetts","CES",True
+"SMS25000006000000001","Professional and Business Services","Massachusetts","CES",True
+"SMS25000006500000001","Education and Health Services","Massachusetts","CES",True
+"SMS25000007000000001","Leisure and Hospitality","Massachusetts","CES",True
+"SMS25000008000000001","Other Services","Massachusetts","CES",True
+"SMS25000009000000001","Government","Massachusetts","CES",True
+"SMU25000000000000001","Total Nonfarm","Massachusetts","CES",False
+"SMU25000001000000001","Mining and Logging","Massachusetts","CES",False
+"SMU25000001500000001","Mining, Logging, and Construction","Massachusetts","CES",False
+"SMU25000002000000001","Construction","Massachusetts","CES",False
+"SMU25000003000000001","Manufacturing","Massachusetts","CES",False
+"SMU25000004000000001","Trade, Transportation, and Utilities","Massachusetts","CES",False
+"SMU25000005000000001","Information","Massachusetts","CES",False
+"SMU25000005500000001","Financial Activities","Massachusetts","CES",False
+"SMU25000006000000001","Professional and Business Services","Massachusetts","CES",False
+"SMU25000006500000001","Education and Health Services","Massachusetts","CES",False
+"SMU25000007000000001","Leisure and Hospitality","Massachusetts","CES",False
+"SMU25000008000000001","Other Services","Massachusetts","CES",False
+"SMU25000009000000001","Government","Massachusetts","CES",False
+"SMS25000001500000001","Mining, Logging, and Construction","Massachusetts","CES",True
+"SMS25000002000000001","Construction","Massachusetts","CES",True
+"SMS25000003000000001","Manufacturing","Massachusetts","CES",True
+"SMS25000004000000001","Trade, Transportation, and Utilities","Massachusetts","CES",True
+"SMS25000005000000001","Information","Massachusetts","CES",True
+"SMS25000005500000001","Financial Activities","Massachusetts","CES",True
+"SMU26000005000000001","Information","Michigan","CES",False
+"SMS26000000000000001","Total Nonfarm","Michigan","CES",True
+"SMS26000001000000001","Mining and Logging","Michigan","CES",True
+"SMS26000001500000001","Mining, Logging, and Construction","Michigan","CES",True
+"SMS26000002000000001","Construction","Michigan","CES",True
+"SMS26000003000000001","Manufacturing","Michigan","CES",True
+"SMS26000004000000001","Trade, Transportation, and Utilities","Michigan","CES",True
+"SMS26000005000000001","Information","Michigan","CES",True
+"SMS26000005500000001","Financial Activities","Michigan","CES",True
+"SMS26000006000000001","Professional and Business Services","Michigan","CES",True
+"SMS26000006500000001","Education and Health Services","Michigan","CES",True
+"SMS26000007000000001","Leisure and Hospitality","Michigan","CES",True
+"SMS26000008000000001","Other Services","Michigan","CES",True
+"SMS26000009000000001","Government","Michigan","CES",True
+"SMU26000000000000001","Total Nonfarm","Michigan","CES",False
+"SMU26000001000000001","Mining and Logging","Michigan","CES",False
+"SMU26000001500000001","Mining, Logging, and Construction","Michigan","CES",False
+"SMU26000002000000001","Construction","Michigan","CES",False
+"SMU26000003000000001","Manufacturing","Michigan","CES",False
+"SMU26000004000000001","Trade, Transportation, and Utilities","Michigan","CES",False
+"SMU26000005500000001","Financial Activities","Michigan","CES",False
+"SMU26000006000000001","Professional and Business Services","Michigan","CES",False
+"SMU26000006500000001","Education and Health Services","Michigan","CES",False
+"SMU26000007000000001","Leisure and Hospitality","Michigan","CES",False
+"SMU26000008000000001","Other Services","Michigan","CES",False
+"SMU26000009000000001","Government","Michigan","CES",False
+"SMS27000000000000001","Total Nonfarm","Minnesota","CES",True
+"SMS27000001000000001","Mining and Logging","Minnesota","CES",True
+"SMS27000001500000001","Mining, Logging, and Construction","Minnesota","CES",True
+"SMS27000002000000001","Construction","Minnesota","CES",True
+"SMS27000003000000001","Manufacturing","Minnesota","CES",True
+"SMS27000004000000001","Trade, Transportation, and Utilities","Minnesota","CES",True
+"SMS27000005000000001","Information","Minnesota","CES",True
+"SMS27000005500000001","Financial Activities","Minnesota","CES",True
+"SMS27000006000000001","Professional and Business Services","Minnesota","CES",True
+"SMS27000006500000001","Education and Health Services","Minnesota","CES",True
+"SMS27000007000000001","Leisure and Hospitality","Minnesota","CES",True
+"SMS27000008000000001","Other Services","Minnesota","CES",True
+"SMS27000009000000001","Government","Minnesota","CES",True
+"SMU27000000000000001","Total Nonfarm","Minnesota","CES",False
+"SMU27000001000000001","Mining and Logging","Minnesota","CES",False
+"SMU27000001500000001","Mining, Logging, and Construction","Minnesota","CES",False
+"SMU27000002000000001","Construction","Minnesota","CES",False
+"SMU27000003000000001","Manufacturing","Minnesota","CES",False
+"SMU27000004000000001","Trade, Transportation, and Utilities","Minnesota","CES",False
+"SMU27000005000000001","Information","Minnesota","CES",False
+"SMU27000005500000001","Financial Activities","Minnesota","CES",False
+"SMU27000006000000001","Professional and Business Services","Minnesota","CES",False
+"SMU27000006500000001","Education and Health Services","Minnesota","CES",False
+"SMU27000007000000001","Leisure and Hospitality","Minnesota","CES",False
+"SMU27000008000000001","Other Services","Minnesota","CES",False
+"SMU27000009000000001","Government","Minnesota","CES",False
+"SMS28000000000000001","Total Nonfarm","Mississippi","CES",True
+"SMS28000001000000001","Mining and Logging","Mississippi","CES",True
+"SMS28000001500000001","Mining, Logging, and Construction","Mississippi","CES",True
+"SMS28000002000000001","Construction","Mississippi","CES",True
+"SMS28000003000000001","Manufacturing","Mississippi","CES",True
+"SMS28000004000000001","Trade, Transportation, and Utilities","Mississippi","CES",True
+"SMS28000005000000001","Information","Mississippi","CES",True
+"SMS28000005500000001","Financial Activities","Mississippi","CES",True
+"SMS28000006000000001","Professional and Business Services","Mississippi","CES",True
+"SMS28000006500000001","Education and Health Services","Mississippi","CES",True
+"SMS28000007000000001","Leisure and Hospitality","Mississippi","CES",True
+"SMS28000008000000001","Other Services","Mississippi","CES",True
+"SMS28000009000000001","Government","Mississippi","CES",True
+"SMU28000000000000001","Total Nonfarm","Mississippi","CES",False
+"SMU28000001000000001","Mining and Logging","Mississippi","CES",False
+"SMU28000001500000001","Mining, Logging, and Construction","Mississippi","CES",False
+"SMU28000002000000001","Construction","Mississippi","CES",False
+"SMU28000003000000001","Manufacturing","Mississippi","CES",False
+"SMU28000004000000001","Trade, Transportation, and Utilities","Mississippi","CES",False
+"SMU28000005000000001","Information","Mississippi","CES",False
+"SMU28000005500000001","Financial Activities","Mississippi","CES",False
+"SMU28000006000000001","Professional and Business Services","Mississippi","CES",False
+"SMU28000006500000001","Education and Health Services","Mississippi","CES",False
+"SMU28000007000000001","Leisure and Hospitality","Mississippi","CES",False
+"SMU28000008000000001","Other Services","Mississippi","CES",False
+"SMU28000009000000001","Government","Mississippi","CES",False
+"SMS29000000000000001","Total Nonfarm","Missouri","CES",True
+"SMS29000001000000001","Mining and Logging","Missouri","CES",True
+"SMS29000001500000001","Mining, Logging, and Construction","Missouri","CES",True
+"SMS29000002000000001","Construction","Missouri","CES",True
+"SMS29000003000000001","Manufacturing","Missouri","CES",True
+"SMS29000004000000001","Trade, Transportation, and Utilities","Missouri","CES",True
+"SMS29000005500000001","Financial Activities","Missouri","CES",True
+"SMS29000006000000001","Professional and Business Services","Missouri","CES",True
+"SMS29000006500000001","Education and Health Services","Missouri","CES",True
+"SMS29000007000000001","Leisure and Hospitality","Missouri","CES",True
+"SMS29000009000000001","Government","Missouri","CES",True
+"SMU29000000000000001","Total Nonfarm","Missouri","CES",False
+"SMU29000001000000001","Mining and Logging","Missouri","CES",False
+"SMU29000001500000001","Mining, Logging, and Construction","Missouri","CES",False
+"SMU29000002000000001","Construction","Missouri","CES",False
+"SMU29000003000000001","Manufacturing","Missouri","CES",False
+"SMU29000004000000001","Trade, Transportation, and Utilities","Missouri","CES",False
+"SMU29000005000000001","Information","Missouri","CES",False
+"SMU29000005500000001","Financial Activities","Missouri","CES",False
+"SMU29000006000000001","Professional and Business Services","Missouri","CES",False
+"SMU29000006500000001","Education and Health Services","Missouri","CES",False
+"SMU29000007000000001","Leisure and Hospitality","Missouri","CES",False
+"SMU29000008000000001","Other Services","Missouri","CES",False
+"SMU29000009000000001","Government","Missouri","CES",False
+"SMS30000000000000001","Total Nonfarm","Montana","CES",True
+"SMS30000001000000001","Mining and Logging","Montana","CES",True
+"SMS30000001500000001","Mining, Logging, and Construction","Montana","CES",True
+"SMS30000002000000001","Construction","Montana","CES",True
+"SMS30000003000000001","Manufacturing","Montana","CES",True
+"SMS30000004000000001","Trade, Transportation, and Utilities","Montana","CES",True
+"SMS30000005500000001","Financial Activities","Montana","CES",True
+"SMS30000006000000001","Professional and Business Services","Montana","CES",True
+"SMS30000006500000001","Education and Health Services","Montana","CES",True
+"SMS30000007000000001","Leisure and Hospitality","Montana","CES",True
+"SMS30000008000000001","Other Services","Montana","CES",True
+"SMS30000009000000001","Government","Montana","CES",True
+"SMU30000000000000001","Total Nonfarm","Montana","CES",False
+"SMU30000001000000001","Mining and Logging","Montana","CES",False
+"SMU30000001500000001","Mining, Logging, and Construction","Montana","CES",False
+"SMU30000002000000001","Construction","Montana","CES",False
+"SMU30000003000000001","Manufacturing","Montana","CES",False
+"SMU30000004000000001","Trade, Transportation, and Utilities","Montana","CES",False
+"SMU30000005000000001","Information","Montana","CES",False
+"SMU30000005500000001","Financial Activities","Montana","CES",False
+"SMU30000006000000001","Professional and Business Services","Montana","CES",False
+"SMU30000006500000001","Education and Health Services","Montana","CES",False
+"SMU30000007000000001","Leisure and Hospitality","Montana","CES",False
+"SMU30000008000000001","Other Services","Montana","CES",False
+"SMU30000009000000001","Government","Montana","CES",False
+"SMS31000000000000001","Total Nonfarm","Nebraska","CES",True
+"SMS31000001000000001","Mining and Logging","Nebraska","CES",True
+"SMS31000001500000001","Mining, Logging, and Construction","Nebraska","CES",True
+"SMS31000002000000001","Construction","Nebraska","CES",True
+"SMS31000003000000001","Manufacturing","Nebraska","CES",True
+"SMS31000004000000001","Trade, Transportation, and Utilities","Nebraska","CES",True
+"SMS31000004300000001","Transportation, Warehousing, and Utilities","Nebraska","CES",True
+"SMS31000005000000001","Information","Nebraska","CES",True
+"SMS31000005500000001","Financial Activities","Nebraska","CES",True
+"SMS31000006000000001","Professional and Business Services","Nebraska","CES",True
+"SMS31000006500000001","Education and Health Services","Nebraska","CES",True
+"SMS31000007000000001","Leisure and Hospitality","Nebraska","CES",True
+"SMS31000008000000001","Other Services","Nebraska","CES",True
+"SMS31000009000000001","Government","Nebraska","CES",True
+"SMU31000000000000001","Total Nonfarm","Nebraska","CES",False
+"SMU31000001000000001","Mining and Logging","Nebraska","CES",False
+"SMU31000001500000001","Mining, Logging, and Construction","Nebraska","CES",False
+"SMU31000002000000001","Construction","Nebraska","CES",False
+"SMU31000003000000001","Manufacturing","Nebraska","CES",False
+"SMU31000004000000001","Trade, Transportation, and Utilities","Nebraska","CES",False
+"SMU31000005000000001","Information","Nebraska","CES",False
+"SMU31000005500000001","Financial Activities","Nebraska","CES",False
+"SMU31000006000000001","Professional and Business Services","Nebraska","CES",False
+"SMU31000006500000001","Education and Health Services","Nebraska","CES",False
+"SMU31000007000000001","Leisure and Hospitality","Nebraska","CES",False
+"SMU31000008000000001","Other Services","Nebraska","CES",False
+"SMU31000009000000001","Government","Nebraska","CES",False
+"SMS32000005000000001","Information","Nevada","CES",True
+"SMS32000005500000001","Financial Activities","Nevada","CES",True
+"SMS32000006000000001","Professional and Business Services","Nevada","CES",True
+"SMS32000006500000001","Education and Health Services","Nevada","CES",True
+"SMS32000007000000001","Leisure and Hospitality","Nevada","CES",True
+"SMS32000008000000001","Other Services","Nevada","CES",True
+"SMS32000009000000001","Government","Nevada","CES",True
+"SMS32000000000000001","Total Nonfarm","Nevada","CES",True
+"SMS32000001000000001","Mining and Logging","Nevada","CES",True
+"SMS32000001500000001","Mining, Logging, and Construction","Nevada","CES",True
+"SMS32000002000000001","Construction","Nevada","CES",True
+"SMS32000003000000001","Manufacturing","Nevada","CES",True
+"SMS32000004000000001","Trade, Transportation, and Utilities","Nevada","CES",True
+"SMU32000000000000001","Total Nonfarm","Nevada","CES",False
+"SMU32000001000000001","Mining and Logging","Nevada","CES",False
+"SMU32000001500000001","Mining, Logging, and Construction","Nevada","CES",False
+"SMU32000002000000001","Construction","Nevada","CES",False
+"SMU32000003000000001","Manufacturing","Nevada","CES",False
+"SMU32000004000000001","Trade, Transportation, and Utilities","Nevada","CES",False
+"SMU32000005000000001","Information","Nevada","CES",False
+"SMU32000005500000001","Financial Activities","Nevada","CES",False
+"SMU32000006000000001","Professional and Business Services","Nevada","CES",False
+"SMU32000006500000001","Education and Health Services","Nevada","CES",False
+"SMU32000007000000001","Leisure and Hospitality","Nevada","CES",False
+"SMU32000008000000001","Other Services","Nevada","CES",False
+"SMU32000009000000001","Government","Nevada","CES",False
+"SMS33000000000000001","Total Nonfarm","New Hampshire","CES",True
+"SMS33000001000000001","Mining and Logging","New Hampshire","CES",True
+"SMS33000001500000001","Mining, Logging, and Construction","New Hampshire","CES",True
+"SMS33000002000000001","Construction","New Hampshire","CES",True
+"SMS33000003000000001","Manufacturing","New Hampshire","CES",True
+"SMS33000004000000001","Trade, Transportation, and Utilities","New Hampshire","CES",True
+"SMS33000005000000001","Information","New Hampshire","CES",True
+"SMS33000005500000001","Financial Activities","New Hampshire","CES",True
+"SMS33000006000000001","Professional and Business Services","New Hampshire","CES",True
+"SMS33000006500000001","Education and Health Services","New Hampshire","CES",True
+"SMS33000007000000001","Leisure and Hospitality","New Hampshire","CES",True
+"SMS33000008000000001","Other Services","New Hampshire","CES",True
+"SMS33000009000000001","Government","New Hampshire","CES",True
+"SMU33000000000000001","Total Nonfarm","New Hampshire","CES",False
+"SMU33000001000000001","Mining and Logging","New Hampshire","CES",False
+"SMU33000001500000001","Mining, Logging, and Construction","New Hampshire","CES",False
+"SMU33000002000000001","Construction","New Hampshire","CES",False
+"SMU33000003000000001","Manufacturing","New Hampshire","CES",False
+"SMU33000004000000001","Trade, Transportation, and Utilities","New Hampshire","CES",False
+"SMU33000005000000001","Information","New Hampshire","CES",False
+"SMU33000005500000001","Financial Activities","New Hampshire","CES",False
+"SMU33000006000000001","Professional and Business Services","New Hampshire","CES",False
+"SMU33000006500000001","Education and Health Services","New Hampshire","CES",False
+"SMU33000007000000001","Leisure and Hospitality","New Hampshire","CES",False
+"SMU33000008000000001","Other Services","New Hampshire","CES",False
+"SMU33000009000000001","Government","New Hampshire","CES",False
+"SMS34000000000000001","Total Nonfarm","New Jersey","CES",True
+"SMS34000001000000001","Mining and Logging","New Jersey","CES",True
+"SMS34000001500000001","Mining, Logging, and Construction","New Jersey","CES",True
+"SMS34000002000000001","Construction","New Jersey","CES",True
+"SMS34000003000000001","Manufacturing","New Jersey","CES",True
+"SMS34000004000000001","Trade, Transportation, and Utilities","New Jersey","CES",True
+"SMS34000005000000001","Information","New Jersey","CES",True
+"SMS34000005500000001","Financial Activities","New Jersey","CES",True
+"SMS34000006000000001","Professional and Business Services","New Jersey","CES",True
+"SMS34000006500000001","Education and Health Services","New Jersey","CES",True
+"SMS34000007000000001","Leisure and Hospitality","New Jersey","CES",True
+"SMS34000008000000001","Other Services","New Jersey","CES",True
+"SMS34000009000000001","Government","New Jersey","CES",True
+"SMU34000000000000001","Total Nonfarm","New Jersey","CES",False
+"SMU34000001000000001","Mining and Logging","New Jersey","CES",False
+"SMU34000001500000001","Mining, Logging, and Construction","New Jersey","CES",False
+"SMU34000002000000001","Construction","New Jersey","CES",False
+"SMU34000003000000001","Manufacturing","New Jersey","CES",False
+"SMU34000004000000001","Trade, Transportation, and Utilities","New Jersey","CES",False
+"SMU34000005000000001","Information","New Jersey","CES",False
+"SMU34000005500000001","Financial Activities","New Jersey","CES",False
+"SMU34000006000000001","Professional and Business Services","New Jersey","CES",False
+"SMU34000006500000001","Education and Health Services","New Jersey","CES",False
+"SMU34000007000000001","Leisure and Hospitality","New Jersey","CES",False
+"SMU34000008000000001","Other Services","New Jersey","CES",False
+"SMU34000009000000001","Government","New Jersey","CES",False
+"SMS35000000000000001","Total Nonfarm","New Mexico","CES",True
+"SMS35000001000000001","Mining and Logging","New Mexico","CES",True
+"SMS35000001500000001","Mining, Logging, and Construction","New Mexico","CES",True
+"SMS35000002000000001","Construction","New Mexico","CES",True
+"SMS35000003000000001","Manufacturing","New Mexico","CES",True
+"SMS35000004000000001","Trade, Transportation, and Utilities","New Mexico","CES",True
+"SMS35000005000000001","Information","New Mexico","CES",True
+"SMS35000005500000001","Financial Activities","New Mexico","CES",True
+"SMS35000006000000001","Professional and Business Services","New Mexico","CES",True
+"SMS35000006500000001","Education and Health Services","New Mexico","CES",True
+"SMS35000007000000001","Leisure and Hospitality","New Mexico","CES",True
+"SMS35000008000000001","Other Services","New Mexico","CES",True
+"SMS35000009000000001","Government","New Mexico","CES",True
+"SMU35000000000000001","Total Nonfarm","New Mexico","CES",False
+"SMU35000001000000001","Mining and Logging","New Mexico","CES",False
+"SMU35000001500000001","Mining, Logging, and Construction","New Mexico","CES",False
+"SMU35000002000000001","Construction","New Mexico","CES",False
+"SMU35000003000000001","Manufacturing","New Mexico","CES",False
+"SMU35000004000000001","Trade, Transportation, and Utilities","New Mexico","CES",False
+"SMU35000005000000001","Information","New Mexico","CES",False
+"SMU35000005500000001","Financial Activities","New Mexico","CES",False
+"SMU35000006000000001","Professional and Business Services","New Mexico","CES",False
+"SMU35000006500000001","Education and Health Services","New Mexico","CES",False
+"SMU35000007000000001","Leisure and Hospitality","New Mexico","CES",False
+"SMU35000008000000001","Other Services","New Mexico","CES",False
+"SMU35000009000000001","Government","New Mexico","CES",False
+"SMS36000000000000001","Total Nonfarm","New York","CES",True
+"SMS36000001000000001","Mining and Logging","New York","CES",True
+"SMS36000001500000001","Mining, Logging, and Construction","New York","CES",True
+"SMS36000002000000001","Construction","New York","CES",True
+"SMS36000003000000001","Manufacturing","New York","CES",True
+"SMS36000004000000001","Trade, Transportation, and Utilities","New York","CES",True
+"SMS36000005000000001","Information","New York","CES",True
+"SMS36000005500000001","Financial Activities","New York","CES",True
+"SMS36000006000000001","Professional and Business Services","New York","CES",True
+"SMS36000006500000001","Education and Health Services","New York","CES",True
+"SMS36000007000000001","Leisure and Hospitality","New York","CES",True
+"SMS36000008000000001","Other Services","New York","CES",True
+"SMS36000009000000001","Government","New York","CES",True
+"SMU36000000000000001","Total Nonfarm","New York","CES",False
+"SMU36000001000000001","Mining and Logging","New York","CES",False
+"SMU36000001500000001","Mining, Logging, and Construction","New York","CES",False
+"SMU36000002000000001","Construction","New York","CES",False
+"SMU36000003000000001","Manufacturing","New York","CES",False
+"SMU36000004000000001","Trade, Transportation, and Utilities","New York","CES",False
+"SMU36000005000000001","Information","New York","CES",False
+"SMU36000005500000001","Financial Activities","New York","CES",False
+"SMU36000006000000001","Professional and Business Services","New York","CES",False
+"SMU36000006500000001","Education and Health Services","New York","CES",False
+"SMU36000007000000001","Leisure and Hospitality","New York","CES",False
+"SMU36000008000000001","Other Services","New York","CES",False
+"SMU36000009000000001","Government","New York","CES",False
+"SMS37000000000000001","Total Nonfarm","North Carolina","CES",True
+"SMS37000001000000001","Mining and Logging","North Carolina","CES",True
+"SMS37000001500000001","Mining, Logging, and Construction","North Carolina","CES",True
+"SMS37000002000000001","Construction","North Carolina","CES",True
+"SMS37000003000000001","Manufacturing","North Carolina","CES",True
+"SMS37000004000000001","Trade, Transportation, and Utilities","North Carolina","CES",True
+"SMS37000005000000001","Information","North Carolina","CES",True
+"SMS37000005500000001","Financial Activities","North Carolina","CES",True
+"SMS37000006000000001","Professional and Business Services","North Carolina","CES",True
+"SMS37000006500000001","Education and Health Services","North Carolina","CES",True
+"SMS37000007000000001","Leisure and Hospitality","North Carolina","CES",True
+"SMS37000009000000001","Government","North Carolina","CES",True
+"SMU37000000000000001","Total Nonfarm","North Carolina","CES",False
+"SMU37000001000000001","Mining and Logging","North Carolina","CES",False
+"SMU37000001500000001","Mining, Logging, and Construction","North Carolina","CES",False
+"SMU37000002000000001","Construction","North Carolina","CES",False
+"SMU37000003000000001","Manufacturing","North Carolina","CES",False
+"SMU37000004000000001","Trade, Transportation, and Utilities","North Carolina","CES",False
+"SMU37000005000000001","Information","North Carolina","CES",False
+"SMU37000005500000001","Financial Activities","North Carolina","CES",False
+"SMU37000006000000001","Professional and Business Services","North Carolina","CES",False
+"SMU37000006500000001","Education and Health Services","North Carolina","CES",False
+"SMU37000007000000001","Leisure and Hospitality","North Carolina","CES",False
+"SMU37000008000000001","Other Services","North Carolina","CES",False
+"SMU37000009000000001","Government","North Carolina","CES",False
+"SMS38000000000000001","Total Nonfarm","North Dakota","CES",True
+"SMS38000001000000001","Mining and Logging","North Dakota","CES",True
+"SMS38000001500000001","Mining, Logging, and Construction","North Dakota","CES",True
+"SMS38000002000000001","Construction","North Dakota","CES",True
+"SMS38000003000000001","Manufacturing","North Dakota","CES",True
+"SMS38000004000000001","Trade, Transportation, and Utilities","North Dakota","CES",True
+"SMS38000005000000001","Information","North Dakota","CES",True
+"SMS38000005500000001","Financial Activities","North Dakota","CES",True
+"SMS38000006000000001","Professional and Business Services","North Dakota","CES",True
+"SMS38000006500000001","Education and Health Services","North Dakota","CES",True
+"SMS38000007000000001","Leisure and Hospitality","North Dakota","CES",True
+"SMS38000008000000001","Other Services","North Dakota","CES",True
+"SMS38000009000000001","Government","North Dakota","CES",True
+"SMU38000000000000001","Total Nonfarm","North Dakota","CES",False
+"SMU38000001000000001","Mining and Logging","North Dakota","CES",False
+"SMU38000001500000001","Mining, Logging, and Construction","North Dakota","CES",False
+"SMU38000002000000001","Construction","North Dakota","CES",False
+"SMU38000003000000001","Manufacturing","North Dakota","CES",False
+"SMU38000004000000001","Trade, Transportation, and Utilities","North Dakota","CES",False
+"SMU38000005000000001","Information","North Dakota","CES",False
+"SMU38000005500000001","Financial Activities","North Dakota","CES",False
+"SMU38000006000000001","Professional and Business Services","North Dakota","CES",False
+"SMU38000006500000001","Education and Health Services","North Dakota","CES",False
+"SMU38000007000000001","Leisure and Hospitality","North Dakota","CES",False
+"SMU38000008000000001","Other Services","North Dakota","CES",False
+"SMU38000009000000001","Government","North Dakota","CES",False
+"SMS39000000000000001","Total Nonfarm","Ohio","CES",True
+"SMS39000001000000001","Mining and Logging","Ohio","CES",True
+"SMS39000001500000001","Mining, Logging, and Construction","Ohio","CES",True
+"SMS39000002000000001","Construction","Ohio","CES",True
+"SMS39000003000000001","Manufacturing","Ohio","CES",True
+"SMU39000000000000001","Total Nonfarm","Ohio","CES",False
+"SMU39000001000000001","Mining and Logging","Ohio","CES",False
+"SMU39000001500000001","Mining, Logging, and Construction","Ohio","CES",False
+"SMU39000002000000001","Construction","Ohio","CES",False
+"SMU39000003000000001","Manufacturing","Ohio","CES",False
+"SMU39000004000000001","Trade, Transportation, and Utilities","Ohio","CES",False
+"SMU39000005000000001","Information","Ohio","CES",False
+"SMU39000005500000001","Financial Activities","Ohio","CES",False
+"SMU39000006000000001","Professional and Business Services","Ohio","CES",False
+"SMU39000006500000001","Education and Health Services","Ohio","CES",False
+"SMU39000007000000001","Leisure and Hospitality","Ohio","CES",False
+"SMU39000008000000001","Other Services","Ohio","CES",False
+"SMU39000009000000001","Government","Ohio","CES",False
+"SMS39000004000000001","Trade, Transportation, and Utilities","Ohio","CES",True
+"SMS39000005000000001","Information","Ohio","CES",True
+"SMS39000005500000001","Financial Activities","Ohio","CES",True
+"SMS39000006000000001","Professional and Business Services","Ohio","CES",True
+"SMS39000006500000001","Education and Health Services","Ohio","CES",True
+"SMS39000007000000001","Leisure and Hospitality","Ohio","CES",True
+"SMS39000008000000001","Other Services","Ohio","CES",True
+"SMS39000009000000001","Government","Ohio","CES",True
+"SMU40000000000000001","Total Nonfarm","Oklahoma","CES",False
+"SMU40000001000000001","Mining and Logging","Oklahoma","CES",False
+"SMU40000001500000001","Mining, Logging, and Construction","Oklahoma","CES",False
+"SMU40000002000000001","Construction","Oklahoma","CES",False
+"SMU40000003000000001","Manufacturing","Oklahoma","CES",False
+"SMS40000000000000001","Total Nonfarm","Oklahoma","CES",True
+"SMS40000001000000001","Mining and Logging","Oklahoma","CES",True
+"SMS40000001500000001","Mining, Logging, and Construction","Oklahoma","CES",True
+"SMS40000002000000001","Construction","Oklahoma","CES",True
+"SMS40000003000000001","Manufacturing","Oklahoma","CES",True
+"SMS40000004000000001","Trade, Transportation, and Utilities","Oklahoma","CES",True
+"SMS40000005000000001","Information","Oklahoma","CES",True
+"SMS40000005500000001","Financial Activities","Oklahoma","CES",True
+"SMS40000006000000001","Professional and Business Services","Oklahoma","CES",True
+"SMS40000006500000001","Education and Health Services","Oklahoma","CES",True
+"SMS40000007000000001","Leisure and Hospitality","Oklahoma","CES",True
+"SMS40000009000000001","Government","Oklahoma","CES",True
+"SMU40000008000000001","Other Services","Oklahoma","CES",False
+"SMU40000009000000001","Government","Oklahoma","CES",False
+"SMU40000004000000001","Trade, Transportation, and Utilities","Oklahoma","CES",False
+"SMU40000005000000001","Information","Oklahoma","CES",False
+"SMU40000005500000001","Financial Activities","Oklahoma","CES",False
+"SMU40000006000000001","Professional and Business Services","Oklahoma","CES",False
+"SMU40000006500000001","Education and Health Services","Oklahoma","CES",False
+"SMU40000007000000001","Leisure and Hospitality","Oklahoma","CES",False
+"SMS41000000000000001","Total Nonfarm","Oregon","CES",True
+"SMS41000001000000001","Mining and Logging","Oregon","CES",True
+"SMS41000001500000001","Mining, Logging, and Construction","Oregon","CES",True
+"SMS41000002000000001","Construction","Oregon","CES",True
+"SMS41000003000000001","Manufacturing","Oregon","CES",True
+"SMS41000004000000001","Trade, Transportation, and Utilities","Oregon","CES",True
+"SMS41000005000000001","Information","Oregon","CES",True
+"SMS41000005500000001","Financial Activities","Oregon","CES",True
+"SMS41000006000000001","Professional and Business Services","Oregon","CES",True
+"SMS41000006500000001","Education and Health Services","Oregon","CES",True
+"SMS41000007000000001","Leisure and Hospitality","Oregon","CES",True
+"SMS41000008000000001","Other Services","Oregon","CES",True
+"SMS41000009000000001","Government","Oregon","CES",True
+"SMU41000000000000001","Total Nonfarm","Oregon","CES",False
+"SMU41000001000000001","Mining and Logging","Oregon","CES",False
+"SMU41000001500000001","Mining, Logging, and Construction","Oregon","CES",False
+"SMU41000002000000001","Construction","Oregon","CES",False
+"SMU41000003000000001","Manufacturing","Oregon","CES",False
+"SMU41000004000000001","Trade, Transportation, and Utilities","Oregon","CES",False
+"SMU41000005000000001","Information","Oregon","CES",False
+"SMU41000005500000001","Financial Activities","Oregon","CES",False
+"SMU41000006000000001","Professional and Business Services","Oregon","CES",False
+"SMU41000006500000001","Education and Health Services","Oregon","CES",False
+"SMU41000007000000001","Leisure and Hospitality","Oregon","CES",False
+"SMU41000008000000001","Other Services","Oregon","CES",False
+"SMU41000009000000001","Government","Oregon","CES",False
+"SMS42000000000000001","Total Nonfarm","Pennsylvania","CES",True
+"SMS42000001000000001","Mining and Logging","Pennsylvania","CES",True
+"SMS42000001500000001","Mining, Logging, and Construction","Pennsylvania","CES",True
+"SMS42000002000000001","Construction","Pennsylvania","CES",True
+"SMS42000003000000001","Manufacturing","Pennsylvania","CES",True
+"SMS42000004000000001","Trade, Transportation, and Utilities","Pennsylvania","CES",True
+"SMS42000005000000001","Information","Pennsylvania","CES",True
+"SMS42000005500000001","Financial Activities","Pennsylvania","CES",True
+"SMS42000006000000001","Professional and Business Services","Pennsylvania","CES",True
+"SMS42000006500000001","Education and Health Services","Pennsylvania","CES",True
+"SMS42000007000000001","Leisure and Hospitality","Pennsylvania","CES",True
+"SMS42000008000000001","Other Services","Pennsylvania","CES",True
+"SMS42000009000000001","Government","Pennsylvania","CES",True
+"SMU42000000000000001","Total Nonfarm","Pennsylvania","CES",False
+"SMU42000001000000001","Mining and Logging","Pennsylvania","CES",False
+"SMU42000001500000001","Mining, Logging, and Construction","Pennsylvania","CES",False
+"SMU42000002000000001","Construction","Pennsylvania","CES",False
+"SMU42000003000000001","Manufacturing","Pennsylvania","CES",False
+"SMU42000004000000001","Trade, Transportation, and Utilities","Pennsylvania","CES",False
+"SMU42000005000000001","Information","Pennsylvania","CES",False
+"SMU42000005500000001","Financial Activities","Pennsylvania","CES",False
+"SMU42000006000000001","Professional and Business Services","Pennsylvania","CES",False
+"SMU42000006500000001","Education and Health Services","Pennsylvania","CES",False
+"SMU42000007000000001","Leisure and Hospitality","Pennsylvania","CES",False
+"SMU42000008000000001","Other Services","Pennsylvania","CES",False
+"SMU42000009000000001","Government","Pennsylvania","CES",False
+"SMS72000000000000001","Total Nonfarm","Puerto Rico","CES",True
+"SMS72000001000000001","Mining and Logging","Puerto Rico","CES",True
+"SMS72000001500000001","Mining, Logging, and Construction","Puerto Rico","CES",True
+"SMS72000002000000001","Construction","Puerto Rico","CES",True
+"SMS72000003000000001","Manufacturing","Puerto Rico","CES",True
+"SMS72000003100000001","Durable Goods","Puerto Rico","CES",True
+"SMS72000003200000001","Non-Durable Goods","Puerto Rico","CES",True
+"SMS72000004000000001","Trade, Transportation, and Utilities","Puerto Rico","CES",True
+"SMS72000005000000001","Information","Puerto Rico","CES",True
+"SMS72000005500000001","Financial Activities","Puerto Rico","CES",True
+"SMS72000006000000001","Professional and Business Services","Puerto Rico","CES",True
+"SMS72000006500000001","Education and Health Services","Puerto Rico","CES",True
+"SMS72000007000000001","Leisure and Hospitality","Puerto Rico","CES",True
+"SMS72000008000000001","Other Services","Puerto Rico","CES",True
+"SMS72000009000000001","Government","Puerto Rico","CES",True
+"SMU72000000000000001","Total Nonfarm","Puerto Rico","CES",False
+"SMU72000001000000001","Mining and Logging","Puerto Rico","CES",False
+"SMU72000001500000001","Mining, Logging, and Construction","Puerto Rico","CES",False
+"SMU72000002000000001","Construction","Puerto Rico","CES",False
+"SMU72000003000000001","Manufacturing","Puerto Rico","CES",False
+"SMU72000004000000001","Trade, Transportation, and Utilities","Puerto Rico","CES",False
+"SMU72000005000000001","Information","Puerto Rico","CES",False
+"SMU72000005500000001","Financial Activities","Puerto Rico","CES",False
+"SMU72000006000000001","Professional and Business Services","Puerto Rico","CES",False
+"SMU72000006500000001","Education and Health Services","Puerto Rico","CES",False
+"SMU72000007000000001","Leisure and Hospitality","Puerto Rico","CES",False
+"SMU72000008000000001","Other Services","Puerto Rico","CES",False
+"SMU72000009000000001","Government","Puerto Rico","CES",False
+"SMS44000000000000001","Total Nonfarm","Rhode Island","CES",True
+"SMS44000001000000001","Mining and Logging","Rhode Island","CES",True
+"SMS44000001500000001","Mining, Logging, and Construction","Rhode Island","CES",True
+"SMS44000002000000001","Construction","Rhode Island","CES",True
+"SMS44000003000000001","Manufacturing","Rhode Island","CES",True
+"SMS44000004000000001","Trade, Transportation, and Utilities","Rhode Island","CES",True
+"SMS44000005000000001","Information","Rhode Island","CES",True
+"SMS44000005500000001","Financial Activities","Rhode Island","CES",True
+"SMS44000006000000001","Professional and Business Services","Rhode Island","CES",True
+"SMS44000006500000001","Education and Health Services","Rhode Island","CES",True
+"SMS44000007000000001","Leisure and Hospitality","Rhode Island","CES",True
+"SMS44000008000000001","Other Services","Rhode Island","CES",True
+"SMS44000009000000001","Government","Rhode Island","CES",True
+"SMU44000000000000001","Total Nonfarm","Rhode Island","CES",False
+"SMU44000001000000001","Mining and Logging","Rhode Island","CES",False
+"SMU44000001500000001","Mining, Logging, and Construction","Rhode Island","CES",False
+"SMU44000002000000001","Construction","Rhode Island","CES",False
+"SMU44000003000000001","Manufacturing","Rhode Island","CES",False
+"SMU44000004000000001","Trade, Transportation, and Utilities","Rhode Island","CES",False
+"SMU44000005000000001","Information","Rhode Island","CES",False
+"SMU44000005500000001","Financial Activities","Rhode Island","CES",False
+"SMU44000006000000001","Professional and Business Services","Rhode Island","CES",False
+"SMU44000006500000001","Education and Health Services","Rhode Island","CES",False
+"SMU44000007000000001","Leisure and Hospitality","Rhode Island","CES",False
+"SMU44000008000000001","Other Services","Rhode Island","CES",False
+"SMU44000009000000001","Government","Rhode Island","CES",False
+"SMS45000000000000001","Total Nonfarm","South Carolina","CES",True
+"SMS45000001000000001","Mining and Logging","South Carolina","CES",True
+"SMS45000001500000001","Mining, Logging, and Construction","South Carolina","CES",True
+"SMS45000002000000001","Construction","South Carolina","CES",True
+"SMS45000003000000001","Manufacturing","South Carolina","CES",True
+"SMS45000003100000001","urable Goods","South Carolina","CES",True
+"SMS45000004000000001","Trade, Transportation, and Utilities","South Carolina","CES",True
+"SMS45000004100000001","Wholesale Trade","South Carolina","CES",True
+"SMS45000005500000001","Financial Activities","South Carolina","CES",True
+"SMS45000006000000001","Professional and Business Services","South Carolina","CES",True
+"SMS45000006500000001","Education and Health Services","South Carolina","CES",True
+"SMS45000007000000001","Leisure and Hospitality","South Carolina","CES",True
+"SMS45000009000000001","Government","South Carolina","CES",True
+"SMU45000000000000001","Total Nonfarm","South Carolina","CES",False
+"SMU45000001000000001","Mining and Logging","South Carolina","CES",False
+"SMU45000001500000001","Mining, Logging, and Construction","South Carolina","CES",False
+"SMU45000002000000001","Construction","South Carolina","CES",False
+"SMU45000003000000001","Manufacturing","South Carolina","CES",False
+"SMU45000004000000001","Trade, Transportation, and Utilities","South Carolina","CES",False
+"SMU45000005000000001","Information","South Carolina","CES",False
+"SMU45000005500000001","Financial Activities","South Carolina","CES",False
+"SMU45000006000000001","Professional and Business Services","South Carolina","CES",False
+"SMU45000006500000001","Education and Health Services","South Carolina","CES",False
+"SMU45000007000000001","Leisure and Hospitality","South Carolina","CES",False
+"SMU45000008000000001","Other Services","South Carolina","CES",False
+"SMU45000009000000001","Government","South Carolina","CES",False
+"SMS46000000000000001","Total Nonfarm","South Dakota","CES",True
+"SMS46000001000000001","Mining and Logging","South Dakota","CES",True
+"SMS46000001500000001","Mining, Logging, and Construction","South Dakota","CES",True
+"SMS46000002000000001","Construction","South Dakota","CES",True
+"SMS46000003000000001","Manufacturing","South Dakota","CES",True
+"SMS46000004000000001","Trade, Transportation, and Utilities","South Dakota","CES",True
+"SMS46000005500000001","Financial Activities","South Dakota","CES",True
+"SMS46000006000000001","Professional and Business Services","South Dakota","CES",True
+"SMS46000006500000001","Education and Health Services","South Dakota","CES",True
+"SMS46000007000000001","Leisure and Hospitality","South Dakota","CES",True
+"SMS46000008000000001","Other Services","South Dakota","CES",True
+"SMS46000009000000001","Government","South Dakota","CES",True
+"SMU46000000000000001","Total Nonfarm","South Dakota","CES",False
+"SMU46000001000000001","Mining and Logging","South Dakota","CES",False
+"SMU46000001500000001","Mining, Logging, and Construction","South Dakota","CES",False
+"SMU46000002000000001","Construction","South Dakota","CES",False
+"SMU46000003000000001","Manufacturing","South Dakota","CES",False
+"SMU46000004000000001","Trade, Transportation, and Utilities","South Dakota","CES",False
+"SMU46000005000000001","Information","South Dakota","CES",False
+"SMU46000005500000001","Financial Activities","South Dakota","CES",False
+"SMU46000006000000001","Professional and Business Services","South Dakota","CES",False
+"SMU46000006500000001","Education and Health Services","South Dakota","CES",False
+"SMU46000007000000001","Leisure and Hospitality","South Dakota","CES",False
+"SMU46000008000000001","Other Services","South Dakota","CES",False
+"SMU46000009000000001","Government","South Dakota","CES",False
+"SMS47000000000000001","Total Nonfarm","Tennessee","CES",True
+"SMS47000001000000001","Mining and Logging","Tennessee","CES",True
+"SMS47000001500000001","Mining, Logging, and Construction","Tennessee","CES",True
+"SMS47000002000000001","Construction","Tennessee","CES",True
+"SMS47000003000000001","Manufacturing","Tennessee","CES",True
+"SMS47000004000000001","Trade, Transportation, and Utilities","Tennessee","CES",True
+"SMS47000005000000001","Information","Tennessee","CES",True
+"SMS47000005500000001","Financial Activities","Tennessee","CES",True
+"SMS47000006000000001","Professional and Business Services","Tennessee","CES",True
+"SMS47000006500000001","Education and Health Services","Tennessee","CES",True
+"SMS47000007000000001","Leisure and Hospitality","Tennessee","CES",True
+"SMS47000009000000001","Government","Tennessee","CES",True
+"SMU47000000000000001","Total Nonfarm","Tennessee","CES",False
+"SMU47000001000000001","Mining and Logging","Tennessee","CES",False
+"SMU47000001500000001","Mining, Logging, and Construction","Tennessee","CES",False
+"SMU47000002000000001","Construction","Tennessee","CES",False
+"SMU47000003000000001","Manufacturing","Tennessee","CES",False
+"SMU47000004000000001","Trade, Transportation, and Utilities","Tennessee","CES",False
+"SMU47000005000000001","Information","Tennessee","CES",False
+"SMU47000005500000001","Financial Activities","Tennessee","CES",False
+"SMU47000006000000001","Professional and Business Services","Tennessee","CES",False
+"SMU47000006500000001","Education and Health Services","Tennessee","CES",False
+"SMU47000007000000001","Leisure and Hospitality","Tennessee","CES",False
+"SMU47000008000000001","Other Services","Tennessee","CES",False
+"SMU47000009000000001","Government","Tennessee","CES",False
+"SMS48000000000000001","Total Nonfarm","Texas","CES",True
+"SMS48000001000000001","Mining and Logging","Texas","CES",True
+"SMS48000001500000001","Mining, Logging, and Construction","Texas","CES",True
+"SMS48000002000000001","Construction","Texas","CES",True
+"SMS48000003000000001","Manufacturing","Texas","CES",True
+"SMS48000004000000001","Trade, Transportation, and Utilities","Texas","CES",True
+"SMS48000005000000001","Information","Texas","CES",True
+"SMS48000005500000001","Financial Activities","Texas","CES",True
+"SMS48000006000000001","Professional and Business Services","Texas","CES",True
+"SMS48000006500000001","Education and Health Services","Texas","CES",True
+"SMS48000007000000001","Leisure and Hospitality","Texas","CES",True
+"SMS48000008000000001","Other Services","Texas","CES",True
+"SMS48000009000000001","Government","Texas","CES",True
+"SMU48000000000000001","Total Nonfarm","Texas","CES",False
+"SMU48000001000000001","Mining and Logging","Texas","CES",False
+"SMU48000001500000001","Mining, Logging, and Construction","Texas","CES",False
+"SMU48000002000000001","Construction","Texas","CES",False
+"SMU48000003000000001","Manufacturing","Texas","CES",False
+"SMU48000004000000001","Trade, Transportation, and Utilities","Texas","CES",False
+"SMU48000005000000001","Information","Texas","CES",False
+"SMU48000005500000001","Financial Activities","Texas","CES",False
+"SMU48000006000000001","Professional and Business Services","Texas","CES",False
+"SMU48000006500000001","Education and Health Services","Texas","CES",False
+"SMU48000007000000001","Leisure and Hospitality","Texas","CES",False
+"SMU48000008000000001","Other Services","Texas","CES",False
+"SMU48000009000000001","Government","Texas","CES",False
+"SMS49000000000000001","Total Nonfarm","Utah","CES",True
+"SMS49000001000000001","Mining and Logging","Utah","CES",True
+"SMS49000001500000001","Mining, Logging, and Construction","Utah","CES",True
+"SMS49000002000000001","Construction","Utah","CES",True
+"SMS49000003000000001","Manufacturing","Utah","CES",True
+"SMS49000004000000001","Trade, Transportation, and Utilities","Utah","CES",True
+"SMS49000005000000001","Information","Utah","CES",True
+"SMS49000005500000001","Financial Activities","Utah","CES",True
+"SMS49000006000000001","Professional and Business Services","Utah","CES",True
+"SMS49000006500000001","Education and Health Services","Utah","CES",True
+"SMS49000007000000001","Leisure and Hospitality","Utah","CES",True
+"SMS49000008000000001","Other Services","Utah","CES",True
+"SMS49000009000000001","Government","Utah","CES",True
+"SMU49000000000000001","Total Nonfarm","Utah","CES",False
+"SMU49000001000000001","Mining and Logging","Utah","CES",False
+"SMU49000001500000001","Mining, Logging, and Construction","Utah","CES",False
+"SMU49000002000000001","Construction","Utah","CES",False
+"SMU49000003000000001","Manufacturing","Utah","CES",False
+"SMU49000004000000001","Trade, Transportation, and Utilities","Utah","CES",False
+"SMU49000005000000001","Information","Utah","CES",False
+"SMU49000005500000001","Financial Activities","Utah","CES",False
+"SMU49000006000000001","Professional and Business Services","Utah","CES",False
+"SMU49000006500000001","Education and Health Services","Utah","CES",False
+"SMU49000007000000001","Leisure and Hospitality","Utah","CES",False
+"SMU49000008000000001","Other Services","Utah","CES",False
+"SMU49000009000000001","Government","Utah","CES",False
+"SMS50000000000000001","Total Nonfarm","Vermont","CES",True
+"SMS50000001000000001","Mining and Logging","Vermont","CES",True
+"SMS50000001500000001","Mining, Logging, and Construction","Vermont","CES",True
+"SMS50000002000000001","Construction","Vermont","CES",True
+"SMS50000003000000001","Manufacturing","Vermont","CES",True
+"SMS50000004000000001","Trade, Transportation, and Utilities","Vermont","CES",True
+"SMS50000005000000001","Information","Vermont","CES",True
+"SMS50000005500000001","Financial Activities","Vermont","CES",True
+"SMS50000006000000001","Professional and Business Services","Vermont","CES",True
+"SMS50000006500000001","Education and Health Services","Vermont","CES",True
+"SMS50000007000000001","Leisure and Hospitality","Vermont","CES",True
+"SMS50000008000000001","Other Services","Vermont","CES",True
+"SMS50000009000000001","Government","Vermont","CES",True
+"SMU50000000000000001","Total Nonfarm","Vermont","CES",False
+"SMU50000001000000001","Mining and Logging","Vermont","CES",False
+"SMU50000001500000001","Mining, Logging, and Construction","Vermont","CES",False
+"SMU50000002000000001","Construction","Vermont","CES",False
+"SMU50000003000000001","Manufacturing","Vermont","CES",False
+"SMU50000004000000001","Trade, Transportation, and Utilities","Vermont","CES",False
+"SMU50000005000000001","Information","Vermont","CES",False
+"SMU50000005500000001","Financial Activities","Vermont","CES",False
+"SMU50000006000000001","Professional and Business Services","Vermont","CES",False
+"SMU50000006500000001","Education and Health Services","Vermont","CES",False
+"SMU50000007000000001","Leisure and Hospitality","Vermont","CES",False
+"SMU50000008000000001","Other Services","Vermont","CES",False
+"SMU50000009000000001","Government","Vermont","CES",False
+"SMS51000000000000001","Total Nonfarm","Virginia","CES",True
+"SMS51000001500000001","Mining, Logging, and Construction","Virginia","CES",True
+"SMS51000002000000001","Construction","Virginia","CES",True
+"SMS51000003000000001","Manufacturing","Virginia","CES",True
+"SMS51000004000000001","Trade, Transportation, and Utilities","Virginia","CES",True
+"SMS51000005000000001","Information","Virginia","CES",True
+"SMS51000005500000001","Financial Activities","Virginia","CES",True
+"SMS51000006000000001","Professional and Business Services","Virginia","CES",True
+"SMS51000006500000001","Education and Health Services","Virginia","CES",True
+"SMS51000007000000001","Leisure and Hospitality","Virginia","CES",True
+"SMS51000008000000001","Other Services","Virginia","CES",True
+"SMS51000009000000001","Government","Virginia","CES",True
+"SMU51000000000000001","Total Nonfarm","Virginia","CES",False
+"SMU51000001000000001","Mining and Logging","Virginia","CES",False
+"SMU51000001500000001","Mining, Logging, and Construction","Virginia","CES",False
+"SMU51000002000000001","Construction","Virginia","CES",False
+"SMU51000003000000001","Manufacturing","Virginia","CES",False
+"SMU51000004000000001","Trade, Transportation, and Utilities","Virginia","CES",False
+"SMU51000005000000001","Information","Virginia","CES",False
+"SMU51000005500000001","Financial Activities","Virginia","CES",False
+"SMU51000006000000001","Professional and Business Services","Virginia","CES",False
+"SMU51000006500000001","Education and Health Services","Virginia","CES",False
+"SMU51000007000000001","Leisure and Hospitality","Virginia","CES",False
+"SMU51000008000000001","Other Services","Virginia","CES",False
+"SMU51000009000000001","Government","Virginia","CES",False
+"SMS78000000000000001","Total Nonfarm","Virgin Islands","CES",True
+"SMS78000001500000001","Mining, Logging, and Construction","Virgin Islands","CES",True
+"SMS78000004000000001","Trade, Transportation, and Utilities","Virgin Islands","CES",True
+"SMS78000004300000001","Transportation, Warehousing, and Utilities","Virgin Islands","CES",True
+"SMS78000006500000001","Education and Health Services","Virgin Islands","CES",True
+"SMS78000007000000001","Leisure and Hospitality","Virgin Islands","CES",True
+"SMS78000008000000001","Other Services","Virgin Islands","CES",True
+"SMS78000009000000001","Government","Virgin Islands","CES",True
+"SMU78000000000000001","Total Nonfarm","Virgin Islands","CES",False
+"SMU78000001500000001","Mining, Logging, and Construction","Virgin Islands","CES",False
+"SMU78000003000000001","Manufacturing","Virgin Islands","CES",False
+"SMU78000004000000001","Trade, Transportation, and Utilities","Virgin Islands","CES",False
+"SMU78000005000000001","Information","Virgin Islands","CES",False
+"SMU78000005500000001","Financial Activities","Virgin Islands","CES",False
+"SMU78000006000000001","Professional and Business Services","Virgin Islands","CES",False
+"SMU78000006500000001","Education and Health Services","Virgin Islands","CES",False
+"SMU78000007000000001","Leisure and Hospitality","Virgin Islands","CES",False
+"SMU78000008000000001","Other Services","Virgin Islands","CES",False
+"SMU78000009000000001","Government","Virgin Islands","CES",False
+"SMS53000000000000001","Total Nonfarm","Washington","CES",True
+"SMS53000001000000001","Mining and Logging","Washington","CES",True
+"SMS53000001500000001","Mining, Logging, and Construction","Washington","CES",True
+"SMS53000002000000001","Construction","Washington","CES",True
+"SMS53000003000000001","Manufacturing","Washington","CES",True
+"SMS53000004000000001","Trade, Transportation, and Utilities","Washington","CES",True
+"SMS53000005000000001","Information","Washington","CES",True
+"SMS53000005500000001","Financial Activities","Washington","CES",True
+"SMS53000006000000001","Professional and Business Services","Washington","CES",True
+"SMS53000006500000001","Education and Health Services","Washington","CES",True
+"SMS53000007000000001","Leisure and Hospitality","Washington","CES",True
+"SMS53000008000000001","Other Services","Washington","CES",True
+"SMS53000009000000001","Government","Washington","CES",True
+"SMU53000000000000001","Total Nonfarm","Washington","CES",False
+"SMU53000001000000001","Mining and Logging","Washington","CES",False
+"SMU53000001500000001","Mining, Logging, and Construction","Washington","CES",False
+"SMU53000002000000001","Construction","Washington","CES",False
+"SMU53000003000000001","Manufacturing","Washington","CES",False
+"SMU53000004000000001","Trade, Transportation, and Utilities","Washington","CES",False
+"SMU53000005000000001","Information","Washington","CES",False
+"SMU53000005500000001","Financial Activities","Washington","CES",False
+"SMU53000006000000001","Professional and Business Services","Washington","CES",False
+"SMU53000006500000001","Education and Health Services","Washington","CES",False
+"SMU53000007000000001","Leisure and Hospitality","Washington","CES",False
+"SMU53000008000000001","Other Services","Washington","CES",False
+"SMU53000009000000001","Government","Washington","CES",False
+"SMS54000000000000001","Total Nonfarm","West Virginia","CES",True
+"SMS54000001000000001","Mining and Logging","West Virginia","CES",True
+"SMS54000001500000001","Mining, Logging, and Construction","West Virginia","CES",True
+"SMS54000002000000001","Construction","West Virginia","CES",True
+"SMS54000003000000001","Manufacturing","West Virginia","CES",True
+"SMS54000004000000001","Trade, Transportation, and Utilities","West Virginia","CES",True
+"SMS54000005000000001","Information","West Virginia","CES",True
+"SMS54000005500000001","Financial Activities","West Virginia","CES",True
+"SMS54000006000000001","Professional and Business Services","West Virginia","CES",True
+"SMS54000006500000001","Education and Health Services","West Virginia","CES",True
+"SMS54000007000000001","Leisure and Hospitality","West Virginia","CES",True
+"SMS54000009000000001","Government","West Virginia","CES",True
+"SMU54000000000000001","Total Nonfarm","West Virginia","CES",False
+"SMU54000001000000001","Mining and Logging","West Virginia","CES",False
+"SMU54000001500000001","Mining, Logging, and Construction","West Virginia","CES",False
+"SMU54000002000000001","Construction","West Virginia","CES",False
+"SMU54000003000000001","Manufacturing","West Virginia","CES",False
+"SMU54000004000000001","Trade, Transportation, and Utilities","West Virginia","CES",False
+"SMU54000005000000001","Information","West Virginia","CES",False
+"SMU54000005500000001","Financial Activities","West Virginia","CES",False
+"SMU54000006000000001","Professional and Business Services","West Virginia","CES",False
+"SMU54000006500000001","Education and Health Services","West Virginia","CES",False
+"SMU54000007000000001","Leisure and Hospitality","West Virginia","CES",False
+"SMU54000008000000001","Other Services","West Virginia","CES",False
+"SMU54000009000000001","Government","West Virginia","CES",False
+"SMS55000000000000001","Total Nonfarm","Wisconsin","CES",True
+"SMS55000001000000001","Mining and Logging","Wisconsin","CES",True
+"SMS55000001500000001","Mining, Logging, and Construction","Wisconsin","CES",True
+"SMS55000002000000001","Construction","Wisconsin","CES",True
+"SMS55000003000000001","Manufacturing","Wisconsin","CES",True
+"SMS55000004000000001","Trade, Transportation, and Utilities","Wisconsin","CES",True
+"SMS55000005000000001","Information","Wisconsin","CES",True
+"SMS55000005500000001","Financial Activities","Wisconsin","CES",True
+"SMS55000006000000001","Professional and Business Services","Wisconsin","CES",True
+"SMS55000006500000001","Education and Health Services","Wisconsin","CES",True
+"SMS55000007000000001","Leisure and Hospitality","Wisconsin","CES",True
+"SMS55000008000000001","Other Services","Wisconsin","CES",True
+"SMS55000009000000001","Government","Wisconsin","CES",True
+"SMU55000000000000001","Total Nonfarm","Wisconsin","CES",False
+"SMU55000001000000001","Mining and Logging","Wisconsin","CES",False
+"SMU55000001500000001","Mining, Logging, and Construction","Wisconsin","CES",False
+"SMU55000002000000001","Construction","Wisconsin","CES",False
+"SMU55000003000000001","Manufacturing","Wisconsin","CES",False
+"SMU55000004000000001","Trade, Transportation, and Utilities","Wisconsin","CES",False
+"SMU55000005000000001","Information","Wisconsin","CES",False
+"SMU55000005500000001","Financial Activities","Wisconsin","CES",False
+"SMU55000006000000001","Professional and Business Services","Wisconsin","CES",False
+"SMU55000006500000001","Education and Health Services","Wisconsin","CES",False
+"SMU55000007000000001","Leisure and Hospitality","Wisconsin","CES",False
+"SMU55000008000000001","Other Services","Wisconsin","CES",False
+"SMU55000009000000001","Government","Wisconsin","CES",False
+"SMS56000000000000001","Total Nonfarm","Wyoming",NULL,True
+"SMS56000001000000001","Mining and Logging","Wyoming",NULL,True
+"SMS56000001500000001","Mining, Logging, and Construction","Wyoming",NULL,True
+"SMS56000002000000001","Construction","Wyoming",NULL,True
+"SMS56000003000000001","Manufacturing","Wyoming",NULL,True
+"SMS56000004000000001","Trade, Transportation, and Utilities","Wyoming",NULL,True
+"SMS56000005000000001","Information","Wyoming",NULL,True
+"SMS56000005500000001","Financial Activities","Wyoming",NULL,True
+"SMS56000006000000001","Professional and Business Services","Wyoming",NULL,True
+"SMS56000006500000001","Education and Health Services","Wyoming",NULL,True
+"SMS56000007000000001","Leisure and Hospitality","Wyoming",NULL,True
+"SMS56000008000000001","Other Services","Wyoming",NULL,True
+"SMS56000009000000001","Government","Wyoming",NULL,True
+"SMU56000000000000001","Total Nonfarm","Wyoming",NULL,False
+"SMU56000001000000001","Mining and Logging","Wyoming",NULL,False
+"SMU56000001500000001","Mining, Logging, and Construction","Wyoming",NULL,False
+"SMU56000002000000001","Construction","Wyoming",NULL,False
+"SMU56000003000000001","Manufacturing","Wyoming",NULL,False
+"SMU56000004000000001","Trade, Transportation, and Utilities","Wyoming",NULL,False
+"SMU56000005000000001","Information","Wyoming",NULL,False
+"SMU56000005500000001","Financial Activities","Wyoming",NULL,False
+"SMU56000006000000001","Professional and Business Services","Wyoming",NULL,False
+"SMU56000006500000001","Education and Health Services","Wyoming",NULL,False
+"SMU56000007000000001","Leisure and Hospitality","Wyoming",NULL,False
+"SMU56000008000000001","Other Services","Wyoming",NULL,False
+"SMU56000009000000001","Government","Wyoming",NULL,False
