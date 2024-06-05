@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import time
 import datetime as dt
-from IPython.display import display, clear_output
 
 NOW = dt.datetime.now().strftime('%d-%b-%Y_%H:%M:%S')
 PATH = '/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/'
@@ -28,7 +27,6 @@ def url_getter(url):
 
     return state_link_list
 
-state_link_list = url_getter(bls_state_url)
 
 
 
@@ -86,4 +84,5 @@ def state_scraper(state_link_list):
     
 # Run it
 
+state_link_list = url_getter(bls_state_url)
 state_scraper(state_link_list)
