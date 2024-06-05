@@ -6,7 +6,7 @@ from requests.exceptions import HTTPError
 import json
 import api_key
 import time
-from IPython.display import clear_output
+
 
 URL_ENDPOINT = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
