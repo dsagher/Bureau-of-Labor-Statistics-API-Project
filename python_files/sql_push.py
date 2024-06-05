@@ -8,6 +8,7 @@ conn = ps.connect(host='localhost', dbname='bls', user='danielsagher',
 
 cur = conn.cursor()
 
+
 cur.execute('''
             --sql
             CREATE TABLE IF NOT EXISTS state_series (
@@ -77,9 +78,6 @@ cur.execute(f'''
 ''')    
             
 
-
-
 conn.commit()
-
 cur.close()
 conn.close()
