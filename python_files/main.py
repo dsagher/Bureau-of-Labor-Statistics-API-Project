@@ -36,9 +36,6 @@ def main(series_input, name_of_file):
     # Outputs files into csv's w/ date and time
     df.to_csv(f'{PATH}outputs/main_op/{name_of_file}_{NOW}.csv', index=False)
     message_list.to_csv(f'{PATH}outputs/main_op/{name_of_file}_msglst_{NOW}.csv', index=False)
-
-
-    time.sleep(1)
     
     return df
 
