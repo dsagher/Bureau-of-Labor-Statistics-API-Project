@@ -92,14 +92,13 @@ def derated_call(lst, start_year = '2002', end_year = '2021'):
             if status == 'Done': 
                 print('API call successful')
                 final.append(result) # Add the results to the final list
-                print('Sleeping for 5 seconds') # Call API
+                print('Sleeping for 5 seconds') 
+                time.sleep(5) # Sleep
             elif status == 'HTTP Error':
                 print('HTTP Error occurred during API call')
             else:
                 print('Error occurred during API call')
             
-            time.sleep(5) # Sleep
-            clear_output()
 
     except Exception as e:
 
