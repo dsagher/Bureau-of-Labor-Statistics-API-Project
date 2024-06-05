@@ -37,9 +37,8 @@ def main(series_input, name_of_file):
     df.to_csv(f'{PATH}outputs/main_op/{name_of_file}_{NOW}.csv', index=False)
     message_list.to_csv(f'{PATH}outputs/main_op/{name_of_file}_msglst_{NOW}.csv', index=False)
 
-    
+
     time.sleep(1)
-    clear_output()
     
     return df
 
