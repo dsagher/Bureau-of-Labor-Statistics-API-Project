@@ -5,7 +5,6 @@ from api_bls import get_series_id, \
 
 import pandas as pd
 import datetime as dt
-from IPython.display import clear_output
 import time
 
 
