@@ -1,10 +1,11 @@
 import psycopg2 as ps
 import pandas as pd
+from config import host, dbname, user, password, port
 
 PATH = '/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/'
 
-conn = ps.connect(host='localhost', dbname='bls', user='danielsagher',
-                  password='', port=5431)
+conn = ps.connect(host=host, dbname=dbname, user=user,
+                  password=password, port=port)
 
 cur = conn.cursor()
 
