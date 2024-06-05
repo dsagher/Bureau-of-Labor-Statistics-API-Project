@@ -62,11 +62,11 @@ def state_scraper(state_link_list):
             # Take state name from series column and put it in its own column
             df['state'] = df['series'].str[0:(df['series'].str.find(',').astype(int)[0])]
             df['series'] = df['series'].str[(df['series'].str.find(', ').astype(int)[0]+2):]
-            final_df['survey'] = 'CES'
+            
 
             # Append to final DataFrame
             final_df = pd.concat([final_df, df], ignore_index= True)
-
+            final_df['survey'] = 'CES'
             # Be nice to BLS
             print(f'{state_link_list[link][1]} data added to DataFrame')
             print('Sleeping for 2 seconds')
@@ -75,7 +75,8 @@ def state_scraper(state_link_list):
             
         except Exception as e:
             print(f"An error occurred while processing {state_link_list[link][1]}: {e}")
-
+    
+    print('Done')
     final_df.to_csv(f'{PATH}outputs/state_scrape_op/state_series_dimension_{NOW}.csv', index=False)
     
     return final_df
@@ -83,4 +84,4 @@ def state_scraper(state_link_list):
 
 
 state_link_list = url_getter(bls_state_url)
-state_scraper(state_link_list)
+state_scraper(state_link_list[0:10])
