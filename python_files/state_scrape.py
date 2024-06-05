@@ -76,7 +76,7 @@ def state_scraper(state_link_list):
         except Exception as e:
             print(f"An error occurred while processing {state_link_list[link][1]}: {e}")
 
-    final_df.to_csv(PATH + f'outputs/state_scrape_op/state_series_dimension_{NOW}.csv', index=False)
+    final_df.to_csv(f'{PATH}outputs/state_scrape_op/state_series_dimension_{NOW}.csv', index=False)
     
     return final_df
         
