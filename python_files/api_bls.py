@@ -41,7 +41,6 @@ def get_series_id(series, start_year, end_year):
 
 
 
-
 def message_retriever(data_results):
 
     '''
@@ -107,10 +106,6 @@ def derated_call(lst, start_year = '2002', end_year = '2021'):
         print(e, "Input list must be at include at least 2 seriesID's")
 
     return final
-
-
-
-
 
 
 

@@ -70,9 +70,8 @@ def state_scraper(state_link_list):
             # Be nice to BLS
             print(f'{state_link_list[link][1]} data added to DataFrame')
             print('Sleeping for 2 seconds')
-            
+
             time.sleep(2)
-            clear_output()
             
         except Exception as e:
             print(f"An error occurred while processing {state_link_list[link][1]}: {e}")
@@ -81,8 +80,7 @@ def state_scraper(state_link_list):
     
     return final_df
         
-    
-# Run it
+
 
 state_link_list = url_getter(bls_state_url)
 state_scraper(state_link_list)
