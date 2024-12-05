@@ -60,7 +60,8 @@ WHERE state = 'Georgia'
   AND is_adjusted = TRUE
   AND series != 'Total Nonfarm'
 ORDER BY st.value DESC
-LIMIT 10;```
+LIMIT 10;
+``` 
 
 
 ## Technologies Used
