@@ -46,20 +46,21 @@ Data tables for national and state-level results.
 ### Example Query
 Find industries with the highest employment in Georgia (November 2016):
 
-`SELECT ss.state,  
-       ss.series,  
-       st.year,  
-       st.period_name,  
-       st.value  
-FROM public.state_results st  
-JOIN state_series ss USING(seriesID)  
-WHERE state = 'Georgia'  
-  AND year = 2016  
-  AND period_name = 'November'  
-  AND is_adjusted = TRUE  
-  AND series != 'Total Nonfarm'  
-ORDER BY st.value DESC  
-LIMIT 10;`  
+```sql
+SELECT ss.state,
+       ss.series,
+       st.year,
+       st.period_name,
+       st.value
+FROM public.state_results st
+JOIN state_series ss USING(seriesID)
+WHERE state = 'Georgia'
+  AND year = 2016
+  AND period_name = 'November'
+  AND is_adjusted = TRUE
+  AND series != 'Total Nonfarm'
+ORDER BY st.value DESC
+LIMIT 10;```
 
 
 ## Technologies Used
