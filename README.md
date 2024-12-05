@@ -25,6 +25,7 @@ Data tables for national and state-level results.
 ## Features
 
 ### Data Collection
+
 * **API Call Functions**:
   
     * `get_series_id()`: Fetches series data from the BLS API.
@@ -44,7 +45,9 @@ Data tables for national and state-level results.
     * `dataframe_maker()`: Converts JSON API responses into structured Pandas DataFrames.
       
 ### Data Storage
+
 * PostgreSQL is used to store cleaned and transformed data:
+  
     * **National Results**: ~38,955 rows.
     * **State Results**: ~323,628 rows.
     
