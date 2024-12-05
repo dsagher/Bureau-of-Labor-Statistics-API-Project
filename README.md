@@ -10,17 +10,17 @@ To transform raw labor data from the BLS API into a structured format suitable f
 
 ### Key Components
 
-1. Survey Table
+1. Survey Table  
 Dimensions of various surveys and series.
-* Processed in Excel.
+  * Processed in Excel.
   
-2. Dimension Tables
+2. Dimension Tables  
 Two separate tables for national and state data.
-* Processed in CSV format.
+  * Processed in CSV format.
   
-3. Results Tables
+3. Results Tables  
 Data tables for national and state-level results.
-* Extracted and processed using Python.
+  * Extracted and processed using Python.
   
 ## Features
 
