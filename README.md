@@ -46,9 +46,7 @@ Data tables for national and state-level results.
 ### Example Query
 Find industries with the highest employment in Georgia (November 2016):
 
-`sql
-Copy code
-SELECT ss.state,
+`SELECT ss.state,
        ss.series,
        st.year,
        st.period_name, 
@@ -62,6 +60,7 @@ WHERE state = 'Georgia'
   AND series != 'Total Nonfarm'
 ORDER BY st.value DESC
 LIMIT 10;`
+
 
 ## Technologies Used
 * **Python**:
