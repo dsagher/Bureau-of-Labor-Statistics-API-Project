@@ -26,16 +26,21 @@ Data tables for national and state-level results.
 
 ### Data Collection
 * **API Call Functions**:
+  
     * `get_series_id()`: Fetches series data from the BLS API.
     * `derated_call()`: Handles batch processing with rate limits, reindexing, and retries.
     
 * **Web Scraping**:
+  
     * `state_scraper()`: Automates the extraction of state-level series IDs and titles.
     
 ### Data Transformation
+
 * **Message Retrieval**:
+  
     * `message_retriever()`: Identifies and processes error messages returned by the API (e.g., missing years).
 * **DataFrame Creation**:
+  
     * `dataframe_maker()`: Converts JSON API responses into structured Pandas DataFrames.
       
 ### Data Storage
