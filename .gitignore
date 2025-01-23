@@ -5,6 +5,6 @@ screenshots:videos/
 sql files/
 *.ipynb
 api_key.py
-python_files/__pycache__
+__pycache__
 .DS_Store
 
