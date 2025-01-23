@@ -1,0 +1,10 @@
+outputs/
+misc_items/
+inputs/
+screenshots:videos/
+sql files/
+*.ipynb
+api_key.py
+python_files/__pycache__
+.DS_Store
+
