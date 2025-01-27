@@ -1,4 +1,24 @@
-# Imports and constants
+"""==========================================================================================
+
+    Title:       <>
+    File:        <>
+    Author:      <Dan Sagher>
+    Date:        <>
+    Description:
+
+    <>
+
+    Dependencies:
+
+        External:
+
+        Internal:
+
+
+    Special Concerns: 
+
+#=========================================================================================="""
+
 import requests as rq
 from bs4 import BeautifulSoup as soup
 import pandas as pd
@@ -10,8 +30,12 @@ PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
 bls_state_url = "https://data.bls.gov/cgi-bin/surveymost?sm"
 
 
-def url_getter(url):
+def url_getter(url: None) -> None:
+    """
 
+    :params:
+    :returns:
+    """
     # Get response from bls main state unemployment site
     print("Getting URL")
     bls_ro = rq.get(url)
@@ -33,11 +57,11 @@ def url_getter(url):
     return state_link_list
 
 
-def state_scraper(state_link_list):
+def state_scraper(state_link_list: None) -> None:
     """
-    This function scrapes the BLS State Employment page for all Series and SeriesID's
-    and deposits them into a Pandas DataFrame.
-    The result is then automatically saved to a CSV.
+
+    :params:
+    :returns:
     """
     final_df = pd.DataFrame([])
 
@@ -84,6 +108,7 @@ def state_scraper(state_link_list):
         except Exception as e:
             print(f"An error occurred while processing {state_link_list[link][1]}: {e}")
 
+    #! Set this to automatically go to main list of series id's, not to an Excel output
     print("Done")
     final_df.to_csv(
         f"{PATH}outputs/state_scrape_op/state_series_dimension_{NOW}.csv", index=False
@@ -92,5 +117,6 @@ def state_scraper(state_link_list):
     return final_df
 
 
-state_link_list = url_getter(bls_state_url)
-state_scraper(state_link_list[0:10])
+if __name__ == "__main__":
+    state_link_list = url_getter(bls_state_url)
+    state_scraper(state_link_list[0:10])

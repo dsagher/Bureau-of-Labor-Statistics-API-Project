@@ -1,12 +1,35 @@
-from api_bls import get_series_id, message_retriever, derated_call, dataframe_maker
+"""==========================================================================================
+
+    Title:       <>
+    File:        <>
+    Author:      <Dan Sagher>
+    Date:        <>
+    Description:
+
+    <>
+
+    Dependencies:
+
+        External:
+
+        Internal:
+
+
+    Special Concerns: 
+
+#=========================================================================================="""
+
+from api_bls import BlsApiCall
 import pandas as pd
 import datetime as dt
+import os
 
 
 NOW = dt.datetime.now().strftime("%d-%b-%Y_%H:%M:%S")
 #! Use OS Module
 PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
 
+#! Could try to webscrape national series too
 national_series = pd.read_csv(
     PATH + "outputs/cleaning_op/national_series_dimension_cleaned.csv"
 )
@@ -14,29 +37,30 @@ state_series = pd.read_csv(
     PATH + "outputs/cleaning_op/state_series_dimension_cleaned.csv"
 )
 
+api_engine = BlsApiCall()
 
-def main(series_input, name_of_file):
+
+def main(series_input: None, name_of_file: None) -> None:
     """
-    This function takes in a list of seriesID's and a string
-    used to name the CSV file output. Input can be any # of seriesID's > than 1.
+
+    :params:
+    :returns:
     """
-    data_results = derated_call(series_input, "2002", "2015")
+    data_results = api_engine.extract(series_input[0:10], "2002", "2015")
+    print(type(data_results))
+    print(data_results)
+    #! Send this to console output instead
+    # message_list = api_engine.message_retriever(data_results)
 
-    # Pulls out no-data messages and stores in DF
-    message_list = message_retriever(data_results)
-
-    # Results of api caller run into a DF
-    df = dataframe_maker(data_results)
+    #! Put this inside of class
+    df = api_engine.transform(data_results)
 
     # Outputs files into csv's w/ date and time
     df.to_csv(f"{PATH}outputs/main_op/{name_of_file}_{NOW}.csv", index=False)
-    message_list.to_csv(
-        f"{PATH}outputs/main_op/{name_of_file}_msglst_{NOW}.csv", index=False
-    )
 
     return df
 
 
-# Run once for national_series, once for state_series
-final_national_df = main(national_series, "national_results")
-final_state_df = main(state_series, "state_results")
+if __name__ == "__main__":
+    final_national_df = main(national_series, "national_results")
+    final_state_df = main(state_series, "state_results")

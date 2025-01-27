@@ -7,4 +7,6 @@ sql files/
 api_key.py
 __pycache__
 .DS_Store
-
+config.py
+venv/
+query_count.txt
