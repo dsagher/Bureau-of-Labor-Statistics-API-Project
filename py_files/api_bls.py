@@ -31,9 +31,9 @@ Series description information (catalog) is available for a limited number of se
 (Only surveys included in the BLS Data Finder tool are available for catalog information.)
 """
 import pandas as pd
-import requests as rq
+import requests
 import json
-import api_key
+from api_key import API_KEY
 import time
 from datetime import datetime
 from requests.exceptions import HTTPError
@@ -45,7 +45,7 @@ from http import HTTPStatus
 import logging
 from typing import Any
 import os
-from functools import cached_property
+
 
 
 PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
@@ -63,73 +63,80 @@ class BlsApiCall:
     Add Doc String
     """
 
+    count_file = "query_count.txt"
+
     def __init__(self):
-        self.query_count = 0
-        self.message_df = pd.DataFrame(columns=["series_id", "year"])
-        self._query_time = datetime.strftime(datetime.now(), "%m/%d/%Y, %H:%M:%S")
-        self._query_day = datetime.strftime(datetime.now(), "%d")
-
-    @property
-    def query_day(self):
-        return self._query_day
-
-    @cached_property
-    def first_query(self):
-        return datetime.strftime(datetime.now(), "%d")
+        pass
 
     #! Use a Run Count.txt file to count the amount of times a program has been run.
 
-    @staticmethod
-    def increment_query_count():
-
-        count_file = "query_count.txt"
-
+    def create_first_query(self):
+        """
+        Create first query if it doesn't exist when incremented.
+        Maybe this should go in init. Because this is being asked if the program is run 
+        multiple times within a day. If this program gets run again, it'll keep this state, 
+        so long as the count file does not get deleted.
+        """
+        
+        # if self.current_query_day - self.first_query_day > 0:
+        #     os.remove("query_count.txt")
+        self.just_created = False 
         # Check if the count file exists
-        if not os.path.exists(count_file):
-            print("not query count")
-            with open(count_file, "w") as file:
-                entry = "0, 0"
+        if not os.path.exists(self.count_file):
+            self.first_query_day= int(datetime.strftime(datetime.now(), "%d"))
+            self.count = 1
+
+            with open(self.count_file, "w") as file:
+                entry = f"{self.count}, {self.first_query_day}\n"
                 file.write(str(entry))
+                self.just_created = True
+        
+    def read_last_query(self):
+        """Then this reads the first and last query in the file. if theres one line in the file, 
+        it reads that one line and sets count and day to the first count and first day. 
+        If there are multiple lines in the file, it sets those to count and day, to eventually land on the last line"""
 
-        # Read the current count
-        with open(count_file, "r") as file:
-            result = file.read().strip()
-            count, day = tuple(result.split(","))
+        with open(self.count_file, "r") as file:
 
-        # Increment and write the updated count
-        with open(count_file, "w") as file:
-            query_day = datetime.strftime(datetime.now(), "%d")
-            file.write(f"{int(count) + 1}, {query_day}")
+            self.first_query_count, self.first_query_day = file.readline().split(',')
+            self.first_query_count = int(self.first_query_count)
+            self.first_query_day = int(self.first_query_day)
 
-    @property
-    def get_query_count(self):
+            try:
+                for line in file:
+                    last_line = line
+                self.count, self.day = tuple(last_line.split(","))
+                self.count = int(self.count)
+                self.day = int(self.day)
 
-        count_file = "query_count.txt"
-        if os.path.exists(count_file):
-            with open(count_file, "r") as file:
-                final_result = file.read()
-                count, day = final_result.split(",")
-                return count, day
-        else:
-            raise FileNotFoundError("Query count file does not exist.")
+            except UnboundLocalError:
+                self.count = int(self.first_query_count)
+                self.day = int(self.first_query_day)
+    
+    def increment_query_count(self):
+        """this increments it up once the file has already been created.
+        If it gets run at the beginning of the day with multiple queries, just_created gets 
+        set to True, writes the first query, and then the next time it is run, it sets it to False, and doesnt
+        recreate the file because it already exists, so each time it is run after that, it's making just_created false."""
+        if not self.just_created:
+            with open(self.count_file, "a") as file:
+                file.write(f"{self.count + 1}, {self.day}\n")
 
-    def _query_limit(self):
-
-        self.final_count, self.final_day = self.get_query_count
-
-        if (
-            int(self.final_count) > 500
-            and int(self.final_day) - int(self.query_day) == 0
-        ):
+    def raise_for_query_limit(self):
+        """This gets updated every query and continually asks if 
+        the count is greater than 500 and makes sure the day hasn't changed."""
+        self.current_query_day = int(datetime.strftime(datetime.now(), "%d"))
+        if self.count > 500 and self.current_query_day - self.first_query_day == 0:
+            os.remove("query_count.txt")
             raise Exception("Queries may not exceed 500 within a day.")
-
+        
     def reset_query_limit(self):
-        if int(self.final_day) - int(self.query_day) > 0:
+        if self.current_query_day - self.first_query_day > 0:
+            print("HEY")
             os.remove("query_count.txt")
 
-    #! Something like this
-    def bls_request(
-        self, series: list, start_year: str, end_year: str) -> dict[str, Any]:  # fmt:skip
+
+    def bls_request(self, series: list, start_year: str, end_year: str) -> dict[str, Any]:
         """
         Rewrite docstring
         """
@@ -150,7 +157,7 @@ class BlsApiCall:
                 "seriesid": series,
                 "startyear": start_year,
                 "endyear": end_year,
-                "registrationKey": api_key.API_KEY,
+                "registrationKey": API_KEY,
             }
         )
         retry_codes = [
@@ -160,25 +167,26 @@ class BlsApiCall:
             HTTPStatus.GATEWAY_TIMEOUT,  # 504
         ]
 
+
         for attempt in range(1, RETRIES + 1):
 
             try:
-                #! Just moved this up here and is not working.
-                self._query_limit()
-                response = rq.post(URL_ENDPOINT, data=payload, headers=headers)
+
+                self.create_first_query()
+                self.read_last_query()
+                self.increment_query_count()
+                self.raise_for_query_limit()
+                self.reset_query_limit()
+
+                response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
+
                 response_json = response.json()
-                response_status = response_json["status"]
+                self.response_status = response_json["status"]
 
-                if (response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED"):  # fmt: skip
-
-                    BlsApiCall.increment_query_count()
-                    self.reset_query_limit()
-
+                if (response.status_code == HTTPStatus.OK and self.response_status == "REQUEST_SUCCEEDED"): 
                     return response_json
-                else:
-                    raise Exception(
-                        f"API Error: {response_json.get('status', 'Unknown error')}"
-                    )
+                elif self.response_status != "REQUEST_SUCCEEDED":
+                    raise Exception()
 
             except HTTPError as e:
                 if response.status_code in retry_codes:
@@ -188,7 +196,9 @@ class BlsApiCall:
                     raise HTTPError(f"HTTP error occurred: {e}")
 
             except Exception as e:
-                time.sleep(2**attempt)  # Exponential backoff
+                time.sleep(2**attempt)
+                raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}") # Exponential backoff
+         
 
         raise Exception("Failed to fetch data after multiple attempts.")
 
@@ -230,7 +240,7 @@ class BlsApiCall:
         series_id = message[29:-10]
         year = message[-4:]
         new_row = {"series_id": series_id, "year": year}
-        #! self.message_df coming out empty
+
         pd.concat([self.message_df, pd.Series(new_row).to_frame()])
 
     def transform(self, final_response_json_lst: list) -> pd.DataFrame:

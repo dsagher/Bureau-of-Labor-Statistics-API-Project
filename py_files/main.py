@@ -47,8 +47,7 @@ def main(series_input: None, name_of_file: None) -> None:
     :returns:
     """
     data_results = api_engine.extract(series_input[0:10], "2002", "2015")
-    print(type(data_results))
-    print(data_results)
+
     #! Send this to console output instead
     # message_list = api_engine.message_retriever(data_results)
 
