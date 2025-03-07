@@ -35,7 +35,7 @@ import requests
 import json
 from api_key import API_KEY
 import time
-from datetime import datetime
+import datetime
 from requests.exceptions import HTTPError
 import pandas as pd
 import psycopg2 as pg
@@ -43,19 +43,16 @@ from config import host, dbname, user, password, port
 import pprint as pp
 from http import HTTPStatus
 import logging
-from typing import Any
 import os
+from itertools import batched
 
 
+#! Could read these in without pandas 
+state_series_path = os.path.join(os.getcwd(), 'outputs/cleaning_op/state_series_dimension_cleaned.csv')
+state_series = pd.read_csv(state_series_path)
 
-PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
-
-national_series = pd.read_csv(
-    PATH + "outputs/cleaning_op/national_series_dimension_cleaned.csv"
-)
-state_series = pd.read_csv(
-    PATH + "outputs/cleaning_op/state_series_dimension_cleaned.csv"
-)
+national_series_path = os.path.join(os.getcwd(), 'outputs/cleaning_op/national_series_dimension_cleaned.csv')
+national_series = pd.read_csv(state_series_path)
 
 
 class BlsApiCall:
@@ -63,124 +60,145 @@ class BlsApiCall:
     Add Doc String
     """
 
-    count_file = "query_count.txt"
+    query_count_file = "query_count.txt"
 
     def __init__(self):
+
         pass
 
-    #! Use a Run Count.txt file to count the amount of times a program has been run.
+    def _read_query(self) -> None:
+        """
+        Method called in create_query_file() and increment_query_count() to read first and last queries.
 
-    def create_first_query(self):
+        Special Note:
+            - UnboundLocalError is raised when there is only 1 entry in 'query_count.txt', in which case, 
+              self.count and self.day are initialized to self.first_query_count and self.first_query_day
         """
-        Create first query if it doesn't exist when incremented.
-        Maybe this should go in init. Because this is being asked if the program is run 
-        multiple times within a day. If this program gets run again, it'll keep this state, 
-        so long as the count file does not get deleted.
+
+        if os.path.exists(self.query_count_file):
+
+            with open(self.query_count_file, "r") as file:
+
+                self.first_query_count, self.first_query_day = file.readline().split(',')
+                self.first_query_count = int(self.first_query_count)
+                self.first_query_day = int(self.first_query_day)
+       
+
+                try:
+                    for line in file:
+                        last_line = line
+                    self.last_query_count, self.last_query_day = tuple(last_line.split(","))
+                    self.last_query_count = int(self.last_query_count)
+                    self.day = int(self.last_query_day)
+
+                except UnboundLocalError: # If there is only one entry
+                    self.last_query_count = int(self.first_query_count)
+                    self.last_query_day = int(self.first_query_day)
+                
+
+    def _create_query_file(self) -> None:
         """
-        
-        # if self.current_query_day - self.first_query_day > 0:
-        #     os.remove("query_count.txt")
+        Method called in bls_request that creates query count file if one does not exist and deletes file if program
+        is run again next day or later.
+
+        Special Notes
+            - Sets self.just_created to True after initial creation and False each time program is run after initial creation.
+        """
+
+        self._read_query()
+
+        self.current_query_day = int(datetime.datetime.strftime(datetime.datetime.now(), "%d"))
         self.just_created = False 
-        # Check if the count file exists
-        if not os.path.exists(self.count_file):
-            self.first_query_day= int(datetime.strftime(datetime.now(), "%d"))
+        
+        if os.path.exists(self.query_count_file) and self.current_query_day - self.first_query_day > 0:
+            os.remove(self.query_count_file)    
+
+        if not os.path.exists(self.query_count_file):
+            self.first_query_day= int(datetime.datetime.strftime(datetime.datetime.now(), "%d"))
             self.count = 1
 
-            with open(self.count_file, "w") as file:
+            with open(self.query_count_file, "w") as file:
                 entry = f"{self.count}, {self.first_query_day}\n"
                 file.write(str(entry))
-                self.just_created = True
-        
-    def read_last_query(self):
-        """Then this reads the first and last query in the file. if theres one line in the file, 
-        it reads that one line and sets count and day to the first count and first day. 
-        If there are multiple lines in the file, it sets those to count and day, to eventually land on the last line"""
-
-        with open(self.count_file, "r") as file:
-
-            self.first_query_count, self.first_query_day = file.readline().split(',')
-            self.first_query_count = int(self.first_query_count)
-            self.first_query_day = int(self.first_query_day)
-
-            try:
-                for line in file:
-                    last_line = line
-                self.count, self.day = tuple(last_line.split(","))
-                self.count = int(self.count)
-                self.day = int(self.day)
-
-            except UnboundLocalError:
-                self.count = int(self.first_query_count)
-                self.day = int(self.first_query_day)
+            self.just_created = True
     
-    def increment_query_count(self):
-        """this increments it up once the file has already been created.
-        If it gets run at the beginning of the day with multiple queries, just_created gets 
-        set to True, writes the first query, and then the next time it is run, it sets it to False, and doesnt
-        recreate the file because it already exists, so each time it is run after that, it's making just_created false."""
-        if not self.just_created:
-            with open(self.count_file, "a") as file:
-                file.write(f"{self.count + 1}, {self.day}\n")
+    def _increment_query_count(self) -> None:
+        """
+        Increments query count by 1 each time bls_request is called after initial creation.
 
-    def raise_for_query_limit(self):
-        """This gets updated every query and continually asks if 
-        the count is greater than 500 and makes sure the day hasn't changed."""
-        self.current_query_day = int(datetime.strftime(datetime.now(), "%d"))
-        if self.count > 500 and self.current_query_day - self.first_query_day == 0:
-            os.remove("query_count.txt")
+        Special Notes
+            - Raises Exception if query count exceeds 500 within same day.
+        """
+        self._read_query()
+
+        self.current_query_day = int(datetime.datetime.strftime(datetime.datetime.now(), "%d"))
+        if os.path.exists(self.query_count_file) and \
+                    self.last_query_count > 500 and \
+                    self.current_query_day - self.first_query_day == 0:
             raise Exception("Queries may not exceed 500 within a day.")
         
-    def reset_query_limit(self):
-        if self.current_query_day - self.first_query_day > 0:
-            print("HEY")
-            os.remove("query_count.txt")
+        if not self.just_created:
+            with open(self.query_count_file, "a") as file:
+                file.write(f"{self.last_query_count + 1}, {self.current_query_day}\n")
 
 
-    def bls_request(self, series: list, start_year: str, end_year: str) -> dict[str, Any]:
+    def bls_request(self, series: list, start_year: str, end_year: str) -> dict[str|int|list|dict[str,list[dict[str, list[dict[str, str]]]]]]:
         """
-        Rewrite docstring
+        Method called in extract() that sends POST request to Bureau of Labor Statistics API and returns JSON if no errors are encountered.
+
+        Parameters:
+            - series: list of seriesID's to send to API
+            - start_year: string value of desired start year for query
+            - end_year: string value of desired end year for query
+        
+        Returns:
+            - response_json: Dictionary of JSON response from API.
+                - Ex:   {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
+                        {'series': [
+                        {'seriesID': 'SMS01000000000000001', 'data': [
+                        {'year': '2020', 'period': 'M12', 'periodName': 'December', 'value': '2022.5', 'footnotes': [{}]}, {}, {}, {}]}]}}
+                - Structure: dict[str: str, str: int, str: list, str: dict[str: list[dict[str: list[dict[str:str]]]]]]   
+        
+        Special Notes:
+            - Raises ValueError if the seriesID list passed in is greater than 50
+            - Raises ValueError if the range of years passed in is greater than 20
+            - Raises Exception is API response code is not "REQUEST_SUCCEEDED"
+            - Excepts and retries 500 level status codes 3 times before raising HTTPError
+            - Excepts and retries Exceptions 3 times before raising Exception
         """
+
         URL_ENDPOINT = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
         RETRIES = 3
         YEAR_LIMIT = 20
         SERIES_LIMIT = 50
         year_range = int(end_year) - int(start_year)
 
+        headers = {"Content-Type": "application/json"}
+        payload = json.dumps({"seriesid": series,
+                              "startyear": start_year,
+                              "endyear": end_year,
+                              "registrationKey": API_KEY})
+        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, 
+                       HTTPStatus.BAD_GATEWAY, 
+                       HTTPStatus.SERVICE_UNAVAILABLE, 
+                       HTTPStatus.GATEWAY_TIMEOUT]
+
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
         elif year_range > YEAR_LIMIT:
             raise ValueError("Can only take in up to 20 years per query.")
 
-        headers = {"Content-Type": "application/json"}
-        payload = json.dumps(
-            {
-                "seriesid": series,
-                "startyear": start_year,
-                "endyear": end_year,
-                "registrationKey": API_KEY,
-            }
-        )
-        retry_codes = [
-            HTTPStatus.INTERNAL_SERVER_ERROR,  # 500
-            HTTPStatus.BAD_GATEWAY,  # 502
-            HTTPStatus.SERVICE_UNAVAILABLE,  # 503
-            HTTPStatus.GATEWAY_TIMEOUT,  # 504
-        ]
-
-
-        for attempt in range(1, RETRIES + 1):
+        for attempt in range(0, RETRIES):
 
             try:
 
-                self.create_first_query()
-                self.read_last_query()
-                self.increment_query_count()
-                self.raise_for_query_limit()
-                self.reset_query_limit()
+                self._create_query_file()
+                self._increment_query_count()
 
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
 
                 response_json = response.json()
+ 
                 self.response_status = response_json["status"]
 
                 if (response.status_code == HTTPStatus.OK and self.response_status == "REQUEST_SUCCEEDED"): 
@@ -197,45 +215,73 @@ class BlsApiCall:
 
             except Exception as e:
                 time.sleep(2**attempt)
-                raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}") # Exponential backoff
+                continue
          
 
-        raise Exception("Failed to fetch data after multiple attempts.")
+        raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
 
-    def extract(
-        self,
-        series_df: pd.DataFrame,
-        start_year: int = 2002,
-        end_year: int = 2021,
-    ) -> list:
-        """ """
-        series_id_lst = list(series_df["seriesID"])
-        final_response_json_lst = []
-        BATCH_SIZE = 50
-        start_year = str(start_year)
-        end_year = str(end_year)
+    def extract(self, series_df: pd.DataFrame, start_year: int = 2000, end_year: int = 2002,) -> list:
+        """
+        Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
-        while series_id_lst:
-            request_data = series_id_lst[:BATCH_SIZE]  # fmt: skip
-            series_id_lst = series_id_lst[BATCH_SIZE:]  # fmt: skip
+        Parameters:
+            - series_df: Pandas DataFrame of any size containing seriesID's
+            - start_year: desired start year for query (default 2000)
+            - end_year: desired end year for query (default 2002)
 
-            print(f"Processessing batch of size: {len(request_data)}")
-            print(request_data)
+        Returns:
+            - lst_of_queries: list of response JSONs from bls_request()
+                Ex:     [
+                            {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
+                            {'series': 
+list no longer than 50 IDs --> [
+                            {'seriesID': 'SMS01000000000000001', 'data': [
+                            {'year': '2020', 'period': 'M12', 'periodName': 'December', 
+                            'value': '2022.5', 'footnotes': [{}]}, 
+                            {next_periods/years}...]}
+                                ]}},
+     start of new query --> {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
+                            {'series': [
+                            {'seriesID': '123456789', 'data': [
+                            {'year': '2020', 'period': 'M12', 'periodName': 'December', 
+                            'value': '2022.5', 'footnotes': [{}]}, 
+                            {next_periods/years}...]}]}}
+                        ]
 
-            result = self.bls_request(request_data, start_year, end_year)
+        """
 
-            final_response_json_lst.append(
-                result
-            )  # Add the results to the final_response_json list
+        BATCH_SIZE: int = 50
+        start_year: str = str(start_year)
+        end_year: str = str(end_year)
+        series_id_lst: list = list(series_df["seriesID"])
+        lst_of_queries: list = []
+    
+        for batch in batched(series_id_lst, BATCH_SIZE):
+
+            batch = list(batch)
+            print(f"Processessing batch of size: {len(batch)}")
+            print(batch)
+
+            result = self.bls_request(batch, start_year, end_year)
+
+            lst_of_queries.append(result)
             time.sleep(0.25)
 
-        return final_response_json_lst
+        return lst_of_queries
 
-    def set_message_ouput(self, message: str) -> None:
-        """ """
+    def _set_message_ouput(self, message: str) -> None:
+        """
+        Method looped in transform() that extracts the message and year that appear in response JSON
+        when year is missing information for a specific seriesID
+
+        Parameters:
+            - message: string value of message in response JSON
+        
+        """
         message_lst = []
-
         message_lst.append(message)
+
+        self.message_df = pd.DataFrame()
 
         series_id = message[29:-10]
         year = message[-4:]
@@ -248,6 +294,7 @@ class BlsApiCall:
         final_dct_lst = []
 
         print("Creating DataFrame...")
+
         for response in final_response_json_lst:
             results = response.get("Results")
             series_dct = results.get("series")
@@ -256,7 +303,7 @@ class BlsApiCall:
                 message = response.get("message")
                 #! Configure logging
                 logging.info(message)
-                self.set_message_ouput(message)
+                self._set_message_ouput(message)
 
             for series in series_dct:
 
@@ -373,6 +420,6 @@ class BlsApiCall:
 if __name__ == "__main__":
 
     call_engine = BlsApiCall()
-    result = call_engine.extract(national_series[:1], 2004, 2020)
+    result = call_engine.extract(national_series[:1])
     df = call_engine.transform(result)
     # print(call_engine.first_query)

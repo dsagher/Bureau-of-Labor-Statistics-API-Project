@@ -10,3 +10,4 @@ __pycache__
 config.py
 venv/
 query_count.txt
+playground.py

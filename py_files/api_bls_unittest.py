@@ -1,4 +1,4 @@
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, create_autospec
 import unittest
 import os
 from api_bls import BlsApiCall
@@ -23,8 +23,10 @@ class TestBlsApi(unittest.TestCase):
 
     @patch('api_bls.requests.post')
     def test_bls_request(self, mocked_post):
+
         if os.path.exists('query_count.txt'):
             os.remove('query_count.txt')
+
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
         mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
@@ -42,9 +44,7 @@ class TestBlsApi(unittest.TestCase):
             }
         )
 
-        mocked_post.assert_called_with('https://api.bls.gov/publicAPI/v2/timeseries/data/',
-                                       data = payload, 
-                                       headers = headers)
+        mocked_post.assert_called_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
         self.assertEqual(result, {"status": "REQUEST_SUCCEEDED"})
         
 
@@ -80,7 +80,7 @@ class TestBlsApi(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             self.api_call.bls_request([1], 2000, 2025)
             self.assertEqual(str(e.exception), "Can only take in up to 20 years per query.")
-        
+       
 
     @patch('api_bls.requests.post')
     def test_bls_id_limit(self, mocked_post):
@@ -115,12 +115,10 @@ class TestBlsApi(unittest.TestCase):
             self.api_call.bls_request([1], 2000, 2005)
             self.assertEqual(str(e.exception), f"API Error: {mocked_post().json()['status']}, Code: {mocked_post().status_code}")
 
-    @patch('api_bls.BlsApiCall.reset_query_limit')
-    @patch('api_bls.BlsApiCall.increment_query_count')
-    @patch('api_bls.BlsApiCall.raise_for_query_limit')
-    @patch('api_bls.BlsApiCall.create_first_query')
+
+    @patch('api_bls.datetime.datetime')
     @patch('api_bls.requests.post')
-    def test_bls_reset(self, mocked_post, mocked_first_query, mocked_raise_for_query_limit, mocked_increment_query_count, mocked_reset):
+    def test_bls_reset(self, mocked_post, mocked_date):
 
         if os.path.exists('query_count.txt'):
                 os.remove('query_count.txt')
@@ -128,26 +126,39 @@ class TestBlsApi(unittest.TestCase):
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
         mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
+        mocked_post.return_value = mock_response
 
-        # mocked_first_query.first_query_day = 2
-        # mocked_first_query.count = 1
-        # mocked_first_query.just_created = False
-        # with open('query_count.txt', "w") as file:
-        #     entry = f"{mocked_first_query.count}, {mocked_first_query.first_query_day}\n"
-        #     file.write(str(entry))
-        #     mocked_first_query.just_created = True
-        
-        # mocked_increment_query_count.just_created = True
-
-        # mocked_raise_for_query_limit.current_query_day = 1
-        # mocked_raise_for_query_limit.first_query_day = 2
-
-        mocked_reset.current_query_day = 2
-        mocked_reset.first_query_day = 1
+        mocked_date.strftime.return_value = '02'
 
         self.api_call.bls_request([1], 2000, 2005)
-        self.assertFalse(os.path.exists('query_count.txt'))
-        # with self.assertRaises(Exception) as e:
+        self.api_call.bls_request([1], 2000, 2005)
+        self.api_call.bls_request([1], 2000, 2005)
+        self.api_call.bls_request([1], 2000, 2005)
+        self.api_call.bls_request([1], 2000, 2005)
+
+        mocked_date.strftime.return_value = '03'
+
+        self.api_call.bls_request([1], 2000, 2005)
+
+        with open('query_count.txt','r') as file:
+            lines = []
+            for line in file:
+                lines.append(line)
+
+            count, day = lines[0].split(',')
+            count = int(count)
+            day = int(day)
+
+        assert len(lines) == 1
+        assert count == 1
+        assert day == 3
+        
+
+
+
+
+        
+
         
 
 
