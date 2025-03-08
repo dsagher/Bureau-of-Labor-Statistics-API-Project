@@ -52,18 +52,21 @@ class TestBlsApi(unittest.TestCase):
     def test_bls_request_limit(self, mocked_post):
         if os.path.exists('query_count.txt'):
                 os.remove('query_count.txt')
+                
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
         mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
         mocked_post.return_value = mock_response
         
-        for i in range(1, 502):
+        for _ in range(1, 501):
             self.api_call.bls_request([1], 2005, 2007)
+        
 
         with self.assertRaises(Exception) as e:
             self.api_call.bls_request([1], 2005, 2007)
             self.assertEqual(str(e.exception), "Queries may not exceed 500 within a day.")
             self.assertFalse(os.path.exists('query_count.txt'))
+            assert mocked_post.call_count <= 500
         
 
     @patch('api_bls.requests.post')
@@ -80,6 +83,7 @@ class TestBlsApi(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             self.api_call.bls_request([1], 2000, 2025)
             self.assertEqual(str(e.exception), "Can only take in up to 20 years per query.")
+            mocked_post.assert_not_called()
        
 
     @patch('api_bls.requests.post')
@@ -97,8 +101,8 @@ class TestBlsApi(unittest.TestCase):
 
         with self.assertRaises(ValueError) as e:
             self.api_call.bls_request(mock_lst, 2000, 2005)
-
             self.assertEqual(str(e.exception), "Can only take up to 50 seriesID's per query.")
+            mocked_post.assert_not_called()
 
     @patch('api_bls.requests.post')
     def test_bls_id_limit(self, mocked_post):
@@ -114,6 +118,7 @@ class TestBlsApi(unittest.TestCase):
         with self.assertRaises(Exception) as e:
             self.api_call.bls_request([1], 2000, 2005)
             self.assertEqual(str(e.exception), f"API Error: {mocked_post().json()['status']}, Code: {mocked_post().status_code}")
+            assert mocked_post.call_count == 3
 
 
     @patch('api_bls.datetime.datetime')
@@ -152,6 +157,9 @@ class TestBlsApi(unittest.TestCase):
         assert len(lines) == 1
         assert count == 1
         assert day == 3
+        assert mocked_post.call_count == 6
+    
+
         
 
 

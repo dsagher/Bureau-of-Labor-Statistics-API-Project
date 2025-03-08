@@ -3,7 +3,10 @@ misc_items/
 inputs/
 screenshots:videos/
 sql files/
-*.ipynb
+api_bls.ipynb
+code_scrape.ipynb
+eda.ipynb
+state_scrape.ipynb
 api_key.py
 __pycache__
 .DS_Store

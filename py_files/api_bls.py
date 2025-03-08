@@ -178,6 +178,7 @@ class BlsApiCall:
                               "startyear": start_year,
                               "endyear": end_year,
                               "registrationKey": API_KEY})
+        
         retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, 
                        HTTPStatus.BAD_GATEWAY, 
                        HTTPStatus.SERVICE_UNAVAILABLE, 
@@ -215,10 +216,10 @@ class BlsApiCall:
 
             except Exception as e:
                 time.sleep(2**attempt)
-                continue
+                
          
-
-        raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
+        if response_json:
+            raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
 
     def extract(self, series_df: pd.DataFrame, start_year: int = 2000, end_year: int = 2002,) -> list:
         """
@@ -269,7 +270,7 @@ list no longer than 50 IDs --> [
 
         return lst_of_queries
 
-    def _set_message_ouput(self, message: str) -> None:
+    def _log_message(self, message: str) -> None:
         """
         Method looped in transform() that extracts the message and year that appear in response JSON
         when year is missing information for a specific seriesID
@@ -279,31 +280,33 @@ list no longer than 50 IDs --> [
         
         """
         message_lst = []
-        message_lst.append(message)
-
-        self.message_df = pd.DataFrame()
-
         series_id = message[29:-10]
         year = message[-4:]
         new_row = {"series_id": series_id, "year": year}
-
-        pd.concat([self.message_df, pd.Series(new_row).to_frame()])
+        message_lst.append(new_row)
+        logging.info(message)
+        
 
     def transform(self, final_response_json_lst: list) -> pd.DataFrame:
-        """ """
+        """
+        Wrangles JSON response into Pandas DataFrame.
+
+        Parameters:
+            - final_response_json_lst: list of JSON responses from BLS API
+        Returns:
+            - final_df: Pandas DataFrame of final results
+        """
         final_dct_lst = []
 
         print("Creating DataFrame...")
-
+        
         for response in final_response_json_lst:
             results = response.get("Results")
             series_dct = results.get("series")
 
-            if response["message"] is not None:
+            if response["message"] != '[]':
                 message = response.get("message")
-                #! Configure logging
-                logging.info(message)
-                self._set_message_ouput(message)
+                self._log_message(message)
 
             for series in series_dct:
 
@@ -316,27 +319,23 @@ list no longer than 50 IDs --> [
                         "period": data_point["period"],
                         "period_name": data_point["periodName"],
                         "value": data_point["value"],
-                        "footnotes": (
-                            data_point["footnotes"]
-                            if not "[{}]" in data_point
-                            else None
-                        ),
+                        "footnotes": data_point["footnotes"] if not "[{}]" in data_point else None
                     }
+
                     final_dct_lst.append(data_dict)
 
         final_df = pd.DataFrame(final_dct_lst)
-
+        
         print("DataFrame Created")
+        print(final_df)        
         return final_df
 
     #! Get this to port to database without coming from Excel outputs first
     def sql_push(self) -> None:
 
-        PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
+        path = os.getcwd()
 
-        conn = pg.connect(
-            host=host, dbname=dbname, user=user, password=password, port=port
-        )
+        conn = pg.connect(host=host, dbname=dbname, user=user, password=password, port=port)
 
         cur = conn.cursor()
 
@@ -392,23 +391,23 @@ list no longer than 50 IDs --> [
             f"""
                     --sql
                     COPY national_series
-                    FROM '{PATH}/outputs/cleaning_op/national_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
+                    FROM '{path}/outputs/cleaning_op/national_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
 
                     --sql
                     COPY state_series
-                    FROM '{PATH}/outputs/cleaning_op/state_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
+                    FROM '{path}/outputs/cleaning_op/state_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
 
                     --sql
                     COPY national_results
-                    FROM '{PATH}/outputs/cleaning_op/national_results_cleaned.csv' DELIMITER ',' CSV HEADER;
+                    FROM '{path}/outputs/cleaning_op/national_results_cleaned.csv' DELIMITER ',' CSV HEADER;
 
                     --sql
                     COPY state_results
-                    FROM '{PATH}/outputs/cleaning_op/state_results_cleaned.csv'  DELIMITER ',' CSV HEADER;
+                    FROM '{path}/outputs/cleaning_op/state_results_cleaned.csv'  DELIMITER ',' CSV HEADER;
 
                     --sql
                     COPY survey_table
-                    FROM '{PATH}/outputs/excel_op/survey_table.csv' DELIMITER ',' CSV HEADER;
+                    FROM '{path}/outputs/excel_op/survey_table.csv' DELIMITER ',' CSV HEADER;
         """
         )
 
@@ -420,6 +419,6 @@ list no longer than 50 IDs --> [
 if __name__ == "__main__":
 
     call_engine = BlsApiCall()
-    result = call_engine.extract(national_series[:1])
+    result = call_engine.extract(national_series[:100])
     df = call_engine.transform(result)
     # print(call_engine.first_query)
