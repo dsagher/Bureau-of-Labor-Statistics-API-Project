@@ -6,14 +6,20 @@ from http import HTTPStatus
 import json
 from api_key import API_KEY
 from requests.exceptions import HTTPError
+import pandas as pd
 
 
 class TestBlsApi(unittest.TestCase):
 
     def setUp(self):
-            
-        self.api_call = BlsApiCall()
-       
+        self.state_series = pd.DataFrame([{'survey':'ABC',
+                                      'series':'I am series',
+                                      'seriesID':'ABC123',
+                                      'state': 'Michigan'}])
+        self.national_series = pd.DataFrame([{'series': 'I am series',
+                                              'seriesID':'ABC123',
+                                              'survey': 'ABC'}])
+        self.api_call = BlsApiCall(self.state_series)
         return super().setUp()
     
     def tearDown(self):
@@ -158,6 +164,33 @@ class TestBlsApi(unittest.TestCase):
         assert count == 1
         assert day == 3
         assert mocked_post.call_count == 6
+
+    @patch('api_bls.BlsApiCall._log_message')
+    @patch('api_bls.requests.post')
+    def test_bls_log(self, mocked_post, mocked_log):
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
+                
+        mock_response = Mock()
+        mock_response.status_code = HTTPStatus.OK
+        mock_response.json.return_value = [{'status': 'REQUEST_SUCCEEDED', 
+                                           'responseTime': 225, 
+                                           'message': ['No Data Available for Series 123456 Year: 1972'], 
+                                           'Results': {
+                                                    'series': [
+                                                    {'seriesID': 'SMS01000000000000001', 
+                                                     'data': []}]}}]
+        mocked_post.return_value = mock_response
+
+        # mock_log_message = Mock()
+
+        self.api_call.extract(2000, 2005)
+        self.api_call.transform()
+
+        mocked_log.assert_called_once()
+        
+
+
     
 
         

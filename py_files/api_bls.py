@@ -39,6 +39,7 @@ import pandas as pd
 import psycopg2 as pg
 from requests.exceptions import HTTPError
 import requests
+import re as re
 import os
 import time
 
@@ -47,7 +48,7 @@ from config import host, dbname, user, password, port
 
 FORMAT = '%(levelname)s: %(asctime)s - %(message)s'
 logger = logging.getLogger('api_bls.log')
-logging.basicConfig(filename='api_bls.log', level=logging.INFO, format=FORMAT)
+logging.basicConfig(filename='api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y:%M:%D %H:%M:%S")
 
 class BlsApiCall:
     """
@@ -57,16 +58,21 @@ class BlsApiCall:
 
     def __init__(self, national_series = None, state_series = None, number_of_series = None):
 
-        if not state_series:
-            self.national_series = national_series
+        if state_series is None and national_series is None:
+            raise Exception('Argument must only be one series list')
+        elif state_series is not None and national_series is not None:
+            raise Exception('Argument must only be one series list')
+        elif state_series is not None and not isinstance(state_series, pd.DataFrame):
+            raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
+        elif national_series is not None and not isinstance(national_series, pd.DataFrame):
+            raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
+        
+        if state_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
-        elif not national_series:
+            self.national_series = national_series
+        elif national_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(state_series)
             self.state_series = state_series
-        elif state_series and national_series:
-            raise Exception('Argument must only be one series list')
-        elif not (state_series and national_series):
-            raise Exception('Argument must only be one series list')
         
     def _read_query(self) -> None:
         """
@@ -181,22 +187,22 @@ class BlsApiCall:
         elif year_range > YEAR_LIMIT:
             raise ValueError("Can only take in up to 20 years per query.")
 
-        for attempt in range(0, RETRIES):
-
+        for attempt in range(1, RETRIES + 1):
             try:
-
                 self._create_query_file()
                 self._increment_query_count()
-
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
-                logging.info('Request made: %s seriesIDs, from %s to %s', len(series), start_year, end_year)
+
+                if self.national_series is not None:
+                    logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
+                elif self.state_series is not None:
+                    logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
 
                 response_json = response.json()
- 
                 response_status = response_json["status"]
 
                 if response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED": 
-                    logging.info('Status Code: %s Response: %s', response.status_code, response_status)
+                    logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                     return response_json
                 elif response.status_code == HTTPStatus.OK and response_status != "REQUEST_SUCCEEDED":
                     logging.warning('Response: %s', response_status)
@@ -219,6 +225,7 @@ class BlsApiCall:
             raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
 
     def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
+        #! Move this to documentation
         """
         Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
@@ -276,23 +283,29 @@ list no longer than 50 IDs --> [
 
         return self.lst_of_queries
 
-    def _log_message(self, message: str) -> None:
+    def _log_message(self, messages: str) -> None:
         """
         Method looped in transform() that extracts the message and year that appear in response JSON
         when year is missing information for a specific seriesID
 
         Parameters:
             - message: string value of message in response JSON
-        
         """
-
-        #! Logs coming out funky
-        message_lst = []
-        series_id = message[29:-4]
-        year = message[-4:]
-        entry = {"series_id": series_id, "year": year}
-        message_lst.append(entry)
-        logging.info(entry)
+        for message in messages:
+            year_reg_match = re.fullmatch(r'No Data Available for Series (\w+) Year: (\d\d\d\d)', message)
+            no_series_reg_match = re.fullmatch(r'Series does not exist for Series (\w+)', message)
+            if year_reg_match:
+                series_id, year = year_reg_match.group(1,2)
+                msg = 'No Data Available'
+                entry = {'message': msg, "series_id": series_id, "year": year}
+                logging.warning(entry)
+            elif no_series_reg_match:
+                series_id = no_series_reg_match.group(1)
+                msg = 'Series does not exist'
+                entry = {'message': msg, "series_id": series_id}
+                logging.warning(entry)
+            else:
+                logging.warning(message)
 
     def _drop_nulls_and_duplicates(self, df):
         df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
@@ -305,15 +318,11 @@ list no longer than 50 IDs --> [
         return df
     
     def _remove_space(self, df):
-
         for col in df.columns:
-
-            df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)
-                
+            df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)     
         return df
 
     def _convert_adjusted(self,series):
-
         adjusted = ', seasonally adjusted'
         not_adjusted = ', not seasonally adjusted'
 
@@ -336,7 +345,6 @@ list no longer than 50 IDs --> [
 
         return series
     
-
     def transform(self) -> pd.DataFrame:
         """
         Wrangles JSON response into Pandas DataFrame.
@@ -347,7 +355,7 @@ list no longer than 50 IDs --> [
             - final_df: Pandas DataFrame of final results
         """
         final_dct_lst = []
-        
+        print(self.lst_of_queries)
         for response in self.lst_of_queries:
             results = response.get("Results")
             series_dct = results.get("series")
@@ -357,7 +365,6 @@ list no longer than 50 IDs --> [
                 self._log_message(message)
 
             for series in series_dct:
-
                 series_id = series["seriesID"]
 
                 for data_point in series["data"]:
@@ -371,23 +378,25 @@ list no longer than 50 IDs --> [
                     }
 
                     final_dct_lst.append(data_dict)
-
         final_df = pd.DataFrame(final_dct_lst)
         
-        if self.national_series is not None:
-            final_df = final_df.merge(self.national_series, on='seriesID',how='left')
-        elif self.state_series is not None:
-            final_df = final_df.merge(self.state_series, on='seriesID', how='left')
+        if not final_df.empty:
+            if self.national_series is not None:
+                final_df = final_df.merge(self.national_series, on='seriesID',how='left')
+            elif self.state_series is not None:
+                final_df = final_df.merge(self.state_series, on='seriesID', how='left')
 
-        final_df_cleaned = final_df.copy()
-        final_df_cleaned = self._drop_nulls_and_duplicates(final_df_cleaned)
-        final_df_cleaned = self._values_to_floats(final_df_cleaned)
-        final_df_cleaned = self._remove_space(final_df_cleaned)
-        final_df_cleaned = self._convert_adjusted(final_df_cleaned)
-        
-        print("DataFrame Created")
- 
-        return final_df_cleaned
+            final_df_cleaned = final_df.copy()
+            final_df_cleaned = self._drop_nulls_and_duplicates(final_df_cleaned)
+            final_df_cleaned = self._values_to_floats(final_df_cleaned)
+            final_df_cleaned = self._remove_space(final_df_cleaned)
+            final_df_cleaned = self._convert_adjusted(final_df_cleaned)
+            
+            print("DataFrame Created")
+
+            return final_df_cleaned
+        else:
+            raise Exception('DataFrame is Empty')
 
     #! Get this to port to database without coming from Excel outputs first
     #! Could use sql alchemy
@@ -482,9 +491,12 @@ if __name__ == "__main__":
     state_series = pd.read_csv(state_series_path)
 
     national_series_path = os.path.join(os.getcwd(), 'outputs/excel_op/national_series_dimension_og.csv')
-    national_series = pd.read_csv(state_series_path)
+    national_series = pd.read_csv(national_series_path)
+    print(national_series)
+    bad_national_series = national_series[national_series['seriesID'] == 'SMU12000001000000001']
+    # bad_national_series = pd.DataFrame([{'seriesID':'SMU12006901000000001'}])
 
-    call_engine = BlsApiCall(national_series)
-    call_engine.extract()
+    call_engine = BlsApiCall(national_series, number_of_series=100)
+    call_engine.extract(start_year=2000, end_year=2001)
     df = call_engine.transform()
     df.to_excel('outputs/excel_op/test_excel.xlsx')
