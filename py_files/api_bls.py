@@ -15,57 +15,59 @@
         Internal:
 
 
-    Special Concerns: 
+    Special Concerns:
+
+    API Notes
+
+        - Version 2.0 (10/16/2014)
+        - User registration is now required for use of the Public Data API and its new features. 
+        - Users must provide an email and organization name during registration.
+        - API 2.0 returns up to 20 years of data for up to 50 time series, 
+        - with a daily limit of 500 queries.
+        - Net and percent calculations are available for one month, two months, six months, twelve months.
+        - Annual averages are available.
+        - Series description information (catalog) is available for a limited number of series. 
+        - (Only surveys included in the BLS Data Finder tool are available for catalog information.)
 
 #=========================================================================================="""
-
-"""
-Version 2.0 (10/16/2014)
-User registration is now required for use of the Public Data API and its new features. 
-Users must provide an email and organization name during registration.
-API 2.0 returns up to 20 years of data for up to 50 time series, 
-with a daily limit of 500 queries.
-Net and percent calculations are available for one month, two months, six months, twelve months.
-Annual averages are available.
-Series description information (catalog) is available for a limited number of series. 
-(Only surveys included in the BLS Data Finder tool are available for catalog information.)
-"""
-import pandas as pd
-import requests
-import json
-from api_key import API_KEY
-import time
 import datetime
-from requests.exceptions import HTTPError
+from http import HTTPStatus
+import json
+from itertools import batched
+import logging
 import pandas as pd
 import psycopg2 as pg
-from config import host, dbname, user, password, port
-import pprint as pp
-from http import HTTPStatus
-import logging
+from requests.exceptions import HTTPError
+import requests
 import os
-from itertools import batched
+import time
 
+from api_key import API_KEY
+from config import host, dbname, user, password, port
 
-#! Could read these in without pandas 
-state_series_path = os.path.join(os.getcwd(), 'outputs/cleaning_op/state_series_dimension_cleaned.csv')
-state_series = pd.read_csv(state_series_path)
-
-national_series_path = os.path.join(os.getcwd(), 'outputs/cleaning_op/national_series_dimension_cleaned.csv')
-national_series = pd.read_csv(state_series_path)
-
+FORMAT = '%(levelname)s: %(asctime)s - %(message)s'
+logger = logging.getLogger('api_bls.log')
+logging.basicConfig(filename='api_bls.log', level=logging.INFO, format=FORMAT)
 
 class BlsApiCall:
     """
     Add Doc String
     """
-
     query_count_file = "query_count.txt"
 
-    def __init__(self):
+    def __init__(self, national_series = None, state_series = None, number_of_series = None):
 
-        pass
-
+        if not state_series:
+            self.national_series = national_series
+            self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
+        elif not national_series:
+            self.number_of_series = number_of_series if number_of_series is not None else len(state_series)
+            self.state_series = state_series
+        elif state_series and national_series:
+            raise Exception('Argument must only be one series list')
+        elif not (state_series and national_series):
+            raise Exception('Argument must only be one series list')
+        
     def _read_query(self) -> None:
         """
         Method called in create_query_file() and increment_query_count() to read first and last queries.
@@ -83,18 +85,16 @@ class BlsApiCall:
                 self.first_query_count = int(self.first_query_count)
                 self.first_query_day = int(self.first_query_day)
        
-
                 try:
                     for line in file:
                         last_line = line
                     self.last_query_count, self.last_query_day = tuple(last_line.split(","))
                     self.last_query_count = int(self.last_query_count)
-                    self.day = int(self.last_query_day)
+                    self.last_query_day = int(self.last_query_day)
 
                 except UnboundLocalError: # If there is only one entry
                     self.last_query_count = int(self.first_query_count)
                     self.last_query_day = int(self.first_query_day)
-                
 
     def _create_query_file(self) -> None:
         """
@@ -141,7 +141,6 @@ class BlsApiCall:
             with open(self.query_count_file, "a") as file:
                 file.write(f"{self.last_query_count + 1}, {self.current_query_day}\n")
 
-
     def bls_request(self, series: list, start_year: str, end_year: str) -> dict[str|int|list|dict[str,list[dict[str, list[dict[str, str]]]]]]:
         """
         Method called in extract() that sends POST request to Bureau of Labor Statistics API and returns JSON if no errors are encountered.
@@ -171,18 +170,11 @@ class BlsApiCall:
         RETRIES = 3
         YEAR_LIMIT = 20
         SERIES_LIMIT = 50
-        year_range = int(end_year) - int(start_year)
 
+        year_range = int(end_year) - int(start_year)
         headers = {"Content-Type": "application/json"}
-        payload = json.dumps({"seriesid": series,
-                              "startyear": start_year,
-                              "endyear": end_year,
-                              "registrationKey": API_KEY})
-        
-        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, 
-                       HTTPStatus.BAD_GATEWAY, 
-                       HTTPStatus.SERVICE_UNAVAILABLE, 
-                       HTTPStatus.GATEWAY_TIMEOUT]
+        payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
+        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
 
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
@@ -197,31 +189,36 @@ class BlsApiCall:
                 self._increment_query_count()
 
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
+                logging.info('Request made: %s seriesIDs, from %s to %s', len(series), start_year, end_year)
 
                 response_json = response.json()
  
-                self.response_status = response_json["status"]
+                response_status = response_json["status"]
 
-                if (response.status_code == HTTPStatus.OK and self.response_status == "REQUEST_SUCCEEDED"): 
+                if response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED": 
+                    logging.info('Status Code: %s Response: %s', response.status_code, response_status)
                     return response_json
-                elif self.response_status != "REQUEST_SUCCEEDED":
+                elif response.status_code == HTTPStatus.OK and response_status != "REQUEST_SUCCEEDED":
+                    logging.warning('Response: %s', response_status)
                     raise Exception()
 
             except HTTPError as e:
                 if response.status_code in retry_codes:
+                    logging.warning('HTTP Error: %s Attempt: %s', e, attempt)
                     time.sleep(2**attempt)
                     continue
                 else:
+                    logging.critical('HTTP erro occurred: %s', e)
                     raise HTTPError(f"HTTP error occurred: {e}")
 
             except Exception as e:
+                logging.critical('Bad Request: %s Attempt: %s', response_status, attempt)
                 time.sleep(2**attempt)
                 
-         
         if response_json:
             raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
 
-    def extract(self, series_df: pd.DataFrame, start_year: int = 2000, end_year: int = 2002,) -> list:
+    def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
         """
         Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
@@ -252,23 +249,32 @@ list no longer than 50 IDs --> [
         """
 
         BATCH_SIZE: int = 50
+        INPUT_AMOUNT: int = self.number_of_series
         start_year: str = str(start_year)
         end_year: str = str(end_year)
-        series_id_lst: list = list(series_df["seriesID"])
-        lst_of_queries: list = []
-    
+        self.lst_of_queries: list = []
+
+        if self.national_series is not None:
+            series_id_lst: list = list(self.national_series["seriesID"])[:INPUT_AMOUNT]
+        elif self.state_series is not None:
+            series_id_lst: list = list(self.state_series["seriesID"])[:INPUT_AMOUNT]
+
+        batch_progress = 0
         for batch in batched(series_id_lst, BATCH_SIZE):
 
             batch = list(batch)
-            print(f"Processessing batch of size: {len(batch)}")
-            print(batch)
+            batch_size = len(batch)
+            batch_progress += batch_size
+            total_size = len(series_id_lst)
 
+            print(f"Processessing batch of size: {batch_size}")
+            print(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
+            
             result = self.bls_request(batch, start_year, end_year)
-
-            lst_of_queries.append(result)
+            self.lst_of_queries.append(result)
             time.sleep(0.25)
 
-        return lst_of_queries
+        return self.lst_of_queries
 
     def _log_message(self, message: str) -> None:
         """
@@ -279,15 +285,59 @@ list no longer than 50 IDs --> [
             - message: string value of message in response JSON
         
         """
-        message_lst = []
-        series_id = message[29:-10]
-        year = message[-4:]
-        new_row = {"series_id": series_id, "year": year}
-        message_lst.append(new_row)
-        logging.info(message)
-        
 
-    def transform(self, final_response_json_lst: list) -> pd.DataFrame:
+        #! Logs coming out funky
+        message_lst = []
+        series_id = message[29:-4]
+        year = message[-4:]
+        entry = {"series_id": series_id, "year": year}
+        message_lst.append(entry)
+        logging.info(entry)
+
+    def _drop_nulls_and_duplicates(self, df):
+        df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
+        df = df.dropna(axis=0)
+        return df
+
+    def _values_to_floats(self, df):
+        df['value'] = df['value'].replace('-', None)
+        df['value'] = df['value'].astype('float')
+        return df
+    
+    def _remove_space(self, df):
+
+        for col in df.columns:
+
+            df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)
+                
+        return df
+
+    def _convert_adjusted(self,series):
+
+        adjusted = ', seasonally adjusted'
+        not_adjusted = ', not seasonally adjusted'
+
+        def adjusted_column(text):
+            text = str(text).lower()
+            return True if text.endswith(adjusted) else False if text.endswith(not_adjusted) else None
+        
+        def remove_terms(text):
+            text_lower = text.lower()
+            index1 = text_lower.find(adjusted)
+            index2 = text_lower.find(not_adjusted)
+            if index1 != -1:
+                return text[:index1]
+            elif index2 != -1:
+                return text[:index2]
+            return text
+        
+        series['is_adjusted'] = series['series'].apply(adjusted_column)
+        series['series'] = series['series'].apply(remove_terms)
+
+        return series
+    
+
+    def transform(self) -> pd.DataFrame:
         """
         Wrangles JSON response into Pandas DataFrame.
 
@@ -297,14 +347,12 @@ list no longer than 50 IDs --> [
             - final_df: Pandas DataFrame of final results
         """
         final_dct_lst = []
-
-        print("Creating DataFrame...")
         
-        for response in final_response_json_lst:
+        for response in self.lst_of_queries:
             results = response.get("Results")
             series_dct = results.get("series")
 
-            if response["message"] != '[]':
+            if response["message"] != []:
                 message = response.get("message")
                 self._log_message(message)
 
@@ -326,11 +374,23 @@ list no longer than 50 IDs --> [
 
         final_df = pd.DataFrame(final_dct_lst)
         
+        if self.national_series is not None:
+            final_df = final_df.merge(self.national_series, on='seriesID',how='left')
+        elif self.state_series is not None:
+            final_df = final_df.merge(self.state_series, on='seriesID', how='left')
+
+        final_df_cleaned = final_df.copy()
+        final_df_cleaned = self._drop_nulls_and_duplicates(final_df_cleaned)
+        final_df_cleaned = self._values_to_floats(final_df_cleaned)
+        final_df_cleaned = self._remove_space(final_df_cleaned)
+        final_df_cleaned = self._convert_adjusted(final_df_cleaned)
+        
         print("DataFrame Created")
-        print(final_df)        
-        return final_df
+ 
+        return final_df_cleaned
 
     #! Get this to port to database without coming from Excel outputs first
+    #! Could use sql alchemy
     def sql_push(self) -> None:
 
         path = os.getcwd()
@@ -418,7 +478,13 @@ list no longer than 50 IDs --> [
 
 if __name__ == "__main__":
 
-    call_engine = BlsApiCall()
-    result = call_engine.extract(national_series[:100])
-    df = call_engine.transform(result)
-    # print(call_engine.first_query)
+    state_series_path = os.path.join(os.getcwd(), 'outputs/state_scrape_op/state_series_dimension.csv')
+    state_series = pd.read_csv(state_series_path)
+
+    national_series_path = os.path.join(os.getcwd(), 'outputs/excel_op/national_series_dimension_og.csv')
+    national_series = pd.read_csv(state_series_path)
+
+    call_engine = BlsApiCall(national_series)
+    call_engine.extract()
+    df = call_engine.transform()
+    df.to_excel('outputs/excel_op/test_excel.xlsx')

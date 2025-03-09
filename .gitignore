@@ -1,7 +1,7 @@
 outputs/
 misc_items/
 inputs/
-screenshots:videos/
+screenshots_videos/
 sql files/
 api_bls.ipynb
 code_scrape.ipynb
@@ -14,3 +14,5 @@ config.py
 venv/
 query_count.txt
 playground.py
+api_bls.log
+cleaning.ipynb

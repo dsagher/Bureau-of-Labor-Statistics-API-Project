@@ -48,13 +48,8 @@ def main(series_input: None, name_of_file: None) -> None:
     """
     data_results = api_engine.extract(series_input[0:10], "2002", "2015")
 
-    #! Send this to console output instead
-    # message_list = api_engine.message_retriever(data_results)
-
-    #! Put this inside of class
     df = api_engine.transform(data_results)
 
-    # Outputs files into csv's w/ date and time
     df.to_csv(f"{PATH}outputs/main_op/{name_of_file}_{NOW}.csv", index=False)
 
     return df

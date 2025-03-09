@@ -44,7 +44,7 @@ class TestBlsApi(unittest.TestCase):
             }
         )
 
-        mocked_post.assert_called_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
+        mocked_post.assert_called_once_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
         self.assertEqual(result, {"status": "REQUEST_SUCCEEDED"})
         
 
