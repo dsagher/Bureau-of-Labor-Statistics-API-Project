@@ -57,7 +57,6 @@ class BlsApiCall:
     query_count_file = "query_count.txt"
 
     def __init__(self, national_series = None, state_series = None, number_of_series = None):
-
         if state_series is None and national_series is None:
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
@@ -141,6 +140,7 @@ class BlsApiCall:
         if os.path.exists(self.query_count_file) and \
                     self.last_query_count > 500 and \
                     self.current_query_day - self.first_query_day == 0:
+            logging.critical('Queries may not exceed 500 within a day.')
             raise Exception("Queries may not exceed 500 within a day.")
         
         if not self.just_created:
@@ -192,36 +192,41 @@ class BlsApiCall:
                 self._create_query_file()
                 self._increment_query_count()
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
-
+                print('called')
                 if self.national_series is not None:
                     logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 elif self.state_series is not None:
                     logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
-
+                print(response.status_code)
                 response_json = response.json()
+                #! Its trying to tunnel into the response_json, which is a mock object, but it shouldnt be getting here
                 response_status = response_json["status"]
-
+                
                 if response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED": 
                     logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                     return response_json
                 elif response.status_code == HTTPStatus.OK and response_status != "REQUEST_SUCCEEDED":
                     logging.warning('Response: %s', response_status)
                     raise Exception()
-
+            #! Somehow its not raising the right error
+            #! Its going to Exception. The Problem could be two Exception blocks in a row?
             except HTTPError as e:
                 if response.status_code in retry_codes:
                     logging.warning('HTTP Error: %s Attempt: %s', e, attempt)
                     time.sleep(2**attempt)
+                    print('httperror')
                     continue
                 else:
-                    logging.critical('HTTP erro occurred: %s', e)
+                    logging.critical('HTTP error occurred: %s', e)
                     raise HTTPError(f"HTTP error occurred: {e}")
 
             except Exception as e:
                 logging.critical('Bad Request: %s Attempt: %s', response_status, attempt)
+                print('exception')
                 time.sleep(2**attempt)
                 
         if response_json:
+            print('response_json')
             raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
 
     def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
@@ -355,7 +360,6 @@ list no longer than 50 IDs --> [
             - final_df: Pandas DataFrame of final results
         """
         final_dct_lst = []
-        print(self.lst_of_queries)
         for response in self.lst_of_queries:
             results = response.get("Results")
             series_dct = results.get("series")
@@ -378,8 +382,8 @@ list no longer than 50 IDs --> [
                     }
 
                     final_dct_lst.append(data_dict)
+
         final_df = pd.DataFrame(final_dct_lst)
-        
         if not final_df.empty:
             if self.national_series is not None:
                 final_df = final_df.merge(self.national_series, on='seriesID',how='left')
@@ -499,4 +503,4 @@ if __name__ == "__main__":
     call_engine = BlsApiCall(national_series, number_of_series=100)
     call_engine.extract(start_year=2000, end_year=2001)
     df = call_engine.transform()
-    df.to_excel('outputs/excel_op/test_excel.xlsx')
+    # df.to_excel('outputs/excel_op/test_excel.xlsx')
