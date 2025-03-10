@@ -27,174 +27,210 @@ class TestBlsApi(unittest.TestCase):
         pass
         return super().tearDown()\
         
-    # @patch('api_bls.logging.info')
-    # @patch('api_bls.requests.post')
-    # def test_bls_request(self, mocked_post, mocked_log):
+    @patch('api_bls.logging.info')
+    @patch('api_bls.requests.post')
+    def test_bls_request(self, mocked_post, mocked_log):
 
-    #     if os.path.exists('query_count.txt'):
-    #         os.remove('query_count.txt')
+        if os.path.exists('query_count.txt'):
+            os.remove('query_count.txt')
 
-    #     mock_response = Mock()
-    #     mock_response.status_code = HTTPStatus.OK
-    #     mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
-    #     mocked_post.return_value = mock_response
-    #     headers = {"Content-Type": "application/json"}
-    #     payload = json.dumps(
-    #         {
-    #             "seriesid": [1],
-    #             "startyear": 2005,
-    #             "endyear": 2007,
-    #             "registrationKey": API_KEY,
-    #         }
-    #     )
+        mock_response = Mock()
+        mock_response.status_code = HTTPStatus.OK
+        mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
+        mocked_post.return_value = mock_response
+        headers = {"Content-Type": "application/json"}
+        payload = json.dumps(
+            {
+                "seriesid": [1],
+                "startyear": 2005,
+                "endyear": 2007,
+                "registrationKey": API_KEY,
+            }
+        )
 
-    #     result = self.api_call.bls_request([1], 2005, 2007)
+        result = self.api_call.bls_request([1], 2005, 2007)
 
-    #     mocked_post.assert_called_once_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
-    #     self.assertEqual(result, {"status": "REQUEST_SUCCEEDED"})
-    #     assert mocked_log.call_count == 2
+        mocked_post.assert_called_once_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
+        self.assertEqual(result, {"status": "REQUEST_SUCCEEDED"})
+        assert mocked_log.call_count == 2
 
 
-    # @patch('api_bls.logging.critical')
-    # @patch('api_bls.requests.post')
-    # def test_bls_request_limit(self, mocked_post, mocked_log):
-    #     if os.path.exists('query_count.txt'):
-    #             os.remove('query_count.txt')
+    @patch('api_bls.logging.critical')
+    @patch('api_bls.requests.post')
+    def test_bls_request_limit(self, mocked_post, mocked_log):
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
+
+        mock_response = Mock()
+        mock_response.status_code = HTTPStatus.OK
+        mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
+        mocked_post.return_value = mock_response
         
-    #     for _ in range(1, 501):
-    #         self.api_call._create_query_file()
-    #         self.api_call._increment_query_count()
+        for _ in range(1, 501):
+            self.api_call._create_query_file()
+            self.api_call._increment_query_count()
         
-    #     with self.assertRaises(Exception) as e:
-    #         self.api_call.bls_request([1], 2005, 2007)
-    #         self.assertEqual(str(e.exception), "Queries may not exceed 500 within a day.")
-    #         self.assertFalse(os.path.exists('query_count.txt'))
-    #         mocked_log.assert_called_once()
-    #         mocked_post.assert_not_called()
-    #         assert mocked_post.call_count <= 500
-
-    # @patch('api_bls.requests.post')
-    # def test_bls_year_limit(self, mocked_post):
-
-    #     if os.path.exists('query_count.txt'):
-    #             os.remove('query_count.txt')
-        
-    #     with self.assertRaises(ValueError) as e:
-    #         self.api_call.bls_request([1], 2000, 2025)
-    #         self.assertEqual(str(e.exception), "Can only take in up to 20 years per query.")
-    #         mocked_post.assert_not_called()
-       
-    # @patch('api_bls.requests.post')
-    # def test_bls_id_limit(self, mocked_post):
-
-    #     if os.path.exists('query_count.txt'):
-    #             os.remove('query_count.txt')
-        
-    #     mock_lst = [i for i in range(60)]
-
-    #     with self.assertRaises(ValueError) as e:
-    #         self.api_call.bls_request(mock_lst, 2000, 2005)
-    #         self.assertEqual(str(e.exception), "Can only take up to 50 seriesID's per query.")
-    #         mocked_post.assert_not_called()
-
-    # @patch('api_bls.logging.info')
-    # @patch('api_bls.logging.critical')
-    # @patch('api_bls.requests.post')
-    # def test_bls_bad_request(self, mocked_post, mocked_critical, mocked_info):
-
-    #     if os.path.exists('query_count.txt'):
-    #             os.remove('query_count.txt')
-
-    #     mock_response = Mock()
-    #     mock_response.status_code = HTTPStatus.BAD_REQUEST
-    #     mock_response.json.return_value = {"status": "BAD"}
-    #     mocked_post.return_value = mock_response
-    
-    #     with self.assertRaises(Exception) as e:
-    #         self.api_call.bls_request([1], 2000, 2005)
-    #         self.assertEqual(str(e.exception), f"API Error: {mocked_post().json()['status']}, Code: {mocked_post().status_code}")
-    #         mocked_critical.assert_called_once()
-    #         assert mocked_post.call_count == 3
-    #         assert mocked_info.call_count == 2
-
-    # @patch('api_bls.logging.info')
-    # @patch('api_bls.datetime.datetime')
-    # @patch('api_bls.requests.post')
-    # def test_bls_reset(self, mocked_post, mocked_date, mocked_log):
-
-    #     if os.path.exists('query_count.txt'):
-    #             os.remove('query_count.txt')
-
-    #     mock_response = Mock()
-    #     mock_response.status_code = HTTPStatus.OK
-    #     mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
-    #     mocked_post.return_value = mock_response
-
-    #     mocked_date.strftime.return_value = '02'
-
-    #     for _ in range(5):
-    #         self.api_call.bls_request([1], 2000, 2005)
-
-    #     mocked_date.strftime.return_value = '03'
-
-    #     self.api_call.bls_request([1], 2000, 2005)
-
-    #     with open('query_count.txt','r') as file:
-    #         lines = []
-    #         for line in file:
-    #             lines.append(line)
-
-    #         count, day = lines[0].split(',')
-    #         count = int(count)
-    #         day = int(day)
-
-    #     assert len(lines) == 1
-    #     assert count == 1
-    #     assert day == 3
-    #     assert mocked_post.call_count == 6
-    #     assert mocked_log.call_count == 12
-
-    # @patch('api_bls.BlsApiCall._log_message')
-    # @patch('api_bls.requests.post')
-    # def test_bls_log_function(self, mocked_post, mocked_log_function):                
-    #     mock_response = Mock()
-    #     mock_response.status_code = HTTPStatus.OK
-    #     mock_response.json.return_value = {'status': 'REQUEST_SUCCEEDED', 
-    #                                        'responseTime': 225, 
-    #                                        'message': ['No Data Available for Series 123456 Year: 1972'], 
-    #                                        'Results': {
-    #                                                 'series': [
-    #                                                 {'seriesID': 'SMS01000000000000001', 
-    #                                                  'data': []}]}}
-    #     mocked_post.return_value = mock_response
-    #     with self.assertRaises(Exception) as e:
-    #         self.api_call.extract(2000, 2005)
-    #         self.api_call.transform()
-    #         self.assertEqual(str(e.exception), 'DataFrame is Empty')
-
-    #     mocked_log_function.assert_called_once()
+        with self.assertRaises(Exception) as e:
+            self.api_call.bls_request([1], 2005, 2007)
+            mocked_log.assert_called_once()
+            mocked_post.assert_not_called()
+            assert mocked_post.call_count <= 500
+        self.assertEqual(str(e.exception), "Queries may not exceed 500 within a day.")
+        self.assertFalse(os.path.exists('query_count.txt'))
 
     @patch('api_bls.requests.post')
-    def test_http_error_retry(self, mocked_requests):
-         
-        def side_effect(url, data, headers):
-              raise HTTPError(request='POST', response=HTTPStatus.INTERNAL_SERVER_ERROR)
+    def test_bls_year_limit(self, mocked_post):
+
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
         
+        with self.assertRaises(ValueError) as e:
+            self.api_call.bls_request([1], 2000, 2025)
+            mocked_post.assert_not_called()
+        self.assertEqual(str(e.exception), "Can only take in up to 20 years per query.")
+       
+    @patch('api_bls.requests.post')
+    def test_bls_id_limit(self, mocked_post):
+
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
+        
+        mock_lst = [i for i in range(60)]
+
+        with self.assertRaises(ValueError) as e:
+            self.api_call.bls_request(mock_lst, 2000, 2005)
+            mocked_post.assert_not_called()
+        self.assertEqual(str(e.exception), "Can only take up to 50 seriesID's per query.")
+
+    @patch('api_bls.logging.info')
+    @patch('api_bls.logging.critical')
+    @patch('api_bls.requests.post')
+    def test_bls_bad_request(self, mocked_post, mocked_critical, mocked_info):
+
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
+
         mock_response = Mock()
-        mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
-        # mock_response.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
-        mocked_requests.return_value = mock_response
-        mocked_requests.side_effect = side_effect
-        # mocked_requests.return_value = mock_response
-
-        with self.assertRaises(HTTPError) as e:
-            self.api_call.bls_request(['ABC'], 2000, 2002)
-            # self.assertEqual(str(e.exception), f'API Error: {mocked_requests().json()}, Code: {mocked_requests().status_code}')
-
-        print(str(e.exception))
-        print('call count' , mocked_requests.call_count)
-        # assert mocked_requests.call_count == 3
+        mock_response.status_code = HTTPStatus.BAD_REQUEST
+        mock_response.json.return_value = {"status": "BAD"}
+        mocked_post.return_value = mock_response
     
+        with self.assertRaises(Exception) as e:
+            self.api_call.bls_request([1], 2000, 2005)
+            mocked_critical.assert_called_once()
+            assert mocked_post.call_count == 3
+            assert mocked_info.call_count == 2
+        self.assertEqual(str(e.exception), f"API Error: {mocked_post().json()['status']}, Code: {mocked_post().status_code}")
+
+    @patch('api_bls.logging.info')
+    @patch('api_bls.datetime.datetime')
+    @patch('api_bls.requests.post')
+    def test_bls_reset(self, mocked_post, mocked_date, mocked_log):
+
+        if os.path.exists('query_count.txt'):
+                os.remove('query_count.txt')
+
+        mock_response = Mock()
+        mock_response.status_code = HTTPStatus.OK
+        mock_response.json.return_value = {"status": "REQUEST_SUCCEEDED"}
+        mocked_post.return_value = mock_response
+
+        mocked_date.strftime.return_value = '02'
+
+        for _ in range(5):
+            self.api_call.bls_request([1], 2000, 2005)
+
+        mocked_date.strftime.return_value = '03'
+
+        self.api_call.bls_request([1], 2000, 2005)
+
+        with open('query_count.txt','r') as file:
+            lines = []
+            for line in file:
+                lines.append(line)
+
+            count, day = lines[0].split(',')
+            count = int(count)
+            day = int(day)
+
+        assert len(lines) == 1
+        assert count == 1
+        assert day == 3
+        assert mocked_post.call_count == 6
+        assert mocked_log.call_count == 12
+
+    @patch('api_bls.BlsApiCall._log_message')
+    @patch('api_bls.requests.post')
+    def test_bls_log_function(self, mocked_post, mocked_log_function):                
+        mock_response = Mock()
+        mock_response.status_code = HTTPStatus.OK
+        mock_response.json.return_value = {'status': 'REQUEST_SUCCEEDED', 
+                                           'responseTime': 225, 
+                                           'message': ['No Data Available for Series 123456 Year: 1972'], 
+                                           'Results': {
+                                                    'series': [
+                                                    {'seriesID': 'SMS01000000000000001', 
+                                                     'data': []}]}}
+        mocked_post.return_value = mock_response
+        with self.assertRaises(Exception) as e:
+            self.api_call.extract(2000, 2005)
+            self.api_call.transform()
+            self.assertEqual(str(e.exception), 'DataFrame is Empty')
+
+        mocked_log_function.assert_called_once()
+
+    @patch('api_bls.logging.critical')
+    @patch('api_bls.logging.warning')
+    def test_http_error_retry(self, mocked_warning, mocked_critical):
+        
+        config = {'side_effect': HTTPError(response = HTTPStatus.INTERNAL_SERVER_ERROR.value)}
+        patcher = patch('api_bls.requests.post', **config)
+        mocked_requests = patcher.start()
+
+        with self.assertRaises(Exception) as e1:
+            with self.assertRaises(HTTPError) as e2:
+                self.api_call.bls_request(['ABC'], 2000, 2002)
+        self.assertEqual(str(e1.exception), f'API Error: {HTTPStatus.INTERNAL_SERVER_ERROR.value}')
+        assert mocked_warning.call_count == 3
+        assert mocked_critical.call_count == 1
+        assert mocked_requests.call_count == 3
+        patcher.stop()
+
+
+
+    @patch('api_bls.logging.critical')
+    @patch('api_bls.logging.warning')
+    def test_http_error_no_retry(self, mocked_warning, mocked_critical):
+        
+        config = {'side_effect': HTTPError(response = HTTPStatus.BAD_REQUEST.value)}
+        patcher = patch('api_bls.requests.post', **config)
+        mocked_requests = patcher.start()
+
+        with self.assertRaises(HTTPError) as e1:
+            self.api_call.bls_request(['ABC'], 2000, 2002)
+        self.assertEqual(str(e1.exception), f'HTTP Error: {HTTPStatus.BAD_REQUEST.value}')
+        assert mocked_warning.call_count == 0
+        assert mocked_critical.call_count == 1
+        assert mocked_requests.call_count == 1
+        patcher.stop()
+
+    @patch('api_bls.logging.critical')
+    @patch('api_bls.logging.warning')
+    def test_response_error(self, mocked_warning, mocked_critical):
+        
+        config = {'side_effect': Exception()}
+        patcher = patch('api_bls.requests.post', **config)
+        mocked_requests = patcher.start()
+
+        with self.assertRaises(Exception) as e1:
+            self.api_call.bls_request(['ABC'], 2000, 2002)
+        self.assertEqual(str(e1.exception), 'Response Status from API is not "REQUEST_SUCCEEDED"')
+        print(str(e1.exception))
+        assert mocked_warning.call_count == 0
+        assert mocked_critical.call_count == 1
+        assert mocked_requests.call_count == 1
+        patcher.stop()
+
     def test_connection_error(self):
         pass
          
@@ -220,31 +256,5 @@ class TestBlsApi(unittest.TestCase):
              BlsApiCall(national_series=series)
              self.assertEqual(str(e.exception), 'BlsApiCall inputs must be Pandas DataFrame')
     
-    
-        
-                
-
-
-        
-        
-
-
-    
-
-        
-
-
-
-
-        
-
-        
-
-
-    
-        
-    
-
-
 if __name__ == "__main__":
     unittest.main()

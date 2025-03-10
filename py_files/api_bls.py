@@ -140,6 +140,7 @@ class BlsApiCall:
         if os.path.exists(self.query_count_file) and \
                     self.last_query_count > 500 and \
                     self.current_query_day - self.first_query_day == 0:
+            print('made it here')
             logging.critical('Queries may not exceed 500 within a day.')
             raise Exception("Queries may not exceed 500 within a day.")
         
@@ -180,7 +181,7 @@ class BlsApiCall:
         year_range = int(end_year) - int(start_year)
         headers = {"Content-Type": "application/json"}
         payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
-        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
+        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR.value, HTTPStatus.BAD_GATEWAY.value, HTTPStatus.SERVICE_UNAVAILABLE.value, HTTPStatus.GATEWAY_TIMEOUT.value]
 
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
@@ -192,14 +193,13 @@ class BlsApiCall:
                 self._create_query_file()
                 self._increment_query_count()
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
-                print('called')
+
                 if self.national_series is not None:
                     logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 elif self.state_series is not None:
                     logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
-                print(response.status_code)
+
                 response_json = response.json()
-                #! Its trying to tunnel into the response_json, which is a mock object, but it shouldnt be getting here
                 response_status = response_json["status"]
                 
                 if response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED": 
@@ -207,27 +207,25 @@ class BlsApiCall:
                     return response_json
                 elif response.status_code == HTTPStatus.OK and response_status != "REQUEST_SUCCEEDED":
                     logging.warning('Response: %s', response_status)
-                    raise Exception()
-            #! Somehow its not raising the right error
-            #! Its going to Exception. The Problem could be two Exception blocks in a row?
+                    raise Exception
+
             except HTTPError as e:
-                if response.status_code in retry_codes:
-                    logging.warning('HTTP Error: %s Attempt: %s', e, attempt)
+                if e.response in retry_codes:
+                    final_error = e.response
+                    logging.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
                     time.sleep(2**attempt)
-                    print('httperror')
                     continue
                 else:
-                    logging.critical('HTTP error occurred: %s', e)
-                    raise HTTPError(f"HTTP error occurred: {e}")
-
-            except Exception as e:
-                logging.critical('Bad Request: %s Attempt: %s', response_status, attempt)
-                print('exception')
-                time.sleep(2**attempt)
+                    final_error = e.response
+                    logging.critical('HTTP Error: %s', e.response)
+                    raise HTTPError(f"HTTP Error: {e.response}")
                 
-        if response_json:
-            print('response_json')
-            raise Exception(f"API Error: {response_json['status']}, Code: {response.status_code}")
+            except Exception as e:
+                logging.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
+                raise Exception('Response Status from API is not "REQUEST_SUCCEEDED"')
+
+        logging.critical('API Error: %s', final_error)
+        raise Exception(f"API Error: {final_error}")
 
     def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
         #! Move this to documentation
