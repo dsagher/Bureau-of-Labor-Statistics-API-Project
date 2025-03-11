@@ -137,12 +137,10 @@ class BlsApiCall:
             - Raises Exception if query count exceeds 500 within same day.
         """
         self._read_query()
-
         self.current_query_day = int(datetime.datetime.strftime(datetime.datetime.now(), "%d"))
         if os.path.exists(self.query_count_file) and \
-                    self.last_query_count > 500 and \
+                    self.last_query_count >= 500 and \
                     self.current_query_day - self.first_query_day == 0:
-            print('made it here')
             logging.critical('Queries may not exceed 500 within a day.')
             raise Exception("Queries may not exceed 500 within a day.")
         
@@ -161,11 +159,6 @@ class BlsApiCall:
         
         Returns:
             - response_json: Dictionary of JSON response from API.
-                - Ex:   {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
-                        {'series': [
-                        {'seriesID': 'SMS01000000000000001', 'data': [
-                        {'year': '2020', 'period': 'M12', 'periodName': 'December', 'value': '2022.5', 'footnotes': [{}]}, {}, {}, {}]}]}}
-                - Structure: dict[str: str, str: int, str: list, str: dict[str: list[dict[str: list[dict[str:str]]]]]]   
         
         Special Notes:
             - Raises ValueError if the seriesID list passed in is greater than 50
@@ -174,12 +167,10 @@ class BlsApiCall:
             - Excepts and retries 500 level status codes 3 times before raising HTTPError
             - Excepts and retries Exceptions 3 times before raising Exception
         """
-
         URL_ENDPOINT = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
         RETRIES = 3
         YEAR_LIMIT = 20
         SERIES_LIMIT = 50
-
         year_range = int(end_year) - int(start_year)
         headers = {"Content-Type": "application/json"}
         payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
@@ -190,28 +181,33 @@ class BlsApiCall:
             raise ValueError("Can only take up to 50 seriesID's per query.")
         elif year_range > YEAR_LIMIT:
             raise ValueError("Can only take in up to 20 years per query.")
-
+       
         for attempt in range(1, RETRIES + 1):
-            try:
-                self._create_query_file()
-                self._increment_query_count()
 
+            self._create_query_file()
+            self._increment_query_count()
+
+            try:
+            
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
+  
                 if self.national_series is not None:
                     logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 if self.state_series is not None:
                     logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 
-                if response.status_code.value != HTTPStatus.OK.value:
+                if response.status_code != HTTPStatus.OK.value:
                     raise HTTPError(response=response.status_code)
-                elif response.status_code == HTTPStatus.OK.value and response_status != "REQUEST_SUCCEEDED":
-                    logging.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code.value, response_status)
-                    raise Exception
-                elif response.status_code == HTTPStatus.OK.value and response_status == "REQUEST_SUCCEEDED": 
-                    logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code.value, response_status)
+                elif response.status_code == HTTPStatus.OK.value:
                     response_json = response.json()
                     response_status = response_json["status"]
-                    return response_json
+                
+                    if response_status != "REQUEST_SUCCEEDED":
+                        logging.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        raise Exception
+                    else:
+                        logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        return response_json
 
             except HTTPError as e:
                 if e.response in retry_codes:
@@ -232,7 +228,6 @@ class BlsApiCall:
         raise Exception(f"API Error: {final_error}")
 
     def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
-        #! Move this to documentation
         """
         Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
@@ -243,31 +238,13 @@ class BlsApiCall:
 
         Returns:
             - lst_of_queries: list of response JSONs from bls_request()
-                Ex:     [
-                            {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
-                            {'series': 
-list no longer than 50 IDs --> [
-                            {'seriesID': 'SMS01000000000000001', 'data': [
-                            {'year': '2020', 'period': 'M12', 'periodName': 'December', 
-                            'value': '2022.5', 'footnotes': [{}]}, 
-                            {next_periods/years}...]}
-                                ]}},
-     start of new query --> {'status': 'REQUEST_SUCCEEDED', 'responseTime': 225, 'message': [], 'Results': 
-                            {'series': [
-                            {'seriesID': '123456789', 'data': [
-                            {'year': '2020', 'period': 'M12', 'periodName': 'December', 
-                            'value': '2022.5', 'footnotes': [{}]}, 
-                            {next_periods/years}...]}]}}
-                        ]
-
         """
-
         BATCH_SIZE: int = 50
         INPUT_AMOUNT: int = self.number_of_series
         start_year: str = str(start_year)
         end_year: str = str(end_year)
         self.lst_of_queries: list = []
-
+        
         if self.national_series is not None:
             series_id_lst: list = list(self.national_series["seriesID"])[:INPUT_AMOUNT]
         elif self.state_series is not None:
@@ -275,7 +252,6 @@ list no longer than 50 IDs --> [
 
         batch_progress = 0
         for batch in batched(series_id_lst, BATCH_SIZE):
-
             batch = list(batch)
             batch_size = len(batch)
             batch_progress += batch_size
@@ -283,11 +259,11 @@ list no longer than 50 IDs --> [
 
             print(f"Processessing batch of size: {batch_size}")
             print(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
-            
+
             result = self.bls_request(batch, start_year, end_year)
             self.lst_of_queries.append(result)
             time.sleep(0.25)
-
+            
         return self.lst_of_queries
 
     def _log_message(self, messages: str) -> None:
@@ -490,7 +466,6 @@ list no longer than 50 IDs --> [
         cur.close()
         conn.close()
 
-
 if __name__ == "__main__":
 
     state_series_path = os.path.join(os.getcwd(), 'outputs/state_scrape_op/state_series_dimension.csv')
@@ -498,9 +473,8 @@ if __name__ == "__main__":
 
     national_series_path = os.path.join(os.getcwd(), 'outputs/excel_op/national_series_dimension_og.csv')
     national_series = pd.read_csv(national_series_path)
-    print(national_series)
     bad_national_series = national_series[national_series['seriesID'] == 'SMU12000001000000001']
-    # bad_national_series = pd.DataFrame([{'seriesID':'SMU12006901000000001'}])
+    bad_national_series2 = pd.DataFrame([{'seriesID':'SMU12006901000000001'}])
 
     call_engine = BlsApiCall(national_series, number_of_series=100)
     call_engine.extract(start_year=2000, end_year=2001)
