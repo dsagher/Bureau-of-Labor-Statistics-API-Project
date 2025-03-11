@@ -66,12 +66,14 @@ class BlsApiCall:
         elif national_series is not None and not isinstance(national_series, pd.DataFrame):
             raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
         
-        if state_series is None:
+        self.national_series = national_series
+        self.state_series = state_series
+
+        if self.state_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
-            self.national_series = national_series
-        elif national_series is None:
+        if self.national_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(state_series)
-            self.state_series = state_series
+
         
     def _read_query(self) -> None:
         """
@@ -181,8 +183,9 @@ class BlsApiCall:
         year_range = int(end_year) - int(start_year)
         headers = {"Content-Type": "application/json"}
         payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
-        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR.value, HTTPStatus.BAD_GATEWAY.value, HTTPStatus.SERVICE_UNAVAILABLE.value, HTTPStatus.GATEWAY_TIMEOUT.value]
 
+        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
+        
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
         elif year_range > YEAR_LIMIT:
@@ -192,28 +195,29 @@ class BlsApiCall:
             try:
                 self._create_query_file()
                 self._increment_query_count()
-                response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
 
+                response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
                 if self.national_series is not None:
                     logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
-                elif self.state_series is not None:
+                if self.state_series is not None:
                     logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
-
-                response_json = response.json()
-                response_status = response_json["status"]
                 
-                if response.status_code == HTTPStatus.OK and response_status == "REQUEST_SUCCEEDED": 
-                    logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
-                    return response_json
-                elif response.status_code == HTTPStatus.OK and response_status != "REQUEST_SUCCEEDED":
-                    logging.warning('Response: %s', response_status)
+                if response.status_code.value != HTTPStatus.OK.value:
+                    raise HTTPError(response=response.status_code)
+                elif response.status_code == HTTPStatus.OK.value and response_status != "REQUEST_SUCCEEDED":
+                    logging.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code.value, response_status)
                     raise Exception
+                elif response.status_code == HTTPStatus.OK.value and response_status == "REQUEST_SUCCEEDED": 
+                    logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code.value, response_status)
+                    response_json = response.json()
+                    response_status = response_json["status"]
+                    return response_json
 
             except HTTPError as e:
                 if e.response in retry_codes:
                     final_error = e.response
                     logging.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
-                    time.sleep(2**attempt)
+                    # time.sleep(2**attempt)
                     continue
                 else:
                     final_error = e.response
