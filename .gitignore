@@ -1,8 +1,5 @@
 outputs/
-misc_items/
 inputs/
-screenshots_videos/
-sql files/
 api_bls.ipynb
 code_scrape.ipynb
 eda.ipynb
@@ -16,3 +13,5 @@ query_count.txt
 playground.py
 api_bls.log
 cleaning.ipynb
+excel_files
+runtime_files

@@ -1,18 +1,24 @@
 """==========================================================================================
 
-    Title:       <>
-    File:        <>
+    Title:       <Bureau of Labor Statistics API Pipeline>
+    File:        <main.py>
     Author:      <Dan Sagher>
-    Date:        <>
+    Date:        <3/11/25>
     Description:
-
-    <>
+        This pipeline extracts, transforms, and loads data from the Bureau of Labor Statistics
+        API into a Postgres database. User uploads an CSV dimension file with series names and IDs.
 
     Dependencies:
 
         External:
 
+        - pandas
+        - datetime
+        - os
+
         Internal:
+
+        - api_bls
 
 
     Special Concerns: 
@@ -24,37 +30,44 @@ import pandas as pd
 import datetime as dt
 import os
 
-
-NOW = dt.datetime.now().strftime("%d-%b-%Y_%H:%M:%S")
-#! Use OS Module
-PATH = "/Users/danielsagher/Dropbox/Documents/projects/bls_api_project/"
-
-#! Could try to webscrape national series too
-national_series = pd.read_csv(
-    PATH + "outputs/cleaning_op/national_series_dimension_cleaned.csv"
-)
-state_series = pd.read_csv(
-    PATH + "outputs/cleaning_op/state_series_dimension_cleaned.csv"
-)
-
-api_engine = BlsApiCall()
-
-
-def main(series_input: None, name_of_file: None) -> None:
+def main() -> None:
     """
-
     :params:
     :returns:
     """
-    data_results = api_engine.extract(series_input[0:10], "2002", "2015")
+    now = dt.datetime.now().strftime("%d-%b-%Y-%H-%M-%S")
+    output_path = os.path.normcase(os.path.join(os.getcwd(), 'outputs/main_output'))
 
-    df = api_engine.transform(data_results)
+    user_path = input("Enter CSV path: ")
+    national_or_state = int(input("Enter 1 for National Series, 2 for State Series: "))
+    start_year = input('Enter start year: ')
+    end_year = input('Enter end year: ')
+    number_of_series = int(input('Enter desired number of series from input (Press enter for all): '))
 
-    df.to_csv(f"{PATH}outputs/main_op/{name_of_file}_{NOW}.csv", index=False)
+    df = pd.read_csv(user_path)
+    loop = True
+
+    while loop:
+        if national_or_state == 1:
+            api_engine = BlsApiCall(start_year, end_year, national_series=df, number_of_series=number_of_series)
+            name_of_file = f'national_series_{start_year}-{end_year}_{now}'
+            full_path = os.path.normcase(os.path.join(output_path, name_of_file))
+            loop = False
+        elif national_or_state == 2:
+            api_engine = BlsApiCall(start_year, end_year, state_series=df, number_of_series=number_of_series)
+            name_of_file = f'state_series_{start_year}-{end_year}_{now}'
+            full_path = os.path.normcase(os.path.join(output_path, name_of_file))
+            loop = False
+        else:
+            print('Please enter 1 for National Series or 2 for State Series')
+
+    api_engine.extract()
+    api_engine.transform()
+    # api_engine.load()
+    df.to_csv(full_path)
 
     return df
 
 
 if __name__ == "__main__":
-    final_national_df = main(national_series, "national_results")
-    final_state_df = main(state_series, "state_results")
+    main()

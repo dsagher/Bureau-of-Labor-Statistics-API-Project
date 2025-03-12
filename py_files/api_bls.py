@@ -1,23 +1,35 @@
 """==========================================================================================
-    Title:       <>
-    File:        <>
+
+    File:        <api_bls.py>
     Author:      <Dan Sagher>
-    Date:        <>
+    Date:        <3/11/25>
     Description:
-
-
-    <>
+        This module contains the code to extract, transform, and load data from the Bureau of
+        Labor Statistics API. 
 
     Dependencies:
 
-        External:
+    External:
 
-        Internal:
+        - datetime
+        - http
+        - json
+        - itertools import batched
+        - logging
+        - pandas
+        - psycopg2 
+        - requests.exceptions
+        - requests
+        - re as re
+        - os
+        - time
 
+    Internal:
+ 
+        - api_key
+        - config
 
-    Special Concerns:
-
-    API Notes
+    API Notes:
 
         - Version 2.0 (10/16/2014)
         - User registration is now required for use of the Public Data API and its new features. 
@@ -43,20 +55,25 @@ import re as re
 import os
 import time
 
+#! Use environmental variable
 from api_key import API_KEY
 from config import host, dbname, user, password, port
 
 FORMAT = '%(levelname)s: %(asctime)s - %(message)s'
 logger = logging.getLogger('api_bls.log')
-logging.basicConfig(filename='api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y:%M:%D %H:%M:%S")
+logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y:%M:%D %H:%M:%S")
 
 class BlsApiCall:
     """
     Add Doc String
     """
-    query_count_file = "query_count.txt"
+    query_count_file = "outputs/runtime_output/query_count.txt"
 
-    def __init__(self, national_series = None, state_series = None, number_of_series = None):
+    def __init__(self, start_year: int, end_year: int, national_series: pd.DataFrame = None, state_series: pd.DataFrame = None, number_of_series: int = None):
+
+        self.start_year = start_year
+        self.end_year = end_year
+
         if state_series is None and national_series is None:
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
@@ -213,7 +230,7 @@ class BlsApiCall:
                 if e.response in retry_codes:
                     final_error = e.response
                     logging.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
-                    # time.sleep(2**attempt)
+                    time.sleep(2**attempt)
                     continue
                 else:
                     final_error = e.response
@@ -227,7 +244,7 @@ class BlsApiCall:
         logging.critical('API Error: %s', final_error)
         raise Exception(f"API Error: {final_error}")
 
-    def extract(self, start_year: int = 2000, end_year: int = 2002,) -> list:
+    def extract(self) -> list:
         """
         Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
@@ -241,8 +258,8 @@ class BlsApiCall:
         """
         BATCH_SIZE: int = 50
         INPUT_AMOUNT: int = self.number_of_series
-        start_year: str = str(start_year)
-        end_year: str = str(end_year)
+        start_year: str = str(self.start_year)
+        end_year: str = str(self.end_year)
         self.lst_of_queries: list = []
         
         if self.national_series is not None:
@@ -273,6 +290,9 @@ class BlsApiCall:
 
         Parameters:
             - message: string value of message in response JSON
+        
+        Special Concerns:
+            - Planning to add functionality to log successful queries.
         """
         for message in messages:
             year_reg_match = re.fullmatch(r'No Data Available for Series (\w+) Year: (\d\d\d\d)', message)
@@ -382,7 +402,7 @@ class BlsApiCall:
 
     #! Get this to port to database without coming from Excel outputs first
     #! Could use sql alchemy
-    def sql_push(self) -> None:
+    def load(self) -> None:
 
         path = os.getcwd()
 
@@ -468,15 +488,15 @@ class BlsApiCall:
 
 if __name__ == "__main__":
 
-    state_series_path = os.path.join(os.getcwd(), 'outputs/state_scrape_op/state_series_dimension.csv')
+    state_series_path = os.path.join(os.getcwd(), 'inputs/state_series_dimension.csv')
     state_series = pd.read_csv(state_series_path)
 
-    national_series_path = os.path.join(os.getcwd(), 'outputs/excel_op/national_series_dimension_og.csv')
+    national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
     national_series = pd.read_csv(national_series_path)
     bad_national_series = national_series[national_series['seriesID'] == 'SMU12000001000000001']
     bad_national_series2 = pd.DataFrame([{'seriesID':'SMU12006901000000001'}])
 
-    call_engine = BlsApiCall(national_series, number_of_series=100)
-    call_engine.extract(start_year=2000, end_year=2001)
+    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
+    call_engine.extract()
     df = call_engine.transform()
     # df.to_excel('outputs/excel_op/test_excel.xlsx')

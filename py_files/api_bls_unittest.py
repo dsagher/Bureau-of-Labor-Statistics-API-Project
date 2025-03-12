@@ -32,6 +32,8 @@ import requests
 
 class TestBlsApi(unittest.TestCase):
 
+    query_count_file = "outputs/runtime_output/query_count.txt"
+
     def setUp(self):
         self.state_series = pd.DataFrame([{'survey':'ABC',
                                       'series':'I am series',
@@ -40,7 +42,7 @@ class TestBlsApi(unittest.TestCase):
         self.national_series = pd.DataFrame([{'series': 'I am series',
                                               'seriesID':'ABC123',
                                               'survey': 'ABC'}])
-        self.api_call = BlsApiCall(state_series=self.state_series)
+        self.api_call = BlsApiCall(2000, 2005, state_series=self.state_series)
         return super().setUp()
     
     def tearDown(self):
@@ -52,8 +54,8 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.requests.post')
     def test_bls_request(self, mocked_post, mocked_log):
 
-        if os.path.exists('query_count.txt'):
-            os.remove('query_count.txt')
+        if os.path.exists(self.query_count_file):
+            os.remove(self.query_count_file)
 
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
@@ -78,8 +80,8 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.logging.critical')
     @patch('api_bls.requests.post')
     def test_bls_request_limit(self, mocked_post, mocked_log):
-        if os.path.exists('query_count.txt'):
-                os.remove('query_count.txt')
+        if os.path.exists(self.query_count_file):
+                os.remove(self.query_count_file)
 
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
@@ -101,8 +103,8 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.requests.post')
     def test_bls_year_limit(self, mocked_post):
 
-        if os.path.exists('query_count.txt'):
-                os.remove('query_count.txt')
+        if os.path.exists(self.query_count_file):
+                os.remove(self.query_count_file)
         
         with self.assertRaises(ValueError) as e:
             self.api_call.bls_request([1], 2000, 2025)
@@ -112,8 +114,8 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.requests.post')
     def test_bls_id_limit(self, mocked_post):
 
-        if os.path.exists('query_count.txt'):
-                os.remove('query_count.txt')
+        if os.path.exists(self.query_count_file):
+                os.remove(self.query_count_file)
         
         mock_lst = [i for i in range(60)]
 
@@ -164,8 +166,8 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.requests.post')
     def test_bls_reset(self, mocked_post, mocked_date, mocked_log):
 
-        if os.path.exists('query_count.txt'):
-                os.remove('query_count.txt')
+        if os.path.exists(self.query_count_file):
+                os.remove(self.query_count_file)
 
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
@@ -181,7 +183,7 @@ class TestBlsApi(unittest.TestCase):
 
         self.api_call.bls_request([1], 2000, 2005)
 
-        with open('query_count.txt','r') as file:
+        with open('outputs/runtime_output/query_count.txt','r') as file:
             lines = []
             for line in file:
                 lines.append(line)
@@ -211,7 +213,7 @@ class TestBlsApi(unittest.TestCase):
                                                      'data': []}]}}
         mocked_post.return_value = mock_response
         with self.assertRaises(Exception) as e:
-            self.api_call.extract(2000, 2005)
+            self.api_call.extract()
             self.api_call.transform()
         self.assertEqual(str(e.exception), 'DataFrame is Empty')
 
