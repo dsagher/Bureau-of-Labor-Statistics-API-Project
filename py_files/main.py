@@ -59,7 +59,7 @@ def main() -> None:
 
     api_engine.extract()
     api_engine.transform()
-    # api_engine.load()
+    api_engine.load()
     df.to_csv(full_path)
 
 
