@@ -19,6 +19,9 @@
         Internal:
         - api_bls
 
+    Special Notes:
+        - CSV output will be moved to load() function.
+
 =========================================================================================="""
 
 from api_bls import BlsApiCall
@@ -28,8 +31,7 @@ import os
 
 def main() -> None:
     """
-    :params:
-    :returns:
+    Handles user input and calls ETL functions from BlsApiCall class.
     """
     now = dt.datetime.now().strftime("%d-%b-%Y-%H-%M-%S")
     output_path = os.path.normcase(os.path.join(os.getcwd(), 'outputs/main_output'))
