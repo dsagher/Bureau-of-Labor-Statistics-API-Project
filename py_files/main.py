@@ -1,29 +1,25 @@
 """==========================================================================================
 
-    Title:       <Bureau of Labor Statistics API Pipeline>
-    File:        <main.py>
-    Author:      <Dan Sagher>
-    Date:        <3/11/25>
+    Title:       Bureau of Labor Statistics API Pipeline
+    File:        main.py
+    Author:      Dan Sagher
+    Date:        3/11/25
     Description:
         This pipeline extracts, transforms, and loads data from the Bureau of Labor Statistics
-        API into a Postgres database. User uploads an CSV dimension file with series names and IDs.
+        (BLS) API into a PostgreSQL database. The user uploads a CSV dimension file containing
+        series names and IDs.
 
     Dependencies:
 
         External:
-
         - pandas
         - datetime
         - os
 
         Internal:
-
         - api_bls
 
-
-    Special Concerns: 
-
-#=========================================================================================="""
+=========================================================================================="""
 
 from api_bls import BlsApiCall
 import pandas as pd
@@ -65,8 +61,6 @@ def main() -> None:
     api_engine.transform()
     # api_engine.load()
     df.to_csv(full_path)
-
-    return df
 
 
 if __name__ == "__main__":

@@ -1,23 +1,33 @@
 """==========================================================================================
 
-    Title:       <>
-    File:        <>
-    Author:      <Dan Sagher>
-    Date:        <>
+    File:        test_api_bls.py
+    Author:      Dan Sagher
+    Date:        3/11/25
     Description:
-
-    <>
+        This module contains unit tests for the BlsApiCall class that extracts, transforms,
+        and loads data from the Bureau of Labor Statistics (BLS) API.
 
     Dependencies:
 
         External:
+        - unittest
+        - unittest.mock
+        - pandas
+        - http.HTTPStatus
+        - json
+        - os
+        - requests.exceptions
 
         Internal:
-
+        - api_bls
+        - api_key
 
     Special Concerns: 
+        - Tests require a mock BLS API environment
+        - Some tests modify the query_count_file and need to clean up afterward
+        - All API calls are mocked to avoid hitting real API endpoints
 
-#=========================================================================================="""
+=========================================================================================="""
 
 from unittest.mock import patch, Mock
 import unittest
@@ -28,13 +38,24 @@ import json
 from api_key import API_KEY
 import pandas as pd
 from requests.exceptions import HTTPError
-import requests
 
 class TestBlsApi(unittest.TestCase):
+    """
+    Test suite for BlsApiCall class that handles BLS API interactions.
+    
+    These tests cover initialization, API request handling, error conditions,
+    rate limiting, and data transformation functionality.
+    """
 
     query_count_file = "outputs/runtime_output/query_count.txt"
 
     def setUp(self):
+        """
+        Set up test fixtures before each test method runs.
+        
+        Creates sample state and national series DataFrames and initializes
+        a BlsApiCall instance for testing.
+        """
         self.state_series = pd.DataFrame([{'survey':'ABC',
                                       'series':'I am series',
                                       'seriesID':'ABC123',
@@ -46,13 +67,26 @@ class TestBlsApi(unittest.TestCase):
         return super().setUp()
     
     def tearDown(self):
-
+        """
+        Clean up after each test method runs.
+        
+        Currently does nothing but can be expanded to handle cleanup tasks.
+        """
         pass
         return super().tearDown()
     
     @patch('api_bls.logging.info')
     @patch('api_bls.requests.post')
     def test_bls_request(self, mocked_post, mocked_log):
+        """
+        Test successful API request functionality.
+        
+        Verifies:
+        - The correct URL endpoint is used
+        - Proper parameters are passed to the API
+        - Successful response is handled correctly
+        - Logging occurs as expected
+        """
 
         if os.path.exists(self.query_count_file):
             os.remove(self.query_count_file)
@@ -80,6 +114,12 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.logging.critical')
     @patch('api_bls.requests.post')
     def test_bls_request_limit(self, mocked_post, mocked_log):
+        """
+        Test API request limit enforcement.
+        
+        Verifies an exception is raised when exceeding the 500 daily request limit.
+        Confirms logging and that no actual API call is made when limit is reached.
+        """
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
 
@@ -102,6 +142,12 @@ class TestBlsApi(unittest.TestCase):
 
     @patch('api_bls.requests.post')
     def test_bls_year_limit(self, mocked_post):
+        """
+        Test year range limit enforcement.
+        
+        Verifies that requests spanning more than 20 years are rejected
+        with an appropriate ValueError exception.
+        """
 
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
@@ -113,6 +159,12 @@ class TestBlsApi(unittest.TestCase):
        
     @patch('api_bls.requests.post')
     def test_bls_id_limit(self, mocked_post):
+        """
+        Test series ID limit enforcement.
+        
+        Verifies that requests containing more than 50 series IDs are rejected
+        with an appropriate ValueError exception.
+        """
 
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
@@ -128,6 +180,12 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.logging.critical')
     @patch('api_bls.requests.post')
     def test_bls_bad_request(self, mocked_post, mocked_critical, mocked_info):
+        """
+        Test handling of bad HTTP responses.
+        
+        Verifies that non-200 HTTP responses result in appropriate exceptions
+        and that proper logging occurs.
+        """
 
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.BAD_REQUEST
@@ -146,6 +204,12 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.logging.warning')
     @patch('api_bls.requests.post')
     def test_http_error_retry(self, mocked_post, mocked_warning, mocked_critical):
+        """
+        Test retry mechanism for server errors.
+        
+        Verifies that server errors (5xx) trigger the retry mechanism
+        and that the appropriate number of retries occur before failing.
+        """
         
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
@@ -165,6 +229,12 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.datetime.datetime')
     @patch('api_bls.requests.post')
     def test_bls_reset(self, mocked_post, mocked_date, mocked_log):
+        """
+        Test query counter reset on date change.
+        
+        Verifies that the query counter resets when the date changes,
+        ensuring that the daily limit is properly managed.
+        """
 
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
@@ -201,7 +271,13 @@ class TestBlsApi(unittest.TestCase):
 
     @patch('api_bls.BlsApiCall._log_message')
     @patch('api_bls.requests.post')
-    def test_bls_log_function(self, mocked_post, mocked_log_function):                
+    def test_bls_log_function(self, mocked_post, mocked_log_function):  
+        """
+        Test handling of API message logging.
+        
+        Verifies that messages in the API response (like missing data warnings)
+        are properly logged by the _log_message method.
+        """              
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.OK
         mock_response.json.return_value = {'status': 'REQUEST_SUCCEEDED', 
@@ -222,6 +298,12 @@ class TestBlsApi(unittest.TestCase):
     @patch('api_bls.logging.critical')
     @patch('api_bls.logging.warning')
     def test_response_error(self, mocked_warning, mocked_critical):
+        """
+        Test handling of non-success API responses.
+        
+        Verifies proper exception raising and logging when the API returns
+        a response with a status other than "REQUEST_SUCCEEDED".
+        """
         
         config = {'side_effect': Exception()}
         patcher = patch('api_bls.requests.post', **config)
@@ -236,22 +318,46 @@ class TestBlsApi(unittest.TestCase):
         patcher.stop()
          
     def test_init_none(self):
+        """
+        Test class initialization with no series data.
+        
+        Verifies that an exception is raised when neither state_series
+        nor national_series is provided to the constructor.
+        """
         with self.assertRaises(Exception) as e:
             BlsApiCall()
             self.assertEqual(str(e.exception), 'Argument must only be one series list')
 
     def test_init_both(self):
+        """
+        Test class initialization with both series types.
+        
+        Verifies that an exception is raised when both state_series
+        and national_series are provided to the constructor.
+        """
         with self.assertRaises(Exception) as e:
             BlsApiCall(self.state_series, self.national_series)
             self.assertEqual(str(e.exception), 'Argument must only be one series list')
     
     def test_init_type(self):
+        """
+        Test type validation for state_series parameter.
+        
+        Verifies that an exception is raised when state_series
+        is not a pandas DataFrame.
+        """
         with self.assertRaises(Exception) as e:
              series = pd.Series(['ABC123', 'DEF456'])
              BlsApiCall(state_series=series)
              self.assertEqual(str(e.exception), 'BlsApiCall inputs must be Pandas DataFrame')
     
     def test_init_type_2(self):
+        """
+        Test type validation for national_series parameter.
+        
+        Verifies that an exception is raised when national_series
+        is not a pandas DataFrame.
+        """
         with self.assertRaises(Exception) as e:
              series = pd.Series(['ABC123', 'DEF456'])
              BlsApiCall(national_series=series)

@@ -1,47 +1,48 @@
 """==========================================================================================
 
-    File:        <api_bls.py>
-    Author:      <Dan Sagher>
-    Date:        <3/11/25>
+    File:        api_bls.py
+    Author:      Dan Sagher
+    Date:        3/11/25
     Description:
-        This module contains the code to extract, transform, and load data from the Bureau of
-        Labor Statistics API. 
+        This module contains functions to extract, transform, and load data from the Bureau of
+        Labor Statistics (BLS) API.
 
     Dependencies:
 
-    External:
-
+        External:
         - datetime
         - http
         - json
-        - itertools import batched
+        - itertools (batched)
         - logging
         - pandas
-        - psycopg2 
-        - requests.exceptions
+        - psycopg2
         - requests
-        - re as re
+        - requests.exceptions
+        - re
         - os
         - time
 
-    Internal:
- 
+        Internal:
         - api_key
         - config
 
     API Notes:
-
         - Version 2.0 (10/16/2014)
-        - User registration is now required for use of the Public Data API and its new features. 
+        - User registration is required to access the Public Data API and its new features.
         - Users must provide an email and organization name during registration.
-        - API 2.0 returns up to 20 years of data for up to 50 time series, 
-        - with a daily limit of 500 queries.
-        - Net and percent calculations are available for one month, two months, six months, twelve months.
+        - API 2.0 supports up to 20 years of data for up to 50 time series, with a daily limit of 500 queries.
+        - Net and percent calculations are available for one, two, six, and twelve months.
         - Annual averages are available.
-        - Series description information (catalog) is available for a limited number of series. 
-        - (Only surveys included in the BLS Data Finder tool are available for catalog information.)
+        - Series description information (catalog) is available for a limited number of series, 
+          with only surveys included in the BLS Data Finder tool providing catalog information.
+    
+    Special Notes:
+        - Config files will be replaced with environmental variables.
+        - Psycopg2 will be replaced with SQLAlchemy ORM for load function.
+        - Functionality will be added to be able to take in state and national series concurrently.
 
-#=========================================================================================="""
+=========================================================================================="""
 import datetime
 from http import HTTPStatus
 import json
@@ -55,24 +56,36 @@ import re as re
 import os
 import time
 
-#! Use environmental variable
 from api_key import API_KEY
 from config import host, dbname, user, password, port
 
-FORMAT = '%(levelname)s: %(asctime)s - %(message)s'
+FORMAT = '%(levelname)s - %(asctime)s - %(message)s'
 logger = logging.getLogger('api_bls.log')
-logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y:%M:%D %H:%M:%S")
+logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y-%M-%D %H-%M-%S")
 
 class BlsApiCall:
     """
-    Add Doc String
+    This class contains the functions necessary to extract, transform and load data from the Bureau of
+    Labor Statistics (BLS) API.
+
+    Parameters:
+        - start_year = User specified desired start year of query
+        - end_year = User specified desired end year of query
+        - national_series = Pandas DataFrame of National seriesIDs
+        - state_series = Pandas DataFrame of State seriesIDs
+        - number_of_series = User specified number of seriesIDs to query. Defaults to entire list
+
+    Special Notes:
+        - Raises Exception if neither national_series or state_series are input.
+        - Raises Exception if both national_series and state_series are input.
+        - Raises TypeError if series inputs are not Pandas DataFrames.
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
     def __init__(self, start_year: int, end_year: int, national_series: pd.DataFrame = None, state_series: pd.DataFrame = None, number_of_series: int = None):
 
-        self.start_year = start_year
-        self.end_year = end_year
+        self.start_year: int = start_year
+        self.end_year: int = end_year
 
         if state_series is None and national_series is None:
             raise Exception('Argument must only be one series list')
@@ -82,9 +95,15 @@ class BlsApiCall:
             raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
         elif national_series is not None and not isinstance(national_series, pd.DataFrame):
             raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
+        elif start_year > end_year:
+            raise Exception('Start year must be before end year.')
+        elif start_year <= 0 or end_year <= 0:
+            raise Exception('Please enter a valid year')
+        elif end_year > int(datetime.datetime.strftime(datetime.datetime.now(), "%Y")):
+            raise Exception("Please enter a valid year.")
         
-        self.national_series = national_series
-        self.state_series = state_series
+        self.national_series: pd. DataFrame = national_series
+        self.state_series: pd. DataFrame = state_series
 
         if self.state_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
@@ -184,15 +203,15 @@ class BlsApiCall:
             - Excepts and retries 500 level status codes 3 times before raising HTTPError
             - Excepts and retries Exceptions 3 times before raising Exception
         """
-        URL_ENDPOINT = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
-        RETRIES = 3
-        YEAR_LIMIT = 20
-        SERIES_LIMIT = 50
-        year_range = int(end_year) - int(start_year)
-        headers = {"Content-Type": "application/json"}
-        payload = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
+        URL_ENDPOINT: str = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+        RETRIES: int = 3
+        YEAR_LIMIT: int = 20
+        SERIES_LIMIT: int = 50
+        year_range: int = int(end_year) - int(start_year)
+        headers: str = {"Content-Type": "application/json"}
+        payload: dict = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
 
-        retry_codes = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
+        retry_codes: list = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
         
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
@@ -260,7 +279,7 @@ class BlsApiCall:
         INPUT_AMOUNT: int = self.number_of_series
         start_year: str = str(self.start_year)
         end_year: str = str(self.end_year)
-        self.lst_of_queries: list = []
+        self.lst_of_queries: list[dict] = []
         
         if self.national_series is not None:
             series_id_lst: list = list(self.national_series["seriesID"])[:INPUT_AMOUNT]
@@ -310,22 +329,26 @@ class BlsApiCall:
             else:
                 logging.warning(message)
 
-    def _drop_nulls_and_duplicates(self, df):
+    def _drop_nulls_and_duplicates(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
         df = df.dropna(axis=0)
         return df
 
-    def _values_to_floats(self, df):
+    def _values_to_floats(self, df: pd.DataFrame) -> pd.DataFrame:
         df['value'] = df['value'].replace('-', None)
         df['value'] = df['value'].astype('float')
         return df
     
-    def _remove_space(self, df):
+    def _remove_space(self, df: pd.DataFrame) -> pd.DataFrame:
         for col in df.columns:
             df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)     
         return df
 
-    def _convert_adjusted(self,series):
+    def _convert_adjusted(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Adds boolean column to indicate if a series is seasonally adjusted and removes
+        the term from original series name.
+        """
         adjusted = ', seasonally adjusted'
         not_adjusted = ', not seasonally adjusted'
 
@@ -343,10 +366,10 @@ class BlsApiCall:
                 return text[:index2]
             return text
         
-        series['is_adjusted'] = series['series'].apply(adjusted_column)
-        series['series'] = series['series'].apply(remove_terms)
+        df['is_adjusted'] = df['series'].apply(adjusted_column)
+        df['series'] = df['series'].apply(remove_terms)
 
-        return series
+        return df
     
     def transform(self) -> pd.DataFrame:
         """
@@ -357,7 +380,7 @@ class BlsApiCall:
         Returns:
             - final_df: Pandas DataFrame of final results
         """
-        final_dct_lst = []
+        final_dct_lst: list = []
         for response in self.lst_of_queries:
             results = response.get("Results")
             series_dct = results.get("series")
@@ -381,7 +404,7 @@ class BlsApiCall:
 
                     final_dct_lst.append(data_dict)
 
-        final_df = pd.DataFrame(final_dct_lst)
+        final_df: pd.DataFrame = pd.DataFrame(final_dct_lst)
         if not final_df.empty:
             if self.national_series is not None:
                 final_df = final_df.merge(self.national_series, on='seriesID',how='left')
@@ -400,9 +423,15 @@ class BlsApiCall:
         else:
             raise Exception('DataFrame is Empty')
 
-    #! Get this to port to database without coming from Excel outputs first
-    #! Could use sql alchemy
     def load(self) -> None:
+        """
+        (Deprecated Function)
+        Loads data into a PostgreSQL database. 
+
+        Special Concerns:
+            - Will be replaced with SQLAlchemy ORM.
+            - Will take in data directly from program, not external CSV files.
+        """
 
         path = os.getcwd()
 
@@ -487,16 +516,12 @@ class BlsApiCall:
         conn.close()
 
 if __name__ == "__main__":
+    print(int(datetime.datetime.strftime(datetime.datetime.now(), "%Y")))
+    # state_series_path = os.path.join(os.getcwd(), 'inputs/state_series_dimension.csv')
+    # state_series = pd.read_csv(state_series_path)
+    # national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
+    # national_series = pd.read_csv(national_series_path)
 
-    state_series_path = os.path.join(os.getcwd(), 'inputs/state_series_dimension.csv')
-    state_series = pd.read_csv(state_series_path)
-
-    national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
-    national_series = pd.read_csv(national_series_path)
-    bad_national_series = national_series[national_series['seriesID'] == 'SMU12000001000000001']
-    bad_national_series2 = pd.DataFrame([{'seriesID':'SMU12006901000000001'}])
-
-    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
-    call_engine.extract()
-    df = call_engine.transform()
-    # df.to_excel('outputs/excel_op/test_excel.xlsx')
+    # call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
+    # call_engine.extract()
+    # df = call_engine.transform()
