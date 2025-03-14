@@ -48,7 +48,7 @@ from http import HTTPStatus
 import json
 from itertools import batched
 import logging
-import pandas as pd
+from pandas import DataFrame, read_csv
 import psycopg2 as pg
 from requests.exceptions import HTTPError
 import requests
@@ -82,7 +82,7 @@ class BlsApiCall:
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
-    def __init__(self, start_year: int, end_year: int, national_series: pd.DataFrame = None, state_series: pd.DataFrame = None, number_of_series: int = None):
+    def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = None):
 
         self.start_year: int = start_year
         self.end_year: int = end_year
@@ -91,9 +91,9 @@ class BlsApiCall:
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
             raise Exception('Argument must only be one series list')
-        elif state_series is not None and not isinstance(state_series, pd.DataFrame):
+        elif state_series is not None and not isinstance(state_series, DataFrame):
             raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
-        elif national_series is not None and not isinstance(national_series, pd.DataFrame):
+        elif national_series is not None and not isinstance(national_series, DataFrame):
             raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
         elif start_year > end_year:
             raise Exception('Start year must be before end year.')
@@ -102,8 +102,8 @@ class BlsApiCall:
         elif end_year > int(datetime.datetime.strftime(datetime.datetime.now(), "%Y")):
             raise Exception("Please enter a valid year.")
         
-        self.national_series: pd. DataFrame = national_series
-        self.state_series: pd. DataFrame = state_series
+        self.national_series: DataFrame = national_series
+        self.state_series: DataFrame = state_series
 
         if self.state_series is None:
             self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
@@ -329,22 +329,22 @@ class BlsApiCall:
             else:
                 logging.warning(message)
 
-    def _drop_nulls_and_duplicates(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _drop_nulls_and_duplicates(self, df: DataFrame) -> DataFrame:
         df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
         df = df.dropna(axis=0)
         return df
 
-    def _values_to_floats(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _values_to_floats(self, df: DataFrame) -> DataFrame:
         df['value'] = df['value'].replace('-', None)
         df['value'] = df['value'].astype('float')
         return df
     
-    def _remove_space(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _remove_space(self, df: DataFrame) -> DataFrame:
         for col in df.columns:
             df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)     
         return df
 
-    def _convert_adjusted(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _convert_adjusted(self, df: DataFrame) -> DataFrame:
         """
         Adds boolean column to indicate if a series is seasonally adjusted and removes
         the term from original series name.
@@ -371,7 +371,7 @@ class BlsApiCall:
 
         return df
     
-    def transform(self) -> pd.DataFrame:
+    def transform(self) -> DataFrame:
         """
         Wrangles JSON response into Pandas DataFrame.
 
@@ -404,7 +404,7 @@ class BlsApiCall:
 
                     final_dct_lst.append(data_dict)
 
-        final_df: pd.DataFrame = pd.DataFrame(final_dct_lst)
+        final_df: DataFrame = DataFrame(final_dct_lst)
         if not final_df.empty:
             if self.national_series is not None:
                 final_df = final_df.merge(self.national_series, on='seriesID',how='left')
@@ -516,12 +516,12 @@ class BlsApiCall:
         conn.close()
 
 if __name__ == "__main__":
-    print(int(datetime.datetime.strftime(datetime.datetime.now(), "%Y")))
-    # state_series_path = os.path.join(os.getcwd(), 'inputs/state_series_dimension.csv')
-    # state_series = pd.read_csv(state_series_path)
-    # national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
-    # national_series = pd.read_csv(national_series_path)
 
-    # call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
-    # call_engine.extract()
-    # df = call_engine.transform()
+    state_series_path = os.path.join(os.getcwd(), 'inputs/state_series_dimension.csv')
+    state_series = read_csv(state_series_path)
+    national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
+    national_series = read_csv(national_series_path)
+
+    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
+    call_engine.extract()
+    df = call_engine.transform()

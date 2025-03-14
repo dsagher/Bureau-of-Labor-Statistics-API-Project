@@ -37,8 +37,7 @@ Handles the extraction, transformation, and loading of BLS data.
     }
 }
 ```
-## Response Structure
-dict[str: str, str: int, str: list, str: dict[str: list[dict[str: list[dict[str:str]]]]]]
+*Response Structure:* dict[str: str, str: int, str: list, str: dict[str: list[dict[str: list[dict[str:str]]]]]]
 
 ## Example List of Queries:
 ```json
