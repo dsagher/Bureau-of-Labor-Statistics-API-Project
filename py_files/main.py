@@ -21,6 +21,10 @@
 
     Special Notes:
         - CSV output will be moved to load() function.
+        - Logging will be moved to main.py
+        - Logging will be configured to include stdout
+        - Additional Error handling will be moved to main
+        - argparse helper flags will be added to main
 
 =========================================================================================="""
 
