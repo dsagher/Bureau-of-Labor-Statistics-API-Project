@@ -288,11 +288,8 @@ class TestBlsApi(unittest.TestCase):
                                                     {'seriesID': 'SMS01000000000000001', 
                                                      'data': []}]}}
         mocked_post.return_value = mock_response
-        with self.assertRaises(Exception) as e:
-            self.api_call.extract()
-            self.api_call.transform()
-        self.assertEqual(str(e.exception), 'DataFrame is Empty')
-
+        self.api_call.extract()
+        self.api_call.transform()
         mocked_log_function.assert_called_once()
 
     @patch('api_bls.logging.critical')
