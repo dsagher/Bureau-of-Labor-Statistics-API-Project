@@ -42,19 +42,19 @@ def main() -> None:
     end_year = int(input('Enter end year: '))
     number_of_series = input('Enter desired number of series from input (Press enter for all): ')
 
-    df = pd.read_csv(user_path) # read_csv will be replaced by open() context manager
+    df = pd.read_csv(user_path) 
     loop = True
 
     while loop:
         if national_or_state == 1:
             api_engine = BlsApiCall(start_year, end_year, national_series=df, number_of_series=number_of_series)
-            name_of_file = f'national_series_{start_year}-{end_year}_{now}' # Deprecated
-            full_path = os.path.normcase(os.path.join(output_path, name_of_file)) # Deprecated
+            name_of_file = f'national_series_{start_year}-{end_year}_{now}'
+            full_path = os.path.normcase(os.path.join(output_path, name_of_file))
             loop = False
         elif national_or_state == 2:
             api_engine = BlsApiCall(start_year, end_year, state_series=df, number_of_series=number_of_series)
-            name_of_file = f'state_series_{start_year}-{end_year}_{now}' # Deprecated
-            full_path = os.path.normcase(os.path.join(output_path, name_of_file)) # Deprecated
+            name_of_file = f'state_series_{start_year}-{end_year}_{now}'
+            full_path = os.path.normcase(os.path.join(output_path, name_of_file)) 
             loop = False
         else:
             print('Please enter 1 for National Series or 2 for State Series')
