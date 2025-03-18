@@ -13,14 +13,14 @@
         - datetime
         - http
         - json
-        - itertools (batched)
+        - itertools
         - logging
         - pandas
-        - psycopg2
         - requests
         - requests.exceptions
         - re
         - os
+        - SQLAlchemy
         - time
 
         Internal:
@@ -39,8 +39,9 @@
     
     Special Notes:
         - Config files will be replaced with environmental variables.
-        - Psycopg2 will be replaced with SQLAlchemy ORM for load function.
         - Functionality will be added to be able to take in state and national series concurrently.
+        - DataFrame/Excel input and output will be removed for regular CSV fileIO
+        - Cleaning methods will be adapted to work for regular Python data structures
 
 =========================================================================================="""
 import datetime
@@ -49,12 +50,15 @@ import json
 from itertools import batched
 import logging
 from pandas import DataFrame, read_csv
-import psycopg2 as pg
 from requests.exceptions import HTTPError
 import requests
 import re as re
 import os
 import time
+from sqlalchemy import create_engine, MetaData,\
+Table, Column, Integer, String, Boolean, Float, ForeignKey
+from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.engine import URL
 
 from api_key import API_KEY
 from config import host, dbname, user, password, port
@@ -82,7 +86,7 @@ class BlsApiCall:
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
-    def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = None):
+    def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = ''):
 
         self.start_year: int = start_year
         self.end_year: int = end_year
@@ -106,9 +110,13 @@ class BlsApiCall:
         self.state_series: DataFrame = state_series
 
         if self.state_series is None:
-            self.number_of_series = number_of_series if number_of_series is not None else len(national_series)
+            self.number_of_series = int(number_of_series) if number_of_series is not '' else len(national_series)
+            self.state = False
+            self.national = True
         if self.national_series is None:
-            self.number_of_series = number_of_series if number_of_series is not None else len(state_series)
+            self.number_of_series = int(number_of_series) if number_of_series is not '' else len(state_series)
+            self.national = False
+            self.state = True
 
         
     def _read_query(self) -> None:
@@ -227,9 +235,9 @@ class BlsApiCall:
             
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
   
-                if self.national_series is not None:
+                if self.national:
                     logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
-                if self.state_series is not None:
+                if self.state:
                     logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 
                 if response.status_code != HTTPStatus.OK.value:
@@ -281,9 +289,9 @@ class BlsApiCall:
         end_year: str = str(self.end_year)
         self.lst_of_queries: list[dict] = []
         
-        if self.national_series is not None:
+        if self.national:
             series_id_lst: list = list(self.national_series["seriesID"])[:INPUT_AMOUNT]
-        elif self.state_series is not None:
+        elif self.state:
             series_id_lst: list = list(self.state_series["seriesID"])[:INPUT_AMOUNT]
 
         batch_progress = 0
@@ -380,7 +388,7 @@ class BlsApiCall:
         Returns:
             - final_df: Pandas DataFrame of final results
         """
-        final_dct_lst: list = []
+        self.final_dct_lst: list = []
         for response in self.lst_of_queries:
             results = response.get("Results")
             series_dct = results.get("series")
@@ -395,125 +403,89 @@ class BlsApiCall:
                 for data_point in series["data"]:
                     data_dict = {
                         "seriesID": series_id,
-                        "year": data_point["year"],
+                        "year": int(data_point["year"]),
                         "period": data_point["period"],
                         "period_name": data_point["periodName"],
-                        "value": data_point["value"],
-                        "footnotes": data_point["footnotes"] if not "[{}]" in data_point else None
+                        "value": float(data_point["value"]),
+                        "footnotes": str(data_point["footnotes"]) if data_point["footnotes"] != str([{}]) else None
                     }
+                    self.final_dct_lst.append(data_dict)
+        
+    '''===========================================================================================
 
-                    final_dct_lst.append(data_dict)
+    Deprecation Notice:
+        - DataFrame/Excel input and output will be removed for regular CSV fileIO
+        - Cleaning methods will be adapted to work for regular Python data structures
+            # final_df: DataFrame = DataFrame(self.final_dct_lst)
 
-        final_df: DataFrame = DataFrame(final_dct_lst)
-        if not final_df.empty:
-            if self.national_series is not None:
-                final_df = final_df.merge(self.national_series, on='seriesID',how='left')
-            elif self.state_series is not None:
-                final_df = final_df.merge(self.state_series, on='seriesID', how='left')
+            # if not final_df.empty:
+            #     if self.national:
+            #         final_df = final_df.merge(self.national_series, on='seriesID',how='left')
+            #     elif self.state:
+            #         final_df = final_df.merge(self.state_series, on='seriesID', how='left')
 
-            final_df_cleaned = final_df.copy()
-            final_df_cleaned = self._drop_nulls_and_duplicates(final_df_cleaned)
-            final_df_cleaned = self._values_to_floats(final_df_cleaned)
-            final_df_cleaned = self._remove_space(final_df_cleaned)
-            final_df_cleaned = self._convert_adjusted(final_df_cleaned)
-            
-            print("DataFrame Created")
-
-            return final_df_cleaned
-        else:
-            raise Exception('DataFrame is Empty')
+            #     self.final_df_cleaned = final_df.copy()
+            #     self.final_df_cleaned = self._drop_nulls_and_duplicates(self.final_df_cleaned)
+            #     self.final_df_cleaned = self._values_to_floats(self.final_df_cleaned)
+            #     self.final_df_cleaned = self._remove_space(self.final_df_cleaned)
+            #     self.final_df_cleaned = self._convert_adjusted(self.final_df_cleaned)
+            #     print("DataFrame Created")
+            # else:
+            #     raise Exception('DataFrame is Empty')
+    ==========================================================================================='''
 
     def load(self) -> None:
-        """
-        (Deprecated Function)
-        Loads data into a PostgreSQL database. 
 
-        Special Concerns:
-            - Will be replaced with SQLAlchemy ORM.
-            - Will take in data directly from program, not external CSV files.
-        """
+        url_object = URL.create('postgresql+psycopg2', 
+                                username='danielsagher',
+                                password='dsagher',
+                                host='localhost',
+                                database='danielsagher',
+                                port = 5432)
+        engine = create_engine(url_object, logging_name='SQLAlchemy')
+        metadata = MetaData()
+        state_series = Table('state_series', 
+                            metadata, 
+                            Column('seriesID', String, primary_key=True),
+                            Column('series', String, nullable=False),
+                            Column('state', String, nullable=False),
+                            Column('survey', String),
+                            Column('is_adjusted', Boolean))
+        national_series = Table('national_series', 
+                            metadata, 
+                            Column('seriesID', String, primary_key=True),
+                            Column('series', String, nullable=False),
+                            Column('survey', String),
+                            Column('is_adjusted', Boolean))
+        state_results = Table('state_results', 
+                            metadata, 
+                            Column('seriesID', String, ForeignKey('state_series.seriesID'), primary_key=True),
+                            Column('year', Integer, nullable=False, primary_key=True),
+                            Column('period', String, nullable=False, primary_key=True),
+                            Column('period_name',String, nullable=False),
+                            Column('value', Float),
+                            Column('footnotes', String))
+        national_results = Table('national_results', 
+                            metadata, 
+                            Column('seriesID', String, ForeignKey('national_series.seriesID'), primary_key=True),
+                            Column('year', Integer, nullable=False, primary_key=True),
+                            Column('period', String, nullable=False, primary_key=True),
+                            Column('period_name',String, nullable=False),
+                            Column('value', Float),
+                            Column('footnotes', String))
 
-        path = os.getcwd()
+        metadata.create_all(bind=engine, checkfirst=True)
 
-        conn = pg.connect(host=host, dbname=dbname, user=user, password=password, port=port)
-
-        cur = conn.cursor()
-
-        cur.execute(
-            """
-                    --sql
-                    CREATE TABLE IF NOT EXISTS state_series (
-                    seriesID VARCHAR PRIMARY KEY,
-                    series VARCHAR,
-                    state VARCHAR,
-                    survey VARCHAR,
-                    is_adjusted BOOLEAN
-                    );
-
-                    --sql
-                    CREATE TABLE IF NOT EXISTS national_series (
-                    seriesID VARCHAR PRIMARY KEY,
-                    series VARCHAR,
-                    survey VARCHAR,
-                    is_adjusted BOOLEAN
-                    );
-
-                    --sql
-                    CREATE TABLE IF NOT EXISTS state_results (
-                    seriesID VARCHAR,
-                    year INT,
-                    period VARCHAR,
-                    period_name VARCHAR,
-                    value FLOAT,
-                    footnotes VARCHAR
-                    );
-
-                    --sql
-                    CREATE TABLE IF NOT EXISTS national_results (
-                    seriesID VARCHAR,
-                    year INT,
-                    period VARCHAR,
-                    period_name VARCHAR,
-                    value FLOAT,
-                    footnotes VARCHAR
-                    );
-
-                    --sql
-                    CREATE TABLE IF NOT EXISTS survey_table (
-                    survey VARCHAR, 
-                    survey_name VARCHAR
-                    );
-                    
-                    """
-        )
-
-        cur.execute(
-            f"""
-                    --sql
-                    COPY national_series
-                    FROM '{path}/outputs/cleaning_op/national_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
-
-                    --sql
-                    COPY state_series
-                    FROM '{path}/outputs/cleaning_op/state_series_dimension_cleaned.csv' DELIMITER ',' CSV HEADER;
-
-                    --sql
-                    COPY national_results
-                    FROM '{path}/outputs/cleaning_op/national_results_cleaned.csv' DELIMITER ',' CSV HEADER;
-
-                    --sql
-                    COPY state_results
-                    FROM '{path}/outputs/cleaning_op/state_results_cleaned.csv'  DELIMITER ',' CSV HEADER;
-
-                    --sql
-                    COPY survey_table
-                    FROM '{path}/outputs/excel_op/survey_table.csv' DELIMITER ',' CSV HEADER;
-        """
-        )
-
-        conn.commit()
-        cur.close()
-        conn.close()
+        if self.state:
+            series_stmt = insert(state_series).values(self.state_series.to_dict(orient='records')).on_conflict_do_nothing()
+            results_stmt = insert(state_results).values(self.final_dct_lst).on_conflict_do_nothing()
+        if self.national:
+            series_stmt = insert(national_series).values(self.national_series.to_dict(orient='records')).on_conflict_do_nothing()
+            results_stmt = insert(national_results).values(self.final_dct_lst).on_conflict_do_nothing()
+        with engine.connect() as connect:
+            connect.execute(series_stmt)
+            connect.execute(results_stmt)
+            connect.commit()
 
 if __name__ == "__main__":
 
@@ -522,6 +494,7 @@ if __name__ == "__main__":
     national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
     national_series = read_csv(national_series_path)
 
-    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=250)
+    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=1)
     call_engine.extract()
-    df = call_engine.transform()
+    call_engine.transform()
+    call_engine.load()
