@@ -110,11 +110,11 @@ class BlsApiCall:
         self.state_series: DataFrame = state_series
 
         if self.state_series is None:
-            self.number_of_series = int(number_of_series) if number_of_series is not '' else len(national_series)
+            self.number_of_series = int(number_of_series) if number_of_series != '' else len(national_series)
             self.state = False
             self.national = True
         if self.national_series is None:
-            self.number_of_series = int(number_of_series) if number_of_series is not '' else len(state_series)
+            self.number_of_series = int(number_of_series) if number_of_series != '' else len(state_series)
             self.national = False
             self.state = True
 

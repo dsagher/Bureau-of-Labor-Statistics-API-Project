@@ -69,7 +69,6 @@ class TestBlsApi(unittest.TestCase):
     def tearDown(self):
         """
         Clean up after each test method runs.
-        
         Currently does nothing but can be expanded to handle cleanup tasks.
         """
         pass
