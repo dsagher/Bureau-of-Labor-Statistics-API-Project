@@ -1,9 +1,10 @@
 from unittest.mock import patch, Mock
 import unittest
-from main import main, interactive_user_input
+from main import main, interactive_user_input, read_file
 import subprocess
 import os
 import sys
+import tempfile
 
 class TestMain(unittest.TestCase):
 
@@ -81,8 +82,31 @@ class TestMain(unittest.TestCase):
             interactive_user_input()
         self.assertEqual(str(e.exception), 'Series type must be 1 for National Series or 2 for State Series.')
 
+
+    @patch('main.arg_parser')
+    def test_csv_reader(self, mocked_args):
+        fd, path = tempfile.mkstemp(suffix='csv', text=True)
+        with open(path, 'w') as file:
+            file.write('seriesID,series,state,survey,is_adjusted\n')
+            file.write('123ABC,Always be Cool,MI,ABC,False\n')
+            file.write('124ABC,Always be Cooler,MI,ABC,False\n')
+        args = mocked_args()
+        args.path = path
+        args.series_type = 1
+        read_file(args.path, args.series_type)
+    
+    def test_csv_reader_error(self):
+        # input non .csv to raise error and find error type.
+        pass
+    
+    def test_validate_years(self):
+        # Patch datetime.strftime
+        pass
+    
+    def test_path_not_found(self):
+        pass
+
+
         
-
-
 if __name__ == "__main__":
     unittest.main()

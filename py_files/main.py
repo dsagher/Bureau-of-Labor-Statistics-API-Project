@@ -35,6 +35,7 @@ import argparse as ap
 import subprocess
 from typing import Type
 import csv
+from datetime import datetime
 
 def arg_parser():
 
@@ -57,7 +58,9 @@ def arg_parser():
     group.add_argument('-s','--silence', help="Display nothing output during runtime.", action='store_true',)
 
     return parser.parse_args()
+
 def interactive_user_input() -> dict:
+    #todo .DEBUG
 
     print("=============Interactive Input====================")
     print("==================================================", '\n')
@@ -78,14 +81,39 @@ def interactive_user_input() -> dict:
               'end_year':end_year,
               'series_type':series_type,
               'number_of_series':number_of_series}
+    
     return output
 
-def validate_path(csv_path: str) -> bool:
-    pass
+def validate_path(path: str) -> bool:
+    #todo .DEBUG
+    if os.path.exists(path):
+        return True
+    else:
+        raise FileNotFoundError("Path not found")
 def validate_years(start_year: int, end_year: int) -> bool:
-    pass
-def read_file(path):
-    pass
+    #todo .DUBUG
+    this_year = int(datetime.strftime(datetime.now(), "%Y"))
+    if start_year <= 0 or end_year <= 0:
+        raise Exception('Please enter a valid year')
+    elif end_year > this_year or start_year > this_year:
+        raise Exception("Please enter a valid year.")
+    elif start_year > end_year:
+        raise Exception('Start year must be before end year.')
+    else:
+        return True
+def read_file(path: str, series_type: int) -> list[dict]:
+    #todo .DEBUG
+    #! Could check for suffix .csv
+    try:
+        with open(path, 'r') as file:
+            lst = []
+            reader = csv.DictReader(file)
+            for row in reader:
+                lst.append(row)
+            return lst
+    except:
+        raise Exception("Error occurred while reading CSV.")
+
 def setup_logging():
     pass
 def ping_traceroute():
@@ -108,16 +136,19 @@ def main() -> None:
 
         if path_valid and years_valid and args.series_type == 1:
             file = read_file(args.csv_path)
+            #todo .INFO
             api_engine: Type[BlsApiCall] = BlsApiCall(args.start_year, args.end_year, national_series=file, number_of_series=args.number_of_series)
             call_etl(api_engine)
 
         elif path_valid and years_valid and args.series_type == 2:
             file = read_file(args.csv_path)
+            #todo .INFO
             api_engine: Type[BlsApiCall] = BlsApiCall(args.start_year, args.end_year,  state_series=file,  number_of_series=args.number_of_series)
             call_etl(api_engine)
 
     elif (args.start_year or args.end_year or args.series_type or args.csv_path) and not \
             (args.start_year and args.end_year and args.series_type and args.csv_path):
+        #todo .ERROR
         raise ValueError("Please Specify --csv-path, --type, --start-year, and --end-year or nothing for interactive input.")
     
     else:
@@ -127,9 +158,11 @@ def main() -> None:
     
         if path_valid and years_valid and output['series_type'] == 1:
             file = read_file(output['path'])
+            #todo .INFO
             api_engine: Type[BlsApiCall] = BlsApiCall(output['start_year'], output['end_year'], national_series=file, number_of_series=output['number_of_series'])
         elif path_valid and years_valid and output['series_type'] == 2:
             file = read_file(output['path'])
+            #todo .INFO
             api_engine: Type[BlsApiCall] = BlsApiCall(output['start_year'], output['end_year'], state_series=file, number_of_series=output['number_of_series'])
             call_etl(api_engine)
 

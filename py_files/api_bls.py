@@ -86,6 +86,7 @@ class BlsApiCall:
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
+    #! Change types from dataframe
     def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = ''):
 
         self.start_year: int = start_year
@@ -95,16 +96,11 @@ class BlsApiCall:
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
             raise Exception('Argument must only be one series list')
-        elif state_series is not None and not isinstance(state_series, DataFrame):
-            raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
-        elif national_series is not None and not isinstance(national_series, DataFrame):
-            raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
-        elif start_year > end_year:
-            raise Exception('Start year must be before end year.')
-        elif start_year <= 0 or end_year <= 0:
-            raise Exception('Please enter a valid year')
-        elif end_year > int(datetime.datetime.strftime(datetime.datetime.now(), "%Y")):
-            raise Exception("Please enter a valid year.")
+        # elif state_series is not None and not isinstance(state_series, DataFrame):
+        #     raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
+        # elif national_series is not None and not isinstance(national_series, DataFrame):
+        #     raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
+
         
         self.national_series: DataFrame = national_series
         self.state_series: DataFrame = state_series

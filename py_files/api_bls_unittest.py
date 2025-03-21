@@ -287,11 +287,9 @@ class TestBlsApi(unittest.TestCase):
                                                     {'seriesID': 'SMS01000000000000001', 
                                                      'data': []}]}}
         mocked_post.return_value = mock_response
-        with self.assertRaises(Exception) as e:
-            self.api_call.extract()
-            self.api_call.transform()
-        self.assertEqual(str(e.exception), 'DataFrame is Empty')
 
+        self.api_call.extract()
+        self.api_call.transform()
         mocked_log_function.assert_called_once()
 
     @patch('api_bls.logging.critical')
@@ -338,29 +336,6 @@ class TestBlsApi(unittest.TestCase):
             BlsApiCall(self.state_series, self.national_series)
             self.assertEqual(str(e.exception), 'Argument must only be one series list')
     
-    def test_init_type(self):
-        """
-        Test type validation for state_series parameter.
-        
-        Verifies that an exception is raised when state_series
-        is not a pandas DataFrame.
-        """
-        with self.assertRaises(Exception) as e:
-             series = pd.Series(['ABC123', 'DEF456'])
-             BlsApiCall(state_series=series)
-             self.assertEqual(str(e.exception), 'BlsApiCall inputs must be Pandas DataFrame')
-    
-    def test_init_type_2(self):
-        """
-        Test type validation for national_series parameter.
-        
-        Verifies that an exception is raised when national_series
-        is not a pandas DataFrame.
-        """
-        with self.assertRaises(Exception) as e:
-             series = pd.Series(['ABC123', 'DEF456'])
-             BlsApiCall(national_series=series)
-             self.assertEqual(str(e.exception), 'BlsApiCall inputs must be Pandas DataFrame')
     
 if __name__ == "__main__":
     unittest.main()
