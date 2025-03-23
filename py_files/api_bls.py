@@ -60,12 +60,13 @@ Table, Column, Integer, String, Boolean, Float, ForeignKey
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
 
-from api_key import API_KEY
-from config import host, dbname, user, password, port
+from api_key import API_KEY #!
+from config import host, dbname, user, password, port #!
 
-FORMAT = '%(levelname)s - %(asctime)s - %(message)s'
-logger = logging.getLogger('api_bls.log')
-logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y-%M-%D %H-%M-%S")
+# FORMAT = '%(levelname)s - %(asctime)s - %(message)s'
+# logger = logging.getLogger('api_bls.log') #! Need to configure child logger
+# logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y-%M-%D %H-%M-%S")
+
 
 class BlsApiCall:
     """
@@ -89,6 +90,8 @@ class BlsApiCall:
     #! Change types from dataframe
     def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = ''):
 
+        self.logger = logging.getLogger('main.api_bls')
+
         self.start_year: int = start_year
         self.end_year: int = end_year
 
@@ -96,14 +99,9 @@ class BlsApiCall:
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
             raise Exception('Argument must only be one series list')
-        # elif state_series is not None and not isinstance(state_series, DataFrame):
-        #     raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
-        # elif national_series is not None and not isinstance(national_series, DataFrame):
-        #     raise TypeError('BlsApiCall inputs must be Pandas DataFrame')
 
-        
-        self.national_series: DataFrame = national_series
-        self.state_series: DataFrame = state_series
+        self.national_series: DataFrame = national_series #! Change to dict
+        self.state_series: DataFrame = state_series #!  Change to dict
 
         if self.state_series is None:
             self.number_of_series = int(number_of_series) if number_of_series != '' else len(national_series)
@@ -181,7 +179,7 @@ class BlsApiCall:
         if os.path.exists(self.query_count_file) and \
                     self.last_query_count >= 500 and \
                     self.current_query_day - self.first_query_day == 0:
-            logging.critical('Queries may not exceed 500 within a day.')
+            self.logger.critical('Queries may not exceed 500 within a day.')
             raise Exception("Queries may not exceed 500 within a day.")
         
         if not self.just_created:
@@ -232,9 +230,9 @@ class BlsApiCall:
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
   
                 if self.national:
-                    logging.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
+                    self.logger.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 if self.state:
-                    logging.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
+                    self.logger.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 
                 if response.status_code != HTTPStatus.OK.value:
                     raise HTTPError(response=response.status_code)
@@ -243,28 +241,28 @@ class BlsApiCall:
                     response_status = response_json["status"]
                 
                     if response_status != "REQUEST_SUCCEEDED":
-                        logging.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        self.logger.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                         raise Exception
                     else:
-                        logging.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        self.logger.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                         return response_json
 
             except HTTPError as e:
                 if e.response in retry_codes:
                     final_error = e.response
-                    logging.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
+                    self.logger.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
                     time.sleep(2**attempt)
                     continue
                 else:
                     final_error = e.response
-                    logging.critical('HTTP Error: %s', e.response)
+                    self.logger.critical('HTTP Error: %s', e.response)
                     raise HTTPError(f"HTTP Error: {e.response}")
                 
             except Exception as e:
-                logging.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
+                self.logger.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
                 raise Exception('Response Status from API is not "REQUEST_SUCCEEDED"')
 
-        logging.critical('API Error: %s', final_error)
+        self.logger.critical('API Error: %s', final_error)
         raise Exception(f"API Error: {final_error}")
 
     def extract(self) -> list:
@@ -306,6 +304,8 @@ class BlsApiCall:
             
         return self.lst_of_queries
 
+
+##################Need to rework these for non DataFrames#######################
     def _log_message(self, messages: str) -> None:
         """
         Method looped in transform() that extracts the message and year that appear in response JSON
@@ -324,14 +324,14 @@ class BlsApiCall:
                 series_id, year = year_reg_match.group(1,2)
                 msg = 'No Data Available'
                 entry = {'message': msg, "series_id": series_id, "year": year}
-                logging.warning(entry)
+                self.logger.warning(entry)
             elif no_series_reg_match:
                 series_id = no_series_reg_match.group(1)
                 msg = 'Series does not exist'
                 entry = {'message': msg, "series_id": series_id}
-                logging.warning(entry)
+                self.logger.warning(entry)
             else:
-                logging.warning(message)
+                self.logger.warning(message)
 
     def _drop_nulls_and_duplicates(self, df: DataFrame) -> DataFrame:
         df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
@@ -374,6 +374,9 @@ class BlsApiCall:
         df['series'] = df['series'].apply(remove_terms)
 
         return df
+
+##################Need to rework these for non DataFrames#######################
+    
     
     def transform(self) -> DataFrame:
         """
@@ -407,28 +410,6 @@ class BlsApiCall:
                     }
                     self.final_dct_lst.append(data_dict)
         
-    '''===========================================================================================
-
-    Deprecation Notice:
-        - DataFrame/Excel input and output will be removed for regular CSV fileIO
-        - Cleaning methods will be adapted to work for regular Python data structures
-            # final_df: DataFrame = DataFrame(self.final_dct_lst)
-
-            # if not final_df.empty:
-            #     if self.national:
-            #         final_df = final_df.merge(self.national_series, on='seriesID',how='left')
-            #     elif self.state:
-            #         final_df = final_df.merge(self.state_series, on='seriesID', how='left')
-
-            #     self.final_df_cleaned = final_df.copy()
-            #     self.final_df_cleaned = self._drop_nulls_and_duplicates(self.final_df_cleaned)
-            #     self.final_df_cleaned = self._values_to_floats(self.final_df_cleaned)
-            #     self.final_df_cleaned = self._remove_space(self.final_df_cleaned)
-            #     self.final_df_cleaned = self._convert_adjusted(self.final_df_cleaned)
-            #     print("DataFrame Created")
-            # else:
-            #     raise Exception('DataFrame is Empty')
-    ==========================================================================================='''
 
     def load(self) -> None:
 

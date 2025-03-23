@@ -5,6 +5,7 @@ import subprocess
 import os
 import sys
 import tempfile
+import datetime as dt
 
 class TestMain(unittest.TestCase):
 
@@ -15,12 +16,12 @@ class TestMain(unittest.TestCase):
     @patch('main.arg_parser')
     def test_all_main_args(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path):
         args = mocked_parser()
-        args.csv_path = 'Hello'
+        args.path = 'path/to/csv'
         args.series_type = 1
         args.start_year = 2000
         args.end_year = 2010
-        mocked_years.return_value = True
-        mocked_path.return_value = True
+        mocked_years.return_value = True, None
+        mocked_path.return_value = True, None
     
         main()
         mocked_years.assert_called_once()
@@ -35,7 +36,7 @@ class TestMain(unittest.TestCase):
     @patch('main.arg_parser')
     def test_main_args_missing(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path):
         args = mocked_parser()
-        args.csv_path = 'Hello'
+        args.path = 'path/to/csv'
         args.series_type = 1
         args.start_year = 2000
         args.end_year = False
@@ -43,7 +44,7 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             main()
             
-        self.assertEqual(str(e.exception), "Please Specify --csv-path, --type, --start-year, and --end-year or nothing for interactive input.")
+        self.assertEqual(str(e.exception), "Please Specify --path, --type, --start-year, and --end-year or nothing for interactive input.")
         mocked_years.assert_not_called()
         mocked_path.assert_not_called()
         mocked_read.assert_not_called()
@@ -57,7 +58,7 @@ class TestMain(unittest.TestCase):
     @patch('main.arg_parser')
     def test_run_interactive_user_input(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path, mocked_user_input):
         args = mocked_parser()
-        args.csv_path = False
+        args.path = False
         args.series_type = False
         args.start_year = False
         args.end_year = False
@@ -65,22 +66,34 @@ class TestMain(unittest.TestCase):
                                         'start_year': 2000,
                                         'end_year':2005,
                                         'series_type':1,
-                                        'number_of_series':False}
+                                        'series_count':False}
         mocked_read.return_value = [{'col1':'value1', 'col2':'value2'}]
+        mocked_years.return_value = True, None
+        mocked_path.return_value = True, None
 
         main()
-        mocked_bls.assert_called_once_with(2000, 2005, national_series=mocked_read.return_value, number_of_series=False)
+        mocked_bls.assert_called_once_with(2000, 2005, national_series=mocked_read.return_value, series_count=False)
         mocked_read.assert_called_once()
         mocked_years.assert_called_once()
         mocked_path.assert_called_once()
         mocked_user_input.assert_called_once()
 
+    @patch('main.validate_years')
+    @patch('main.validate_path')
     @patch('main.input')
-    def test_interactive_user_input(self, mocked_input):
-        mocked_input.return_value = 3
-        with self.assertRaises(ValueError) as e:
-            interactive_user_input()
-        self.assertEqual(str(e.exception), 'Series type must be 1 for National Series or 2 for State Series.')
+    def test_interactive_user_input(self, mocked_input, mocked_path, mocked_years):
+        responses = {"Enter CSV path: ": 'path/to/csv',
+                    "Enter 1 for National Series, 2 for State Series: ": "1",
+                    "Enter start year: ": "2000",
+                    "Enter end year: ": "2005",
+                    "Enter desired number of series from input (Press enter for all): ": "50"}
+        mocked_path.return_value = True, None
+        mocked_years.return_value = True, None
+        mocked_input.side_effect = responses.get
+        interactive_user_input()
+        mocked_path.assert_called_once()
+        mocked_years.assert_called_once()
+        assert mocked_input.call_count == 5
 
 
     @patch('main.arg_parser')
@@ -93,18 +106,77 @@ class TestMain(unittest.TestCase):
         args = mocked_args()
         args.path = path
         args.series_type = 1
+        args.start_year = 2000
+        args.end_year = 2005
         read_file(args.path, args.series_type)
+
+
+    @patch("main.arg_parser")
+    @patch("main.validate_path")
+    def test_path_exception(self, mocked_path, mocked_parser):
+        args = mocked_parser()
+        args.path = 'path/to/csv'
+        args.series_type = 1
+        args.start_year = 2000
+        args.end_year = 2010
+        mocked_path.return_value = False, "Path not found."
+        with self.assertRaises(Exception) as e:
+            main()
+        self.assertEqual(str(e.exception), "Path not found.")
+
+
+    @patch("main.arg_parser")
+    @patch("main.validate_path")
+    def test_years_exception(self, mocked_path, mocked_parser):
+        args = mocked_parser()
+        args.path = 'path/to/csv'
+        args.series_type = 1
+        
+        args.start_year = "two thousand twenty"
+        args.end_year = 2010
+        mocked_path.return_value = True, None
+        with self.assertRaises(Exception) as e:
+            main()
+        print(str(e.exception))
+        self.assertEqual(str(e.exception), "Error: Years must be integers.")
+
+        args.start_year = -2000
+        args.end_year = 2010
+        with self.assertRaises(Exception) as e:
+            main()
+        self.assertEqual(str(e.exception), "Error: Years must be positive integers.")
+
+        this_year = int(dt.datetime.strftime(dt.datetime.now(), "%Y"))
+        args.start_year = 2000
+        args.end_year = this_year + 10
+        with self.assertRaises(Exception) as e:
+            main()
+        self.assertEqual(str(e.exception), f"Error: End year cannot be in the future (current year: {this_year}).")
+
+        args.start_year = 2010
+        args.end_year = 200
+        with self.assertRaises(Exception) as e:
+            main()
+        self.assertEqual(str(e.exception), "Error: Start year must be before end year.")
+
+        args.start_year = 2000
+        args.end_year = 2025
+        with self.assertRaises(Exception) as e:
+            main()
+        self.assertEqual(str(e.exception), "Error: Year range cannot exceed 20 years due to API limitations.")
+
+
     
-    def test_csv_reader_error(self):
-        # input non .csv to raise error and find error type.
-        pass
+    # def test_csv_reader_error(self):
+    #     # input non .csv to raise error and find error type.
+    #     pass
     
-    def test_validate_years(self):
-        # Patch datetime.strftime
-        pass
+    # def test_validate_years(self):
+    #     # Patch datetime.strftime
+    #     pass
     
-    def test_path_not_found(self):
-        pass
+    # def test_path_not_found(self):
+    #     pass
 
 
         
