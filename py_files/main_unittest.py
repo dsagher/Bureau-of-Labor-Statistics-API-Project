@@ -1,19 +1,40 @@
-"""==========================================================
+"""==========================================================================================
 
-    Title:       <>
-    Author:      <>
-    Date:        <>
+    File:        main_unittest.py
+    Author:      Dan Sagher
+    Date:        3/24/2025
     Description:
-        
-    Special Concerns:
+        This file contains a suite of unit tests designed to validate the functionality of the 
+        main script in handling CSV file processing, user input validation, and API calls. 
+        The tests cover a range of scenarios including correct input handling, 
+        missing arguments, interactive user input, and error conditions for file reading, 
+        path validation, and year validation.
+    
+    Dependencies:
 
-==========================================================="""
+        External:
+            - csv
+            - datetime
+            - tempfile
+            - unittest
+            - unittest.mock
+        
+        Internal:
+            - main
+
+    Special Concerns:
+        - Tests involve mocking external dependencies like file reading, API calls, 
+          and user input.
+        - The file includes exception handling tests to ensure 
+          proper error reporting and graceful exits for common errors.
+
+=========================================================================================="""
 
 import csv
 import datetime as dt
 import tempfile
 import unittest
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from main import main, interactive_user_input, read_file
 
@@ -25,6 +46,10 @@ class TestMain(unittest.TestCase):
     @patch('main.BlsApiCall')
     @patch('main.arg_parser')
     def test_all_main_args(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path):
+        """
+        Test case for when all main arguments are provided and valid. 
+        Verifies that the corresponding functions are called in the correct order.
+        """
         args = mocked_parser()
         args.path = 'path/to/csv'
         args.series_type = 1
@@ -45,6 +70,11 @@ class TestMain(unittest.TestCase):
     @patch('main.BlsApiCall')
     @patch('main.arg_parser')
     def test_main_args_missing(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path):
+        """
+        Test case for when required arguments are missing or invalid. 
+        Verifies that a ValueError is raised and the functions are not called.
+        """
+
         args = mocked_parser()
         args.path = 'path/to/csv'
         args.series_type = 1
@@ -67,6 +97,11 @@ class TestMain(unittest.TestCase):
     @patch('main.BlsApiCall')
     @patch('main.arg_parser')
     def test_run_interactive_user_input(self, mocked_parser,mocked_bls, mocked_read, mocked_years, mocked_path, mocked_user_input):
+        """
+        Test case for handling interactive user input when no command-line arguments are provided.
+        Verifies that the function processes the input correctly.
+        """
+
         args = mocked_parser()
         args.path = False
         args.series_type = False
@@ -92,6 +127,10 @@ class TestMain(unittest.TestCase):
     @patch('main.validate_path')
     @patch('main.input')
     def test_interactive_user_input(self, mocked_input, mocked_path, mocked_years):
+        """
+        Test case for validating user input during the interactive mode. 
+        Verifies that all expected inputs are captured and validated correctly.
+        """
         responses = {"Enter CSV path: ": 'path/to/csv',
                     "Enter 1 for National Series, 2 for State Series: ": "1",
                     "Enter start year: ": "2000",
@@ -107,6 +146,10 @@ class TestMain(unittest.TestCase):
 
     @patch('main.arg_parser')
     def test_csv_reader(self, mocked_args):
+        """
+        Test case for reading a CSV file and verifying the data processing.
+        Simulates writing a temporary CSV file and passing it through the read_file function.
+        """
         fd, path = tempfile.mkstemp(suffix='csv', text=True)
         with open(path, 'w') as file:
             file.write('seriesID,series,state,survey,is_adjusted\n')
@@ -123,6 +166,10 @@ class TestMain(unittest.TestCase):
     @patch('main.read_file')
     @patch('main.arg_parser')
     def test_csv_reader_error(self, mocked_args, mocked_read, mocked_path):
+        """
+        Test case for error handling during CSV file reading. Simulates various 
+        exceptions like permission errors, value errors, and CSV-related errors.
+        """
         args = mocked_args()
         args.path = 'path/to/csv'
         args.series_type = 1
@@ -157,6 +204,9 @@ class TestMain(unittest.TestCase):
     @patch("main.arg_parser")
     @patch("main.validate_path")
     def test_path_exception(self, mocked_path, mocked_parser):
+        """
+        Test case for handling path validation errors. Simulates a file not found exception.
+        """
         args = mocked_parser()
         args.path = 'path/to/csv'
         args.series_type = 1
@@ -170,6 +220,10 @@ class TestMain(unittest.TestCase):
     @patch("main.arg_parser")
     @patch("main.validate_path")
     def test_years_exception(self, mocked_path, mocked_parser):
+        """
+        Test case for handling year validation errors. Simulates invalid, non-positive, 
+        or future year inputs and verifies appropriate error messages.
+        """
         args = mocked_parser()
         args.path = 'path/to/csv'
         args.series_type = 1

@@ -1,32 +1,24 @@
-"""==========================================================================================
-
-    Title:       Bureau of Labor Statistics API Pipeline
-    File:        main.py
-    Author:      Dan Sagher
-    Date:        3/11/25
-    Description:
-        This pipeline extracts, transforms, and loads data from the Bureau of Labor Statistics
-        (BLS) API into a PostgreSQL database. The user uploads a CSV dimension file containing
-        series names and IDs.
-
-    Dependencies:
-
-        External:
-        - pandas
-        - datetime
-        - os
-
-        Internal:
-        - api_bls
-
-    Special Notes:
-        - CSV output will be moved to load() function.
-        - Logging will be moved to main.py
-        - Logging will be configured to include stdout
-        - Additional Error handling will be moved to main
-        - argparse helper flags will be added to main
-
-=========================================================================================="""
+"""
+==========================================================================================
+Title:       BLS API ETL Pipeline
+File:        main.py
+Author:      Dan Sagher
+Date:        03/11/2025
+Description:
+    This script implements an ETL (Extract, Transform, Load) pipeline that interacts
+    with the Bureau of Labor Statistics (BLS) API. It reads a CSV file containing series
+    IDs, extracts data from the API, transforms the data into a clean format, and loads
+    it into a PostgreSQL database.
+Dependencies:
+    External:
+        - argparse, csv, datetime, logging, os, subprocess, sys, typing
+    Internal:
+        - api_bls (BlsApiCall class)
+Special Notes:
+    - Supports both command-line argument parsing and interactive user input.
+    - Implements robust error handling and logging for production-level reliability.
+==========================================================================================
+"""
 
 import argparse as ap
 import csv
@@ -40,6 +32,22 @@ from typing import Type, Tuple
 from api_bls import BlsApiCall
 
 def arg_parser():
+    """
+    Parse command-line arguments for the BLS API ETL Pipeline.
+    
+    Returns:
+        argparse.Namespace: Parsed command-line arguments including:
+            - path: CSV file path with series IDs.
+            - series_type: 1 for National Series or 2 for State Series.
+            - start_year: The beginning year for data extraction.
+            - end_year: The ending year for data extraction.
+            - series_count: Optional limit on the number of series IDs to process.
+            - ping: Number of pings to test connectivity to the BLS API.
+            - traceroute: Flag to perform a traceroute to the BLS API.
+            - verbose: Flag to enable detailed logging output.
+            - output: Flag to generate CSV output.
+            - silence: Flag to disable logging entirely.
+    """
 
     parser = ap.ArgumentParser(
         prog = 'Bureau of Labor Statistics API Pipeline',
@@ -48,54 +56,32 @@ def arg_parser():
                         uploaded into a local PostgreSQL database.',
         usage='python py_files/main.py --csv-path path/to/csv --series-type 1 --start-year 2000 --end-year -n 100 -pov')
     
-    parser.add_argument('--path', 
-                        type=str, 
-                        help="Path to CSV file containing seriesIDs", 
-                        default=False,
-                        metavar='path/to/csv')
-    parser.add_argument('--series-type', 
-                        type=int,choices=[1,2], 
-                        help="Enter 1 for National Series or 2 for State Series", 
-                        default=False,
-                        metavar="type")
-    parser.add_argument('--start-year', 
-                        type=int, 
-                        help="Enter start year for query.", 
-                        default=False,
-                        metavar="year")
-    parser.add_argument('--end-year', 
-                         type=int, help="Enter end year for query.", 
-                         default=False,
-                         metavar="year")
-    parser.add_argument('-n', '--series-count',
-                         type=int,
-                         help="Enter number of seriesIDs to input",
-                         default=None,
-                         metavar="# of series")
-    parser.add_argument('-p','--ping',
-                         type=int,
-                         help="Enter number of pings to send to the BLS API. Will exit program after execution.",
-                         default=False,
-                         metavar="# of pings")
-    parser.add_argument('-t', '--traceroute',
-                         help="Check routing to the BLS API. Will exit program after execution.",
-                         action='store_true',
-                         default=False)
-    parser.add_argument('-v','--verbose', 
-                        help="Include more information to logging output (Set level to debug).", 
-                        action='store_true', default=False)
-    parser.add_argument('-o','--output',
-                         help="Flag to generate CSV output of results",
-                         action='store_true',
-                         default=False)
-    parser.add_argument('-s','--silence', 
-                        help="Turn off logging to console and file. Takes precedent over --output.", 
-                        action='store_true', 
-                        default=False)
+    parser.add_argument('--path', type=str, help="Path to CSV file containing seriesIDs", default=False,metavar='path/to/csv')
+    parser.add_argument('--series-type', type=int,choices=[1,2], help="Enter 1 for National Series or 2 for State Series", default=False,metavar="type")
+    parser.add_argument('--start-year', type=int, help="Enter start year for query.", default=False,metavar="year")
+    parser.add_argument('--end-year', type=int, help="Enter end year for query.", default=False,metavar="year")
+    parser.add_argument('-n', '--series-count', type=int, help="Enter number of seriesIDs to input", default=None, metavar="# of series")
+    parser.add_argument('-p','--ping', type=int, help="Enter number of pings to send to the BLS API. Will exit program after execution.", default=False, metavar="# of pings")
+    parser.add_argument('-t', '--traceroute', help="Check routing to the BLS API. Will exit program after execution.", action='store_true', default=False)
+    parser.add_argument('-v','--verbose', help="Include more information to logging output (Set level to debug).", action='store_true', default=False)
+    parser.add_argument('-o','--output', help="Flag to generate CSV output of results", action='store_true', default=False)
+    parser.add_argument('-s','--silence', help="Turn off logging to console and file. Takes precedent over --output.", action='store_true', default=False)
 
     return parser.parse_args()
 
 def interactive_user_input() -> dict:
+    """
+    Gather user input interactively via the console.
+    
+    The user is prompted for:
+        - CSV file path
+        - Series type (National or State)
+        - Start and end years for data extraction
+        - Optional series count limit
+    
+    Returns:
+        dict: A dictionary containing the user's input.
+    """
 
     print("==========================Interactive Input=============================")
     print("========================================================================", '\n')
@@ -138,13 +124,38 @@ def interactive_user_input() -> dict:
     return output
 
 def validate_path(path: str) -> Tuple[bool, str | None]:
+    """
+    Check if the provided file path exists.
+    
+    Args:
+        path (str): The file path to check.
+        
+    Returns:
+        Tuple[bool, str | None]: A tuple containing a boolean indicating validity,
+        and an error message if invalid.
+    """
     if os.path.exists(path):
         return True, None
     else:
         return False, "Path not found."
     
 def validate_years(start_year: int, end_year: int) -> Tuple[bool, str]:
-
+    """
+    Validate the start and end years for the data extraction.
+    
+    Conditions:
+        - Both years must be positive integers.
+        - The end year cannot be in the future.
+        - The start year must precede the end year.
+        - The range between years cannot exceed 20 years.
+    
+    Args:
+        start_year (int): The starting year.
+        end_year (int): The ending year.
+        
+    Returns:
+        Tuple[bool, str]: A tuple with a boolean indicating validity and an error message if invalid.
+    """
     this_year = int(dt.datetime.strftime(dt.datetime.now(), "%Y"))
     try:
         start_year = int(start_year)
@@ -163,7 +174,15 @@ def validate_years(start_year: int, end_year: int) -> Tuple[bool, str]:
         return True, None
     
 def read_file(path: str) -> list[dict]:
-
+    """
+    Read and parse a CSV file containing series IDs.
+    
+    Args:
+        path (str): Path to the CSV file.
+        
+    Returns:
+        list[dict]: A list of dictionaries representing each row in the CSV.
+    """
     with open(path, 'r') as file:
         lst = []
         reader = csv.DictReader(file)
@@ -172,7 +191,17 @@ def read_file(path: str) -> list[dict]:
         return lst
     
 def setup_logging(verbose: bool, output: bool, silence: bool) -> Type[logging.Logger]:
-
+    """
+    Configure and return a logger for the ETL pipeline.
+    
+    Args:
+        verbose (bool): If True, set the logging level to DEBUG.
+        output (bool): If True, add a stream handler for stdout logging.
+        silence (bool): If True, disable all logging.
+        
+    Returns:
+        logging.Logger: Configured logger instance.
+    """
     logger = logging.getLogger("main")
 
     if not silence:
@@ -197,7 +226,21 @@ def setup_logging(verbose: bool, output: bool, silence: bool) -> Type[logging.Lo
 
 def main() -> None:
     """
-    Handles user input and calls ETL functions from BlsApiCall class.
+    Orchestrate the ETL pipeline by processing user input, validating parameters,
+    and invoking the BlsApiCall class to extract, transform, and load BLS API data.
+    
+    Workflow:
+        - Parse command-line arguments.
+        - Configure logging.
+        - Determine if command-line or interactive input is used.
+        - Validate file path and year parameters.
+        - Read the CSV file containing series IDs.
+        - Instantiate the BlsApiCall object based on the series type.
+        - Sequentially perform extraction, transformation, and loading.
+    
+    Raises:
+        FileNotFoundError: If the CSV file path is invalid.
+        ValueError: If year validation fails or required arguments are missing.
     """
         
     args = arg_parser()
