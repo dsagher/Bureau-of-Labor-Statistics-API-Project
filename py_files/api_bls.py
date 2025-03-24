@@ -59,7 +59,7 @@ from sqlalchemy import create_engine, MetaData,\
 Table, Column, Integer, String, Boolean, Float, ForeignKey
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
-
+import copy
 from api_key import API_KEY #!
 from config import host, dbname, user, password, port #!
 
@@ -87,10 +87,9 @@ class BlsApiCall:
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
-    #! Change types from dataframe
-    def __init__(self, start_year: int, end_year: int, national_series: DataFrame = None, state_series: DataFrame = None, number_of_series: int = ''):
+    def __init__(self, start_year: int, end_year: int, national_series: list[dict] = None, state_series: list[dict] = None, series_count: int = ''):
 
-        self.logger = logging.getLogger('main.api_bls')
+        self.logger = logging.getLogger('main.api')
 
         self.start_year: int = start_year
         self.end_year: int = end_year
@@ -100,19 +99,18 @@ class BlsApiCall:
         elif state_series is not None and national_series is not None:
             raise Exception('Argument must only be one series list')
 
-        self.national_series: DataFrame = national_series #! Change to dict
-        self.state_series: DataFrame = state_series #!  Change to dict
+        self.national_series: list[dict] = national_series
+        self.state_series: list[dict] = state_series
 
         if self.state_series is None:
-            self.number_of_series = int(number_of_series) if number_of_series != '' else len(national_series)
+            self.series_count = int(series_count) if series_count != '' else len(national_series)
             self.state = False
             self.national = True
         if self.national_series is None:
-            self.number_of_series = int(number_of_series) if number_of_series != '' else len(state_series)
+            self.series_count = int(series_count) if series_count != '' else len(state_series)
             self.national = False
             self.state = True
 
-        
     def _read_query(self) -> None:
         """
         Method called in create_query_file() and increment_query_count() to read first and last queries.
@@ -137,7 +135,7 @@ class BlsApiCall:
                     self.last_query_count = int(self.last_query_count)
                     self.last_query_day = int(self.last_query_day)
 
-                except UnboundLocalError: # If there is only one entry
+                except UnboundLocalError:
                     self.last_query_count = int(self.first_query_count)
                     self.last_query_day = int(self.first_query_day)
 
@@ -265,7 +263,7 @@ class BlsApiCall:
         self.logger.critical('API Error: %s', final_error)
         raise Exception(f"API Error: {final_error}")
 
-    def extract(self) -> list:
+    def extract(self) -> None:
         """
         Feeds list of seriesID's into bls_request() method in batches of 50 or less.
 
@@ -277,16 +275,16 @@ class BlsApiCall:
         Returns:
             - lst_of_queries: list of response JSONs from bls_request()
         """
-        BATCH_SIZE: int = 50
-        INPUT_AMOUNT: int = self.number_of_series
-        start_year: str = str(self.start_year)
-        end_year: str = str(self.end_year)
+        BATCH_SIZE = 50
+        INPUT_AMOUNT: int = self.series_count
+        start_year = str(self.start_year)
+        end_year = str(self.end_year)
         self.lst_of_queries: list[dict] = []
-        
+
         if self.national:
-            series_id_lst: list = list(self.national_series["seriesID"])[:INPUT_AMOUNT]
+            series_id_lst = [i.get("seriesID") for i in self.national_series][:INPUT_AMOUNT]
         elif self.state:
-            series_id_lst: list = list(self.state_series["seriesID"])[:INPUT_AMOUNT]
+            series_id_lst = [i.get("seriesID") for i in self.state_series][:INPUT_AMOUNT]
 
         batch_progress = 0
         for batch in batched(series_id_lst, BATCH_SIZE):
@@ -295,17 +293,15 @@ class BlsApiCall:
             batch_progress += batch_size
             total_size = len(series_id_lst)
 
-            print(f"Processessing batch of size: {batch_size}")
-            print(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
+            self.logger.debug(f"Extracting batch of size: {batch_progress}")
+            self.logger.debug(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
 
             result = self.bls_request(batch, start_year, end_year)
             self.lst_of_queries.append(result)
             time.sleep(0.25)
             
-        return self.lst_of_queries
-
-
-##################Need to rework these for non DataFrames#######################
+        self.logger.info(f"Successfully extracted {total_size} IDs")
+        
     def _log_message(self, messages: str) -> None:
         """
         Method looped in transform() that extracts the message and year that appear in response JSON
@@ -333,52 +329,46 @@ class BlsApiCall:
             else:
                 self.logger.warning(message)
 
-    def _drop_nulls_and_duplicates(self, df: DataFrame) -> DataFrame:
-        df = df.drop_duplicates(subset=['seriesID', 'year', 'period'],keep='first', ignore_index=True)
-        df = df.dropna(axis=0)
-        return df
+    def _drop_nulls_and_duplicates(self, lst: list[dict]) -> list[dict]:
+        unique = []
+        for dct in lst:
+            if dct in unique:
+                continue
+            else:
+                unique.append(dct)
+        return unique
 
-    def _values_to_floats(self, df: DataFrame) -> DataFrame:
-        df['value'] = df['value'].replace('-', None)
-        df['value'] = df['value'].astype('float')
-        return df
-    
-    def _remove_space(self, df: DataFrame) -> DataFrame:
-        for col in df.columns:
-            df[col] = df[col].apply(lambda x: x.strip() if isinstance(x, str) else x)     
-        return df
-
-    def _convert_adjusted(self, df: DataFrame) -> DataFrame:
+    def _convert_adjusted(self, lst: list[dict]) -> list[dict]:
         """
         Adds boolean column to indicate if a series is seasonally adjusted and removes
         the term from original series name.
         """
         adjusted = ', seasonally adjusted'
         not_adjusted = ', not seasonally adjusted'
-
-        def adjusted_column(text):
-            text = str(text).lower()
-            return True if text.endswith(adjusted) else False if text.endswith(not_adjusted) else None
         
-        def remove_terms(text):
-            text_lower = text.lower()
+        def remove_terms(str):
+            text_lower = str.lower()
             index1 = text_lower.find(adjusted)
             index2 = text_lower.find(not_adjusted)
             if index1 != -1:
-                return text[:index1]
+                str = str[:index1]
             elif index2 != -1:
-                return text[:index2]
-            return text
-        
-        df['is_adjusted'] = df['series'].apply(adjusted_column)
-        df['series'] = df['series'].apply(remove_terms)
-
-        return df
-
-##################Need to rework these for non DataFrames#######################
+                str = str[:index2]
+            return str
     
+        for dct in lst:
+            if dct['series'].lower().endswith(adjusted):
+                dct['is_adjusted'] = True
+                dct['series'] = remove_terms(dct['series'])
+            elif dct['series'].lower().endswith(not_adjusted):
+                dct['is_adjusted'] = False
+                dct['series'] = remove_terms(dct['series'])
+            else:
+                dct['is_adjusted'] = None
+
+        return lst
     
-    def transform(self) -> DataFrame:
+    def transform(self) -> None:
         """
         Wrangles JSON response into Pandas DataFrame.
 
@@ -387,17 +377,17 @@ class BlsApiCall:
         Returns:
             - final_df: Pandas DataFrame of final results
         """
-        self.final_dct_lst: list = []
+        final_dct_lst: list = []
         for response in self.lst_of_queries:
-            results = response.get("Results")
-            series_dct = results.get("series")
+            results: dict = response.get("Results")
+            series_dct: str = results.get("series")
 
             if response["message"] != []:
-                message = response.get("message")
+                message: str = response.get("message")
                 self._log_message(message)
 
             for series in series_dct:
-                series_id = series["seriesID"]
+                series_id: str = series["seriesID"]
 
                 for data_point in series["data"]:
                     data_dict = {
@@ -405,14 +395,27 @@ class BlsApiCall:
                         "year": int(data_point["year"]),
                         "period": data_point["period"],
                         "period_name": data_point["periodName"],
-                        "value": float(data_point["value"]),
+                        "value": float(data_point["value"]) if data_point["value"] != '-' else None,
                         "footnotes": str(data_point["footnotes"]) if data_point["footnotes"] != str([{}]) else None
                     }
-                    self.final_dct_lst.append(data_dict)
+                    final_dct_lst.append(data_dict)
+        try:
+            self.final_dct_lst_copy = copy.deepcopy(final_dct_lst)
+        except copy.Error as e:
+            logging.error(f"Error copying list of results: {e}")
+            raise
+
+        self.final_dct_lst_copy = self._drop_nulls_and_duplicates(self.final_dct_lst_copy)
+
+        if self.national:
+            self.national_series_copy = copy.deepcopy(self.national_series)
+            self.national_series_copy = self._convert_adjusted(self.national_series_copy)
+        elif self.state:
+            self.state_series_copy = copy.deepcopy(self.state_series)
+            self.state_series_copy = self._convert_adjusted(self.state_series_copy)
         
-
     def load(self) -> None:
-
+        #! Config file and/or environmental variables or input
         url_object = URL.create('postgresql+psycopg2', 
                                 username='danielsagher',
                                 password='dsagher',
@@ -454,11 +457,11 @@ class BlsApiCall:
         metadata.create_all(bind=engine, checkfirst=True)
 
         if self.state:
-            series_stmt = insert(state_series).values(self.state_series.to_dict(orient='records')).on_conflict_do_nothing()
-            results_stmt = insert(state_results).values(self.final_dct_lst).on_conflict_do_nothing()
+            series_stmt = insert(state_series).values(self.state_series_copy).on_conflict_do_nothing()
+            results_stmt = insert(state_results).values(self.final_dct_lst_copy).on_conflict_do_nothing()
         if self.national:
-            series_stmt = insert(national_series).values(self.national_series.to_dict(orient='records')).on_conflict_do_nothing()
-            results_stmt = insert(national_results).values(self.final_dct_lst).on_conflict_do_nothing()
+            series_stmt = insert(national_series).values(self.national_series_copy).on_conflict_do_nothing()
+            results_stmt = insert(national_results).values(self.final_dct_lst_copy).on_conflict_do_nothing()
         with engine.connect() as connect:
             connect.execute(series_stmt)
             connect.execute(results_stmt)
@@ -471,7 +474,7 @@ if __name__ == "__main__":
     national_series_path = os.path.join(os.getcwd(), 'inputs/national_series_dimension.csv')
     national_series = read_csv(national_series_path)
 
-    call_engine = BlsApiCall(2000, 2005,national_series=national_series, number_of_series=1)
+    call_engine = BlsApiCall(2000, 2005,national_series=national_series, series_count=1)
     call_engine.extract()
     call_engine.transform()
     call_engine.load()

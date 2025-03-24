@@ -1,11 +1,9 @@
 from unittest.mock import patch, Mock
 import unittest
 from main import main, interactive_user_input, read_file
-import subprocess
-import os
-import sys
 import tempfile
 import datetime as dt
+import csv
 
 class TestMain(unittest.TestCase):
 
@@ -95,7 +93,6 @@ class TestMain(unittest.TestCase):
         mocked_years.assert_called_once()
         assert mocked_input.call_count == 5
 
-
     @patch('main.arg_parser')
     def test_csv_reader(self, mocked_args):
         fd, path = tempfile.mkstemp(suffix='csv', text=True)
@@ -110,7 +107,41 @@ class TestMain(unittest.TestCase):
         args.end_year = 2005
         read_file(args.path, args.series_type)
 
+    @patch('main.validate_path')
+    @patch('main.read_file')
+    @patch('main.arg_parser')
+    def test_csv_reader_error(self, mocked_args, mocked_read, mocked_path):
+        args = mocked_args()
+        args.path = 'path/to/csv'
+        args.series_type = 1
+        args.start_year = 2000
+        args.end_year = 2005
+        mocked_path.return_value = True, None
 
+        mocked_read.side_effect = PermissionError
+        with self.assertRaises(SystemExit):
+            main()
+
+        mocked_read.side_effect = ValueError
+        with self.assertRaises(SystemExit):
+            main()
+
+        mocked_read.side_effect = csv.Error
+        with self.assertRaises(SystemExit):
+            main()
+
+        mocked_read.side_effect = IOError
+        with self.assertRaises(SystemExit):
+            main()
+
+        mocked_read.side_effect = UnicodeDecodeError
+        with self.assertRaises(SystemExit):
+            main()
+
+        mocked_read.side_effect = Exception
+        with self.assertRaises(SystemExit):
+            main()
+        
     @patch("main.arg_parser")
     @patch("main.validate_path")
     def test_path_exception(self, mocked_path, mocked_parser):
@@ -120,10 +151,9 @@ class TestMain(unittest.TestCase):
         args.start_year = 2000
         args.end_year = 2010
         mocked_path.return_value = False, "Path not found."
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(FileNotFoundError) as e:
             main()
         self.assertEqual(str(e.exception), "Path not found.")
-
 
     @patch("main.arg_parser")
     @patch("main.validate_path")
@@ -135,50 +165,35 @@ class TestMain(unittest.TestCase):
         args.start_year = "two thousand twenty"
         args.end_year = 2010
         mocked_path.return_value = True, None
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(ValueError) as e:
             main()
         print(str(e.exception))
         self.assertEqual(str(e.exception), "Error: Years must be integers.")
 
         args.start_year = -2000
         args.end_year = 2010
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(ValueError) as e:
             main()
         self.assertEqual(str(e.exception), "Error: Years must be positive integers.")
 
         this_year = int(dt.datetime.strftime(dt.datetime.now(), "%Y"))
         args.start_year = 2000
         args.end_year = this_year + 10
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(ValueError) as e:
             main()
         self.assertEqual(str(e.exception), f"Error: End year cannot be in the future (current year: {this_year}).")
 
         args.start_year = 2010
         args.end_year = 200
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(ValueError) as e:
             main()
         self.assertEqual(str(e.exception), "Error: Start year must be before end year.")
 
         args.start_year = 2000
         args.end_year = 2025
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(ValueError) as e:
             main()
         self.assertEqual(str(e.exception), "Error: Year range cannot exceed 20 years due to API limitations.")
 
-
-    
-    # def test_csv_reader_error(self):
-    #     # input non .csv to raise error and find error type.
-    #     pass
-    
-    # def test_validate_years(self):
-    #     # Patch datetime.strftime
-    #     pass
-    
-    # def test_path_not_found(self):
-    #     pass
-
-
-        
 if __name__ == "__main__":
     unittest.main()
