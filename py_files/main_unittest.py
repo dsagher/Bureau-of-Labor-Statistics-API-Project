@@ -1,9 +1,21 @@
-from unittest.mock import patch, Mock
-import unittest
-from main import main, interactive_user_input, read_file
-import tempfile
-import datetime as dt
+"""==========================================================
+
+    Title:       <>
+    Author:      <>
+    Date:        <>
+    Description:
+        
+    Special Concerns:
+
+==========================================================="""
+
 import csv
+import datetime as dt
+import tempfile
+import unittest
+from unittest.mock import Mock, patch
+
+from main import main, interactive_user_input, read_file
 
 class TestMain(unittest.TestCase):
 

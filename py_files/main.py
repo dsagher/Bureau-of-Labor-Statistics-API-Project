@@ -28,15 +28,16 @@
 
 =========================================================================================="""
 
-from api_bls import BlsApiCall
-import datetime as dt
-import os
 import argparse as ap
-import subprocess
-from typing import Type, Tuple
 import csv
+import datetime as dt
 import logging
+import os
+import subprocess
 import sys
+from typing import Type, Tuple
+
+from api_bls import BlsApiCall
 
 def arg_parser():
 
@@ -200,7 +201,7 @@ def main() -> None:
     """
         
     args = arg_parser()
-    logger = setup_logging(args.verbose)
+    logger = setup_logging(args.verbose, args.output, args.silence)
 
     if args.ping:
         subprocess.run(args=['ping', '-c', str(args.ping), "https://api.bls.gov/publicAPI/v2/timeseries/data/"], stdout=sys.stdout)

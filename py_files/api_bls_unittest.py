@@ -29,15 +29,16 @@
 
 =========================================================================================="""
 
-from unittest.mock import patch, Mock
-import unittest
-import os
-from api_bls import BlsApiCall
-from http import HTTPStatus
 import json
-from api_key import API_KEY
+import os
+import unittest
+from http import HTTPStatus
+from unittest.mock import Mock, patch
+
 import pandas as pd
 from requests.exceptions import HTTPError
+
+from api_bls import BlsApiCall
 
 class TestBlsApi(unittest.TestCase):
     """
@@ -100,7 +101,7 @@ class TestBlsApi(unittest.TestCase):
                 "seriesid": ['ABC123'],
                 "startyear": 2005,
                 "endyear": 2007,
-                "registrationKey": API_KEY,
+                "registrationKey": os.getenv("BLS_API_KEY"),
             }
         )
         series_input = list(self.state_series['seriesID'])

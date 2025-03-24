@@ -44,28 +44,32 @@
         - Cleaning methods will be adapted to work for regular Python data structures
 
 =========================================================================================="""
+import copy
 import datetime
-from http import HTTPStatus
 import json
-from itertools import batched
 import logging
-from pandas import DataFrame, read_csv
-from requests.exceptions import HTTPError
-import requests
-import re as re
 import os
+import re
 import time
-from sqlalchemy import create_engine, MetaData,\
-Table, Column, Integer, String, Boolean, Float, ForeignKey
+from http import HTTPStatus
+from itertools import batched
+
+import requests
+from requests.exceptions import HTTPError
+
+from sqlalchemy import (
+    create_engine,
+    MetaData,
+    Table,
+    Column,
+    Integer,
+    String,
+    Boolean,
+    Float,
+    ForeignKey,
+)
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
-import copy
-from api_key import API_KEY #!
-from config import host, dbname, user, password, port #!
-
-# FORMAT = '%(levelname)s - %(asctime)s - %(message)s'
-# logger = logging.getLogger('api_bls.log') #! Need to configure child logger
-# logging.basicConfig(filename= 'outputs/runtime_output/api_bls.log', level=logging.INFO, format=FORMAT, datefmt="%Y-%M-%D %H-%M-%S")
 
 
 class BlsApiCall:
@@ -203,15 +207,17 @@ class BlsApiCall:
             - Excepts and retries 500 level status codes 3 times before raising HTTPError
             - Excepts and retries Exceptions 3 times before raising Exception
         """
-        URL_ENDPOINT: str = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
-        RETRIES: int = 3
-        YEAR_LIMIT: int = 20
-        SERIES_LIMIT: int = 50
-        year_range: int = int(end_year) - int(start_year)
-        headers: str = {"Content-Type": "application/json"}
-        payload: dict = json.dumps({"seriesid": series, "startyear": start_year, "endyear": end_year, "registrationKey": API_KEY})
-
-        retry_codes: list = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
+        URL_ENDPOINT = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+        RETRIES = 3
+        YEAR_LIMIT = 20
+        SERIES_LIMIT = 50
+        RETRY_CODES: list = [HTTPStatus.INTERNAL_SERVER_ERROR, HTTPStatus.BAD_GATEWAY, HTTPStatus.SERVICE_UNAVAILABLE, HTTPStatus.GATEWAY_TIMEOUT]
+        year_range = int(end_year) - int(start_year)
+        headers = {"Content-Type": "application/json"}
+        payload = json.dumps({"seriesid": series, 
+                              "startyear": start_year, 
+                              "endyear": end_year, 
+                              "registrationKey": os.getenv("BLS_API_KEY")})
         
         if len(series) > SERIES_LIMIT:
             raise ValueError("Can only take up to 50 seriesID's per query.")
@@ -246,7 +252,7 @@ class BlsApiCall:
                         return response_json
 
             except HTTPError as e:
-                if e.response in retry_codes:
+                if e.response in RETRY_CODES:
                     final_error = e.response
                     self.logger.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
                     time.sleep(2**attempt)
@@ -415,13 +421,17 @@ class BlsApiCall:
             self.state_series_copy = self._convert_adjusted(self.state_series_copy)
         
     def load(self) -> None:
-        #! Config file and/or environmental variables or input
-        url_object = URL.create('postgresql+psycopg2', 
-                                username='danielsagher',
-                                password='dsagher',
-                                host='localhost',
-                                database='danielsagher',
-                                port = 5432)
+        
+        with open('inputs/config.json', 'r') as file:
+            config = json.load(file)
+            driver = config['driver']
+            username = config['username']
+            password = config['password']
+            host = config['host']
+            database = config['database']
+            port = config['port']
+
+        url_object = URL.create(drivername=driver,username=username,password=password,host=host,database=database,port=port)
         engine = create_engine(url_object, logging_name='SQLAlchemy')
         metadata = MetaData()
         state_series = Table('state_series', 
