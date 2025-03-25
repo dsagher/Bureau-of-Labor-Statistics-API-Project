@@ -19,7 +19,6 @@ Special Notes:
     - Implements robust error handling and logging for production-level reliability.
 ==========================================================================================
 """
-
 import argparse as ap
 import csv
 import datetime as dt
@@ -139,7 +138,7 @@ def validate_path(path: str) -> Tuple[bool, str | None]:
     else:
         return False, "Path not found."
     
-def validate_years(start_year: int, end_year: int) -> Tuple[bool, str]:
+def validate_years(start_year: int, end_year: int) -> Tuple[bool, str|None]:
     """
     Validate the start and end years for the data extraction.
     
@@ -190,7 +189,7 @@ def read_file(path: str) -> list[dict]:
             lst.append(row)
         return lst
     
-def setup_logging(verbose: bool, output: bool, silence: bool) -> Type[logging.Logger]:
+def setup_logging(verbose: bool, output: bool, silence: bool) -> logging.Logger:
     """
     Configure and return a logger for the ETL pipeline.
     
@@ -253,7 +252,6 @@ def main() -> None:
     if args.traceroute:
         subprocess.run(args=['traceroute', "https://api.bls.gov/publicAPI/v2/timeseries/data/"], stdout=sys.stdout)
         sys.exit()
-
 
     if (args.start_year or args.end_year or args.series_type or args.path) and not \
             (args.start_year and args.end_year and args.series_type and args.path):

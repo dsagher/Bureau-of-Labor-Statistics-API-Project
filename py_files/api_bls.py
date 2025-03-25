@@ -53,6 +53,14 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
 
+class DataDict(TypedDict):
+    seriesID: str
+    year: int
+    period: str
+    period_name: str
+    value: float|None
+    footnotes: str|None
+    
 class SeriesData(TypedDict):
     year: str
     period: str
@@ -65,8 +73,8 @@ class Series(TypedDict):
     data: List[SeriesData]
 
 class DataContainer(TypedDict):
-    Results: Dict[str, List[Series]]
-
+    series: List[Series]
+    
 class BLSResponse(TypedDict):
     status: str
     responseTime: int
@@ -89,27 +97,27 @@ class BlsApiCall:
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
-    def __init__(self, start_year: int, end_year: int, national_series: list[dict] = None, state_series: list[dict] = None, series_count: int = ''):
+    def __init__(self, start_year: int, end_year: int, national_series: list[dict]= [], state_series: list[dict] = [], series_count: int|str = ""):
 
         self.logger = logging.getLogger('main.api')
 
-        if state_series is None and national_series is None:
+        if len(state_series) != 0 and len(national_series) != 0:
             self.logger.error("Argument must only be one series list")
-            raise Exception('Argument must only be one series list')
-        elif state_series is not None and national_series is not None:
+            raise Exception("Argument must only be one series list")
+        elif len(state_series) == 0 and len(national_series) == 0:
             self.logger.error("Argument must only be one series list")
-            raise Exception('Argument must only be one series list')
+            raise Exception("Argument must only be one series list")
 
         self.start_year = start_year
         self.end_year = end_year
         self.national_series = national_series
         self.state_series = state_series
 
-        if self.state_series is None:
+        if len(self.state_series) == 0:
             self.series_count = int(series_count) if series_count != '' else len(national_series)
             self.state = False
             self.national = True
-        if self.national_series is None:
+        if len(self.national_series) == 0:
             self.series_count = int(series_count) if series_count != '' else len(state_series)
             self.national = False
             self.state = True
@@ -126,20 +134,20 @@ class BlsApiCall:
 
             with open(self.query_count_file, "r") as file:
 
-                self.first_query_count, self.first_query_day = file.readline().split(',')
-                self.first_query_count = int(self.first_query_count)
-                self.first_query_day = int(self.first_query_day)
+                first_query_count, first_query_day = file.readline().split(',')
+                self.first_query_count = int(first_query_count)
+                self.first_query_day = int(first_query_day)
        
                 try:
                     for line in file:
                         last_line = line
-                    self.last_query_count, self.last_query_day = tuple(last_line.split(","))
-                    self.last_query_count = int(self.last_query_count)
-                    self.last_query_day = int(self.last_query_day)
+                    last_query_count, last_query_day = tuple(last_line.split(","))
+                    self.last_query_count = int(last_query_count)
+                    self.last_query_day = int(last_query_day)
 
                 except UnboundLocalError:
-                    self.last_query_count = int(self.first_query_count)
-                    self.last_query_day = int(self.first_query_day)
+                    self.last_query_count = int(first_query_count)
+                    self.last_query_day = int(first_query_day)
 
     def _create_query_file(self) -> None:
         """
@@ -279,8 +287,8 @@ class BlsApiCall:
             series_id_lst = [i.get("seriesID") for i in self.state_series][:INPUT_AMOUNT]
 
         batch_progress = 0
-        for batch in batched(series_id_lst, BATCH_SIZE):
-            batch = list(batch)
+        for batch_tuple in batched(series_id_lst, BATCH_SIZE):
+            batch = list(batch_tuple)
             batch_size = len(batch)
             batch_progress += batch_size
             total_size = len(series_id_lst)
@@ -294,7 +302,7 @@ class BlsApiCall:
             
         self.logger.info(f"Successfully extracted {total_size} IDs")
         
-    def _log_message(self, messages: list[str|None]) -> None:
+    def _log_message(self, messages: list[str]) -> None:
         """
         Logs warning messages extracted from the API response when data for a given series/year is missing.
 
@@ -317,7 +325,7 @@ class BlsApiCall:
             else:
                 self.logger.warning(message)
 
-    def _drop_nulls_and_duplicates(self, lst: list[dict]) -> list[dict]:
+    def _drop_nulls_and_duplicates(self, lst: list[DataDict]) -> list[DataDict]:
         """
         Removes duplicate dictionaries from a list.
 
@@ -382,20 +390,21 @@ class BlsApiCall:
             - Removing duplicates.
             - Processing series metadata to flag seasonal adjustments.
         """
-        final_dct_lst: list[dict] = []
+        final_dct_lst: list[DataDict] = []
+
         for response in self.lst_of_queries:
-            results: dict = response.get("Results")
-            series_dct: list[dict]= results.get("series")
+            results: DataContainer = response["Results"]
+            series_lst: List[Series] = results["series"]
 
             if response["message"] != []:
-                message: list[str|None] = response.get("message")
+                message: list[str] = response["message"]
                 self._log_message(message)
 
-            for series in series_dct:
+            for series in series_lst:
                 series_id: str = series["seriesID"]
 
                 for data_point in series["data"]:
-                    data_dict = {
+                    data_dict: DataDict = {
                         "seriesID": series_id,
                         "year": int(data_point["year"]),
                         "period": data_point["period"],
@@ -413,11 +422,11 @@ class BlsApiCall:
         self.final_dct_lst_copy = self._drop_nulls_and_duplicates(self.final_dct_lst_copy)
 
         if self.national:
-            self.national_series_copy = copy.deepcopy(self.national_series)
-            self.national_series_copy = self._convert_adjusted(self.national_series_copy)
+            national_series_copy = copy.deepcopy(self.national_series)
+            self.national_series_copy = self._convert_adjusted(national_series_copy)
         elif self.state:
-            self.state_series_copy = copy.deepcopy(self.state_series)
-            self.state_series_copy = self._convert_adjusted(self.state_series_copy)
+            state_series_copy = copy.deepcopy(self.state_series)
+            self.state_series_copy = self._convert_adjusted(state_series_copy)
         
     def load(self) -> None:
         """
