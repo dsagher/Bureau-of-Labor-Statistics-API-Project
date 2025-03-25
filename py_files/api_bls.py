@@ -1,27 +1,39 @@
 """
 ==========================================================================================
-Title:       BLS API ETL Module
-File:        api_bls.py
-Author:      Dan Sagher
-Date:        03/11/2025
-Description:
-    This module implements the extraction, transformation, and loading (ETL) logic
-    for interacting with the Bureau of Labor Statistics (BLS) API. It defines the
-    BlsApiCall class which manages API requests, response handling, data cleaning,
-    and database insertion using PostgreSQL via SQLAlchemy.
-Dependencies:
-    External:
-        - copy, datetime, json, logging, os, re, time
-        - http.HTTPStatus, itertools.batched
-        - requests, requests.exceptions
-        - SQLAlchemy (create_engine, MetaData, Table, Column, Integer, String, Boolean, Float, ForeignKey,
-          dialects.postgresql.insert, engine.URL)
-    Internal:
-        - api_key, config
-API Notes:
-    - BLS API Version 2.0 (10/16/2014) requires user registration with email and organization.
-    - Supports up to 20 years of data for a maximum of 50 series per query, with a daily limit of 500 queries.
-    - Provides additional calculations such as net and percent changes, annual averages, and limited series catalog info.
+    Title:       BLS API ETL Module
+    File:        api_bls.py
+    Author:      Dan Sagher
+    Date:        03/11/2025
+    Description:
+        This module implements the extraction, transformation, and loading (ETL) logic
+        for interacting with the Bureau of Labor Statistics (BLS) API. It defines the
+        BlsApiCall class which manages API requests, response handling, data cleaning,
+        and database insertion using PostgreSQL via SQLAlchemy.
+
+    Dependencies:
+
+        External:
+            - copy
+            - datetime
+            - json
+            - logging
+            - os
+            - re
+            - time
+            - http.HTTPStatus, 
+            - itertools.batched
+            - requests
+            - requests.exceptions
+            - SQLAlchemy (create_engine, MetaData, Table, Column, Integer, String, Boolean, Float, ForeignKey,
+              dialects.postgresql.insert, engine.URL)
+
+        Internal:
+            - api_key, config
+
+    API Notes:
+        - BLS API Version 2.0 (10/16/2014) requires user registration with email and organization.
+        - Supports up to 20 years of data for a maximum of 50 series per query, with a daily limit of 500 queries.
+        - Provides additional calculations such as net and percent changes, annual averages, and limited series catalog info.
 ==========================================================================================
 """
 
@@ -74,7 +86,7 @@ class Series(TypedDict):
 
 class DataContainer(TypedDict):
     series: List[Series]
-    
+
 class BLSResponse(TypedDict):
     status: str
     responseTime: int

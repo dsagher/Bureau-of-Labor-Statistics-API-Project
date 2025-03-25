@@ -1,22 +1,32 @@
 """
 ==========================================================================================
-Title:       BLS API ETL Pipeline
-File:        main.py
-Author:      Dan Sagher
-Date:        03/11/2025
-Description:
-    This script implements an ETL (Extract, Transform, Load) pipeline that interacts
-    with the Bureau of Labor Statistics (BLS) API. It reads a CSV file containing series
-    IDs, extracts data from the API, transforms the data into a clean format, and loads
-    it into a PostgreSQL database.
-Dependencies:
-    External:
-        - argparse, csv, datetime, logging, os, subprocess, sys, typing
-    Internal:
-        - api_bls (BlsApiCall class)
-Special Notes:
-    - Supports both command-line argument parsing and interactive user input.
-    - Implements robust error handling and logging for production-level reliability.
+    Title:       BLS API ETL Pipeline
+    File:        main.py
+    Author:      Dan Sagher
+    Date:        03/11/2025
+    Description:
+        This script implements an ETL (Extract, Transform, Load) pipeline that interacts
+        with the Bureau of Labor Statistics (BLS) API. It reads a CSV file containing series
+        IDs, extracts data from the API, transforms the data into a clean format, and loads
+        it into a PostgreSQL database.
+
+    Dependencies:
+
+        External:
+            - argparse
+            - csv
+            - datetime
+            - logging
+            - os
+            - subprocess
+            - sys
+            - typing
+        Internal:
+            - api_bls (BlsApiCall class)
+            
+    Special Notes:
+        - Supports both command-line argument parsing and interactive user input.
+        - Implements robust error handling and logging for production-level reliability.
 ==========================================================================================
 """
 import argparse as ap

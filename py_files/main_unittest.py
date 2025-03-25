@@ -1,5 +1,4 @@
 """==========================================================================================
-
     File:        main_unittest.py
     Author:      Dan Sagher
     Date:        3/24/2025
@@ -22,12 +21,11 @@
         Internal:
             - main
 
-    Special Concerns:
+    Special Notes:
         - Tests involve mocking external dependencies like file reading, API calls, 
           and user input.
         - The file includes exception handling tests to ensure 
           proper error reporting and graceful exits for common errors.
-
 =========================================================================================="""
 
 import csv
