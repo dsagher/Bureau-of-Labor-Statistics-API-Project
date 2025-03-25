@@ -22,9 +22,6 @@ API Notes:
     - BLS API Version 2.0 (10/16/2014) requires user registration with email and organization.
     - Supports up to 20 years of data for a maximum of 50 series per query, with a daily limit of 500 queries.
     - Provides additional calculations such as net and percent changes, annual averages, and limited series catalog info.
-Special Notes:
-    - Future improvements include replacing configuration files with environment variables,
-      handling state and national series concurrently, and simplifying CSV file I/O.
 ==========================================================================================
 """
 
@@ -35,6 +32,7 @@ import logging
 import os
 import re
 import time
+from typing import TypedDict, Dict, List
 from http import HTTPStatus
 from itertools import batched
 
@@ -55,6 +53,25 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.engine import URL
 
+class SeriesData(TypedDict):
+    year: str
+    period: str
+    periodName: str
+    value: str
+    footnotes: List[Dict] | str
+
+class Series(TypedDict):
+    seriesID: str
+    data: List[SeriesData]
+
+class DataContainer(TypedDict):
+    Results: Dict[str, List[Series]]
+
+class BLSResponse(TypedDict):
+    status: str
+    responseTime: int
+    message: List[str]
+    Results: DataContainer
 
 class BlsApiCall:
     """
@@ -69,7 +86,6 @@ class BlsApiCall:
 
     Raises:
         Exception: If both or neither of national_series/state_series are provided.
-        TypeError: If series inputs are not in the expected format.
     """
     query_count_file = "outputs/runtime_output/query_count.txt"
 
@@ -77,16 +93,17 @@ class BlsApiCall:
 
         self.logger = logging.getLogger('main.api')
 
-        self.start_year: int = start_year
-        self.end_year: int = end_year
-
         if state_series is None and national_series is None:
+            self.logger.error("Argument must only be one series list")
             raise Exception('Argument must only be one series list')
         elif state_series is not None and national_series is not None:
+            self.logger.error("Argument must only be one series list")
             raise Exception('Argument must only be one series list')
 
-        self.national_series: list[dict] = national_series
-        self.state_series: list[dict] = state_series
+        self.start_year = start_year
+        self.end_year = end_year
+        self.national_series = national_series
+        self.state_series = state_series
 
         if self.state_series is None:
             self.series_count = int(series_count) if series_count != '' else len(national_series)
@@ -127,9 +144,6 @@ class BlsApiCall:
     def _create_query_file(self) -> None:
         """
         Creates the query count file if it does not exist, or deletes it if the day has changed.
-
-        Special Note:
-            Sets self.just_created to True after initial creation.
         """
 
         self._read_query()
@@ -168,7 +182,7 @@ class BlsApiCall:
             with open(self.query_count_file, "a") as file:
                 file.write(f"{self.last_query_count + 1}, {self.current_query_day}\n")
 
-    def bls_request(self, series: list, start_year: str, end_year: str) -> dict[str|int|list|dict[str,list[dict[str, list[dict[str, str]]]]]]:
+    def bls_request(self, series: list, start_year: str, end_year: str) -> BLSResponse:
         """
         Sends a POST request to the BLS API for the specified series and date range.
 
@@ -178,7 +192,7 @@ class BlsApiCall:
             end_year (str): Desired end year.
 
         Returns:
-            dict: The JSON response from the API.
+            BLSResponse: The JSON response from the API.
 
         Raises:
             ValueError: If more than 50 series IDs are provided or if the year range exceeds 20.
@@ -203,14 +217,12 @@ class BlsApiCall:
             raise ValueError("Can only take in up to 20 years per query.")
        
         for attempt in range(1, RETRIES + 1):
-
             self._create_query_file()
             self._increment_query_count()
 
             try:
-            
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
-  
+                
                 if self.national:
                     self.logger.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 if self.state:
@@ -242,6 +254,7 @@ class BlsApiCall:
                 
             except Exception as e:
                 self.logger.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
+                self.logger.critical(f"API Message: {response_json['message']}")
                 raise Exception('Response Status from API is not "REQUEST_SUCCEEDED"')
 
         self.logger.critical('API Error: %s', final_error)
@@ -253,15 +266,12 @@ class BlsApiCall:
 
         The method iterates over the list of series IDs in batches, sends API requests via
         bls_request, and stores the JSON responses.
-
-        Returns:
-            None
         """
         BATCH_SIZE = 50
         INPUT_AMOUNT: int = self.series_count
         start_year = str(self.start_year)
         end_year = str(self.end_year)
-        self.lst_of_queries: list[dict] = []
+        self.lst_of_queries: list[BLSResponse] = []
 
         if self.national:
             series_id_lst = [i.get("seriesID") for i in self.national_series][:INPUT_AMOUNT]
@@ -284,7 +294,7 @@ class BlsApiCall:
             
         self.logger.info(f"Successfully extracted {total_size} IDs")
         
-    def _log_message(self, messages: str) -> None:
+    def _log_message(self, messages: list[str|None]) -> None:
         """
         Logs warning messages extracted from the API response when data for a given series/year is missing.
 
@@ -371,17 +381,14 @@ class BlsApiCall:
             - Flattening nested JSON data into a list of dictionaries.
             - Removing duplicates.
             - Processing series metadata to flag seasonal adjustments.
-        
-        Returns:
-            None
         """
-        final_dct_lst: list = []
+        final_dct_lst: list[dict] = []
         for response in self.lst_of_queries:
             results: dict = response.get("Results")
-            series_dct: str = results.get("series")
+            series_dct: list[dict]= results.get("series")
 
             if response["message"] != []:
-                message: str = response.get("message")
+                message: list[str|None] = response.get("message")
                 self._log_message(message)
 
             for series in series_dct:
@@ -418,11 +425,7 @@ class BlsApiCall:
         
         Reads database configuration from 'inputs/config.json', creates tables for series
         and results if they don't exist, and performs upsert operations to avoid duplicates.
-        
-        Returns:
-            None
         """
-        
         with open('inputs/config.json', 'r') as file:
             config = json.load(file)
             driver = config['driver']
