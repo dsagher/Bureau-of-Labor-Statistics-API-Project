@@ -4,13 +4,41 @@ This repository contains the code and documentation for a project leveraging the
 
 ## Files  
 - `api_bls.py`  
+    - Contains code for extracting, transforming, and loading data from
+      from the BLS API, as well as handling rate and daily query limits.
 - `api_bls_unittest.py`  
-- `main.py`  
-- `state_scrape.py`
+    - Contains unit testing for the api_bls module.
+- `main.py`
+    - Contains the main logic processing user input, validating input,
+      and calling ETL processes.
+- `main.unittest.py`
+    - Contains unit testing for the main module.
 
-## Features
-**BlsApiCall Class**
-Handles the extraction, transformation, and loading of BLS data.
+## Inputs
+- `config.json`
+    - JSON specification for database connection info.
+        - ex:{
+              "driver": "driver",
+              "host": "host",
+              "database": "database",
+              "username": "username",
+              "password": "password",
+              "port": 1234
+              }
+- `national_series_dimension.csv`
+    - CSV input file containing series, seriesID, and survey
+        - ex: series,seriesID,survey\n
+              Avg hrs per day Watching TV,TUU10101AA01014236, ATUS\n
+- `state_series_dimension.csv`
+    - CSV input file containing series, seriesID, state, survey
+        - ex: series, seriesID, state, survey\n
+            Total Nonfarm, Seasonally adjusted,SMS01000000000000001, Alabama, CES\n
+
+## Outputs
+- `main.log`
+    - Contains runtime information.
+- `query_count.txt`
+    - Tracks query count to ensure compliance with daily rate limit of 500 queries.
 
 *Built-in Protections*
 - Daily query limit handling
@@ -18,6 +46,7 @@ Handles the extraction, transformation, and loading of BLS data.
 - HTTP error handling
 - Rate limit enforcement
 - Year limit enforcement
+- Interactive input or command line input
 
 ## Example API Response  
 ```json
