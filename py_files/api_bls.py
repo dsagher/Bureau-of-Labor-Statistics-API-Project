@@ -1,5 +1,4 @@
-"""
-==========================================================================================
+"""==========================================================================================
     Title:       BLS API ETL Module
     File:        api_bls.py
     Author:      Dan Sagher
@@ -34,8 +33,7 @@
         - BLS API Version 2.0 (10/16/2014) requires user registration with email and organization.
         - Supports up to 20 years of data for a maximum of 50 series per query, with a daily limit of 500 queries.
         - Provides additional calculations such as net and percent changes, annual averages, and limited series catalog info.
-==========================================================================================
-"""
+=========================================================================================="""
 
 import copy
 import datetime

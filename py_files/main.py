@@ -1,5 +1,4 @@
-"""
-==========================================================================================
+"""==========================================================================================
     Title:       BLS API ETL Pipeline
     File:        main.py
     Author:      Dan Sagher
@@ -23,12 +22,11 @@
             - typing
         Internal:
             - api_bls (BlsApiCall class)
-            
+
     Special Notes:
         - Supports both command-line argument parsing and interactive user input.
         - Implements robust error handling and logging for production-level reliability.
-==========================================================================================
-"""
+=========================================================================================="""
 import argparse as ap
 import csv
 import datetime as dt
