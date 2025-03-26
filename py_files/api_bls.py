@@ -163,7 +163,6 @@ class BlsApiCall:
         """
         Creates the query count file if it does not exist, or deletes it if the day has changed.
         """
-
         self._read_query()
 
         self.current_query_day = int(datetime.datetime.strftime(datetime.datetime.now(), "%d"))

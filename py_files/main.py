@@ -55,7 +55,6 @@ def arg_parser():
             - output: Flag to generate CSV output.
             - silence: Flag to disable logging entirely.
     """
-
     parser = ap.ArgumentParser(
         prog = 'Bureau of Labor Statistics API Pipeline',
         description = 'This program uses a list of seriesIDs, start year, and end year as input \
@@ -89,7 +88,6 @@ def interactive_user_input() -> dict:
     Returns:
         dict: A dictionary containing the user's input.
     """
-
     print("==========================Interactive Input=============================")
     print("========================================================================", '\n')
 
@@ -249,7 +247,6 @@ def main() -> None:
         FileNotFoundError: If the CSV file path is invalid.
         ValueError: If year validation fails or required arguments are missing.
     """
-        
     args = arg_parser()
     logger = setup_logging(args.verbose, args.output, args.silence)
 

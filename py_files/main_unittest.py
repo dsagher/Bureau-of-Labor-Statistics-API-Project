@@ -27,7 +27,6 @@
         - The file includes exception handling tests to ensure 
           proper error reporting and graceful exits for common errors.
 =========================================================================================="""
-
 import csv
 import datetime as dt
 import tempfile
@@ -72,7 +71,6 @@ class TestMain(unittest.TestCase):
         Test case for when required arguments are missing or invalid. 
         Verifies that a ValueError is raised and the functions are not called.
         """
-
         args = mocked_parser()
         args.path = 'path/to/csv'
         args.series_type = 1
@@ -99,7 +97,6 @@ class TestMain(unittest.TestCase):
         Test case for handling interactive user input when no command-line arguments are provided.
         Verifies that the function processes the input correctly.
         """
-
         args = mocked_parser()
         args.path = False
         args.series_type = False

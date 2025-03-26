@@ -67,8 +67,7 @@ class TestBlsApi(unittest.TestCase):
     
     def tearDown(self):
         """
-        Clean up after each test method runs.
-        Currently does nothing but can be expanded to handle cleanup tasks.
+        Currently does nothing.
         """
         pass
         return super().tearDown()
@@ -85,7 +84,6 @@ class TestBlsApi(unittest.TestCase):
         - Successful response is handled correctly
         - Logging occurs as expected
         """
-
         if os.path.exists(self.query_count_file):
             os.remove(self.query_count_file)
 
@@ -146,7 +144,6 @@ class TestBlsApi(unittest.TestCase):
         Verifies that requests spanning more than 20 years are rejected
         with an appropriate ValueError exception.
         """
-
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
         
@@ -163,7 +160,6 @@ class TestBlsApi(unittest.TestCase):
         Verifies that requests containing more than 50 series IDs are rejected
         with an appropriate ValueError exception.
         """
-
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
         
@@ -184,7 +180,6 @@ class TestBlsApi(unittest.TestCase):
         Verifies that non-200 HTTP responses result in appropriate exceptions
         and that proper logging occurs.
         """
-
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.BAD_REQUEST
         mocked_post.return_value = mock_response
@@ -207,8 +202,7 @@ class TestBlsApi(unittest.TestCase):
         
         Verifies that server errors (5xx) trigger the retry mechanism
         and that the appropriate number of retries occur before failing.
-        """
-        
+        """    
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
         mocked_post.return_value = mock_response
@@ -233,7 +227,6 @@ class TestBlsApi(unittest.TestCase):
         Verifies that the query counter resets when the date changes,
         ensuring that the daily limit is properly managed.
         """
-
         if os.path.exists(self.query_count_file):
                 os.remove(self.query_count_file)
 
@@ -300,7 +293,6 @@ class TestBlsApi(unittest.TestCase):
         Verifies proper exception raising and logging when the API returns
         a response with a status other than "REQUEST_SUCCEEDED".
         """
-        
         config = {'side_effect': Exception()}
         patcher = patch('api_bls.requests.post', **config)
         mocked_requests = patcher.start()
