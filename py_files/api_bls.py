@@ -430,12 +430,16 @@ class BlsApiCall:
 
         self.final_dct_lst_copy = self._drop_nulls_and_duplicates(self.final_dct_lst_copy)
 
-        if self.national:
-            national_series_copy = copy.deepcopy(self.national_series)
-            self.national_series_copy = self._convert_adjusted(national_series_copy)
-        elif self.state:
-            state_series_copy = copy.deepcopy(self.state_series)
-            self.state_series_copy = self._convert_adjusted(state_series_copy)
+        try:
+            if self.national:
+                national_series_copy = copy.deepcopy(self.national_series)
+                self.national_series_copy = self._convert_adjusted(national_series_copy)
+            elif self.state:
+                state_series_copy = copy.deepcopy(self.state_series)
+                self.state_series_copy = self._convert_adjusted(state_series_copy)
+        except copy.Error as e:
+            logging.error(f"Error copying series lists: {e}")
+            raise
         
     def load(self) -> None:
         """

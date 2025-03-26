@@ -14,9 +14,14 @@ This repository contains the code and documentation for a project leveraging the
 - `main.unittest.py`
     - Contains unit testing for the main module.
 
+## Authentication
+    - API obtained from BLS website must be stored in an environmental
+      variable name BLS_API_KEY.
+      
 ## Inputs
 - `config.json`
     - JSON specification for database connection info.
+    - Must be contained in projectFolder/inputs/config.json
         - ex:{
               "driver": "driver",
               "host": "host",
