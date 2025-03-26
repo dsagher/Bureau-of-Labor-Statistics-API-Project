@@ -29,16 +29,12 @@
 import json
 import os
 import unittest
-import tempfile
-import csv
-import logging
 from http import HTTPStatus
 from unittest.mock import Mock, patch
 
 from requests.exceptions import HTTPError
 
 from api_bls import BlsApiCall
-import main
 
 class TestBlsApi(unittest.TestCase):
     """
