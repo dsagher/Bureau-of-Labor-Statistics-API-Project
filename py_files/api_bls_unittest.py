@@ -11,7 +11,6 @@
         External:
         - unittest
         - unittest.mock
-        - pandas
         - http.HTTPStatus
         - json
         - os
@@ -30,13 +29,16 @@
 import json
 import os
 import unittest
+import tempfile
+import csv
+import logging
 from http import HTTPStatus
 from unittest.mock import Mock, patch
 
-import pandas as pd
 from requests.exceptions import HTTPError
 
 from api_bls import BlsApiCall
+import main
 
 class TestBlsApi(unittest.TestCase):
     """
@@ -48,31 +50,49 @@ class TestBlsApi(unittest.TestCase):
 
     query_count_file = "outputs/runtime_output/query_count.txt"
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         """
         Set up test fixtures before each test method runs.
         
         Creates sample state and national series DataFrames and initializes
         a BlsApiCall instance for testing.
         """
-        self.state_series = pd.DataFrame([{'survey':'ABC',
-                                      'series':'I am series',
-                                      'seriesID':'ABC123',
-                                      'state': 'Michigan'}])
-        self.national_series = pd.DataFrame([{'series': 'I am series',
-                                              'seriesID':'ABC123',
-                                              'survey': 'ABC'}])
-        self.api_call = BlsApiCall(2000, 2005, state_series=self.state_series)
-        return super().setUp()
-    
-    def tearDown(self):
+        cls.state_series = [{'seriesID': '123ABC', 
+                            'series': 'Always be Cool', 
+                            'state': 'MI', 
+                            'survey': 'ABC', 
+                            'is_adjusted': 'False'}, 
+                            {'seriesID': '124ABC', 
+                            'series': 'Always be Cooler', 
+                            'state': 'MI', 
+                            'survey': 'ABC', 
+                            'is_adjusted': 'False'}]
+        cls.state_series_input = [i["seriesID"] for i in cls.state_series]
+
+        cls.national_series = [{'seriesID': '123ABC', 
+                                'series': 'Always be Cool', 
+                                'survey': 'ABC', 
+                                'is_adjusted': 'False'}, 
+                                {'seriesID': '124ABC', 
+                                'series': 'Always be Cooler', 
+                                'survey': 'ABC', 
+                                'is_adjusted': 'False'}]
+        
+        cls.national_series_input = [i["seriesID"] for i in cls.national_series]
+        cls.api_call = BlsApiCall(2000, 2005, state_series=cls.state_series)
+
+        return super().setUpClass()
+
+    @classmethod
+    def tearDownClass(self):
         """
         Currently does nothing.
         """
         pass
         return super().tearDown()
     
-    @patch('api_bls.logging.info')
+    @patch('api_bls.logger.info')
     @patch('api_bls.requests.post')
     def test_bls_request(self, mocked_post, mocked_log):
         """
@@ -94,20 +114,19 @@ class TestBlsApi(unittest.TestCase):
         headers = {"Content-Type": "application/json"}
         payload = json.dumps(
             {
-                "seriesid": ['ABC123'],
+                "seriesid": self.state_series_input,
                 "startyear": 2005,
                 "endyear": 2007,
                 "registrationKey": os.getenv("BLS_API_KEY"),
             }
         )
-        series_input = list(self.state_series['seriesID'])
-        result = self.api_call.bls_request(series_input, 2005, 2007)
+        result = self.api_call.bls_request(self.state_series_input, 2005, 2007)
 
         mocked_post.assert_called_once_with('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=payload,  headers=headers)
         self.assertEqual(result, {"status": "REQUEST_SUCCEEDED"})
         assert mocked_log.call_count == 2
 
-    @patch('api_bls.logging.critical')
+    @patch('api_bls.logger.critical')
     @patch('api_bls.requests.post')
     def test_bls_request_limit(self, mocked_post, mocked_log):
         """
@@ -129,7 +148,7 @@ class TestBlsApi(unittest.TestCase):
             self.api_call._increment_query_count()
         
         with self.assertRaises(Exception) as e:
-            self.api_call.bls_request([1], 2005, 2007)
+            self.api_call.bls_request(self.state_series_input, 2005, 2007)
 
         mocked_log.assert_called_once()
         mocked_post.assert_not_called()
@@ -148,7 +167,7 @@ class TestBlsApi(unittest.TestCase):
                 os.remove(self.query_count_file)
         
         with self.assertRaises(ValueError) as e:
-            self.api_call.bls_request([1], 2000, 2025)
+            self.api_call.bls_request(self.state_series_input, 2000, 2025)
             mocked_post.assert_not_called()
         self.assertEqual(str(e.exception), "Can only take in up to 20 years per query.")
        
@@ -170,8 +189,8 @@ class TestBlsApi(unittest.TestCase):
             mocked_post.assert_not_called()
         self.assertEqual(str(e.exception), "Can only take up to 50 seriesID's per query.")
 
-    @patch('api_bls.logging.info')
-    @patch('api_bls.logging.critical')
+    @patch('api_bls.logger.info')
+    @patch('api_bls.logger.critical')
     @patch('api_bls.requests.post')
     def test_bls_bad_request(self, mocked_post, mocked_critical, mocked_info):
         """
@@ -183,18 +202,16 @@ class TestBlsApi(unittest.TestCase):
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.BAD_REQUEST
         mocked_post.return_value = mock_response
-        series_input = list(self.state_series['seriesID'])
 
         with self.assertRaises(HTTPError) as e:
-            self.api_call.bls_request(series_input, 2000, 2005)
+            self.api_call.bls_request(self.state_series_input, 2000, 2005)
         mocked_critical.assert_called_once()
         mocked_post.assert_called_once()
         mocked_info.assert_called_once()
         self.assertEqual(str(e.exception), f"HTTP Error: {mocked_post().status_code}")
 
-        
-    @patch('api_bls.logging.critical')
-    @patch('api_bls.logging.warning')
+    @patch('api_bls.logger.critical')
+    @patch('api_bls.logger.warning')
     @patch('api_bls.requests.post')
     def test_http_error_retry(self, mocked_post, mocked_warning, mocked_critical):
         """
@@ -206,18 +223,17 @@ class TestBlsApi(unittest.TestCase):
         mock_response = Mock()
         mock_response.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
         mocked_post.return_value = mock_response
-        series_input = list(self.state_series['seriesID'])
 
         with self.assertRaises(Exception) as e1:
             with self.assertRaises(HTTPError):
-                self.api_call.bls_request(series_input, 2000, 2002)
+                self.api_call.bls_request(self.state_series_input, 2000, 2002)
         
         self.assertEqual(str(e1.exception), f'API Error: {HTTPStatus.INTERNAL_SERVER_ERROR.value}')
         assert mocked_critical.call_count == 1
         assert mocked_warning.call_count == 3
         assert mocked_post.call_count == 3
      
-    @patch('api_bls.logging.info')
+    @patch('api_bls.logger.info')
     @patch('api_bls.datetime.datetime')
     @patch('api_bls.requests.post')
     def test_bls_reset(self, mocked_post, mocked_date, mocked_log):
@@ -238,11 +254,11 @@ class TestBlsApi(unittest.TestCase):
         mocked_date.strftime.return_value = '02'
 
         for _ in range(5):
-            self.api_call.bls_request([1], 2000, 2005)
+            self.api_call.bls_request(self.state_series_input, 2000, 2005)
 
         mocked_date.strftime.return_value = '03'
 
-        self.api_call.bls_request([1], 2000, 2005)
+        self.api_call.bls_request(self.state_series_input, 2000, 2005)
 
         with open('outputs/runtime_output/query_count.txt','r') as file:
             lines = []
@@ -258,7 +274,6 @@ class TestBlsApi(unittest.TestCase):
         assert day == 3
         assert mocked_post.call_count == 6
         assert mocked_log.call_count == 12
-
 
     @patch('api_bls.BlsApiCall._log_message')
     @patch('api_bls.requests.post')
@@ -284,8 +299,8 @@ class TestBlsApi(unittest.TestCase):
         self.api_call.transform()
         mocked_log_function.assert_called_once()
 
-    @patch('api_bls.logging.critical')
-    @patch('api_bls.logging.warning')
+    @patch('api_bls.logger.critical')
+    @patch('api_bls.logger.warning')
     def test_response_error(self, mocked_warning, mocked_critical):
         """
         Test handling of non-success API responses.
@@ -298,7 +313,7 @@ class TestBlsApi(unittest.TestCase):
         mocked_requests = patcher.start()
 
         with self.assertRaises(Exception) as e1:
-            self.api_call.bls_request(['ABC'], 2000, 2002)
+            self.api_call.bls_request(self.state_series_input, 2000, 2002)
         self.assertEqual(str(e1.exception), 'Response Status from API is not "REQUEST_SUCCEEDED"')
         assert mocked_warning.call_count == 0
         assert mocked_critical.call_count == 1
@@ -326,7 +341,6 @@ class TestBlsApi(unittest.TestCase):
         with self.assertRaises(Exception) as e:
             BlsApiCall(self.state_series, self.national_series)
             self.assertEqual(str(e.exception), 'Argument must only be one series list')
-    
     
 if __name__ == "__main__":
     unittest.main()

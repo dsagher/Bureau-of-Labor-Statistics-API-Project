@@ -91,6 +91,8 @@ class BLSResponse(TypedDict):
     message: List[str]
     Results: DataContainer
 
+logger = logging.getLogger('main.api')
+
 class BlsApiCall:
     """
     Manages the ETL process for retrieving data from the BLS API and loading it into a PostgreSQL database.
@@ -109,13 +111,12 @@ class BlsApiCall:
 
     def __init__(self, start_year: int, end_year: int, national_series: list[dict]= [], state_series: list[dict] = [], series_count: int|str = ""):
 
-        self.logger = logging.getLogger('main.api')
 
         if len(state_series) != 0 and len(national_series) != 0:
-            self.logger.error("Argument must only be one series list")
+            logger.error("Argument must only be one series list")
             raise Exception("Argument must only be one series list")
         elif len(state_series) == 0 and len(national_series) == 0:
-            self.logger.error("Argument must only be one series list")
+            logger.error("Argument must only be one series list")
             raise Exception("Argument must only be one series list")
 
         self.start_year = start_year
@@ -192,7 +193,7 @@ class BlsApiCall:
         if os.path.exists(self.query_count_file) and \
                     self.last_query_count >= 500 and \
                     self.current_query_day - self.first_query_day == 0:
-            self.logger.critical('Queries may not exceed 500 within a day.')
+            logger.critical('Queries may not exceed 500 within a day.')
             raise Exception("Queries may not exceed 500 within a day.")
         
         if not self.just_created:
@@ -241,9 +242,9 @@ class BlsApiCall:
                 response = requests.post(URL_ENDPOINT, data=payload, headers=headers)
                 
                 if self.national:
-                    self.logger.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
+                    logger.info('Request #%s: %s National SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 if self.state:
-                    self.logger.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
+                    logger.info('Request #%s: %s State SeriesIDs, from %s to %s', self.last_query_count, len(series), start_year, end_year)
                 
                 if response.status_code != HTTPStatus.OK.value:
                     raise HTTPError(response=response.status_code)
@@ -252,29 +253,28 @@ class BlsApiCall:
                     response_status = response_json["status"]
                 
                     if response_status != "REQUEST_SUCCEEDED":
-                        self.logger.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        logger.warning('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                         raise Exception
                     else:
-                        self.logger.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
+                        logger.info('Request #%s: Status Code: %s Response: %s', self.last_query_count, response.status_code, response_status)
                         return response_json
 
             except HTTPError as e:
                 if e.response in RETRY_CODES:
                     final_error = e.response
-                    self.logger.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
+                    logger.warning('HTTP Error: %s Attempt: %s', e.response, attempt)
                     time.sleep(2**attempt)
                     continue
                 else:
                     final_error = e.response
-                    self.logger.critical('HTTP Error: %s', e.response)
+                    logger.critical('HTTP Error: %s', e.response)
                     raise HTTPError(f"HTTP Error: {e.response}")
                 
             except Exception as e:
-                self.logger.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
-                self.logger.critical(f"API Message: {response_json['message']}")
+                logger.critical('Response Status from API is not "REQUEST_SUCCEEDED"')
                 raise Exception('Response Status from API is not "REQUEST_SUCCEEDED"')
 
-        self.logger.critical('API Error: %s', final_error)
+        logger.critical('API Error: %s', final_error)
         raise Exception(f"API Error: {final_error}")
 
     def extract(self) -> None:
@@ -302,14 +302,14 @@ class BlsApiCall:
             batch_progress += batch_size
             total_size = len(series_id_lst)
 
-            self.logger.debug(f"Extracting batch of size: {batch_progress}")
-            self.logger.debug(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
+            logger.debug(f"Extracting batch of size: {batch_progress}")
+            logger.debug(f'Progress: {batch_progress}/{total_size} {(batch_progress/total_size):.0%}')
 
             result = self.bls_request(batch, start_year, end_year)
             self.lst_of_queries.append(result)
             time.sleep(0.25)
             
-        self.logger.info(f"Successfully extracted {total_size} IDs")
+        logger.info(f"Successfully extracted {total_size} IDs")
         
     def _log_message(self, messages: list[str]) -> None:
         """
@@ -325,14 +325,14 @@ class BlsApiCall:
                 series_id, year = year_reg_match.group(1,2)
                 msg = 'No Data Available'
                 entry = {'message': msg, "series_id": series_id, "year": year}
-                self.logger.warning(entry)
+                logger.warning(entry)
             elif no_series_reg_match:
                 series_id = no_series_reg_match.group(1)
                 msg = 'Series does not exist'
                 entry = {'message': msg, "series_id": series_id}
-                self.logger.warning(entry)
+                logger.warning(entry)
             else:
-                self.logger.warning(message)
+                logger.warning(message)
 
     def _drop_nulls_and_duplicates(self, lst: list[DataDict]) -> list[DataDict]:
         """
