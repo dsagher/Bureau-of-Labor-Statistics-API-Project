@@ -1,0 +1,325 @@
+series,seriesID,survey
+"Number of work stoppages, beginning in the period ",WSU100,WSP
+"Number of work stoppages, in effect in the period ",WSU200,WSP
+"Number of workers involved, beginning in the period ",WSU010,WSP
+"Number of workers involved, in effect in the period ",WSU020,WSP
+"Days of idleness, in effect in the period ",WSU001,WSP
+"Days of idleness, in effect as a percent of total estimated working time ",WSU002,WSP
+Avg hrs per day  Leisure and sports (includes travel) ,TUU10101AA01013585,ATUS
+"Avg hrs per day  Leisure and sports (includes travel), Nonholiday weekdays ",TUU10101AA01013590,ATUS
+"Avg hrs per day  Leisure and sports (includes travel), Weekend days and holidays ",TUU10101AA01013588,ATUS
+Avg hrs per day  Watching TV ,TUU10101AA01014236,ATUS
+"Avg hrs per day  Watching TV, Nonholiday weekdays ",TUU10101AA01014241,ATUS
+"Avg hrs per day  Watching TV, Weekend days and holidays ",TUU10101AA01014239,ATUS
+Avg hrs per day  Socializing and communicating ,TUU10101AA01013951,ATUS
+"Avg hrs per day  Socializing and communicating, Nonholiday weekdays ",TUU10101AA01013956,ATUS
+"Avg hrs per day  Socializing and communicating, Weekend days and holidays ",TUU10101AA01013954,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents with youngest household child 6 - 12 yrs",TUU10101AA01042892,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents with youngest household child 6 - 12 yrs, Men",TUU10101AA01042907,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents with youngest household child 6 - 12 yrs, Women",TUU10101AA01042922,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents of household children under 6 yrs ",TUU10101AA01042901,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents of household children under 6 yrs, Men ",TUU10101AA01042916,ATUS
+"Avg hrs per day  Caring for and helping household children, Parents of household children under 6 yrs, Women ",TUU10101AA01042931,ATUS
+Avg hrs per day  Household activities (includes travel) ,TUU10101AA01009381,ATUS
+"Avg hrs per day  Household activities (includes travel), Men ",TUU10101AA01009497,ATUS
+"Avg hrs per day  Household activities (includes travel), Women ",TUU10101AA01009613,ATUS
+Avg hrs per day  Housework ,TUU10101AA01000865,ATUS
+"Avg hrs per day  Housework, Men ",TUU10101AA01000944,ATUS
+"Avg hrs per day  Housework, Women ",TUU10101AA01001023,ATUS
+Avg hrs per day  Food preparation and cleanup ,TUU10101AA01001102,ATUS
+"Avg hrs per day  Food preparation and cleanup, Men ",TUU10101AA01001181,ATUS
+"Avg hrs per day  Food preparation and cleanup, Women ",TUU10101AA01001260,ATUS
+"Percent participating on an avg day  Working, Employed ",TUU30105AA01002864,ATUS
+"Percent participating on an avg day  Working, Employed, Men ",TUU30105AA01002999,ATUS
+"Percent participating on an avg day  Working, Employed, Women ",TUU30105AA01003084,ATUS
+"Percent participating on an avg day  Working, Nonholiday weekdays, Employed ",TUU30105AA01002866,ATUS
+"Percent participating on an avg day  Working, Weekend days and holidays, Employed ",TUU30105AA01002865,ATUS
+"Percent participating on an avg day  Working, Employed full time ",TUU30105AA01002902,ATUS
+"Percent participating on an avg day  Working at home, Employed, on days worked ",TUU30105AA01043855,ATUS
+"Avg hrs per day for participants  Working, Employed ",TUU20101AA01002864,ATUS
+"Avg hrs per day for participants  Working, Employed, Men ",TUU20101AA01002999,ATUS
+"Avg hrs per day for participants  Working, Employed, Women ",TUU20101AA01003084,ATUS
+"Avg hrs per day for participants  Working, Nonholiday weekdays, Employed ",TUU20101AA01002866,ATUS
+"Avg hrs per day for participants  Working, Weekend days and holidays, Employed ",TUU20101AA01002865,ATUS
+"Avg hrs per day for participants  Working, Employed full time ",TUU20101AA01002902,ATUS
+"Avg hrs per day for participants  Working at home, Employed ",TUU20101AA01002870,ATUS
+Average annual expenditures ,CXUTOTALEXPLB0201M,CE
+Food ,CXUFOODTOTLLB0201M,CE
+Food at Home ,CXUFOODHOMELB0201M,CE
+Food Away from Home ,CXUFOODAWAYLB0201M,CE
+Housing ,CXUHOUSINGLB1701M,CE
+Housing: Home Owner ,CXUHOUSINGLB1702M,CE
+Housing: Renter ,CXUHOUSINGLB1705M,CE
+Apparel and services ,CXUAPPARELLB0201M,CE
+Transportation ,CXUTRANSLB0201M,CE
+"Gasoline, other fuels, and motor oil ",CXUGASOILLB0201M,CE
+Healthcare ,CXUHEALTHLB0201M,CE
+Entertainment ,CXUENTRTAINLB0201M,CE
+Type of Area: Urban ,CXUTOTALEXPLB1902M,CE
+Type of Area: Rural ,CXUTOTALEXPLB1905M,CE
+Retirees ,CXUTOTALEXPLB1209M,CE
+Generation: Birth year of 1997 or later ,CXUTOTALEXPLB1607M,CE
+Generation: Birth year from 1981 to 1996 ,CXUTOTALEXPLB1608M,CE
+Generation: Birth year from 1965 to 1980 ,CXUTOTALEXPLB1603M,CE
+Generation: Birth year from 1946 to 1964 ,CXUTOTALEXPLB1604M,CE
+Generation: Birth year of 1945 or earlier ,CXUTOTALEXPLB1609M,CE
+Race of reference person: White and All Others ,CXUTOTALEXPLB0903M,CE
+Race of reference person: Asian ,CXUTOTALEXPLB0904M,CE
+Race of reference person: Black or African American ,CXUTOTALEXPLB0905M,CE
+Origin of reference person: Hispanic or Latino ,CXUTOTALEXPLB1002M,CE
+Origin of reference person: Not Hispanic or Latino ,CXUTOTALEXPLB1003M,CE
+"Bacon, sliced, per lb. ",APU0000704111,CPI
+"Bananas, per lb. ",APU0000711211,CPI
+"Bread, white, pan, per lb. ",APU0000702111,CPI
+"Chicken, fresh, whole, per lb. ",APU0000706111,CPI
+"Coffee, 100%, ground roast, all sizes, per lb. ",APU0000717311,CPI
+"Eggs, grade A, large, per doz. ",APU0000708111,CPI
+"Flour, white, all purpose, per lb. ",APU0000701111,CPI
+"Milk, fresh, whole, fortified, per gal. ",APU0000709112,CPI
+"Oranges, navel, per lb. ",APU0000711311,CPI
+"Rice, white, long grain, uncooked, per lb. ",APU0000701312,CPI
+"Tomatoes, field grown, per lb. ",APU0000712311,CPI
+Electricity per KWH ,APU000072610,CPI
+Fuel oil #2 per gallon ,APU000072511,CPI
+"Gasoline, all types, per gallon ",APU00007471A,CPI
+"Gasoline, unleaded regular, per gallon ",APU000074714,CPI
+"U.S. city average, All items ",CUUR0000SA0,CPI
+"U.S. city average, Food and Beverages ",CUUR0000SAF,CPI
+"U.S. city average, Food at home ",CUUR0000SAF11,CPI
+"U.S. city average, Cereals and bakery products ",CUUR0000SAF111,CPI
+"U.S. city average, Meats, poultry, fish, and eggs ",CUUR0000SAF112,CPI
+"U.S. city average, Fruits and vegetables ",CUUR0000SAF113,CPI
+"U.S. city average, Nonalcoholic beverages and bev. materials ",CUUR0000SAF114,CPI
+"U.S. city average, Other food at home ",CUUR0000SAF115,CPI
+"U.S. city average, Dairy and related products ",CUUR0000SEFJ,CPI
+"U.S. city average, Food away from home ",CUUR0000SEFV,CPI
+"U.S. city average, Full service meals and snacks ",CUUR0000SEFV01,CPI
+"U.S. city average, Limited service meals and snacks ",CUUR0000SEFV02,CPI
+"U.S. city average, Energy ",CUUR0000SA0E,CPI
+"U.S. city average, Gasoline (all types) ",CUUR0000SETB01,CPI
+"U.S. city average, Electricity ",CUUR0000SEHF01,CPI
+"U.S. city average, Utility (piped) gas service ",CUUR0000SEHF02,CPI
+"U.S. city average, All items less food and energy ",CUUR0000SA0L1E,CPI
+"U.S. city average, Housing ",CUUR0000SAH,CPI
+"U.S. city average, Shelter ",CUUR0000SAH1,CPI
+"U.S. city average, Apparel ",CUUR0000SAA,CPI
+"U.S. city average, Recreation ",CUUR0000SAR,CPI
+"U.S. city average, Education ",CUUR0000SAE1,CPI
+"U.S. city average, Communication ",CUUR0000SAE2,CPI
+"U.S. city average, Medical Care ",CUUR0000SAM,CPI
+"U.S. city average, Hospital Services ",CUUR0000SEMD01,CPI
+"U.S. city average, Physicians' Services ",CUUR0000SEMC01,CPI
+"U.S. city average, Prescription Drugs ",CUUR0000SEMF01,CPI
+"U.S. city average, Transportation ",CUUR0000SAT,CPI
+"U.S. city average, New Vehicles ",CUUR0000SETA01,CPI
+"U.S. city average, Used Cars and Trucks ",CUUR0000SETA02,CPI
+"Total Nonfarm Employment, Seasonally Adjusted ",CES0000000001,CES
+"Manufacturing Employment, Seasonally Adjusted ",CES3000000001,CES
+"Total Private Employment, Seasonally Adjusted ",CES0500000001,CES
+"Government Employment, Seasonally Adjusted ",CES9000000001,CES
+"Total Private Average Hourly Earnings of All Employees, Seasonally Adjusted ",CES0500000003,CES
+"Total Nonfarm Employment, Not Seasonally Adjusted ",CEU0000000001,CES
+"Construction Employment, Seasonally Adjusted ",CES2000000001,CES
+"Oil and Gas Extraction Employment, Seasonally Adjusted ",CES1021100001,CES
+"Professional and Business Services Employment, Seasonally Adjusted ",CES6000000001,CES
+"Leisure and Hospitality Employment, Seasonally Adjusted ",CES7000000001,CES
+"Other Services Employment, Seasonally Adjusted ",CES8000000001,CES
+"Mining and Logging Employment, Seasonally Adjusted ",CES1000000001,CES
+"Financial Activities Employment, Seasonally Adjusted ",CES5500000001,CES
+"Private Education and Health Services Employment, Seasonally Adjusted ",CES6500000001,CES
+"Information Employment, Seasonally Adjusted ",CES5000000001,CES
+"Total Private Average Weekly Hours of All Employees, Seasonally Adjusted ",CES0500000002,CES
+"Primary Metal Manufacturing Average Weekly Hours of All Employees, Seasonally Adjusted ",CES3133100002,CES
+"Textile Mills Average Weekly Hours of All Employees, Seasonally Adjusted ",CES3231300002,CES
+"Retail Trade Employment, Seasonally Adjusted ",CES4200000001,CES
+"Fabricated Metal Product Manufacturing Average Weekly Hours of All Employees, Seasonally Adjusted ",CES3133200002,CES
+"Paper Manufacturing Average Weekly Hours of All Employees, Seasonally Adjusted ",CES3232200002,CES
+"Private Education and Health Services Average Weekly Hours of All Employees, Not Seasonally Adjusted ",CEU6500000002,CES
+"Printing and Related Support Activities Average Weekly Hours of All Employees, Seasonally Adjusted ",CES3232300002,CES
+"Total Private Employment, Not Seasonally Adjusted ",CEU0500000001,CES
+"Total Private Average Hourly Earnings of Production and Nonsupervisory Employees, Seasonally Adjusted ",CES0500000008,CES
+"Mining  Labor productivity, output per hour (index, 2007=100) ",IPUBN21____L000000000,OPT
+"Power generation and supply  Labor productivity, output per hour (index, 2007=100) ",IPUCN2211__L000000000,OPT
+"Computer and electronic products  Labor productivity, output per hour (index, 2007=100) ",IPUEN334___L000000000,OPT
+"Motor vehicles  Labor productivity, output per hour (index, 2007=100) ",IPUEN3361__L000000000,OPT
+"Wholesale trade  Labor productivity, output per hour (index, 2007=100) ",IPUGN42____L000000000,OPT
+"Retail trade  Labor productivity, output per hour (index, 2007=100) ",IPUHN44_45_L000000000,OPT
+"Grocery stores  Labor productivity, output per hour (index, 2007=100) ",IPUHN4451__L000000000,OPT
+"General merchandise stores  Labor productivity, output per hour (index, 2007=100) ",IPUHN452___L000000000,OPT
+"Air transportation  Labor productivity, output per hour (index, 2007=100) ",IPUIN481___L000000000,OPT
+"Publishing  Labor productivity, output per hour (index, 2007=100) ",IPUJN511___L000000000,OPT
+"Wired telecommunications carriers  Labor productivity, output per hour (index, 2007=100) ",IPUJN517311L000000000,OPT
+"Commercial banking  Labor productivity, output per hour (index, 2007=100) ",IPUKN52211_L000000000,OPT
+"Food services and drinking places  Labor productivity, output per hour (index, 2007=100) ",IPUTN722___L000000000,OPT
+"Automotive repair and maintenance  Labor productivity, output per hour (index, 2007=100) ",IPUUN8111__L000000000,OPT
+"Job openings level, Total nonfarm, seasonally adjusted ",JTS000000000000000JOL,JOLTS
+"Job openings rate, Total nonfarm, seasonally adjusted ",JTS000000000000000JOR,JOLTS
+"Total separations level, Total nonfarm, seasonally adjusted ",JTS000000000000000TSL,JOLTS
+"Total separations rate, Total nonfarm, seasonally adjusted ",JTS000000000000000TSR,JOLTS
+"Hires level, Total nonfarm, seasonally adjusted ",JTS000000000000000HIL,JOLTS
+"Hires rate, Total nonfarm, seasonally adjusted ",JTS000000000000000HIR,JOLTS
+"Quits level, Total nonfarm, seasonally adjusted ",JTS000000000000000QUL,JOLTS
+"Quits rate, Total nonfarm, seasonally adjusted ",JTS000000000000000QUR,JOLTS
+"Layoffs and discharges level, Total nonfarm, seasonally adjusted ",JTS000000000000000LDL,JOLTS
+"Layoffs and discharges rate, Total nonfarm, seasonally adjusted ",JTS000000000000000LDR,JOLTS
+"Job openings level, Total private, seasonally adjusted ",JTS100000000000000JOL,JOLTS
+"Job openings level, Construction, seasonally adjusted ",JTS230000000000000JOL,JOLTS
+"Job openings level, Manufacturing, seasonally adjusted ",JTS300000000000000JOL,JOLTS
+"Job openings level, Trade, transportation, and utilities, seasonally adjusted ",JTS400000000000000JOL,JOLTS
+"Job openings level, Retail trade, seasonally adjusted ",JTS440000000000000JOL,JOLTS
+"Job openings level, Professional and business services, seasonally adjusted ",JTS540099000000000JOL,JOLTS
+"Job openings level, Private education and health services, seasonally adjusted ",JTS600000000000000JOL,JOLTS
+"Job openings level, Leisure and hospitality, seasonally adjusted ",JTS700000000000000JOL,JOLTS
+"Job openings level, Government, seasonally adjusted ",JTS900000000000000JOL,JOLTS
+"Job openings level, Total nonfarm, not seasonally adjusted ",JTU000000000000000JOL,JOLTS
+"Job openings rate, Total nonfarm, not seasonally adjusted ",JTU000000000000000JOR,JOLTS
+"Hires level, Total nonfarm, not seasonally adjusted ",JTU000000000000000HIL,JOLTS
+"Total separations rate, Total nonfarm, not seasonally adjusted ",JTU000000000000000TSR,JOLTS
+"Quits rate, Total nonfarm, not seasonally adjusted ",JTU000000000000000QUR,JOLTS
+"Layoffs and discharges rate, Total nonfarm, not seasonally adjusted ",JTU000000000000000LDR,JOLTS
+"Job openings level, Construction, not seasonally adjusted ",JTU230000000000000JOL,JOLTS
+"Job openings level, Manufacturing, not seasonally adjusted ",JTU300000000000000JOL,JOLTS
+Civilian Labor Force Level ,LNS11000000,CPS
+Civilian Labor Force Participation Rate ,LNS11300000,CPS
+Employment Level ,LNS12000000,CPS
+Employment Population Ratio ,LNS12300000,CPS
+"Employed, Usually Work Full Time ",LNS12500000,CPS
+"Employed, Usually Work Part Time ",LNS12600000,CPS
+Unemployment Level ,LNS13000000,CPS
+Unemployment Rate ,LNS14000000,CPS
+Unemployment Rate  16-19 Years ,LNS14000012,CPS
+Unemployment Rate  20 Years & Over Men ,LNS14000025,CPS
+Unemployment Rate  20 Years & Over Women ,LNS14000026,CPS
+Unemployment Rate  White ,LNS14000003,CPS
+Unemployment Rate  Black or African American ,LNS14000006,CPS
+Unemployment Rate  Asian ,LNS14032183,CPS
+Unemployment Rate  Hispanic or Latino ,LNS14000009,CPS
+"Unemployment Rate  25 Years & Over, Less than a High School Diploma ",LNS14027659,CPS
+"Unemployment Rate  25 Years & Over, High School Graduates No College ",LNS14027660,CPS
+"Unemployment Rate  25 Years & Over, Some College or Associate Degree ",LNS14027689,CPS
+"Unemployment Rate  25 Years & Over, Bachelor's Degree and Higher ",LNS14027662,CPS
+Civilian Labor Force Level ,LNS11000000,CPS
+Civilian Labor Force Participation Rate ,LNS11300000,CPS
+Employment Level ,LNS12000000,CPS
+Employment - Population Ratio ,LNS12300000,CPS
+"Employed, Usually Work Full Time ",LNS12500000,CPS
+"Employed, Usually Work Part Time ",LNS12600000,CPS
+Number Unemployed For Less Than 5 weeks ,LNS13008396,CPS
+Number Unemployed For 5 - 14 Weeks,LNS13008756,CPS
+Number Unemployed For 15 Weeks & Over ,LNS13008516,CPS
+Number Unemployed For 27 Weeks & Over ,LNS13008636,CPS
+Average Weeks Unemployed ,LNS13008275,CPS
+Median Weeks Unemployed ,LNS13008276,CPS
+Unemployment Level Job Losers ,LNS13023621,CPS
+Unemployment Level Job Losers On Layoff ,LNS13023653,CPS
+Unemployment Level Job Losers Not on Layoff ,LNS13025699,CPS
+Unemployment Level Job Leavers ,LNS13023705,CPS
+Unemployment Level Reentrants To Labor Force ,LNS13023557,CPS
+Unemployment Level New Entrants ,LNS13023569,CPS
+Persons At Work Part Time for Economic Reasons ,LNS12032194,CPS
+Not in Labor Force ,LNS15000000,CPS
+Marginally Attached to Labor Force ,LNS15026642,CPS
+Discouraged Workers ,LNS15026645,CPS
+Alternative measure of labor underutilization U - 6,LNS13327709,CPS
+Multiple Jobholders Level ,LNS12026619,CPS
+Multiple Jobholders as a Percent of Total Employed ,LNS12026620,CPS
+"Employment Level, Nonag. Industries, With a Job not at Work, Bad Weather ",LNU02036012,CPS
+"Employment Level, Nonag. Industries, At Work 1 - 34 Hrs, Usually Work Full time, Bad Weather ",LNU02033224,CPS
+"Business  Labor Productivity (Output per Hour), percent change from previous quarter ",PRS84006092,OTP
+"Business  Unit Labor Costs, percent change from previous quarter ",PRS84006112,OTP
+"Business  Real Hourly Compensation, percent change from previous quarter ",PRS84006152,OTP
+"Nonfarm Business  Labor Productivity (Output per Hour), percent change from previous quarter ",PRS85006092,OTP
+"Nonfarm Business  Unit Labor Costs, percent change from previous quarter ",PRS85006112,OTP
+"Nonfarm Business  Real Hourly Compensation, percent change from previous quarter ",PRS85006152,OTP
+"Manufacturing  Labor Productivity (Output per Hour), percent change from previous quarter ",PRS30006092,OTP
+"Manufacturing  Unit Labor Costs, percent change from previous quarter ",PRS30006112,OTP
+"Manufacturing  Real Hourly Compensation, percent change from previous quarter ",PRS30006152,OTP
+"Total factor productivity for Private Business Sector (NAICS 11 - 81), annual index ",MPU4900012,OTP
+"Total factor productivity for Private Nonfarm Business Sector (NAICS 113 - 81), annual index ",MPU4910012,OTP
+"Total factor productivity for Agriculture, forestry, fishing, and hunting (NAICS 11), annual index ",MPU0011012,OTP
+"Total factor productivity for Mining (NAICS 21), annual index ",MPU0021012,OTP
+"Total factor productivity for Utilities (NAICS 22), annual index ",MPU0022012,OTP
+"Total factor productivity for Construction (NAICS 23), annual index ",MPU0023012,OTP
+"Total factor productivity for Manufacturing Sector (NAICS 311- 339), annual index ",MPU9900012,OTP
+"Total factor productivity for Nondurable Manufacturing Sector (NAICS 311 - 316 322 - 326), annual index ",MPU9910012,OTP
+"Total factor productivity for Durable Manufacturing Sector (NAICS 321 327 331 - 337 339), annual index )",MPU9920012,OTP
+"Total factor productivity for Wholesale trade (NAICS 42), annual index ",MPU0042012,OTP
+"Total factor productivity for Retail trade (NAICS 44,45), annual index ",MPU0044012,OTP
+"Total factor productivity for Transportation and warehousing (NAICS 48 - 49), annual index",MPU0048012,OTP
+"Total factor productivity for Information (NAICS 51), annual index ",MPU0051012,OTP
+"Total factor productivity for Finance and insurance (NAICS 52), annual index ",MPU0052012,OTP
+"Total factor productivity for Real estate and rental and leasing (NAICS 53), annual index ",MPU0053012,OTP
+"Total factor productivity for Professional, scientific & technical services (NAICS 54), annual index ",MPU0054012,OTP
+"Total factor productivity for Management of companies and enterprises (NAICS 55), annual index ",MPU0055012,OTP
+"Total factor productivity for Administrative and waste management services (NAICS 56), annual index ",MPU0056012,OTP
+"Total factor productivity for Educational services (NAICS 61), annual index ",MPU0061012,OTP
+"Total factor productivity for Health care and social assistance (NAICS 62), annual index ",MPU0062012,OTP
+"Total factor productivity for Arts, entertainment, and recreation (NAICS 71), annual index ",MPU0071012,OTP
+"Total factor productivity for Accommodation and food services (NAICS 72), annual index ",MPU0072012,OTP
+"Total factor productivity for Other services, except government (NAICS 81), annual index ",MPU0081012,OTP
+Labor force participation rate  Persons with own children under 18 ,FMUP1378851,CPS
+Labor force participation rate  Men with own children under 18 ,FMUP1378852,CPS
+Labor force participation rate  Women with own children under 18 ,FMUP1378853,CPS
+"Labor force participation rate  Persons with own children 6 to 17, none younger ",FMUP1378860,CPS
+"Labor force participation rate  Men with own children 6 to 17, none younger ",FMUP1378861,CPS
+"Labor force participation rate  Women with own children 6 to 17, none younger ",FMUP1378862,CPS
+Labor force participation rate  Persons with own children under 6 ,FMUP1378863,CPS
+Labor force participation rate  Men with own children under 6 ,FMUP1378864,CPS
+Labor force participation rate  Women with own children under 6 ,FMUP1378865,CPS
+Labor force participation rate  Women with own children under 3 ,FMUP1378869,CPS
+Labor force participation rate  Women with own children under 1 ,FMUP1378872,CPS
+Labor force participation rate  Persons with no own children under 18 ,FMUP1378866,CPS
+Labor force participation rate  Men with no own children under 18 ,FMUP1378867,CPS
+Labor force participation rate  Women with no own children under 18 ,FMUP1378868,CPS
+Employment population ratio  Persons with own children under 18 ,FMUP2378851,CPS
+Employment population ratio  Men with own children under 18 ,FMUP2378852,CPS
+Employment population ratio  Women with own children under 18 ,FMUP2378853,CPS
+"Employment population ratio  Persons with own children 6 to 17, none younger ",FMUP2378860,CPS
+"Employment population ratio  Men with own children 6 to 17, none younger ",FMUP2378861,CPS
+"Employment population ratio  Women with own children 6 to 17, none younger ",FMUP2378862,CPS
+Employment population ratio  Persons with own children under 6 ,FMUP2378863,CPS
+Employment population ratio  Men with own children under 6 ,FMUP2378864,CPS
+Employment population ratio  Women with own children under 6 ,FMUP2378865,CPS
+Employment population ratio  Women with own children under 3 ,FMUP2378869,CPS
+Employment population ratio  Women with own children under 1 ,FMUP2378872,CPS
+Employment population ratio  Persons with no own children under 18 ,FMUP2378866,CPS
+Employment population ratio  Men with no own children under 18 ,FMUP2378867,CPS
+Employment population ratio  Women with no own children under 18 ,FMUP2378868,CPS
+Unemployment rate  Persons with own children under 18 ,FMUP4078851,CPS
+Unemployment rate  Men with own children under 18 ,FMUP4078852,CPS
+Unemployment rate  Women with own children under 18 ,FMUP4078853,CPS
+"Unemployment rate  Persons with own children 6 to 17, none younger ",FMUP4078860,CPS
+"Unemployment rate  Men with own children 6 to 17, none younger ",FMUP4078861,CPS
+"Unemployment rate  Women with own children 6 to 17, none younger ",FMUP4078862,CPS
+Unemployment rate  Persons with own children under 6 ,FMUP4078863,CPS
+Unemployment rate  Men with own children under 6 ,FMUP4078864,CPS
+Unemployment rate  Women with own children under 6 ,FMUP4078865,CPS
+Unemployment rate  Women with own children under 3 ,FMUP4078869,CPS
+Unemployment rate  Women with own children under 1 ,FMUP4078872,CPS
+Unemployment rate  Persons with no own children under 18 ,FMUP4078866,CPS
+Unemployment rate  Men with no own children under 18 ,FMUP4078867,CPS
+Unemployment rate  Women with no own children under 18 ,FMUP4078868,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs ",LEU0252881500,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Men ",LEU0252881800,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Women ",LEU0252882700,CPS
+"Constant (1982-84) Median wkly earnings, Emp FT, Wage & sal wrkrs ",LEU0252881600,CPS
+"Constant (1982-84) Median wkly earnings, Emp FT, Wage & sal wrkrs, Men ",LEU0252881900,CPS
+"Constant (1982-84) Median wkly earnings, Emp FT, Wage & sal wrkrs, Women ",LEU0252882800,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, White ",LEU0252883600,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, White, Men ",LEU0252883900,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, White, Women ",LEU0252884200,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Black or African Amer ",LEU0252884500,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Black or African Amer, Men ",LEU0252884800,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Black or African Amer, Women ",LEU0252885100,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Asian ",LEU0254468400,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Asian, Men ",LEU0254468500,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Asian, Women ",LEU0254468600,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Hispanic or Latino ",LEU0252885400,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Hispanic or Latino, Men ",LEU0252885700,CPS
+"Median wkly earnings, Emp FT, Wage & sal wrkrs, Hispanic or Latino, Women ",LEU0252886000,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, LT high sch dipl, 25 yrs & ovr ",LEU0252916700,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, High sch grads no coll, 25 yrs & ovr ",LEU0252917300,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, Some coll or assc degr, 25 yrs & ovr ",LEU0254929400,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, Bach degr or higher, 25 yrs & ovr ",LEU0252918500,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, Bach degr only, 25 yrs & ovr ",LEU0252919100,CPS
+"Median wkly earns, Emp FT, Wag & sal wrkrs, Adv degree, 25 yrs & ovr ",LEU0252919700,CPS

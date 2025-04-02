@@ -1,0 +1,1350 @@
+survey,series,seriesID,state
+CES,"Total Nonfarm, Seasonally adjusted",SMS01000000000000001, Alabama
+CES,"Mining and Logging, Seasonally adjusted",SMS01000001000000001, Alabama
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS01000001500000001, Alabama
+CES,"Construction, Seasonally adjusted",SMS01000002000000001, Alabama
+CES,"Manufacturing, Seasonally adjusted",SMS01000003000000001, Alabama
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS01000004000000001, Alabama
+CES,"Information, Seasonally adjusted",SMS01000005000000001, Alabama
+CES,"Financial Activities, Seasonally adjusted",SMS01000005500000001, Alabama
+CES,"Professional and Business Services, Seasonally adjusted",SMS01000006000000001, Alabama
+CES,"Education and Health Services, Seasonally adjusted",SMS01000006500000001, Alabama
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS01000007000000001, Alabama
+CES,"Other Services, Seasonally adjusted",SMS01000008000000001, Alabama
+CES,"Government, Seasonally adjusted",SMS01000009000000001, Alabama
+CES,"Total Nonfarm, Not seasonally adjusted",SMU01000000000000001, Alabama
+CES,"Mining and Logging, Not seasonally adjusted",SMU01000001000000001, Alabama
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU01000001500000001, Alabama
+CES,"Construction, Not seasonally adjusted",SMU01000002000000001, Alabama
+CES,"Manufacturing, Not seasonally adjusted",SMU01000003000000001, Alabama
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU01000004000000001, Alabama
+CES,"Information, Not seasonally adjusted",SMU01000005000000001, Alabama
+CES,"Financial Activities, Not seasonally adjusted",SMU01000005500000001, Alabama
+CES,"Professional and Business Services, Not seasonally adjusted",SMU01000006000000001, Alabama
+CES,"Education and Health Services, Not seasonally adjusted",SMU01000006500000001, Alabama
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU01000007000000001, Alabama
+CES,"Other Services, Not seasonally adjusted",SMU01000008000000001, Alabama
+CES,"Government, Not seasonally adjusted",SMU01000009000000001, Alabama
+CES,"Total Nonfarm, Seasonally adjusted",SMS02000000000000001, Alaska
+CES,"Mining and Logging, Seasonally adjusted",SMS02000001000000001, Alaska
+CES," Mining, Logging, and Construction, Seasonally adjusted",SMS02000001500000001, Alaska
+CES,"Construction, Seasonally adjusted",SMS02000002000000001, Alaska
+CES,"Manufacturing, Seasonally adjusted",SMS02000003000000001, Alaska
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS02000004000000001, Alaska
+CES,"Information, Seasonally adjusted",SMS02000005000000001, Alaska
+CES,"Financial Activities, Seasonally adjusted",SMS02000005500000001, Alaska
+CES,"Professional and Business Services, Seasonally adjusted",SMS02000006000000001, Alaska
+CES,"Education and Health Services, Seasonally adjusted",SMS02000006500000001, Alaska
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS02000007000000001, Alaska
+CES,"Other Services, Seasonally adjusted",SMS02000008000000001, Alaska
+CES,"Government, Seasonally adjusted",SMS02000009000000001, Alaska
+CES,"Total Nonfarm, Not seasonally adjusted",SMU02000000000000001, Alaska
+CES,"Mining and Logging, Not seasonally adjusted",SMU02000001000000001, Alaska
+CES," Mining, Logging, and Construction, Not seasonally adjusted",SMU02000001500000001, Alaska
+CES,"Construction, Not seasonally adjusted",SMU02000002000000001, Alaska
+CES,"Manufacturing, Not seasonally adjusted",SMU02000003000000001, Alaska
+CES,"Durable Goods, Not seasonally adjusted",SMU02000003100000001, Alaska
+CES,"Non-Durable Goods, Not seasonally adjusted",SMU02000003200000001, Alaska
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU02000004000000001, Alaska
+CES,"Information, Not seasonally adjusted",SMU02000005000000001, Alaska
+CES,"Financial Activities, Not seasonally adjusted",SMU02000005500000001, Alaska
+CES,"Professional and Business Services, Not seasonally adjusted",SMU02000006000000001, Alaska
+CES,"Education and Health Services, Not seasonally adjusted",SMU02000006500000001, Alaska
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU02000007000000001, Alaska
+CES,"Other Services, Not seasonally adjusted",SMU02000008000000001, Alaska
+CES,"Government, Not seasonally adjusted",SMU02000009000000001, Alaska
+CES,"Financial Activities, Not seasonally adjusted",SMU04000005500000001, Arizona
+CES,"Professional and Business Services, Not seasonally adjusted",SMU04000006000000001, Arizona
+CES,"Education and Health Services, Not seasonally adjusted",SMU04000006500000001, Arizona
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU04000007000000001, Arizona
+CES,"Other Services, Not seasonally adjusted",SMU04000008000000001, Arizona
+CES,"Government, Not seasonally adjusted",SMU04000009000000001, Arizona
+CES,"Total Nonfarm, Seasonally adjusted",SMS04000000000000001, Arizona
+CES,"Mining and Logging, Seasonally adjusted",SMS04000001000000001, Arizona
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS04000001500000001, Arizona
+CES,"Construction, Seasonally adjusted",SMS04000002000000001, Arizona
+CES,"Manufacturing, Seasonally adjusted",SMS04000003000000001, Arizona
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS04000004000000001, Arizona
+CES,"Information, Seasonally adjusted",SMS04000005000000001, Arizona
+CES,"Financial Activities, Seasonally adjusted",SMS04000005500000001, Arizona
+CES,"Professional and Business Services, Seasonally adjusted",SMS04000006000000001, Arizona
+CES,"Education and Health Services, Seasonally adjusted",SMS04000006500000001, Arizona
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS04000007000000001, Arizona
+CES,"Other Services, Seasonally adjusted",SMS04000008000000001, Arizona
+CES,"Government, Seasonally adjusted",SMS04000009000000001, Arizona
+CES,"Total Nonfarm, Not seasonally adjusted",SMU04000000000000001, Arizona
+CES,"Mining and Logging, Not seasonally adjusted",SMU04000001000000001, Arizona
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU04000001500000001, Arizona
+CES,"Construction, Not seasonally adjusted",SMU04000002000000001, Arizona
+CES,"Manufacturing, Not seasonally adjusted",SMU04000003000000001, Arizona
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU04000004000000001, Arizona
+CES,"Information, Not seasonally adjusted",SMU04000005000000001, Arizona
+CES,"Total Nonfarm, Not seasonally adjusted",SMU05000000000000001, Arkansas
+CES,"Mining and Logging, Not seasonally adjusted",SMU05000001000000001, Arkansas
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU05000001500000001, Arkansas
+CES,"Construction, Not seasonally adjusted",SMU05000002000000001, Arkansas
+CES,"Manufacturing, Not seasonally adjusted",SMU05000003000000001, Arkansas
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU05000004000000001, Arkansas
+CES,"Information, Not seasonally adjusted",SMU05000005000000001, Arkansas
+CES,"Financial Activities, Not seasonally adjusted",SMU05000005500000001, Arkansas
+CES,"Professional and Business Services, Not seasonally adjusted",SMU05000006000000001, Arkansas
+CES,"Education and Health Services, Not seasonally adjusted",SMU05000006500000001, Arkansas
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU05000007000000001, Arkansas
+CES,"Other Services, Not seasonally adjusted",SMU05000008000000001, Arkansas
+CES,"Government, Not seasonally adjusted",SMU05000009000000001, Arkansas
+CES,"Total Nonfarm, Seasonally adjusted",SMS05000000000000001, Arkansas
+CES,"Mining and Logging, Seasonally adjusted",SMS05000001000000001, Arkansas
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS05000001500000001, Arkansas
+CES,"Construction, Seasonally adjusted",SMS05000002000000001, Arkansas
+CES,"Manufacturing, Seasonally adjusted",SMS05000003000000001, Arkansas
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS05000004000000001, Arkansas
+CES,"Financial Activities, Seasonally adjusted",SMS05000005500000001, Arkansas
+CES,"Professional and Business Services, Seasonally adjusted",SMS05000006000000001, Arkansas
+CES,"Education and Health Services, Seasonally adjusted",SMS05000006500000001, Arkansas
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS05000007000000001, Arkansas
+CES,"Other Services, Seasonally adjusted",SMS05000008000000001, Arkansas
+CES,"Government, Seasonally adjusted",SMS05000009000000001, Arkansas
+CES,"Total Nonfarm, Not seasonally adjusted",SMU06000000000000001, California
+CES,"Mining and Logging, Not seasonally adjusted",SMU06000001000000001, California
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU06000001500000001, California
+CES,"Construction, Not seasonally adjusted",SMU06000002000000001, California
+CES,"Manufacturing, Not seasonally adjusted",SMU06000003000000001, California
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU06000004000000001, California
+CES,"Information, Not seasonally adjusted",SMU06000005000000001, California
+CES,"Financial Activities, Not seasonally adjusted",SMU06000005500000001, California
+CES,"Professional and Business Services, Not seasonally adjusted",SMU06000006000000001, California
+CES,"Education and Health Services, Not seasonally adjusted",SMU06000006500000001, California
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU06000007000000001, California
+CES,"Other Services, Not seasonally adjusted",SMU06000008000000001, California
+CES,"Government, Not seasonally adjusted",SMU06000009000000001, California
+CES,"Total Nonfarm, Seasonally adjusted",SMS06000000000000001, California
+CES,"Mining and Logging, Seasonally adjusted",SMS06000001000000001, California
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS06000001500000001, California
+CES,"Construction, Seasonally adjusted",SMS06000002000000001, California
+CES,"Manufacturing, Seasonally adjusted",SMS06000003000000001, California
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS06000004000000001, California
+CES,"Information, Seasonally adjusted",SMS06000005000000001, California
+CES,"Financial Activities, Seasonally adjusted",SMS06000005500000001, California
+CES,"Professional and Business Services, Seasonally adjusted",SMS06000006000000001, California
+CES,"Education and Health Services, Seasonally adjusted",SMS06000006500000001, California
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS06000007000000001, California
+CES,"Other Services, Seasonally adjusted",SMS06000008000000001, California
+CES,"Government, Seasonally adjusted",SMS06000009000000001, California
+CES,"Total Nonfarm, Not seasonally adjusted",SMU08000000000000001, Colorado
+CES,"Mining and Logging, Not seasonally adjusted",SMU08000001000000001, Colorado
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU08000001500000001, Colorado
+CES,"Construction, Not seasonally adjusted",SMU08000002000000001, Colorado
+CES,"Manufacturing, Not seasonally adjusted",SMU08000003000000001, Colorado
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU08000004000000001, Colorado
+CES,"Information, Not seasonally adjusted",SMU08000005000000001, Colorado
+CES,"Financial Activities, Not seasonally adjusted",SMU08000005500000001, Colorado
+CES,"Professional and Business Services, Not seasonally adjusted",SMU08000006000000001, Colorado
+CES,"Education and Health Services, Not seasonally adjusted",SMU08000006500000001, Colorado
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU08000007000000001, Colorado
+CES,"Other Services, Not seasonally adjusted",SMU08000008000000001, Colorado
+CES,"Government, Not seasonally adjusted",SMU08000009000000001, Colorado
+CES,"Total Nonfarm, Seasonally adjusted",SMS08000000000000001, Colorado
+CES,"Mining and Logging, Seasonally adjusted",SMS08000001000000001, Colorado
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS08000001500000001, Colorado
+CES,"Construction, Seasonally adjusted",SMS08000002000000001, Colorado
+CES,"Manufacturing, Seasonally adjusted",SMS08000003000000001, Colorado
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS08000004000000001, Colorado
+CES,"Financial Activities, Seasonally adjusted",SMS08000005500000001, Colorado
+CES,"Professional and Business Services, Seasonally adjusted",SMS08000006000000001, Colorado
+CES,"Education and Health Services, Seasonally adjusted",SMS08000006500000001, Colorado
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS08000007000000001, Colorado
+CES,"Other Services, Seasonally adjusted",SMS08000008000000001, Colorado
+CES,"Government, Seasonally adjusted",SMS08000009000000001, Colorado
+CES,"Total Nonfarm, Not seasonally adjusted",SMU09000000000000001, Connecticut
+CES,"Mining and Logging, Not seasonally adjusted",SMU09000001000000001, Connecticut
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU09000001500000001, Connecticut
+CES,"Construction, Not seasonally adjusted",SMU09000002000000001, Connecticut
+CES,"Manufacturing, Not seasonally adjusted",SMU09000003000000001, Connecticut
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU09000004000000001, Connecticut
+CES,"Information, Not seasonally adjusted",SMU09000005000000001, Connecticut
+CES,"Financial Activities, Not seasonally adjusted",SMU09000005500000001, Connecticut
+CES,"Professional and Business Services, Not seasonally adjusted",SMU09000006000000001, Connecticut
+CES,"Education and Health Services, Not seasonally adjusted",SMU09000006500000001, Connecticut
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU09000007000000001, Connecticut
+CES,"Other Services, Not seasonally adjusted",SMU09000008000000001, Connecticut
+CES,"Government, Not seasonally adjusted",SMU09000009000000001, Connecticut
+CES,"Total Nonfarm, Seasonally adjusted",SMS09000000000000001, Connecticut
+CES,"Mining and Logging, Seasonally adjusted",SMS09000001000000001, Connecticut
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS09000001500000001, Connecticut
+CES,"Construction, Seasonally adjusted",SMS09000002000000001, Connecticut
+CES,"Manufacturing, Seasonally adjusted",SMS09000003000000001, Connecticut
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS09000004000000001, Connecticut
+CES,"Information, Seasonally adjusted",SMS09000005000000001, Connecticut
+CES,"Financial Activities, Seasonally adjusted",SMS09000005500000001, Connecticut
+CES,"Professional and Business Services, Seasonally adjusted",SMS09000006000000001, Connecticut
+CES,"Education and Health Services, Seasonally adjusted",SMS09000006500000001, Connecticut
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS09000007000000001, Connecticut
+CES,"Other Services, Seasonally adjusted",SMS09000008000000001, Connecticut
+CES,"Government, Seasonally adjusted",SMS09000009000000001, Connecticut
+CES,"Total Nonfarm, Not seasonally adjusted",SMU10000000000000001, Delaware
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU10000001500000001, Delaware
+CES,"Manufacturing, Not seasonally adjusted",SMU10000003000000001, Delaware
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU10000004000000001, Delaware
+CES,"Information, Not seasonally adjusted",SMU10000005000000001, Delaware
+CES,"Financial Activities, Not seasonally adjusted",SMU10000005500000001, Delaware
+CES,"Professional and Business Services, Not seasonally adjusted",SMU10000006000000001, Delaware
+CES,"Education and Health Services, Not seasonally adjusted",SMU10000006500000001, Delaware
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU10000007000000001, Delaware
+CES,"Other Services, Not seasonally adjusted",SMU10000008000000001, Delaware
+CES,"Government, Not seasonally adjusted",SMU10000009000000001, Delaware
+CES,"Total Nonfarm, Seasonally adjusted",SMS10000000000000001, Delaware
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS10000001500000001, Delaware
+CES,"Manufacturing, Seasonally adjusted",SMS10000003000000001, Delaware
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS10000004000000001, Delaware
+CES,"Information, Seasonally adjusted",SMS10000005000000001, Delaware
+CES,"Financial Activities, Seasonally adjusted",SMS10000005500000001, Delaware
+CES,"Professional and Business Services, Seasonally adjusted",SMS10000006000000001, Delaware
+CES,"Education and Health Services, Seasonally adjusted",SMS10000006500000001, Delaware
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS10000007000000001, Delaware
+CES,"Other Services, Seasonally adjusted",SMS10000008000000001, Delaware
+CES,"Government, Seasonally adjusted",SMS10000009000000001, Delaware
+CES,"Total Nonfarm, Not seasonally adjusted",SMU11000000000000001, District of Columbia
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU11000001500000001, District of Columbia
+CES,"Manufacturing, Not seasonally adjusted",SMU11000003000000001, District of Columbia
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU11000004000000001, District of Columbia
+CES,"Information, Not seasonally adjusted",SMU11000005000000001, District of Columbia
+CES,"Financial Activities, Not seasonally adjusted",SMU11000005500000001, District of Columbia
+CES,"Professional and Business Services, Not seasonally adjusted",SMU11000006000000001, District of Columbia
+CES,"Education and Health Services, Not seasonally adjusted",SMU11000006500000001, District of Columbia
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU11000007000000001, District of Columbia
+CES,"Other Services, Not seasonally adjusted",SMU11000008000000001, District of Columbia
+CES,"Government, Not seasonally adjusted",SMU11000009000000001, District of Columbia
+CES,"Total Nonfarm, Seasonally adjusted",SMS11000000000000001, District of Columbia
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS11000001500000001, District of Columbia
+CES,"Manufacturing, Seasonally adjusted",SMS11000003000000001, District of Columbia
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS11000004000000001, District of Columbia
+CES,"Information, Seasonally adjusted",SMS11000005000000001, District of Columbia
+CES,"Financial Activities, Seasonally adjusted",SMS11000005500000001, District of Columbia
+CES,"Professional and Business Services, Seasonally adjusted",SMS11000006000000001, District of Columbia
+CES,"Education and Health Services, Seasonally adjusted",SMS11000006500000001, District of Columbia
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS11000007000000001, District of Columbia
+CES,"Other Services, Seasonally adjusted",SMS11000008000000001, District of Columbia
+CES,"Government, Seasonally adjusted",SMS11000009000000001, District of Columbia
+CES,"Total Nonfarm, Not seasonally adjusted",SMU12000000000000001, Florida
+CES,"Mining and Logging, Not seasonally adjusted",SMU12000001000000001, Florida
+CES,"Total Nonfarm, Seasonally adjusted",SMS12000000000000001, Florida
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS12000001500000001, Florida
+CES,"Construction, Seasonally adjusted",SMS12000002000000001, Florida
+CES,"Manufacturing, Seasonally adjusted",SMS12000003000000001, Florida
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS12000004000000001, Florida
+CES,"Information, Seasonally adjusted",SMS12000005000000001, Florida
+CES,"Financial Activities, Seasonally adjusted",SMS12000005500000001, Florida
+CES,"Professional and Business Services, Seasonally adjusted",SMS12000006000000001, Florida
+CES,"Education and Health Services, Seasonally adjusted",SMS12000006500000001, Florida
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS12000007000000001, Florida
+CES,"Other Services, Seasonally adjusted",SMS12000008000000001, Florida
+CES,"Government, Seasonally adjusted",SMS12000009000000001, Florida
+CES,"Construction, Not seasonally adjusted",SMU12000002000000001, Florida
+CES,"Manufacturing, Not seasonally adjusted",SMU12000003000000001, Florida
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU12000004000000001, Florida
+CES,"Information, Not seasonally adjusted",SMU12000005000000001, Florida
+CES,"Financial Activities, Not seasonally adjusted",SMU12000005500000001, Florida
+CES,"Professional and Business Services, Not seasonally adjusted",SMU12000006000000001, Florida
+CES,"Education and Health Services, Not seasonally adjusted",SMU12000006500000001, Florida
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU12000007000000001, Florida
+CES,"Other Services, Not seasonally adjusted",SMU12000008000000001, Florida
+CES,"Government, Not seasonally adjusted",SMU12000009000000001, Florida
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU12000001500000001, Florida
+CES,"Total Nonfarm, Seasonally adjusted",SMS13000000000000001, Georgia
+CES,"Mining and Logging, Seasonally adjusted",SMS13000001000000001, Georgia
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS13000001500000001, Georgia
+CES,"Construction, Seasonally adjusted",SMS13000002000000001, Georgia
+CES,"Manufacturing, Seasonally adjusted",SMS13000003000000001, Georgia
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS13000004000000001, Georgia
+CES,"Information, Seasonally adjusted",SMS13000005000000001, Georgia
+CES,"Financial Activities, Seasonally adjusted",SMS13000005500000001, Georgia
+CES,"Professional and Business Services, Seasonally adjusted",SMS13000006000000001, Georgia
+CES,"Education and Health Services, Seasonally adjusted",SMS13000006500000001, Georgia
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS13000007000000001, Georgia
+CES,"Other Services, Seasonally adjusted",SMS13000008000000001, Georgia
+CES,"Government, Seasonally adjusted",SMS13000009000000001, Georgia
+CES,"Total Nonfarm, Not seasonally adjusted",SMU13000000000000001, Georgia
+CES,"Mining and Logging, Not seasonally adjusted",SMU13000001000000001, Georgia
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU13000001500000001, Georgia
+CES,"Construction, Not seasonally adjusted",SMU13000002000000001, Georgia
+CES,"Manufacturing, Not seasonally adjusted",SMU13000003000000001, Georgia
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU13000004000000001, Georgia
+CES,"Information, Not seasonally adjusted",SMU13000005000000001, Georgia
+CES,"Financial Activities, Not seasonally adjusted",SMU13000005500000001, Georgia
+CES,"Professional and Business Services, Not seasonally adjusted",SMU13000006000000001, Georgia
+CES,"Education and Health Services, Not seasonally adjusted",SMU13000006500000001, Georgia
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU13000007000000001, Georgia
+CES,"Other Services, Not seasonally adjusted",SMU13000008000000001, Georgia
+CES,"Government, Not seasonally adjusted",SMU13000009000000001, Georgia
+CES,"Total Nonfarm, Seasonally adjusted",SMS15000000000000001, Hawaii
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS15000001500000001, Hawaii
+CES,"Manufacturing, Seasonally adjusted",SMS15000003000000001, Hawaii
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS15000004000000001, Hawaii
+CES,"Information, Seasonally adjusted",SMS15000005000000001, Hawaii
+CES,"Education and Health Services, Seasonally adjusted",SMS15000006500000001, Hawaii
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS15000007000000001, Hawaii
+CES,"Other Services, Seasonally adjusted",SMS15000008000000001, Hawaii
+CES,"Government, Seasonally adjusted",SMS15000009000000001, Hawaii
+CES,"Total Nonfarm, Not seasonally adjusted",SMU15000000000000001, Hawaii
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU15000001500000001, Hawaii
+CES,"Manufacturing, Not seasonally adjusted",SMU15000003000000001, Hawaii
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU15000004000000001, Hawaii
+CES,"Information, Not seasonally adjusted",SMU15000005000000001, Hawaii
+CES,"Financial Activities, Not seasonally adjusted",SMU15000005500000001, Hawaii
+CES,"Professional and Business Services, Not seasonally adjusted",SMU15000006000000001, Hawaii
+CES,"Education and Health Services, Not seasonally adjusted",SMU15000006500000001, Hawaii
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU15000007000000001, Hawaii
+CES,"Other Services, Not seasonally adjusted",SMU15000008000000001, Hawaii
+CES,"Government, Not seasonally adjusted",SMU15000009000000001, Hawaii
+CES,"Total Nonfarm, Seasonally adjusted",SMS16000000000000001, Idaho
+CES,"Mining and Logging, Seasonally adjusted",SMS16000001000000001, Idaho
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS16000001500000001, Idaho
+CES,"Construction, Seasonally adjusted",SMS16000002000000001, Idaho
+CES,"Manufacturing, Seasonally adjusted",SMS16000003000000001, Idaho
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS16000004000000001, Idaho
+CES,"Financial Activities, Seasonally adjusted",SMS16000005500000001, Idaho
+CES,"Professional and Business Services, Seasonally adjusted",SMS16000006000000001, Idaho
+CES,"Education and Health Services, Seasonally adjusted",SMS16000006500000001, Idaho
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS16000007000000001, Idaho
+CES,"Other Services, Seasonally adjusted",SMS16000008000000001, Idaho
+CES,"Government, Seasonally adjusted",SMS16000009000000001, Idaho
+CES,"Total Nonfarm, Not seasonally adjusted",SMU16000000000000001, Idaho
+CES,"Mining and Logging, Not seasonally adjusted",SMU16000001000000001, Idaho
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU16000001500000001, Idaho
+CES,"Construction, Not seasonally adjusted",SMU16000002000000001, Idaho
+CES,"Manufacturing, Not seasonally adjusted",SMU16000003000000001, Idaho
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU16000004000000001, Idaho
+CES,"Information, Not seasonally adjusted",SMU16000005000000001, Idaho
+CES,"Financial Activities, Not seasonally adjusted",SMU16000005500000001, Idaho
+CES,"Professional and Business Services, Not seasonally adjusted",SMU16000006000000001, Idaho
+CES,"Education and Health Services, Not seasonally adjusted",SMU16000006500000001, Idaho
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU16000007000000001, Idaho
+CES,"Other Services, Not seasonally adjusted",SMU16000008000000001, Idaho
+CES,"Government, Not seasonally adjusted",SMU16000009000000001, Idaho
+CES,"Total Nonfarm, Seasonally adjusted",SMS17000000000000001, Illinois
+CES,"Mining and Logging, Seasonally adjusted",SMS17000001000000001, Illinois
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS17000001500000001, Illinois
+CES,"Construction, Seasonally adjusted",SMS17000002000000001, Illinois
+CES,"Manufacturing, Seasonally adjusted",SMS17000003000000001, Illinois
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS17000004000000001, Illinois
+CES,"Information, Seasonally adjusted",SMS17000005000000001, Illinois
+CES,"Financial Activities, Seasonally adjusted",SMS17000005500000001, Illinois
+CES,"Professional and Business Services, Seasonally adjusted",SMS17000006000000001, Illinois
+CES,"Education and Health Services, Seasonally adjusted",SMS17000006500000001, Illinois
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS17000007000000001, Illinois
+CES,"Other Services, Seasonally adjusted",SMS17000008000000001, Illinois
+CES,"Government, Seasonally adjusted",SMS17000009000000001, Illinois
+CES,"Total Nonfarm, Not seasonally adjusted",SMU17000000000000001, Illinois
+CES,"Mining and Logging, Not seasonally adjusted",SMU17000001000000001, Illinois
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU17000001500000001, Illinois
+CES,"Construction, Not seasonally adjusted",SMU17000002000000001, Illinois
+CES,"Manufacturing, Not seasonally adjusted",SMU17000003000000001, Illinois
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU17000004000000001, Illinois
+CES,"Information, Not seasonally adjusted",SMU17000005000000001, Illinois
+CES,"Financial Activities, Not seasonally adjusted",SMU17000005500000001, Illinois
+CES,"Professional and Business Services, Not seasonally adjusted",SMU17000006000000001, Illinois
+CES,"Education and Health Services, Not seasonally adjusted",SMU17000006500000001, Illinois
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU17000007000000001, Illinois
+CES,"Other Services, Not seasonally adjusted",SMU17000008000000001, Illinois
+CES,"Government, Not seasonally adjusted",SMU17000009000000001, Illinois
+CES,"Total Nonfarm, Seasonally adjusted",SMS18000000000000001, Indiana
+CES,"Mining and Logging, Seasonally adjusted",SMS18000001000000001, Indiana
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS18000001500000001, Indiana
+CES,"Construction, Seasonally adjusted",SMS18000002000000001, Indiana
+CES,"Manufacturing, Seasonally adjusted",SMS18000003000000001, Indiana
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS18000004000000001, Indiana
+CES,"Information, Seasonally adjusted",SMS18000005000000001, Indiana
+CES,"Financial Activities, Seasonally adjusted",SMS18000005500000001, Indiana
+CES,"Professional and Business Services, Seasonally adjusted",SMS18000006000000001, Indiana
+CES,"Education and Health Services, Seasonally adjusted",SMS18000006500000001, Indiana
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS18000007000000001, Indiana
+CES,"Other Services, Seasonally adjusted",SMS18000008000000001, Indiana
+CES,"Government, Seasonally adjusted",SMS18000009000000001, Indiana
+CES,"Total Nonfarm, Not seasonally adjusted",SMU18000000000000001, Indiana
+CES,"Mining and Logging, Not seasonally adjusted",SMU18000001000000001, Indiana
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU18000001500000001, Indiana
+CES,"Construction, Not seasonally adjusted",SMU18000002000000001, Indiana
+CES,"Manufacturing, Not seasonally adjusted",SMU18000003000000001, Indiana
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU18000004000000001, Indiana
+CES,"Information, Not seasonally adjusted",SMU18000005000000001, Indiana
+CES,"Financial Activities, Not seasonally adjusted",SMU18000005500000001, Indiana
+CES,"Professional and Business Services, Not seasonally adjusted",SMU18000006000000001, Indiana
+CES,"Education and Health Services, Not seasonally adjusted",SMU18000006500000001, Indiana
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU18000007000000001, Indiana
+CES,"Other Services, Not seasonally adjusted",SMU18000008000000001, Indiana
+CES,"Government, Not seasonally adjusted",SMU18000009000000001, Indiana
+CES,"Total Nonfarm, Seasonally adjusted",SMS19000000000000001, Iowa
+CES,"Mining and Logging, Seasonally adjusted",SMS19000001000000001, Iowa
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS19000001500000001, Iowa
+CES,"Construction, Seasonally adjusted",SMS19000002000000001, Iowa
+CES,"Manufacturing, Seasonally adjusted",SMS19000003000000001, Iowa
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS19000004000000001, Iowa
+CES,"Information, Seasonally adjusted",SMS19000005000000001, Iowa
+CES,"Financial Activities, Seasonally adjusted",SMS19000005500000001, Iowa
+CES,"Professional and Business Services, Seasonally adjusted",SMS19000006000000001, Iowa
+CES,"Education and Health Services, Seasonally adjusted",SMS19000006500000001, Iowa
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS19000007000000001, Iowa
+CES,"Other Services, Seasonally adjusted",SMS19000008000000001, Iowa
+CES,"Government, Seasonally adjusted",SMS19000009000000001, Iowa
+CES,"Total Nonfarm, Not seasonally adjusted",SMU19000000000000001, Iowa
+CES,"Mining and Logging, Not seasonally adjusted",SMU19000001000000001, Iowa
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU19000001500000001, Iowa
+CES,"Construction, Not seasonally adjusted",SMU19000002000000001, Iowa
+CES,"Manufacturing, Not seasonally adjusted",SMU19000003000000001, Iowa
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU19000004000000001, Iowa
+CES,"Information, Not seasonally adjusted",SMU19000005000000001, Iowa
+CES,"Financial Activities, Not seasonally adjusted",SMU19000005500000001, Iowa
+CES,"Professional and Business Services, Not seasonally adjusted",SMU19000006000000001, Iowa
+CES,"Education and Health Services, Not seasonally adjusted",SMU19000006500000001, Iowa
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU19000007000000001, Iowa
+CES,"Other Services, Not seasonally adjusted",SMU19000008000000001, Iowa
+CES,"Government, Not seasonally adjusted",SMU19000009000000001, Iowa
+CES,"Total Nonfarm, Seasonally adjusted",SMS20000000000000001, Kansas
+CES,"Mining and Logging, Seasonally adjusted",SMS20000001000000001, Kansas
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS20000001500000001, Kansas
+CES,"Construction, Seasonally adjusted",SMS20000002000000001, Kansas
+CES,"Manufacturing, Seasonally adjusted",SMS20000003000000001, Kansas
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS20000004000000001, Kansas
+CES,"Information, Seasonally adjusted",SMS20000005000000001, Kansas
+CES,"Financial Activities, Seasonally adjusted",SMS20000005500000001, Kansas
+CES,"Professional and Business Services, Seasonally adjusted",SMS20000006000000001, Kansas
+CES,"Education and Health Services, Seasonally adjusted",SMS20000006500000001, Kansas
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS20000007000000001, Kansas
+CES,"Other Services, Seasonally adjusted",SMS20000008000000001, Kansas
+CES,"Government, Seasonally adjusted",SMS20000009000000001, Kansas
+CES,"Total Nonfarm, Not seasonally adjusted",SMU20000000000000001, Kansas
+CES,"Mining and Logging, Not seasonally adjusted",SMU20000001000000001, Kansas
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU20000001500000001, Kansas
+CES,"Construction, Not seasonally adjusted",SMU20000002000000001, Kansas
+CES,"Manufacturing, Not seasonally adjusted",SMU20000003000000001, Kansas
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU20000004000000001, Kansas
+CES,"Information, Not seasonally adjusted",SMU20000005000000001, Kansas
+CES,"Financial Activities, Not seasonally adjusted",SMU20000005500000001, Kansas
+CES,"Professional and Business Services, Not seasonally adjusted",SMU20000006000000001, Kansas
+CES,"Education and Health Services, Not seasonally adjusted",SMU20000006500000001, Kansas
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU20000007000000001, Kansas
+CES,"Other Services, Not seasonally adjusted",SMU20000008000000001, Kansas
+CES,"Government, Not seasonally adjusted",SMU20000009000000001, Kansas
+CES,"Total Nonfarm, Seasonally adjusted",SMS21000000000000001, Kentucky
+CES,"Mining and Logging, Seasonally adjusted",SMS21000001000000001, Kentucky
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS21000001500000001, Kentucky
+CES,"Construction, Seasonally adjusted",SMS21000002000000001, Kentucky
+CES,"Manufacturing, Seasonally adjusted",SMS21000003000000001, Kentucky
+CES,"Durable Goods, Seasonally adjusted",SMS21000003100000001, Kentucky
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS21000004000000001, Kentucky
+CES,"Information, Seasonally adjusted",SMS21000005000000001, Kentucky
+CES,"Financial Activities, Seasonally adjusted",SMS21000005500000001, Kentucky
+CES,"Professional and Business Services, Seasonally adjusted",SMS21000006000000001, Kentucky
+CES,"Education and Health Services, Seasonally adjusted",SMS21000006500000001, Kentucky
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS21000007000000001, Kentucky
+CES,"Other Services, Seasonally adjusted",SMS21000008000000001, Kentucky
+CES,"Government, Seasonally adjusted",SMS21000009000000001, Kentucky
+CES,"Total Nonfarm, Not seasonally adjusted",SMU21000000000000001, Kentucky
+CES,"Mining and Logging, Not seasonally adjusted",SMU21000001000000001, Kentucky
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU21000001500000001, Kentucky
+CES,"Construction, Not seasonally adjusted",SMU21000002000000001, Kentucky
+CES,"Manufacturing, Not seasonally adjusted",SMU21000003000000001, Kentucky
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU21000004000000001, Kentucky
+CES,"Information, Not seasonally adjusted",SMU21000005000000001, Kentucky
+CES,"Financial Activities, Not seasonally adjusted",SMU21000005500000001, Kentucky
+CES,"Professional and Business Services, Not seasonally adjusted",SMU21000006000000001, Kentucky
+CES,"Education and Health Services, Not seasonally adjusted",SMU21000006500000001, Kentucky
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU21000007000000001, Kentucky
+CES,"Other Services, Not seasonally adjusted",SMU21000008000000001, Kentucky
+CES,"Government, Not seasonally adjusted",SMU21000009000000001, Kentucky
+CES,"Total Nonfarm, Seasonally adjusted",SMS22000000000000001, Louisiana
+CES,"Mining and Logging, Seasonally adjusted",SMS22000001000000001, Louisiana
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS22000001500000001, Louisiana
+CES,"Construction, Seasonally adjusted",SMS22000002000000001, Louisiana
+CES,"Manufacturing, Seasonally adjusted",SMS22000003000000001, Louisiana
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS22000004000000001, Louisiana
+CES,"Information, Seasonally adjusted",SMS22000005000000001, Louisiana
+CES,"Financial Activities, Seasonally adjusted",SMS22000005500000001, Louisiana
+CES,"Professional and Business Services, Seasonally adjusted",SMS22000006000000001, Louisiana
+CES,"Education and Health Services, Seasonally adjusted",SMS22000006500000001, Louisiana
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS22000007000000001, Louisiana
+CES,"Other Services, Seasonally adjusted",SMS22000008000000001, Louisiana
+CES,"Government, Seasonally adjusted",SMS22000009000000001, Louisiana
+CES,"Total Nonfarm, Not seasonally adjusted",SMU22000000000000001, Louisiana
+CES,"Mining and Logging, Not seasonally adjusted",SMU22000001000000001, Louisiana
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU22000001500000001, Louisiana
+CES,"Construction, Not seasonally adjusted",SMU22000002000000001, Louisiana
+CES,"Manufacturing, Not seasonally adjusted",SMU22000003000000001, Louisiana
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU22000004000000001, Louisiana
+CES,"Information, Not seasonally adjusted",SMU22000005000000001, Louisiana
+CES,"Financial Activities, Not seasonally adjusted",SMU22000005500000001, Louisiana
+CES,"Professional and Business Services, Not seasonally adjusted",SMU22000006000000001, Louisiana
+CES,"Education and Health Services, Not seasonally adjusted",SMU22000006500000001, Louisiana
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU22000007000000001, Louisiana
+CES,"Other Services, Not seasonally adjusted",SMU22000008000000001, Louisiana
+CES,"Government, Not seasonally adjusted",SMU22000009000000001, Louisiana
+CES,"Total Nonfarm, Seasonally adjusted",SMS23000000000000001, Maine
+CES,"Mining and Logging, Seasonally adjusted",SMS23000001000000001, Maine
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS23000001500000001, Maine
+CES,"Construction, Seasonally adjusted",SMS23000002000000001, Maine
+CES,"Manufacturing, Seasonally adjusted",SMS23000003000000001, Maine
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS23000004000000001, Maine
+CES,"Information, Seasonally adjusted",SMS23000005000000001, Maine
+CES,"Financial Activities, Seasonally adjusted",SMS23000005500000001, Maine
+CES,"Professional and Business Services, Seasonally adjusted",SMS23000006000000001, Maine
+CES,"Education and Health Services, Seasonally adjusted",SMS23000006500000001, Maine
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS23000007000000001, Maine
+CES,"Government, Seasonally adjusted",SMS23000009000000001, Maine
+CES,"Total Nonfarm, Not seasonally adjusted",SMU23000000000000001, Maine
+CES,"Mining and Logging, Not seasonally adjusted",SMU23000001000000001, Maine
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU23000001500000001, Maine
+CES,"Construction, Not seasonally adjusted",SMU23000002000000001, Maine
+CES,"Manufacturing, Not seasonally adjusted",SMU23000003000000001, Maine
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU23000004000000001, Maine
+CES,"Information, Not seasonally adjusted",SMU23000005000000001, Maine
+CES,"Financial Activities, Not seasonally adjusted",SMU23000005500000001, Maine
+CES,"Professional and Business Services, Not seasonally adjusted",SMU23000006000000001, Maine
+CES,"Education and Health Services, Not seasonally adjusted",SMU23000006500000001, Maine
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU23000007000000001, Maine
+CES,"Other Services, Not seasonally adjusted",SMU23000008000000001, Maine
+CES,"Government, Not seasonally adjusted",SMU23000009000000001, Maine
+CES,"Total Nonfarm, Seasonally adjusted",SMS24000000000000001, Maryland
+CES,"Mining and Logging, Seasonally adjusted",SMS24000001000000001, Maryland
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS24000001500000001, Maryland
+CES,"Construction, Seasonally adjusted",SMS24000002000000001, Maryland
+CES,"Manufacturing, Seasonally adjusted",SMS24000003000000001, Maryland
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS24000004000000001, Maryland
+CES,"Information, Seasonally adjusted",SMS24000005000000001, Maryland
+CES,"Financial Activities, Seasonally adjusted",SMS24000005500000001, Maryland
+CES,"Professional and Business Services, Seasonally adjusted",SMS24000006000000001, Maryland
+CES,"Education and Health Services, Seasonally adjusted",SMS24000006500000001, Maryland
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS24000007000000001, Maryland
+CES,"Other Services, Seasonally adjusted",SMS24000008000000001, Maryland
+CES,"Government, Seasonally adjusted",SMS24000009000000001, Maryland
+CES,"Total Nonfarm, Not seasonally adjusted",SMU24000000000000001, Maryland
+CES,"Mining and Logging, Not seasonally adjusted",SMU24000001000000001, Maryland
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU24000001500000001, Maryland
+CES,"Construction, Not seasonally adjusted",SMU24000002000000001, Maryland
+CES,"Manufacturing, Not seasonally adjusted",SMU24000003000000001, Maryland
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU24000004000000001, Maryland
+CES,"Information, Not seasonally adjusted",SMU24000005000000001, Maryland
+CES,"Financial Activities, Not seasonally adjusted",SMU24000005500000001, Maryland
+CES,"Professional and Business Services, Not seasonally adjusted",SMU24000006000000001, Maryland
+CES,"Education and Health Services, Not seasonally adjusted",SMU24000006500000001, Maryland
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU24000007000000001, Maryland
+CES,"Other Services, Not seasonally adjusted",SMU24000008000000001, Maryland
+CES,"Government, Not seasonally adjusted",SMU24000009000000001, Maryland
+CES,"Total Nonfarm, Seasonally adjusted",SMS25000000000000001, Massachusetts
+CES,"Mining and Logging, Seasonally adjusted",SMS25000001000000001, Massachusetts
+CES,"Professional and Business Services, Seasonally adjusted",SMS25000006000000001, Massachusetts
+CES,"Education and Health Services, Seasonally adjusted",SMS25000006500000001, Massachusetts
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS25000007000000001, Massachusetts
+CES,"Other Services, Seasonally adjusted",SMS25000008000000001, Massachusetts
+CES,"Government, Seasonally adjusted",SMS25000009000000001, Massachusetts
+CES,"Total Nonfarm, Not seasonally adjusted",SMU25000000000000001, Massachusetts
+CES,"Mining and Logging, Not seasonally adjusted",SMU25000001000000001, Massachusetts
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU25000001500000001, Massachusetts
+CES,"Construction, Not seasonally adjusted",SMU25000002000000001, Massachusetts
+CES,"Manufacturing, Not seasonally adjusted",SMU25000003000000001, Massachusetts
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU25000004000000001, Massachusetts
+CES,"Information, Not seasonally adjusted",SMU25000005000000001, Massachusetts
+CES,"Financial Activities, Not seasonally adjusted",SMU25000005500000001, Massachusetts
+CES,"Professional and Business Services, Not seasonally adjusted",SMU25000006000000001, Massachusetts
+CES,"Education and Health Services, Not seasonally adjusted",SMU25000006500000001, Massachusetts
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU25000007000000001, Massachusetts
+CES,"Other Services, Not seasonally adjusted",SMU25000008000000001, Massachusetts
+CES,"Government, Not seasonally adjusted",SMU25000009000000001, Massachusetts
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS25000001500000001, Massachusetts
+CES,"Construction, Seasonally adjusted",SMS25000002000000001, Massachusetts
+CES,"Manufacturing, Seasonally adjusted",SMS25000003000000001, Massachusetts
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS25000004000000001, Massachusetts
+CES,"Information, Seasonally adjusted",SMS25000005000000001, Massachusetts
+CES,"Financial Activities, Seasonally adjusted",SMS25000005500000001, Massachusetts
+CES,"Information, Not seasonally adjusted",SMU26000005000000001, Michigan
+CES,"Total Nonfarm, Seasonally adjusted",SMS26000000000000001, Michigan
+CES,"Mining and Logging, Seasonally adjusted",SMS26000001000000001, Michigan
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS26000001500000001, Michigan
+CES,"Construction, Seasonally adjusted",SMS26000002000000001, Michigan
+CES,"Manufacturing, Seasonally adjusted",SMS26000003000000001, Michigan
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS26000004000000001, Michigan
+CES,"Information, Seasonally adjusted",SMS26000005000000001, Michigan
+CES,"Financial Activities, Seasonally adjusted",SMS26000005500000001, Michigan
+CES,"Professional and Business Services, Seasonally adjusted",SMS26000006000000001, Michigan
+CES,"Education and Health Services, Seasonally adjusted",SMS26000006500000001, Michigan
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS26000007000000001, Michigan
+CES,"Other Services, Seasonally adjusted",SMS26000008000000001, Michigan
+CES,"Government, Seasonally adjusted",SMS26000009000000001, Michigan
+CES,"Total Nonfarm, Not seasonally adjusted",SMU26000000000000001, Michigan
+CES,"Mining and Logging, Not seasonally adjusted",SMU26000001000000001, Michigan
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU26000001500000001, Michigan
+CES,"Construction, Not seasonally adjusted",SMU26000002000000001, Michigan
+CES,"Manufacturing, Not seasonally adjusted",SMU26000003000000001, Michigan
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU26000004000000001, Michigan
+CES,"Financial Activities, Not seasonally adjusted",SMU26000005500000001, Michigan
+CES,"Professional and Business Services, Not seasonally adjusted",SMU26000006000000001, Michigan
+CES,"Education and Health Services, Not seasonally adjusted",SMU26000006500000001, Michigan
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU26000007000000001, Michigan
+CES,"Other Services, Not seasonally adjusted",SMU26000008000000001, Michigan
+CES,"Government, Not seasonally adjusted",SMU26000009000000001, Michigan
+CES,"Total Nonfarm, Seasonally adjusted",SMS27000000000000001, Minnesota
+CES,"Mining and Logging, Seasonally adjusted",SMS27000001000000001, Minnesota
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS27000001500000001, Minnesota
+CES,"Construction, Seasonally adjusted",SMS27000002000000001, Minnesota
+CES,"Manufacturing, Seasonally adjusted",SMS27000003000000001, Minnesota
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS27000004000000001, Minnesota
+CES,"Information, Seasonally adjusted",SMS27000005000000001, Minnesota
+CES,"Financial Activities, Seasonally adjusted",SMS27000005500000001, Minnesota
+CES,"Professional and Business Services, Seasonally adjusted",SMS27000006000000001, Minnesota
+CES,"Education and Health Services, Seasonally adjusted",SMS27000006500000001, Minnesota
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS27000007000000001, Minnesota
+CES,"Other Services, Seasonally adjusted",SMS27000008000000001, Minnesota
+CES,"Government, Seasonally adjusted",SMS27000009000000001, Minnesota
+CES,"Total Nonfarm, Not seasonally adjusted",SMU27000000000000001, Minnesota
+CES,"Mining and Logging, Not seasonally adjusted",SMU27000001000000001, Minnesota
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU27000001500000001, Minnesota
+CES,"Construction, Not seasonally adjusted",SMU27000002000000001, Minnesota
+CES,"Manufacturing, Not seasonally adjusted",SMU27000003000000001, Minnesota
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU27000004000000001, Minnesota
+CES,"Information, Not seasonally adjusted",SMU27000005000000001, Minnesota
+CES,"Financial Activities, Not seasonally adjusted",SMU27000005500000001, Minnesota
+CES,"Professional and Business Services, Not seasonally adjusted",SMU27000006000000001, Minnesota
+CES,"Education and Health Services, Not seasonally adjusted",SMU27000006500000001, Minnesota
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU27000007000000001, Minnesota
+CES,"Other Services, Not seasonally adjusted",SMU27000008000000001, Minnesota
+CES,"Government, Not seasonally adjusted",SMU27000009000000001, Minnesota
+CES,"Total Nonfarm, Seasonally adjusted",SMS28000000000000001, Mississippi
+CES,"Mining and Logging, Seasonally adjusted",SMS28000001000000001, Mississippi
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS28000001500000001, Mississippi
+CES,"Construction, Seasonally adjusted",SMS28000002000000001, Mississippi
+CES,"Manufacturing, Seasonally adjusted",SMS28000003000000001, Mississippi
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS28000004000000001, Mississippi
+CES,"Information, Seasonally adjusted",SMS28000005000000001, Mississippi
+CES,"Financial Activities, Seasonally adjusted",SMS28000005500000001, Mississippi
+CES,"Professional and Business Services, Seasonally adjusted",SMS28000006000000001, Mississippi
+CES,"Education and Health Services, Seasonally adjusted",SMS28000006500000001, Mississippi
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS28000007000000001, Mississippi
+CES,"Other Services, Seasonally adjusted",SMS28000008000000001, Mississippi
+CES,"Government, Seasonally adjusted",SMS28000009000000001, Mississippi
+CES,"Total Nonfarm, Not seasonally adjusted",SMU28000000000000001, Mississippi
+CES,"Mining and Logging, Not seasonally adjusted",SMU28000001000000001, Mississippi
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU28000001500000001, Mississippi
+CES,"Construction, Not seasonally adjusted",SMU28000002000000001, Mississippi
+CES,"Manufacturing, Not seasonally adjusted",SMU28000003000000001, Mississippi
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU28000004000000001, Mississippi
+CES,"Information, Not seasonally adjusted",SMU28000005000000001, Mississippi
+CES,"Financial Activities, Not seasonally adjusted",SMU28000005500000001, Mississippi
+CES,"Professional and Business Services, Not seasonally adjusted",SMU28000006000000001, Mississippi
+CES,"Education and Health Services, Not seasonally adjusted",SMU28000006500000001, Mississippi
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU28000007000000001, Mississippi
+CES,"Other Services, Not seasonally adjusted",SMU28000008000000001, Mississippi
+CES,"Government, Not seasonally adjusted",SMU28000009000000001, Mississippi
+CES,"Total Nonfarm, Seasonally adjusted",SMS29000000000000001, Missouri
+CES,"Mining and Logging, Seasonally adjusted",SMS29000001000000001, Missouri
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS29000001500000001, Missouri
+CES,"Construction, Seasonally adjusted",SMS29000002000000001, Missouri
+CES,"Manufacturing, Seasonally adjusted",SMS29000003000000001, Missouri
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS29000004000000001, Missouri
+CES,"Financial Activities, Seasonally adjusted",SMS29000005500000001, Missouri
+CES,"Professional and Business Services, Seasonally adjusted",SMS29000006000000001, Missouri
+CES,"Education and Health Services, Seasonally adjusted",SMS29000006500000001, Missouri
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS29000007000000001, Missouri
+CES,"Government, Seasonally adjusted",SMS29000009000000001, Missouri
+CES,"Total Nonfarm, Not seasonally adjusted",SMU29000000000000001, Missouri
+CES,"Mining and Logging, Not seasonally adjusted",SMU29000001000000001, Missouri
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU29000001500000001, Missouri
+CES,"Construction, Not seasonally adjusted",SMU29000002000000001, Missouri
+CES,"Manufacturing, Not seasonally adjusted",SMU29000003000000001, Missouri
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU29000004000000001, Missouri
+CES,"Information, Not seasonally adjusted",SMU29000005000000001, Missouri
+CES,"Financial Activities, Not seasonally adjusted",SMU29000005500000001, Missouri
+CES,"Professional and Business Services, Not seasonally adjusted",SMU29000006000000001, Missouri
+CES,"Education and Health Services, Not seasonally adjusted",SMU29000006500000001, Missouri
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU29000007000000001, Missouri
+CES,"Other Services, Not seasonally adjusted",SMU29000008000000001, Missouri
+CES,"Government, Not seasonally adjusted",SMU29000009000000001, Missouri
+CES,"Total Nonfarm, Seasonally adjusted",SMS30000000000000001, Montana
+CES,"Mining and Logging, Seasonally adjusted",SMS30000001000000001, Montana
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS30000001500000001, Montana
+CES,"Construction, Seasonally adjusted",SMS30000002000000001, Montana
+CES,"Manufacturing, Seasonally adjusted",SMS30000003000000001, Montana
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS30000004000000001, Montana
+CES,"Financial Activities, Seasonally adjusted",SMS30000005500000001, Montana
+CES,"Professional and Business Services, Seasonally adjusted",SMS30000006000000001, Montana
+CES,"Education and Health Services, Seasonally adjusted",SMS30000006500000001, Montana
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS30000007000000001, Montana
+CES,"Other Services, Seasonally adjusted",SMS30000008000000001, Montana
+CES,"Government, Seasonally adjusted",SMS30000009000000001, Montana
+CES,"Total Nonfarm, Not seasonally adjusted",SMU30000000000000001, Montana
+CES,"Mining and Logging, Not seasonally adjusted",SMU30000001000000001, Montana
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU30000001500000001, Montana
+CES,"Construction, Not seasonally adjusted",SMU30000002000000001, Montana
+CES,"Manufacturing, Not seasonally adjusted",SMU30000003000000001, Montana
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU30000004000000001, Montana
+CES,"Information, Not seasonally adjusted",SMU30000005000000001, Montana
+CES,"Financial Activities, Not seasonally adjusted",SMU30000005500000001, Montana
+CES,"Professional and Business Services, Not seasonally adjusted",SMU30000006000000001, Montana
+CES,"Education and Health Services, Not seasonally adjusted",SMU30000006500000001, Montana
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU30000007000000001, Montana
+CES,"Other Services, Not seasonally adjusted",SMU30000008000000001, Montana
+CES,"Government, Not seasonally adjusted",SMU30000009000000001, Montana
+CES,"Total Nonfarm, Seasonally adjusted",SMS31000000000000001, Nebraska
+CES,"Mining and Logging, Seasonally adjusted",SMS31000001000000001, Nebraska
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS31000001500000001, Nebraska
+CES,"Construction, Seasonally adjusted",SMS31000002000000001, Nebraska
+CES,"Manufacturing, Seasonally adjusted",SMS31000003000000001, Nebraska
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS31000004000000001, Nebraska
+CES,"Transportation, Warehousing, and Utilities, Seasonally adjusted",SMS31000004300000001, Nebraska
+CES,"Information, Seasonally adjusted",SMS31000005000000001, Nebraska
+CES,"Financial Activities, Seasonally adjusted",SMS31000005500000001, Nebraska
+CES,"Professional and Business Services, Seasonally adjusted",SMS31000006000000001, Nebraska
+CES,"Education and Health Services, Seasonally adjusted",SMS31000006500000001, Nebraska
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS31000007000000001, Nebraska
+CES,"Other Services, Seasonally adjusted",SMS31000008000000001, Nebraska
+CES,"Government, Seasonally adjusted",SMS31000009000000001, Nebraska
+CES,"Total Nonfarm, Not seasonally adjusted",SMU31000000000000001, Nebraska
+CES,"Mining and Logging, Not seasonally adjusted",SMU31000001000000001, Nebraska
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU31000001500000001, Nebraska
+CES,"Construction, Not seasonally adjusted",SMU31000002000000001, Nebraska
+CES,"Manufacturing, Not seasonally adjusted",SMU31000003000000001, Nebraska
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU31000004000000001, Nebraska
+CES,"Information, Not seasonally adjusted",SMU31000005000000001, Nebraska
+CES,"Financial Activities, Not seasonally adjusted",SMU31000005500000001, Nebraska
+CES,"Professional and Business Services, Not seasonally adjusted",SMU31000006000000001, Nebraska
+CES,"Education and Health Services, Not seasonally adjusted",SMU31000006500000001, Nebraska
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU31000007000000001, Nebraska
+CES,"Other Services, Not seasonally adjusted",SMU31000008000000001, Nebraska
+CES,"Government, Not seasonally adjusted",SMU31000009000000001, Nebraska
+CES,"Information, Seasonally adjusted",SMS32000005000000001, Nevada
+CES,"Financial Activities, Seasonally adjusted",SMS32000005500000001, Nevada
+CES,"Professional and Business Services, Seasonally adjusted",SMS32000006000000001, Nevada
+CES,"Education and Health Services, Seasonally adjusted",SMS32000006500000001, Nevada
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS32000007000000001, Nevada
+CES,"Other Services, Seasonally adjusted",SMS32000008000000001, Nevada
+CES,"Government, Seasonally adjusted",SMS32000009000000001, Nevada
+CES,"Total Nonfarm, Seasonally adjusted",SMS32000000000000001, Nevada
+CES,"Mining and Logging, Seasonally adjusted",SMS32000001000000001, Nevada
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS32000001500000001, Nevada
+CES,"Construction, Seasonally adjusted",SMS32000002000000001, Nevada
+CES,"Manufacturing, Seasonally adjusted",SMS32000003000000001, Nevada
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS32000004000000001, Nevada
+CES,"Total Nonfarm, Not seasonally adjusted",SMU32000000000000001, Nevada
+CES,"Mining and Logging, Not seasonally adjusted",SMU32000001000000001, Nevada
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU32000001500000001, Nevada
+CES,"Construction, Not seasonally adjusted",SMU32000002000000001, Nevada
+CES,"Manufacturing, Not seasonally adjusted",SMU32000003000000001, Nevada
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU32000004000000001, Nevada
+CES,"Information, Not seasonally adjusted",SMU32000005000000001, Nevada
+CES,"Financial Activities, Not seasonally adjusted",SMU32000005500000001, Nevada
+CES,"Professional and Business Services, Not seasonally adjusted",SMU32000006000000001, Nevada
+CES,"Education and Health Services, Not seasonally adjusted",SMU32000006500000001, Nevada
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU32000007000000001, Nevada
+CES,"Other Services, Not seasonally adjusted",SMU32000008000000001, Nevada
+CES,"Government, Not seasonally adjusted",SMU32000009000000001, Nevada
+CES,"Total Nonfarm, Seasonally adjusted",SMS33000000000000001, New Hampshire
+CES,"Mining and Logging, Seasonally adjusted",SMS33000001000000001, New Hampshire
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS33000001500000001, New Hampshire
+CES,"Construction, Seasonally adjusted",SMS33000002000000001, New Hampshire
+CES,"Manufacturing, Seasonally adjusted",SMS33000003000000001, New Hampshire
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS33000004000000001, New Hampshire
+CES,"Information, Seasonally adjusted",SMS33000005000000001, New Hampshire
+CES,"Financial Activities, Seasonally adjusted",SMS33000005500000001, New Hampshire
+CES,"Professional and Business Services, Seasonally adjusted",SMS33000006000000001, New Hampshire
+CES,"Education and Health Services, Seasonally adjusted",SMS33000006500000001, New Hampshire
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS33000007000000001, New Hampshire
+CES,"Other Services, Seasonally adjusted",SMS33000008000000001, New Hampshire
+CES,"Government, Seasonally adjusted",SMS33000009000000001, New Hampshire
+CES,"Total Nonfarm, Not seasonally adjusted",SMU33000000000000001, New Hampshire
+CES,"Mining and Logging, Not seasonally adjusted",SMU33000001000000001, New Hampshire
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU33000001500000001, New Hampshire
+CES,"Construction, Not seasonally adjusted",SMU33000002000000001, New Hampshire
+CES,"Manufacturing, Not seasonally adjusted",SMU33000003000000001, New Hampshire
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU33000004000000001, New Hampshire
+CES,"Information, Not seasonally adjusted",SMU33000005000000001, New Hampshire
+CES,"Financial Activities, Not seasonally adjusted",SMU33000005500000001, New Hampshire
+CES,"Professional and Business Services, Not seasonally adjusted",SMU33000006000000001, New Hampshire
+CES,"Education and Health Services, Not seasonally adjusted",SMU33000006500000001, New Hampshire
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU33000007000000001, New Hampshire
+CES,"Other Services, Not seasonally adjusted",SMU33000008000000001, New Hampshire
+CES,"Government, Not seasonally adjusted",SMU33000009000000001, New Hampshire
+CES,"Total Nonfarm, Seasonally adjusted",SMS34000000000000001, New Jersey
+CES,"Mining and Logging, Seasonally adjusted",SMS34000001000000001, New Jersey
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS34000001500000001, New Jersey
+CES,"Construction, Seasonally adjusted",SMS34000002000000001, New Jersey
+CES,"Manufacturing, Seasonally adjusted",SMS34000003000000001, New Jersey
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS34000004000000001, New Jersey
+CES,"Information, Seasonally adjusted",SMS34000005000000001, New Jersey
+CES,"Financial Activities, Seasonally adjusted",SMS34000005500000001, New Jersey
+CES,"Professional and Business Services, Seasonally adjusted",SMS34000006000000001, New Jersey
+CES,"Education and Health Services, Seasonally adjusted",SMS34000006500000001, New Jersey
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS34000007000000001, New Jersey
+CES,"Other Services, Seasonally adjusted",SMS34000008000000001, New Jersey
+CES,"Government, Seasonally adjusted",SMS34000009000000001, New Jersey
+CES,"Total Nonfarm, Not seasonally adjusted",SMU34000000000000001, New Jersey
+CES,"Mining and Logging, Not seasonally adjusted",SMU34000001000000001, New Jersey
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU34000001500000001, New Jersey
+CES,"Construction, Not seasonally adjusted",SMU34000002000000001, New Jersey
+CES,"Manufacturing, Not seasonally adjusted",SMU34000003000000001, New Jersey
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU34000004000000001, New Jersey
+CES,"Information, Not seasonally adjusted",SMU34000005000000001, New Jersey
+CES,"Financial Activities, Not seasonally adjusted",SMU34000005500000001, New Jersey
+CES,"Professional and Business Services, Not seasonally adjusted",SMU34000006000000001, New Jersey
+CES,"Education and Health Services, Not seasonally adjusted",SMU34000006500000001, New Jersey
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU34000007000000001, New Jersey
+CES,"Other Services, Not seasonally adjusted",SMU34000008000000001, New Jersey
+CES,"Government, Not seasonally adjusted",SMU34000009000000001, New Jersey
+CES,"Total Nonfarm, Seasonally adjusted",SMS35000000000000001, New Mexico
+CES,"Mining and Logging, Seasonally adjusted",SMS35000001000000001, New Mexico
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS35000001500000001, New Mexico
+CES,"Construction, Seasonally adjusted",SMS35000002000000001, New Mexico
+CES,"Manufacturing, Seasonally adjusted",SMS35000003000000001, New Mexico
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS35000004000000001, New Mexico
+CES,"Information, Seasonally adjusted",SMS35000005000000001, New Mexico
+CES,"Financial Activities, Seasonally adjusted",SMS35000005500000001, New Mexico
+CES,"Professional and Business Services, Seasonally adjusted",SMS35000006000000001, New Mexico
+CES,"Education and Health Services, Seasonally adjusted",SMS35000006500000001, New Mexico
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS35000007000000001, New Mexico
+CES,"Other Services, Seasonally adjusted",SMS35000008000000001, New Mexico
+CES,"Government, Seasonally adjusted",SMS35000009000000001, New Mexico
+CES,"Total Nonfarm, Not seasonally adjusted",SMU35000000000000001, New Mexico
+CES,"Mining and Logging, Not seasonally adjusted",SMU35000001000000001, New Mexico
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU35000001500000001, New Mexico
+CES,"Construction, Not seasonally adjusted",SMU35000002000000001, New Mexico
+CES,"Manufacturing, Not seasonally adjusted",SMU35000003000000001, New Mexico
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU35000004000000001, New Mexico
+CES,"Information, Not seasonally adjusted",SMU35000005000000001, New Mexico
+CES,"Financial Activities, Not seasonally adjusted",SMU35000005500000001, New Mexico
+CES,"Professional and Business Services, Not seasonally adjusted",SMU35000006000000001, New Mexico
+CES,"Education and Health Services, Not seasonally adjusted",SMU35000006500000001, New Mexico
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU35000007000000001, New Mexico
+CES,"Other Services, Not seasonally adjusted",SMU35000008000000001, New Mexico
+CES,"Government, Not seasonally adjusted",SMU35000009000000001, New Mexico
+CES,"Total Nonfarm, Seasonally adjusted",SMS36000000000000001, New York
+CES,"Mining and Logging, Seasonally adjusted",SMS36000001000000001, New York
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS36000001500000001, New York
+CES,"Construction, Seasonally adjusted",SMS36000002000000001, New York
+CES,"Manufacturing, Seasonally adjusted",SMS36000003000000001, New York
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS36000004000000001, New York
+CES,"Information, Seasonally adjusted",SMS36000005000000001, New York
+CES,"Financial Activities, Seasonally adjusted",SMS36000005500000001, New York
+CES,"Professional and Business Services, Seasonally adjusted",SMS36000006000000001, New York
+CES,"Education and Health Services, Seasonally adjusted",SMS36000006500000001, New York
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS36000007000000001, New York
+CES,"Other Services, Seasonally adjusted",SMS36000008000000001, New York
+CES,"Government, Seasonally adjusted",SMS36000009000000001, New York
+CES,"Total Nonfarm, Not seasonally adjusted",SMU36000000000000001, New York
+CES,"Mining and Logging, Not seasonally adjusted",SMU36000001000000001, New York
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU36000001500000001, New York
+CES,"Construction, Not seasonally adjusted",SMU36000002000000001, New York
+CES,"Manufacturing, Not seasonally adjusted",SMU36000003000000001, New York
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU36000004000000001, New York
+CES,"Information, Not seasonally adjusted",SMU36000005000000001, New York
+CES,"Financial Activities, Not seasonally adjusted",SMU36000005500000001, New York
+CES,"Professional and Business Services, Not seasonally adjusted",SMU36000006000000001, New York
+CES,"Education and Health Services, Not seasonally adjusted",SMU36000006500000001, New York
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU36000007000000001, New York
+CES,"Other Services, Not seasonally adjusted",SMU36000008000000001, New York
+CES,"Government, Not seasonally adjusted",SMU36000009000000001, New York
+CES,"Total Nonfarm, Seasonally adjusted",SMS37000000000000001, North Carolina
+CES,"Mining and Logging, Seasonally adjusted",SMS37000001000000001, North Carolina
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS37000001500000001, North Carolina
+CES,"Construction, Seasonally adjusted",SMS37000002000000001, North Carolina
+CES,"Manufacturing, Seasonally adjusted",SMS37000003000000001, North Carolina
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS37000004000000001, North Carolina
+CES,"Information, Seasonally adjusted",SMS37000005000000001, North Carolina
+CES,"Financial Activities, Seasonally adjusted",SMS37000005500000001, North Carolina
+CES,"Professional and Business Services, Seasonally adjusted",SMS37000006000000001, North Carolina
+CES,"Education and Health Services, Seasonally adjusted",SMS37000006500000001, North Carolina
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS37000007000000001, North Carolina
+CES,"Government, Seasonally adjusted",SMS37000009000000001, North Carolina
+CES,"Total Nonfarm, Not seasonally adjusted",SMU37000000000000001, North Carolina
+CES,"Mining and Logging, Not seasonally adjusted",SMU37000001000000001, North Carolina
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU37000001500000001, North Carolina
+CES,"Construction, Not seasonally adjusted",SMU37000002000000001, North Carolina
+CES,"Manufacturing, Not seasonally adjusted",SMU37000003000000001, North Carolina
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU37000004000000001, North Carolina
+CES,"Information, Not seasonally adjusted",SMU37000005000000001, North Carolina
+CES,"Financial Activities, Not seasonally adjusted",SMU37000005500000001, North Carolina
+CES,"Professional and Business Services, Not seasonally adjusted",SMU37000006000000001, North Carolina
+CES,"Education and Health Services, Not seasonally adjusted",SMU37000006500000001, North Carolina
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU37000007000000001, North Carolina
+CES,"Other Services, Not seasonally adjusted",SMU37000008000000001, North Carolina
+CES,"Government, Not seasonally adjusted",SMU37000009000000001, North Carolina
+CES,"Total Nonfarm, Seasonally adjusted",SMS38000000000000001, North Dakota
+CES,"Mining and Logging, Seasonally adjusted",SMS38000001000000001, North Dakota
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS38000001500000001, North Dakota
+CES,"Construction, Seasonally adjusted",SMS38000002000000001, North Dakota
+CES,"Manufacturing, Seasonally adjusted",SMS38000003000000001, North Dakota
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS38000004000000001, North Dakota
+CES,"Information, Seasonally adjusted",SMS38000005000000001, North Dakota
+CES,"Financial Activities, Seasonally adjusted",SMS38000005500000001, North Dakota
+CES,"Professional and Business Services, Seasonally adjusted",SMS38000006000000001, North Dakota
+CES,"Education and Health Services, Seasonally adjusted",SMS38000006500000001, North Dakota
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS38000007000000001, North Dakota
+CES,"Other Services, Seasonally adjusted",SMS38000008000000001, North Dakota
+CES,"Government, Seasonally adjusted",SMS38000009000000001, North Dakota
+CES,"Total Nonfarm, Not seasonally adjusted",SMU38000000000000001, North Dakota
+CES,"Mining and Logging, Not seasonally adjusted",SMU38000001000000001, North Dakota
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU38000001500000001, North Dakota
+CES,"Construction, Not seasonally adjusted",SMU38000002000000001, North Dakota
+CES,"Manufacturing, Not seasonally adjusted",SMU38000003000000001, North Dakota
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU38000004000000001, North Dakota
+CES,"Information, Not seasonally adjusted",SMU38000005000000001, North Dakota
+CES,"Financial Activities, Not seasonally adjusted",SMU38000005500000001, North Dakota
+CES,"Professional and Business Services, Not seasonally adjusted",SMU38000006000000001, North Dakota
+CES,"Education and Health Services, Not seasonally adjusted",SMU38000006500000001, North Dakota
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU38000007000000001, North Dakota
+CES,"Other Services, Not seasonally adjusted",SMU38000008000000001, North Dakota
+CES,"Government, Not seasonally adjusted",SMU38000009000000001, North Dakota
+CES,"Total Nonfarm, Seasonally adjusted",SMS39000000000000001, Ohio
+CES,"Mining and Logging, Seasonally adjusted",SMS39000001000000001, Ohio
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS39000001500000001, Ohio
+CES,"Construction, Seasonally adjusted",SMS39000002000000001, Ohio
+CES,"Manufacturing, Seasonally adjusted",SMS39000003000000001, Ohio
+CES,"Total Nonfarm, Not seasonally adjusted",SMU39000000000000001, Ohio
+CES,"Mining and Logging, Not seasonally adjusted",SMU39000001000000001, Ohio
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU39000001500000001, Ohio
+CES,"Construction, Not seasonally adjusted",SMU39000002000000001, Ohio
+CES,"Manufacturing, Not seasonally adjusted",SMU39000003000000001, Ohio
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU39000004000000001, Ohio
+CES,"Information, Not seasonally adjusted",SMU39000005000000001, Ohio
+CES,"Financial Activities, Not seasonally adjusted",SMU39000005500000001, Ohio
+CES,"Professional and Business Services, Not seasonally adjusted",SMU39000006000000001, Ohio
+CES,"Education and Health Services, Not seasonally adjusted",SMU39000006500000001, Ohio
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU39000007000000001, Ohio
+CES,"Other Services, Not seasonally adjusted",SMU39000008000000001, Ohio
+CES,"Government, Not seasonally adjusted",SMU39000009000000001, Ohio
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS39000004000000001, Ohio
+CES,"Information, Seasonally adjusted",SMS39000005000000001, Ohio
+CES,"Financial Activities, Seasonally adjusted",SMS39000005500000001, Ohio
+CES,"Professional and Business Services, Seasonally adjusted",SMS39000006000000001, Ohio
+CES,"Education and Health Services, Seasonally adjusted",SMS39000006500000001, Ohio
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS39000007000000001, Ohio
+CES,"Other Services, Seasonally adjusted",SMS39000008000000001, Ohio
+CES,"Government, Seasonally adjusted",SMS39000009000000001, Ohio
+CES,"Total Nonfarm, Not seasonally adjusted",SMU40000000000000001, Oklahoma
+CES,"Mining and Logging, Not seasonally adjusted",SMU40000001000000001, Oklahoma
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU40000001500000001, Oklahoma
+CES,"Construction, Not seasonally adjusted",SMU40000002000000001, Oklahoma
+CES,"Manufacturing, Not seasonally adjusted",SMU40000003000000001, Oklahoma
+CES,"Total Nonfarm, Seasonally adjusted",SMS40000000000000001, Oklahoma
+CES,"Mining and Logging, Seasonally adjusted",SMS40000001000000001, Oklahoma
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS40000001500000001, Oklahoma
+CES,"Construction, Seasonally adjusted",SMS40000002000000001, Oklahoma
+CES,"Manufacturing, Seasonally adjusted",SMS40000003000000001, Oklahoma
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS40000004000000001, Oklahoma
+CES,"Information, Seasonally adjusted",SMS40000005000000001, Oklahoma
+CES,"Financial Activities, Seasonally adjusted",SMS40000005500000001, Oklahoma
+CES,"Professional and Business Services, Seasonally adjusted",SMS40000006000000001, Oklahoma
+CES,"Education and Health Services, Seasonally adjusted",SMS40000006500000001, Oklahoma
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS40000007000000001, Oklahoma
+CES,"Government, Seasonally adjusted",SMS40000009000000001, Oklahoma
+CES,"Other Services, Not seasonally adjusted",SMU40000008000000001, Oklahoma
+CES,"Government, Not seasonally adjusted",SMU40000009000000001, Oklahoma
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU40000004000000001, Oklahoma
+CES,"Information, Not seasonally adjusted",SMU40000005000000001, Oklahoma
+CES,"Financial Activities, Not seasonally adjusted",SMU40000005500000001, Oklahoma
+CES,"Professional and Business Services, Not seasonally adjusted",SMU40000006000000001, Oklahoma
+CES,"Education and Health Services, Not seasonally adjusted",SMU40000006500000001, Oklahoma
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU40000007000000001, Oklahoma
+CES,"Total Nonfarm, Seasonally adjusted",SMS41000000000000001, Oregon
+CES,"Mining and Logging, Seasonally adjusted",SMS41000001000000001, Oregon
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS41000001500000001, Oregon
+CES,"Construction, Seasonally adjusted",SMS41000002000000001, Oregon
+CES,"Manufacturing, Seasonally adjusted",SMS41000003000000001, Oregon
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS41000004000000001, Oregon
+CES,"Information, Seasonally adjusted",SMS41000005000000001, Oregon
+CES,"Financial Activities, Seasonally adjusted",SMS41000005500000001, Oregon
+CES,"Professional and Business Services, Seasonally adjusted",SMS41000006000000001, Oregon
+CES,"Education and Health Services, Seasonally adjusted",SMS41000006500000001, Oregon
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS41000007000000001, Oregon
+CES,"Other Services, Seasonally adjusted",SMS41000008000000001, Oregon
+CES,"Government, Seasonally adjusted",SMS41000009000000001, Oregon
+CES,"Total Nonfarm, Not seasonally adjusted",SMU41000000000000001, Oregon
+CES,"Mining and Logging, Not seasonally adjusted",SMU41000001000000001, Oregon
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU41000001500000001, Oregon
+CES,"Construction, Not seasonally adjusted",SMU41000002000000001, Oregon
+CES,"Manufacturing, Not seasonally adjusted",SMU41000003000000001, Oregon
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU41000004000000001, Oregon
+CES,"Information, Not seasonally adjusted",SMU41000005000000001, Oregon
+CES,"Financial Activities, Not seasonally adjusted",SMU41000005500000001, Oregon
+CES,"Professional and Business Services, Not seasonally adjusted",SMU41000006000000001, Oregon
+CES,"Education and Health Services, Not seasonally adjusted",SMU41000006500000001, Oregon
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU41000007000000001, Oregon
+CES,"Other Services, Not seasonally adjusted",SMU41000008000000001, Oregon
+CES,"Government, Not seasonally adjusted",SMU41000009000000001, Oregon
+CES,"Total Nonfarm, Seasonally adjusted",SMS42000000000000001, Pennsylvania
+CES,"Mining and Logging, Seasonally adjusted",SMS42000001000000001, Pennsylvania
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS42000001500000001, Pennsylvania
+CES,"Construction, Seasonally adjusted",SMS42000002000000001, Pennsylvania
+CES,"Manufacturing, Seasonally adjusted",SMS42000003000000001, Pennsylvania
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS42000004000000001, Pennsylvania
+CES,"Information, Seasonally adjusted",SMS42000005000000001, Pennsylvania
+CES,"Financial Activities, Seasonally adjusted",SMS42000005500000001, Pennsylvania
+CES,"Professional and Business Services, Seasonally adjusted",SMS42000006000000001, Pennsylvania
+CES,"Education and Health Services, Seasonally adjusted",SMS42000006500000001, Pennsylvania
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS42000007000000001, Pennsylvania
+CES,"Other Services, Seasonally adjusted",SMS42000008000000001, Pennsylvania
+CES,"Government, Seasonally adjusted",SMS42000009000000001, Pennsylvania
+CES,"Total Nonfarm, Not seasonally adjusted",SMU42000000000000001, Pennsylvania
+CES,"Mining and Logging, Not seasonally adjusted",SMU42000001000000001, Pennsylvania
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU42000001500000001, Pennsylvania
+CES,"Construction, Not seasonally adjusted",SMU42000002000000001, Pennsylvania
+CES,"Manufacturing, Not seasonally adjusted",SMU42000003000000001, Pennsylvania
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU42000004000000001, Pennsylvania
+CES,"Information, Not seasonally adjusted",SMU42000005000000001, Pennsylvania
+CES,"Financial Activities, Not seasonally adjusted",SMU42000005500000001, Pennsylvania
+CES,"Professional and Business Services, Not seasonally adjusted",SMU42000006000000001, Pennsylvania
+CES,"Education and Health Services, Not seasonally adjusted",SMU42000006500000001, Pennsylvania
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU42000007000000001, Pennsylvania
+CES,"Other Services, Not seasonally adjusted",SMU42000008000000001, Pennsylvania
+CES,"Government, Not seasonally adjusted",SMU42000009000000001, Pennsylvania
+CES,"Total Nonfarm, Seasonally adjusted",SMS72000000000000001, Puerto Rico
+CES,"Mining and Logging, Seasonally adjusted",SMS72000001000000001, Puerto Rico
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS72000001500000001, Puerto Rico
+CES,"Construction, Seasonally adjusted",SMS72000002000000001, Puerto Rico
+CES,"Manufacturing, Seasonally adjusted",SMS72000003000000001, Puerto Rico
+CES,"Durable Goods, Seasonally adjusted",SMS72000003100000001, Puerto Rico
+CES,"Non-Durable Goods, Seasonally adjusted",SMS72000003200000001, Puerto Rico
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS72000004000000001, Puerto Rico
+CES,"Information, Seasonally adjusted",SMS72000005000000001, Puerto Rico
+CES,"Financial Activities, Seasonally adjusted",SMS72000005500000001, Puerto Rico
+CES,"Professional and Business Services, Seasonally adjusted",SMS72000006000000001, Puerto Rico
+CES,"Education and Health Services, Seasonally adjusted",SMS72000006500000001, Puerto Rico
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS72000007000000001, Puerto Rico
+CES,"Other Services, Seasonally adjusted",SMS72000008000000001, Puerto Rico
+CES,"Government, Seasonally adjusted",SMS72000009000000001, Puerto Rico
+CES,"Total Nonfarm, Not seasonally adjusted",SMU72000000000000001, Puerto Rico
+CES,"Mining and Logging, Not seasonally adjusted",SMU72000001000000001, Puerto Rico
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU72000001500000001, Puerto Rico
+CES,"Construction, Not seasonally adjusted",SMU72000002000000001, Puerto Rico
+CES,"Manufacturing, Not seasonally adjusted",SMU72000003000000001, Puerto Rico
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU72000004000000001, Puerto Rico
+CES,"Information, Not seasonally adjusted",SMU72000005000000001, Puerto Rico
+CES,"Financial Activities, Not seasonally adjusted",SMU72000005500000001, Puerto Rico
+CES,"Professional and Business Services, Not seasonally adjusted",SMU72000006000000001, Puerto Rico
+CES,"Education and Health Services, Not seasonally adjusted",SMU72000006500000001, Puerto Rico
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU72000007000000001, Puerto Rico
+CES,"Other Services, Not seasonally adjusted",SMU72000008000000001, Puerto Rico
+CES,"Government, Not seasonally adjusted",SMU72000009000000001, Puerto Rico
+CES,"Total Nonfarm, Seasonally adjusted",SMS44000000000000001, Rhode Island
+CES,"Mining and Logging, Seasonally adjusted",SMS44000001000000001, Rhode Island
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS44000001500000001, Rhode Island
+CES,"Construction, Seasonally adjusted",SMS44000002000000001, Rhode Island
+CES,"Manufacturing, Seasonally adjusted",SMS44000003000000001, Rhode Island
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS44000004000000001, Rhode Island
+CES,"Information, Seasonally adjusted",SMS44000005000000001, Rhode Island
+CES,"Financial Activities, Seasonally adjusted",SMS44000005500000001, Rhode Island
+CES,"Professional and Business Services, Seasonally adjusted",SMS44000006000000001, Rhode Island
+CES,"Education and Health Services, Seasonally adjusted",SMS44000006500000001, Rhode Island
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS44000007000000001, Rhode Island
+CES,"Other Services, Seasonally adjusted",SMS44000008000000001, Rhode Island
+CES,"Government, Seasonally adjusted",SMS44000009000000001, Rhode Island
+CES,"Total Nonfarm, Not seasonally adjusted",SMU44000000000000001, Rhode Island
+CES,"Mining and Logging, Not seasonally adjusted",SMU44000001000000001, Rhode Island
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU44000001500000001, Rhode Island
+CES,"Construction, Not seasonally adjusted",SMU44000002000000001, Rhode Island
+CES,"Manufacturing, Not seasonally adjusted",SMU44000003000000001, Rhode Island
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU44000004000000001, Rhode Island
+CES,"Information, Not seasonally adjusted",SMU44000005000000001, Rhode Island
+CES,"Financial Activities, Not seasonally adjusted",SMU44000005500000001, Rhode Island
+CES,"Professional and Business Services, Not seasonally adjusted",SMU44000006000000001, Rhode Island
+CES,"Education and Health Services, Not seasonally adjusted",SMU44000006500000001, Rhode Island
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU44000007000000001, Rhode Island
+CES,"Other Services, Not seasonally adjusted",SMU44000008000000001, Rhode Island
+CES,"Government, Not seasonally adjusted",SMU44000009000000001, Rhode Island
+CES,"Total Nonfarm, Seasonally adjusted",SMS45000000000000001, South Carolina
+CES,"Mining and Logging, Seasonally adjusted",SMS45000001000000001, South Carolina
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS45000001500000001, South Carolina
+CES,"Construction, Seasonally adjusted",SMS45000002000000001, South Carolina
+CES,"Manufacturing, Seasonally adjusted",SMS45000003000000001, South Carolina
+CES,"urable Goods, Seasonally adjusted",SMS45000003100000001, South Carolina
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS45000004000000001, South Carolina
+CES,"Wholesale Trade, Seasonally adjusted",SMS45000004100000001, South Carolina
+CES,"Financial Activities, Seasonally adjusted",SMS45000005500000001, South Carolina
+CES,"Professional and Business Services, Seasonally adjusted",SMS45000006000000001, South Carolina
+CES,"Education and Health Services, Seasonally adjusted",SMS45000006500000001, South Carolina
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS45000007000000001, South Carolina
+CES,"Government, Seasonally adjusted",SMS45000009000000001, South Carolina
+CES,"Total Nonfarm, Not seasonally adjusted",SMU45000000000000001, South Carolina
+CES,"Mining and Logging, Not seasonally adjusted",SMU45000001000000001, South Carolina
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU45000001500000001, South Carolina
+CES,"Construction, Not seasonally adjusted",SMU45000002000000001, South Carolina
+CES,"Manufacturing, Not seasonally adjusted",SMU45000003000000001, South Carolina
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU45000004000000001, South Carolina
+CES,"Information, Not seasonally adjusted",SMU45000005000000001, South Carolina
+CES,"Financial Activities, Not seasonally adjusted",SMU45000005500000001, South Carolina
+CES,"Professional and Business Services, Not seasonally adjusted",SMU45000006000000001, South Carolina
+CES,"Education and Health Services, Not seasonally adjusted",SMU45000006500000001, South Carolina
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU45000007000000001, South Carolina
+CES,"Other Services, Not seasonally adjusted",SMU45000008000000001, South Carolina
+CES,"Government, Not seasonally adjusted",SMU45000009000000001, South Carolina
+CES,"Total Nonfarm, Seasonally adjusted",SMS46000000000000001, South Dakota
+CES,"Mining and Logging, Seasonally adjusted",SMS46000001000000001, South Dakota
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS46000001500000001, South Dakota
+CES,"Construction, Seasonally adjusted",SMS46000002000000001, South Dakota
+CES,"Manufacturing, Seasonally adjusted",SMS46000003000000001, South Dakota
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS46000004000000001, South Dakota
+CES,"Financial Activities, Seasonally adjusted",SMS46000005500000001, South Dakota
+CES,"Professional and Business Services, Seasonally adjusted",SMS46000006000000001, South Dakota
+CES,"Education and Health Services, Seasonally adjusted",SMS46000006500000001, South Dakota
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS46000007000000001, South Dakota
+CES,"Other Services, Seasonally adjusted",SMS46000008000000001, South Dakota
+CES,"Government, Seasonally adjusted",SMS46000009000000001, South Dakota
+CES,"Total Nonfarm, Not seasonally adjusted",SMU46000000000000001, South Dakota
+CES,"Mining and Logging, Not seasonally adjusted",SMU46000001000000001, South Dakota
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU46000001500000001, South Dakota
+CES,"Construction, Not seasonally adjusted",SMU46000002000000001, South Dakota
+CES,"Manufacturing, Not seasonally adjusted",SMU46000003000000001, South Dakota
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU46000004000000001, South Dakota
+CES,"Information, Not seasonally adjusted",SMU46000005000000001, South Dakota
+CES,"Financial Activities, Not seasonally adjusted",SMU46000005500000001, South Dakota
+CES,"Professional and Business Services, Not seasonally adjusted",SMU46000006000000001, South Dakota
+CES,"Education and Health Services, Not seasonally adjusted",SMU46000006500000001, South Dakota
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU46000007000000001, South Dakota
+CES,"Other Services, Not seasonally adjusted",SMU46000008000000001, South Dakota
+CES,"Government, Not seasonally adjusted",SMU46000009000000001, South Dakota
+CES,"Total Nonfarm, Seasonally adjusted",SMS47000000000000001, Tennessee
+CES,"Mining and Logging, Seasonally adjusted",SMS47000001000000001, Tennessee
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS47000001500000001, Tennessee
+CES,"Construction, Seasonally adjusted",SMS47000002000000001, Tennessee
+CES,"Manufacturing, Seasonally adjusted",SMS47000003000000001, Tennessee
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS47000004000000001, Tennessee
+CES,"Information, Seasonally adjusted",SMS47000005000000001, Tennessee
+CES,"Financial Activities, Seasonally adjusted",SMS47000005500000001, Tennessee
+CES,"Professional and Business Services, Seasonally adjusted",SMS47000006000000001, Tennessee
+CES,"Education and Health Services, Seasonally adjusted",SMS47000006500000001, Tennessee
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS47000007000000001, Tennessee
+CES,"Government, Seasonally adjusted",SMS47000009000000001, Tennessee
+CES,"Total Nonfarm, Not seasonally adjusted",SMU47000000000000001, Tennessee
+CES,"Mining and Logging, Not seasonally adjusted",SMU47000001000000001, Tennessee
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU47000001500000001, Tennessee
+CES,"Construction, Not seasonally adjusted",SMU47000002000000001, Tennessee
+CES,"Manufacturing, Not seasonally adjusted",SMU47000003000000001, Tennessee
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU47000004000000001, Tennessee
+CES,"Information, Not seasonally adjusted",SMU47000005000000001, Tennessee
+CES,"Financial Activities, Not seasonally adjusted",SMU47000005500000001, Tennessee
+CES,"Professional and Business Services, Not seasonally adjusted",SMU47000006000000001, Tennessee
+CES,"Education and Health Services, Not seasonally adjusted",SMU47000006500000001, Tennessee
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU47000007000000001, Tennessee
+CES,"Other Services, Not seasonally adjusted",SMU47000008000000001, Tennessee
+CES,"Government, Not seasonally adjusted",SMU47000009000000001, Tennessee
+CES,"Total Nonfarm, Seasonally adjusted",SMS48000000000000001, Texas
+CES,"Mining and Logging, Seasonally adjusted",SMS48000001000000001, Texas
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS48000001500000001, Texas
+CES,"Construction, Seasonally adjusted",SMS48000002000000001, Texas
+CES,"Manufacturing, Seasonally adjusted",SMS48000003000000001, Texas
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS48000004000000001, Texas
+CES,"Information, Seasonally adjusted",SMS48000005000000001, Texas
+CES,"Financial Activities, Seasonally adjusted",SMS48000005500000001, Texas
+CES,"Professional and Business Services, Seasonally adjusted",SMS48000006000000001, Texas
+CES,"Education and Health Services, Seasonally adjusted",SMS48000006500000001, Texas
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS48000007000000001, Texas
+CES,"Other Services, Seasonally adjusted",SMS48000008000000001, Texas
+CES,"Government, Seasonally adjusted",SMS48000009000000001, Texas
+CES,"Total Nonfarm, Not seasonally adjusted",SMU48000000000000001, Texas
+CES,"Mining and Logging, Not seasonally adjusted",SMU48000001000000001, Texas
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU48000001500000001, Texas
+CES,"Construction, Not seasonally adjusted",SMU48000002000000001, Texas
+CES,"Manufacturing, Not seasonally adjusted",SMU48000003000000001, Texas
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU48000004000000001, Texas
+CES,"Information, Not seasonally adjusted",SMU48000005000000001, Texas
+CES,"Financial Activities, Not seasonally adjusted",SMU48000005500000001, Texas
+CES,"Professional and Business Services, Not seasonally adjusted",SMU48000006000000001, Texas
+CES,"Education and Health Services, Not seasonally adjusted",SMU48000006500000001, Texas
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU48000007000000001, Texas
+CES,"Other Services, Not seasonally adjusted",SMU48000008000000001, Texas
+CES,"Government, Not seasonally adjusted",SMU48000009000000001, Texas
+CES,"Total Nonfarm, Seasonally adjusted",SMS49000000000000001, Utah
+CES,"Mining and Logging, Seasonally adjusted",SMS49000001000000001, Utah
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS49000001500000001, Utah
+CES,"Construction, Seasonally adjusted",SMS49000002000000001, Utah
+CES,"Manufacturing, Seasonally adjusted",SMS49000003000000001, Utah
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS49000004000000001, Utah
+CES,"Information, Seasonally adjusted",SMS49000005000000001, Utah
+CES,"Financial Activities, Seasonally adjusted",SMS49000005500000001, Utah
+CES,"Professional and Business Services, Seasonally adjusted",SMS49000006000000001, Utah
+CES,"Education and Health Services, Seasonally adjusted",SMS49000006500000001, Utah
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS49000007000000001, Utah
+CES,"Other Services, Seasonally adjusted",SMS49000008000000001, Utah
+CES,"Government, Seasonally adjusted",SMS49000009000000001, Utah
+CES,"Total Nonfarm, Not seasonally adjusted",SMU49000000000000001, Utah
+CES,"Mining and Logging, Not seasonally adjusted",SMU49000001000000001, Utah
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU49000001500000001, Utah
+CES,"Construction, Not seasonally adjusted",SMU49000002000000001, Utah
+CES,"Manufacturing, Not seasonally adjusted",SMU49000003000000001, Utah
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU49000004000000001, Utah
+CES,"Information, Not seasonally adjusted",SMU49000005000000001, Utah
+CES,"Financial Activities, Not seasonally adjusted",SMU49000005500000001, Utah
+CES,"Professional and Business Services, Not seasonally adjusted",SMU49000006000000001, Utah
+CES,"Education and Health Services, Not seasonally adjusted",SMU49000006500000001, Utah
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU49000007000000001, Utah
+CES,"Other Services, Not seasonally adjusted",SMU49000008000000001, Utah
+CES,"Government, Not seasonally adjusted",SMU49000009000000001, Utah
+CES,"Total Nonfarm, Seasonally adjusted",SMS50000000000000001, Vermont
+CES,"Mining and Logging, Seasonally adjusted",SMS50000001000000001, Vermont
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS50000001500000001, Vermont
+CES,"Construction, Seasonally adjusted",SMS50000002000000001, Vermont
+CES,"Manufacturing, Seasonally adjusted",SMS50000003000000001, Vermont
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS50000004000000001, Vermont
+CES,"Information, Seasonally adjusted",SMS50000005000000001, Vermont
+CES,"Financial Activities, Seasonally adjusted",SMS50000005500000001, Vermont
+CES,"Professional and Business Services, Seasonally adjusted",SMS50000006000000001, Vermont
+CES,"Education and Health Services, Seasonally adjusted",SMS50000006500000001, Vermont
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS50000007000000001, Vermont
+CES,"Other Services, Seasonally adjusted",SMS50000008000000001, Vermont
+CES,"Government, Seasonally adjusted",SMS50000009000000001, Vermont
+CES,"Total Nonfarm, Not seasonally adjusted",SMU50000000000000001, Vermont
+CES,"Mining and Logging, Not seasonally adjusted",SMU50000001000000001, Vermont
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU50000001500000001, Vermont
+CES,"Construction, Not seasonally adjusted",SMU50000002000000001, Vermont
+CES,"Manufacturing, Not seasonally adjusted",SMU50000003000000001, Vermont
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU50000004000000001, Vermont
+CES,"Information, Not seasonally adjusted",SMU50000005000000001, Vermont
+CES,"Financial Activities, Not seasonally adjusted",SMU50000005500000001, Vermont
+CES,"Professional and Business Services, Not seasonally adjusted",SMU50000006000000001, Vermont
+CES,"Education and Health Services, Not seasonally adjusted",SMU50000006500000001, Vermont
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU50000007000000001, Vermont
+CES,"Other Services, Not seasonally adjusted",SMU50000008000000001, Vermont
+CES,"Government, Not seasonally adjusted",SMU50000009000000001, Vermont
+CES,"Total Nonfarm, Seasonally adjusted",SMS51000000000000001, Virginia
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS51000001500000001, Virginia
+CES,"Construction, Seasonally adjusted",SMS51000002000000001, Virginia
+CES,"Manufacturing, Seasonally adjusted",SMS51000003000000001, Virginia
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS51000004000000001, Virginia
+CES,"Information, Seasonally adjusted",SMS51000005000000001, Virginia
+CES,"Financial Activities, Seasonally adjusted",SMS51000005500000001, Virginia
+CES,"Professional and Business Services, Seasonally adjusted",SMS51000006000000001, Virginia
+CES,"Education and Health Services, Seasonally adjusted",SMS51000006500000001, Virginia
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS51000007000000001, Virginia
+CES,"Other Services, Seasonally adjusted",SMS51000008000000001, Virginia
+CES,"Government, Seasonally adjusted",SMS51000009000000001, Virginia
+CES,"Total Nonfarm, Not seasonally adjusted",SMU51000000000000001, Virginia
+CES,"Mining and Logging, Not seasonally adjusted",SMU51000001000000001, Virginia
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU51000001500000001, Virginia
+CES,"Construction, Not seasonally adjusted",SMU51000002000000001, Virginia
+CES,"Manufacturing, Not seasonally adjusted",SMU51000003000000001, Virginia
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU51000004000000001, Virginia
+CES,"Information, Not seasonally adjusted",SMU51000005000000001, Virginia
+CES,"Financial Activities, Not seasonally adjusted",SMU51000005500000001, Virginia
+CES,"Professional and Business Services, Not seasonally adjusted",SMU51000006000000001, Virginia
+CES,"Education and Health Services, Not seasonally adjusted",SMU51000006500000001, Virginia
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU51000007000000001, Virginia
+CES,"Other Services, Not seasonally adjusted",SMU51000008000000001, Virginia
+CES,"Government, Not seasonally adjusted",SMU51000009000000001, Virginia
+CES,"Total Nonfarm, Seasonally adjusted",SMS78000000000000001, Virgin Islands
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS78000001500000001, Virgin Islands
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS78000004000000001, Virgin Islands
+CES,"Transportation, Warehousing, and Utilities, Seasonally adjusted",SMS78000004300000001, Virgin Islands
+CES,"Education and Health Services, Seasonally adjusted",SMS78000006500000001, Virgin Islands
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS78000007000000001, Virgin Islands
+CES,"Other Services, Seasonally adjusted",SMS78000008000000001, Virgin Islands
+CES,"Government, Seasonally adjusted",SMS78000009000000001, Virgin Islands
+CES,"Total Nonfarm, Not seasonally adjusted",SMU78000000000000001, Virgin Islands
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU78000001500000001, Virgin Islands
+CES,"Manufacturing, Not seasonally adjusted",SMU78000003000000001, Virgin Islands
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU78000004000000001, Virgin Islands
+CES,"Information, Not seasonally adjusted",SMU78000005000000001, Virgin Islands
+CES,"Financial Activities, Not seasonally adjusted",SMU78000005500000001, Virgin Islands
+CES,"Professional and Business Services, Not seasonally adjusted",SMU78000006000000001, Virgin Islands
+CES,"Education and Health Services, Not seasonally adjusted",SMU78000006500000001, Virgin Islands
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU78000007000000001, Virgin Islands
+CES,"Other Services, Not seasonally adjusted",SMU78000008000000001, Virgin Islands
+CES,"Government, Not seasonally adjusted",SMU78000009000000001, Virgin Islands
+CES,"Total Nonfarm, Seasonally adjusted",SMS53000000000000001, Washington
+CES,"Mining and Logging, Seasonally adjusted",SMS53000001000000001, Washington
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS53000001500000001, Washington
+CES,"Construction, Seasonally adjusted",SMS53000002000000001, Washington
+CES,"Manufacturing, Seasonally adjusted",SMS53000003000000001, Washington
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS53000004000000001, Washington
+CES,"Information, Seasonally adjusted",SMS53000005000000001, Washington
+CES,"Financial Activities, Seasonally adjusted",SMS53000005500000001, Washington
+CES,"Professional and Business Services, Seasonally adjusted",SMS53000006000000001, Washington
+CES,"Education and Health Services, Seasonally adjusted",SMS53000006500000001, Washington
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS53000007000000001, Washington
+CES,"Other Services, Seasonally adjusted",SMS53000008000000001, Washington
+CES,"Government, Seasonally adjusted",SMS53000009000000001, Washington
+CES,"Total Nonfarm, Not seasonally adjusted",SMU53000000000000001, Washington
+CES,"Mining and Logging, Not seasonally adjusted",SMU53000001000000001, Washington
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU53000001500000001, Washington
+CES,"Construction, Not seasonally adjusted",SMU53000002000000001, Washington
+CES,"Manufacturing, Not seasonally adjusted",SMU53000003000000001, Washington
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU53000004000000001, Washington
+CES,"Information, Not seasonally adjusted",SMU53000005000000001, Washington
+CES,"Financial Activities, Not seasonally adjusted",SMU53000005500000001, Washington
+CES,"Professional and Business Services, Not seasonally adjusted",SMU53000006000000001, Washington
+CES,"Education and Health Services, Not seasonally adjusted",SMU53000006500000001, Washington
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU53000007000000001, Washington
+CES,"Other Services, Not seasonally adjusted",SMU53000008000000001, Washington
+CES,"Government, Not seasonally adjusted",SMU53000009000000001, Washington
+CES,"Total Nonfarm, Seasonally adjusted",SMS54000000000000001, West Virginia
+CES,"Mining and Logging, Seasonally adjusted",SMS54000001000000001, West Virginia
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS54000001500000001, West Virginia
+CES,"Construction, Seasonally adjusted",SMS54000002000000001, West Virginia
+CES,"Manufacturing, Seasonally adjusted",SMS54000003000000001, West Virginia
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS54000004000000001, West Virginia
+CES,"Information, Seasonally adjusted",SMS54000005000000001, West Virginia
+CES,"Financial Activities, Seasonally adjusted",SMS54000005500000001, West Virginia
+CES,"Professional and Business Services, Seasonally adjusted",SMS54000006000000001, West Virginia
+CES,"Education and Health Services, Seasonally adjusted",SMS54000006500000001, West Virginia
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS54000007000000001, West Virginia
+CES,"Government, Seasonally adjusted",SMS54000009000000001, West Virginia
+CES,"Total Nonfarm, Not seasonally adjusted",SMU54000000000000001, West Virginia
+CES,"Mining and Logging, Not seasonally adjusted",SMU54000001000000001, West Virginia
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU54000001500000001, West Virginia
+CES,"Construction, Not seasonally adjusted",SMU54000002000000001, West Virginia
+CES,"Manufacturing, Not seasonally adjusted",SMU54000003000000001, West Virginia
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU54000004000000001, West Virginia
+CES,"Information, Not seasonally adjusted",SMU54000005000000001, West Virginia
+CES,"Financial Activities, Not seasonally adjusted",SMU54000005500000001, West Virginia
+CES,"Professional and Business Services, Not seasonally adjusted",SMU54000006000000001, West Virginia
+CES,"Education and Health Services, Not seasonally adjusted",SMU54000006500000001, West Virginia
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU54000007000000001, West Virginia
+CES,"Other Services, Not seasonally adjusted",SMU54000008000000001, West Virginia
+CES,"Government, Not seasonally adjusted",SMU54000009000000001, West Virginia
+CES,"Total Nonfarm, Seasonally adjusted",SMS55000000000000001, Wisconsin
+CES,"Mining and Logging, Seasonally adjusted",SMS55000001000000001, Wisconsin
+CES,"Mining, Logging, and Construction, Seasonally adjusted",SMS55000001500000001, Wisconsin
+CES,"Construction, Seasonally adjusted",SMS55000002000000001, Wisconsin
+CES,"Manufacturing, Seasonally adjusted",SMS55000003000000001, Wisconsin
+CES,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS55000004000000001, Wisconsin
+CES,"Information, Seasonally adjusted",SMS55000005000000001, Wisconsin
+CES,"Financial Activities, Seasonally adjusted",SMS55000005500000001, Wisconsin
+CES,"Professional and Business Services, Seasonally adjusted",SMS55000006000000001, Wisconsin
+CES,"Education and Health Services, Seasonally adjusted",SMS55000006500000001, Wisconsin
+CES,"Leisure and Hospitality, Seasonally adjusted",SMS55000007000000001, Wisconsin
+CES,"Other Services, Seasonally adjusted",SMS55000008000000001, Wisconsin
+CES,"Government, Seasonally adjusted",SMS55000009000000001, Wisconsin
+CES,"Total Nonfarm, Not seasonally adjusted",SMU55000000000000001, Wisconsin
+CES,"Mining and Logging, Not seasonally adjusted",SMU55000001000000001, Wisconsin
+CES,"Mining, Logging, and Construction, Not seasonally adjusted",SMU55000001500000001, Wisconsin
+CES,"Construction, Not seasonally adjusted",SMU55000002000000001, Wisconsin
+CES,"Manufacturing, Not seasonally adjusted",SMU55000003000000001, Wisconsin
+CES,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU55000004000000001, Wisconsin
+CES,"Information, Not seasonally adjusted",SMU55000005000000001, Wisconsin
+CES,"Financial Activities, Not seasonally adjusted",SMU55000005500000001, Wisconsin
+CES,"Professional and Business Services, Not seasonally adjusted",SMU55000006000000001, Wisconsin
+CES,"Education and Health Services, Not seasonally adjusted",SMU55000006500000001, Wisconsin
+CES,"Leisure and Hospitality, Not seasonally adjusted",SMU55000007000000001, Wisconsin
+CES,"Other Services, Not seasonally adjusted",SMU55000008000000001, Wisconsin
+CES,"Government, Not seasonally adjusted",SMU55000009000000001, Wisconsin
+,"Total Nonfarm, Seasonally adjusted",SMS56000000000000001, Wyoming
+,"Mining and Logging, Seasonally adjusted",SMS56000001000000001, Wyoming
+,"Mining, Logging, and Construction, Seasonally adjusted",SMS56000001500000001, Wyoming
+,"Construction, Seasonally adjusted",SMS56000002000000001, Wyoming
+,"Manufacturing, Seasonally adjusted",SMS56000003000000001, Wyoming
+,"Trade, Transportation, and Utilities, Seasonally adjusted",SMS56000004000000001, Wyoming
+,"Information, Seasonally adjusted",SMS56000005000000001, Wyoming
+,"Financial Activities, Seasonally adjusted",SMS56000005500000001, Wyoming
+,"Professional and Business Services, Seasonally adjusted",SMS56000006000000001, Wyoming
+,"Education and Health Services, Seasonally adjusted",SMS56000006500000001, Wyoming
+,"Leisure and Hospitality, Seasonally adjusted",SMS56000007000000001, Wyoming
+,"Other Services, Seasonally adjusted",SMS56000008000000001, Wyoming
+,"Government, Seasonally adjusted",SMS56000009000000001, Wyoming
+,"Total Nonfarm, Not seasonally adjusted",SMU56000000000000001, Wyoming
+,"Mining and Logging, Not seasonally adjusted",SMU56000001000000001, Wyoming
+,"Mining, Logging, and Construction, Not seasonally adjusted",SMU56000001500000001, Wyoming
+,"Construction, Not seasonally adjusted",SMU56000002000000001, Wyoming
+,"Manufacturing, Not seasonally adjusted",SMU56000003000000001, Wyoming
+,"Trade, Transportation, and Utilities, Not seasonally adjusted",SMU56000004000000001, Wyoming
+,"Information, Not seasonally adjusted",SMU56000005000000001, Wyoming
+,"Financial Activities, Not seasonally adjusted",SMU56000005500000001, Wyoming
+,"Professional and Business Services, Not seasonally adjusted",SMU56000006000000001, Wyoming
+,"Education and Health Services, Not seasonally adjusted",SMU56000006500000001, Wyoming
+,"Leisure and Hospitality, Not seasonally adjusted",SMU56000007000000001, Wyoming
+,"Other Services, Not seasonally adjusted",SMU56000008000000001, Wyoming
+,"Government, Not seasonally adjusted",SMU56000009000000001, Wyoming
