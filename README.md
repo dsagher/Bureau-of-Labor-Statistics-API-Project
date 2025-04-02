@@ -17,6 +17,7 @@ This pipeline can be automated using `cron`, but given the infrequent updates, m
     - Contains unit testing for the main module.
 
 ## File Structure
+```
 .
 └── Bls_Api_Project/
     ├── scripts/
@@ -34,7 +35,7 @@ This pipeline can be automated using `cron`, but given the infrequent updates, m
     ├── instructions.md
     ├── README.md
     └── .gitignore
-
+```
 ## Inputs
 - `national_series_dimension.csv`
     - CSV input file containing series, seriesID, and survey
