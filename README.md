@@ -39,17 +39,17 @@ This pipeline can be automated using `cron`, but given the infrequent updates, m
 ## Inputs
 - `national_series_dimension.csv`
     - CSV input file containing series, seriesID, and survey
-        - ex: ```csv 
+        - ex: ```
             series,seriesID,survey
             Avg hrs per day Watching TV,TUU10101AA01014236,ATUS
               ```
 
 - `state_series_dimension.csv`
     - CSV input file containing series, seriesID, state, survey
-        - ex: ```csv
+        - ex: ```
             series, seriesID, state, survey\n
             Total Nonfarm, Seasonally adjusted,SMS01000000000000001, Alabama, CES\n
-            ```
+             ```
 
 ## Outputs
 - `main.log`
