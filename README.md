@@ -47,8 +47,8 @@ This pipeline can be automated using `cron`, but given the infrequent updates, m
 - `state_series_dimension.csv`
     - CSV input file containing series, seriesID, state, survey
         - ex: ```
-            series, seriesID, state, survey\n
-            Total Nonfarm, Seasonally adjusted,SMS01000000000000001, Alabama, CES\n
+            series, seriesID, state, survey
+            Total Nonfarm, Seasonally adjusted,SMS01000000000000001, Alabama, CES
              ```
 
 ## Outputs
