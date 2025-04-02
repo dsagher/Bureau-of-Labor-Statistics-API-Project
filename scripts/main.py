@@ -60,7 +60,7 @@ def arg_parser():
         description = 'This program uses a list of seriesIDs, start year, and end year as input \
                         to the Bureau of Labor Statistics API. The results are parsed, cleaned, and \
                         uploaded into a local PostgreSQL database.',
-        usage='python py_files/main.py --csv-path path/to/csv --series-type 1 --start-year 2000 --end-year -n 100 -pov')
+        usage='python scripts/main.py --csv-path path/to/csv --series-type 1 --start-year 2000 --end-year -n 100 -pov')
     
     parser.add_argument('--path', type=str, help="Path to CSV file containing seriesIDs", default=False,metavar='path/to/csv')
     parser.add_argument('--series-type', type=int,choices=[1,2], help="Enter 1 for National Series or 2 for State Series", default=False,metavar="type")

@@ -334,24 +334,6 @@ class BlsApiCall:
             else:
                 logger.warning(message)
 
-    def _drop_nulls_and_duplicates(self, lst: list[DataDict]) -> list[DataDict]:
-        """
-        Removes duplicate dictionaries from a list.
-
-        Parameters:
-            lst (list[dict]): The list of dictionaries to process.
-
-        Returns:
-            list[dict]: A new list with duplicates removed.
-        """
-        unique = []
-        for dct in lst:
-            if dct in unique:
-                continue
-            else:
-                unique.append(dct)
-        return unique
-
     def _convert_adjusted(self, lst: list[dict]) -> list[dict]:
         """
         Processes a list of series dictionaries to:
@@ -399,7 +381,7 @@ class BlsApiCall:
             - Removing duplicates.
             - Processing series metadata to flag seasonal adjustments.
         """
-        final_dct_lst: list[DataDict] = []
+        self.final_dct_lst: list[DataDict] = []
 
         for response in self.lst_of_queries:
             results: DataContainer = response["Results"]
@@ -421,14 +403,7 @@ class BlsApiCall:
                         "value": float(data_point["value"]) if data_point["value"] != '-' else None,
                         "footnotes": str(data_point["footnotes"]) if data_point["footnotes"] != str([{}]) else None
                     }
-                    final_dct_lst.append(data_dict)
-        try:
-            self.final_dct_lst_copy = copy.deepcopy(final_dct_lst)
-        except copy.Error as e:
-            logging.error(f"Error copying list of results: {e}")
-            raise
-
-        self.final_dct_lst_copy = self._drop_nulls_and_duplicates(self.final_dct_lst_copy)
+                    self.final_dct_lst.append(data_dict)
 
         try:
             if self.national:
@@ -448,14 +423,13 @@ class BlsApiCall:
         Reads database configuration from 'inputs/config.json', creates tables for series
         and results if they don't exist, and performs upsert operations to avoid duplicates.
         """
-        with open('inputs/config.json', 'r') as file:
-            config = json.load(file)
-            driver = config['driver']
-            username = config['username']
-            password = config['password']
-            host = config['host']
-            database = config['database']
-            port = config['port']
+
+        driver = os.getenv("DRIVER")
+        username = os.getenv("USERNAME")
+        password = os.getenv("PASSWORD")
+        host = os.getenv("HOST")
+        database = os.getenv("DATABASE")
+        port = os.getenv("PORT")
 
         url_object = URL.create(drivername=driver, username=username, password=password, host=host, database=database, port=port)
         engine = create_engine(url_object, logging_name='SQLAlchemy')
@@ -494,10 +468,10 @@ class BlsApiCall:
 
         if self.state:
             series_stmt = insert(state_series).values(self.state_series_copy).on_conflict_do_nothing()
-            results_stmt = insert(state_results).values(self.final_dct_lst_copy).on_conflict_do_nothing()
+            results_stmt = insert(state_results).values(self.final_dct_lst).on_conflict_do_nothing()
         if self.national:
             series_stmt = insert(national_series).values(self.national_series_copy).on_conflict_do_nothing()
-            results_stmt = insert(national_results).values(self.final_dct_lst_copy).on_conflict_do_nothing()
+            results_stmt = insert(national_results).values(self.final_dct_lst).on_conflict_do_nothing()
         with engine.connect() as connect:
             connect.execute(series_stmt)
             connect.execute(results_stmt)
