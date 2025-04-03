@@ -37,7 +37,7 @@ This pipeline can be automated using `cron`, but given the infrequent updates, m
     └── .gitignore
 ```
 ## Inputs
-- `national_series_dimension.csv`
+- `national_series.csv`
     - CSV input file containing series, seriesID, and survey
 Ex:
     ```
@@ -45,7 +45,7 @@ Ex:
     Avg hrs per day Watching TV,TUU10101AA01014236,ATUS
     ```
 
-- `state_series_dimension.csv`
+- `state_series.csv`
     - CSV input file containing series, seriesID, state, survey
 Ex: 
     ```
@@ -63,7 +63,7 @@ Ex:
 - Daily query limit handling (prevents exceeding 500 requests).
 - Invalid input detection (ensures valid queries before execution).
 - HTTP error handling (retries or logs failures).
-- Rate limit enforcement (throttles requests to prevent bans).
+- Rate limit enforcement (limits requests to allow for continuous batch extractions).
 - Year limit enforcement (restricts queries to valid year ranges).
 - Flexible input options:
 - Interactive mode (python main.py).

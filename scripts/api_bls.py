@@ -19,8 +19,9 @@
             - os
             - re
             - time
-            - http.HTTPStatus, 
-            - itertools.batched
+            - typing
+            - http, 
+            - itertools
             - requests
             - requests.exceptions
             - SQLAlchemy (create_engine, MetaData, Table, Column, Integer, String, Boolean, Float, ForeignKey,
@@ -420,7 +421,7 @@ class BlsApiCall:
         """
         Loads the transformed data into the PostgreSQL database using SQLAlchemy.
         
-        Reads database configuration from 'inputs/config.json', creates tables for series
+        Reads database configuration from environmental variables, creates tables for series
         and results if they don't exist, and performs upsert operations to avoid duplicates.
         """
 

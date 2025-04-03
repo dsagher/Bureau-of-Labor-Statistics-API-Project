@@ -34,7 +34,7 @@ import logging
 import os
 import subprocess
 import sys
-from typing import Type, Tuple
+from typing import Tuple
 
 from api_bls import BlsApiCall
 

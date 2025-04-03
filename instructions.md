@@ -48,7 +48,7 @@ python main.py
 ```bash
 # For command line input example:
 cd path/to/your/project/scripts
-python main.py --path path/to/input/state_series_dimension.csv --series-type 2 --start-year 2000 --end-year 2005
+python main.py --path path/to/input/state_series.csv --series-type 2 --start-year 2000 --end-year 2005
 ```
 
 More options:
